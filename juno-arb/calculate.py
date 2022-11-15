@@ -33,11 +33,11 @@ def calculate_swap(reserves_in: int, reserves_out: int, amount_in: int, fee: flo
         return amount_out, new_reserves_in, new_reserves_out
 
 
-def calculate_terraswap_swap(reserves_in: int, reserves_out: int, amount_in: int, fee: float) -> tuple[int, int, int]:
+def calculate_loop_swap(reserves_in: int, reserves_out: int, amount_in: int, fee: float) -> tuple[int, int, int]:
     """Calculates swap amount out for x*y=k CFMM pools.
     Given the reserves of two pools, amount to swap in, and the swap fee,
     calculate the amount out of the swap and the new reserves of the pool.
-    Difference for terraswap is that the fee is applied to the amount out
+    Difference for loop is that the fee is applied to the amount out.
 
     Args:
         reserves_in (int): Reserves of the input swap token of the pool
@@ -85,7 +85,7 @@ def get_profit_from_route(route: Route, amount_in: int, fee: float) -> int:
                                                 amount_in=route.first_pool_amount_in,
                                                 fee = fee)
     elif route.first_pool_dex == "loop":
-        route.first_pool_amount_out, _, _ = calculate_terraswap_swap(
+        route.first_pool_amount_out, _, _ = calculate_loop_swap(
                                                 reserves_in=route.first_pool_input_reserves,
                                                 reserves_out=route.first_pool_output_reserves,
                                                 amount_in=route.first_pool_amount_in,
@@ -97,7 +97,7 @@ def get_profit_from_route(route: Route, amount_in: int, fee: float) -> int:
                                                 amount_in=route.first_pool_amount_out,
                                                 fee = fee)
     elif route.second_pool_dex == "loop":
-        route.second_pool_amount_out, _, _ = calculate_terraswap_swap(
+        route.second_pool_amount_out, _, _ = calculate_loop_swap(
                                                 reserves_in=route.second_pool_input_reserves,
                                                 reserves_out=route.second_pool_output_reserves,
                                                 amount_in=route.first_pool_amount_out,
@@ -109,7 +109,7 @@ def get_profit_from_route(route: Route, amount_in: int, fee: float) -> int:
                                                 amount_in=route.second_pool_amount_out,
                                                 fee = fee)
     elif route.third_pool_dex == "loop":
-        route.third_pool_amount_out, _, _ = calculate_terraswap_swap(
+        route.third_pool_amount_out, _, _ = calculate_loop_swap(
                                                 reserves_in=route.third_pool_input_reserves,
                                                 reserves_out=route.third_pool_output_reserves,
                                                 amount_in=route.second_pool_amount_out,

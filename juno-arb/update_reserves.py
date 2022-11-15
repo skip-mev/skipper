@@ -1,5 +1,5 @@
 from swaps import SingleSwap, PassThroughSwap
-from calculate import calculate_swap, calculate_terraswap_swap
+from calculate import calculate_swap, calculate_loop_swap
 from query_contract_info import junoswap_info, terraswap_info
 
 
@@ -25,10 +25,10 @@ async def update_pool(tx: SingleSwap | PassThroughSwap, contracts: dict, fee: fl
                                                                            amount_in=tx.input_amount,
                                                                            fee=fee)
         elif contracts[tx.contract_address]["dex"] == "loop":
-            amount_out, new_reserves_in, new_reserves_out = calculate_terraswap_swap(reserves_in=contract_info['token1_reserves'],
-                                                                                     reserves_out=contract_info['token2_reserves'],
-                                                                                     amount_in=tx.input_amount,
-                                                                                     fee=fee)
+            amount_out, new_reserves_in, new_reserves_out = calculate_loop_swap(reserves_in=contract_info['token1_reserves'],
+                                                                                reserves_out=contract_info['token2_reserves'],
+                                                                                amount_in=tx.input_amount,
+                                                                                fee=fee)
         contracts[tx.contract_address]["info"]["token1_reserves"] = new_reserves_in
         contracts[tx.contract_address]["info"]["token2_reserves"] = new_reserves_out
         denom_out = contracts[tx.contract_address]["info"]["token2_denom"]
@@ -39,10 +39,10 @@ async def update_pool(tx: SingleSwap | PassThroughSwap, contracts: dict, fee: fl
                                                                            amount_in=tx.input_amount,
                                                                            fee=fee)
         elif contracts[tx.contract_address]["dex"] == "loop":
-            amount_out, new_reserves_in, new_reserves_out = calculate_terraswap_swap(reserves_in=contract_info['token2_reserves'],
-                                                                                     reserves_out=contract_info['token1_reserves'],
-                                                                                     amount_in=tx.input_amount,
-                                                                                     fee=fee)
+            amount_out, new_reserves_in, new_reserves_out = calculate_loop_swap(reserves_in=contract_info['token2_reserves'],
+                                                                                reserves_out=contract_info['token1_reserves'],
+                                                                                amount_in=tx.input_amount,
+                                                                                fee=fee)
         contracts[tx.contract_address]["info"]["token2_reserves"] = new_reserves_in
         contracts[tx.contract_address]["info"]["token1_reserves"] = new_reserves_out
         denom_out = contracts[tx.contract_address]["info"]["token1_denom"]
@@ -76,10 +76,10 @@ async def update_pools(tx: PassThroughSwap, contracts: dict, fee: float) -> list
                                                                   amount_in=amount_in,
                                                                   fee=fee)
         elif contracts[tx.output_amm_address]["dex"] == "loop":
-            _, new_reserves_in, new_reserves_out = calculate_terraswap_swap(reserves_in=contract_info['token1_reserves'],
-                                                                            reserves_out=contract_info['token2_reserves'],
-                                                                            amount_in=amount_in,
-                                                                            fee=fee)
+            _, new_reserves_in, new_reserves_out = calculate_loop_swap(reserves_in=contract_info['token1_reserves'],
+                                                                       reserves_out=contract_info['token2_reserves'],
+                                                                       amount_in=amount_in,
+                                                                       fee=fee)
         contracts[tx.output_amm_address]["info"]["token1_reserves"] = new_reserves_in
         contracts[tx.output_amm_address]["info"]["token2_reserves"] = new_reserves_out
         tx.second_pool_output_token = "Token2"
@@ -90,10 +90,10 @@ async def update_pools(tx: PassThroughSwap, contracts: dict, fee: float) -> list
                                                                   amount_in=amount_in,
                                                                   fee=fee)
         elif contracts[tx.output_amm_address]["dex"] == "loop":
-            _, new_reserves_in, new_reserves_out = calculate_terraswap_swap(reserves_in=contract_info['token2_reserves'],
-                                                                            reserves_out=contract_info['token1_reserves'],
-                                                                            amount_in=amount_in,
-                                                                            fee=fee)
+            _, new_reserves_in, new_reserves_out = calculate_loop_swap(reserves_in=contract_info['token2_reserves'],
+                                                                       reserves_out=contract_info['token1_reserves'],
+                                                                       amount_in=amount_in,
+                                                                       fee=fee)
         contracts[tx.output_amm_address]["info"]["token2_reserves"] = new_reserves_in
         contracts[tx.output_amm_address]["info"]["token1_reserves"] = new_reserves_out
         tx.second_pool_output_token = "Token1"
