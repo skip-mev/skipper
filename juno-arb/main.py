@@ -199,9 +199,6 @@ async def main():
                 # after this transction processes, so need to calculate what
                 # the new reserves will be after the swap)
                 if isinstance(tx, SingleSwap):
-                    # kinda weird that udpate pool returns two values you don't use 
-                    # and update_pools just returns a list of pools you swapped against 
-                    # should probably make the logic symmetric
                     pools_swapped_against = await update_pool(tx=tx, contracts=contracts, fee=.003)
                 # If the transaction is a pass through swap, we update the pools
                 # reserves with the new reserves after their respective
