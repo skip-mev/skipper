@@ -1,3 +1,14 @@
 /venv/
 /__pycache__/
+
+# juno-arb
 juno-arb/__pycache__/
+juno-arb/.env
+juno-arb/skip_response.log
+juno-arb/ops/gcp/terraform/.terraform*
+
+juno-arb/ops/gcp/terraform/provider.tf
+juno-arb/ops/gcp/terraform/variables.tf
+
+juno-arb/Dockerfile
+juno-arb/.dockerignore
