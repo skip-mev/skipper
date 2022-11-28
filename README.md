@@ -38,6 +38,8 @@ to easily sign and send bundles to Skip on our supported chains.
 
 For more searcher documentation, please see: https://skip-protocol.notion.site/Skip-Searcher-Documentation-0af486e8dccb4081bdb0451fe9538c99
 
+For an overview of Skip, please see: https://woolen-background-b64.notion.site/Skip-What-it-is-How-it-Works-af39cd3eb5334920b41b16cf65665601
+
 # About our bots
 
 * `juno-arb`: A Python bot for JUNO that captures cyclic arbitrage opportunities across
