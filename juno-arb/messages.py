@@ -76,11 +76,7 @@ def create_route_msgs(wallet,
     """
     address = str(wallet.address())
     msg_list = []
-    # Append the first message, bid payment to auction house
-    msg_list.append(send(from_address=address,
-                         to_address=auction_house_address,
-                         amount=bid_amount,
-                         denom="ujuno"))
+
     # Append message(s) for first pool
     if contracts[route.first_pool_contract_address]["dex"] == "junoswap":
         msg_list.append(junoswap_swap(wallet=wallet,
@@ -144,6 +140,14 @@ def create_route_msgs(wallet,
                                            contract_address=route.third_pool_contract_address,
                                            input_amount=route.second_pool_amount_out,
                                            input_denom=route.third_pool_input_denom))
+
+    # Append the bid message which sends the bid amount to the auction house
+    # The highest bidder wins the auction if competing for the same tx to backrun
+    msg_list.append(send(from_address=address,
+                         to_address=auction_house_address,
+                         amount=bid_amount,
+                         denom="ujuno"))
+
     # Assert profitability, via skip simulation
     msg_list.append(send(from_address=address,
                          to_address=address,

@@ -8,6 +8,7 @@ import httpx
 import logging
 import requests
 import functools
+import math
 
 # Skip helper library Import
 import skip
@@ -72,10 +73,18 @@ SKIP_RPC_URL = "http://juno-1-api.skip.money/"
 # Address to send bid payment to for skip's blockspace auction
 AUCTION_HOUSE_ADDRESS = "juno10g0l3hd9sau3vnjrayjhergcpxemucxcspgnn4"
 
+# DEPRACATED IN V2 - Uses AUCTION_BID_PROFIT_PERCENTAGE instead
 # Auction bid amount
 # This can be optimized in the future to be dynamic
 # Based on profit of the transaction
-AUCTION_BID = 1000
+# AUCTION_BID = 1000
+
+# The percentage of the arb profit
+# To be used as the bid to the Skip Auction
+# Note: There will probably be an equilibrium of percentage,
+# so this is a very important variable to optimize as you search
+# 0.5 represents 50% of the profit, 1 represents 100% of the profit
+AUCTION_BID_PROFIT_PERCENTAGE = 0.5
 
 async def main():
 
@@ -164,6 +173,9 @@ async def main():
         except json.decoder.JSONDecodeError:
             logging.error("JSON decode error, retrying...")
             continue
+        except httpx.ReadTimeout:
+            logging.error("Read timeout error, retrying...")
+            continue
 
         # Everytime the bot sees a new transaction it needs may 
         # want to backrun, we get the latest info on all the
@@ -239,8 +251,8 @@ async def main():
                             # minus the gas fee and auction bid,
                             # we only swap the account balance
                             # minus the gas fee and auction bid
-                            if optimal_amount_in > account_balance - GAS_FEE - AUCTION_BID:
-                                amount_in = account_balance - GAS_FEE - AUCTION_BID
+                            if optimal_amount_in > account_balance - GAS_FEE:
+                                amount_in = account_balance - GAS_FEE
                             else:
                                 amount_in = optimal_amount_in
 
@@ -255,12 +267,17 @@ async def main():
                             # If the profit we will make is greater than
                             # The gas fee and auction bid we have to 
                             # Pay to backrun the transaction, we send it
-                            if profit > GAS_FEE + AUCTION_BID:
+                            if profit > GAS_FEE:
                                 logging.info("Arbitrage opportunity found!")
                                 logging.info(f"Optimal amount in: {optimal_amount_in}")
                                 logging.info(f"Amount in: {amount_in}")
                                 logging.info(f"Profit: {profit}")
                                 logging.info(f"Sender: {tx.sender}")
+
+                                # Skip auction bid amount is the profit minus the gas fee
+                                # multiplied by the auction bid percentage
+                                # This will be sent to the skip auction house address via a MsgSend
+                                bid_amount = math.floor((profit - GAS_FEE) * AUCTION_BID_PROFIT_PERCENTAGE)
 
                                 # Create all the messages for the transaction
                                 # We will be generating to backrun the tx we 
@@ -268,7 +285,7 @@ async def main():
                                 msg_list = create_route_msgs(wallet=wallet,
                                                              route=route_obj, 
                                                              contracts=contracts,
-                                                             bid_amount=AUCTION_BID,
+                                                             bid_amount=bid_amount,
                                                              auction_house_address=AUCTION_HOUSE_ADDRESS,
                                                              expiration=10000000,
                                                              balance=account_balance,
