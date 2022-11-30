@@ -151,6 +151,6 @@ def create_route_msgs(wallet,
     # Assert profitability, via skip simulation
     msg_list.append(send(from_address=address,
                          to_address=address,
-                         amount=balance + bid_amount + gas_fee,
+                         amount=balance,
                          denom="ujuno"))
     return msg_list
