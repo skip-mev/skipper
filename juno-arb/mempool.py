@@ -75,6 +75,9 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: dict) -> list:
                     except KeyError:
                         logging.error("KeyError, most likely a non-junoswap contract-swap message: ", message_value.contract)
                         continue
+                    except TypeError:
+                        logging.error("TypeError, most likely a non-junoswap contract-swap message: ", message_value.contract)
+                        continue
                 # If the message is a JunoSwap pass through swap
                 elif 'pass_through_swap' in msg:
                     # Create a PassThroughSwap object, append to the list
