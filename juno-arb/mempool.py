@@ -12,7 +12,7 @@ import cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 as cosmwasm_tx_pb2
 # Local imports
 from swaps import SingleSwap, PassThroughSwap
 
-def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: dict) -> list:
+def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set) -> list:
     """Queries the mempool of an rpc node,
     scans tx for JunoSwap swap and pass through swap messages,
     returns a list of txs with swap and pass through swap messages.
@@ -49,7 +49,9 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: dict) -> list:
             # This is to avoid processing the same transaction multiple times
             if tx in already_seen:
                 continue
-            already_seen[tx] = {}
+            else:
+                already_seen.add(tx)
+            
             # Iterate through the messages in the tx
             for message in decoded_pb_tx.body.messages:
                 # Ignore the message if it's not a MsgExecuteContract

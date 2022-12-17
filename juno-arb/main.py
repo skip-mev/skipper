@@ -21,7 +21,7 @@ from cosmpy.crypto.keypairs import PrivateKey
 
 # Local imports
 from mempool import check_for_swap_txs_in_mempool
-from update_reserves import update_pool, update_pools, update_reserves
+from update_reserves import update_pool, update_pools, update_reserves, update_fees
 from swaps import SingleSwap, PassThroughSwap
 from calculate import check_no_arbitrage_condition, calculate_optimal_amount_in, get_profit_from_route
 from create_tx import create_tx
@@ -128,8 +128,23 @@ async def main():
     contract_list = list(contracts.keys())
 
     # Create the jobs for the async batch update
+    # of pool fees
+    jobs_fees = [functools.partial(update_fees, contract, contracts, RPC_URL) for contract in contract_list]
+    # Run the batch update of pool fees
+    # If there is an exception, continue using old fees 
+    # already stored in the contracts json file
+    try:
+        await aiometer.run_all(jobs_fees)
+    except anyio._backends._asyncio.ExceptionGroup as e:
+        logging.error("ExcetionGroup - Updating Fees")
+    except json.decoder.JSONDecodeError as e:
+        logging.error("JSON Exception - Updating Fees")
+    except Exception as e:
+        logging.error("General Exception - Updaing Fees")
+
+    # Create the jobs for the async batch update
     # of pool contract info when a swap is seen
-    jobs = [functools.partial(update_reserves, contract, contracts, RPC_URL) for contract in contract_list]
+    jobs_reserves = [functools.partial(update_reserves, contract, contracts, RPC_URL) for contract in contract_list]
 
     # Used as a flag to check if the bot
     # Needs to update our tracked account balance
@@ -139,7 +154,7 @@ async def main():
     # Used as a hashmap of transactions to track what
     # the bot has already seen from the mempool to 
     # avoid processing the same txs multiple times
-    already_seen = {}
+    already_seen = set()
 
     # Bot runs in an infinite loop until stopped
     while True:
@@ -158,7 +173,7 @@ async def main():
 
         # Flush already seen hashmap every 200 txs
         if len(already_seen) > 200:
-            already_seen = {}
+            already_seen = set()
 
         # Stream mempool and obtain a list of transcations
         # From the mempool that contains a swap or pass through swap
@@ -183,7 +198,7 @@ async def main():
         # to know the current reserves of the pools it may use
         # withint the cyclic arbitrage route.
         try:
-            await aiometer.run_all(jobs)
+            await aiometer.run_all(jobs_reserves)
         except anyio._backends._asyncio.ExceptionGroup as e:
             logging.error("ExcetionGroup: Sleeping for 60 seconds...")
             time.sleep(60)
@@ -245,6 +260,7 @@ async def main():
                             # Calculate the optimal amount to swap in the first pool
                             # To maximize our profit from the cyclic route
                             optimal_amount_in = calculate_optimal_amount_in(route_reserves=route_obj, fee=0.003)
+                            #logging.info(f"Optimal amount in: {optimal_amount_in}")
 
                             # If the optimal amount to swap is 
                             # greater than your account balance
@@ -253,13 +269,16 @@ async def main():
                             # minus the gas fee and auction bid
                             if optimal_amount_in > account_balance - GAS_FEE:
                                 amount_in = account_balance - GAS_FEE
+                                #logging.info(f"Greater than - Amount in: {amount_in}")
                             else:
                                 amount_in = optimal_amount_in
+                                #logging.info(f"Less than - Amount in: {amount_in}")
 
                             # Calculate the profit we will make from the
                             # Cyclic route
                             try:
                                 profit = get_profit_from_route(route=route_obj, amount_in=amount_in, fee=0.003)
+                                #logging.info(f"Profit: {profit}")
                             except ValueError as e:
                                 logging.error(e)
                                 continue
@@ -310,7 +329,8 @@ async def main():
                                                                          public_key=wallet.signer().public_key,
                                                                          rpc_url=SKIP_RPC_URL,
                                                                          desired_height=0,
-                                                                         sync=True)
+                                                                         sync=True,
+                                                                         timeout=10)
                                     logging.info(response.json())
                                     logging.info(f"Route and reserves: {route_obj.__dict__}")
                                 except httpx.ReadTimeout:
@@ -347,7 +367,8 @@ async def main():
                                                                                  public_key=wallet.signer().public_key,
                                                                                  rpc_url=SKIP_RPC_URL,
                                                                                  desired_height=0,
-                                                                                 sync=True)
+                                                                                 sync=True,
+                                                                                 timeout=10)
                                             logging.info(response.json())
                                         except httpx.ReadTimeout:
                                             logging.error("Read timeout while waiting for response from Skip")
