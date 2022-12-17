@@ -1,6 +1,6 @@
 from swaps import SingleSwap, PassThroughSwap
 from calculate import calculate_swap, calculate_loop_swap
-from query_contract_info import junoswap_info, terraswap_info
+from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee
 
 
 async def update_pool(tx: SingleSwap | PassThroughSwap, contracts: dict, fee: float, passthrough: bool = False) -> tuple[int, str]:
@@ -117,3 +117,19 @@ async def update_reserves(contract_address: str, contracts: dict, rpc_url: str):
         contract_info = await terraswap_info(rpc_url, contract_address)
         contracts[contract_address]["info"]["token1_reserves"] = int(contract_info['assets'][0]['amount'])
         contracts[contract_address]["info"]["token2_reserves"] = int(contract_info['assets'][1]['amount'])
+
+
+async def update_fees(contract_address: str, contracts: dict, rpc_url: str):
+    """This function is used to update the swap fee
+       for a given DEX pool (Junoswap or Loop). The update
+       happens on the global contracts dict
+
+    Args:
+        contract_address (str): The contract address of the DEX pool
+    """
+    if contracts[contract_address]["dex"] == "junoswap":
+        fee = await junoswap_fee(rpc_url, contract_address)
+        contracts[contract_address]["info"]["swap_fee"] = fee
+    elif contracts[contract_address]["dex"] == "loop":
+        fee = await terraswap_fee(rpc_url, contract_address)
+        contracts[contract_address]["info"]["swap_fee"] = fee
