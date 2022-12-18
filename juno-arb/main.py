@@ -164,7 +164,7 @@ async def main():
         # the auction and have an updated balance)
         if reset_balance:
             try:
-                account_balance = client.query_bank_balance(wallet.address(), denom='ujuno')
+                account_balance = client.query_bank_balance(wallet.address(), denom=FEE_DENOM)
                 reset_balance = False
             except requests.exceptions.ConnectionError:
                 client = LedgerClient(cfg)
