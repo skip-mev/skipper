@@ -3,7 +3,7 @@ from calculate import calculate_swap, calculate_loop_swap
 from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee
 
 
-async def update_pool(tx: SingleSwap | PassThroughSwap, contracts: dict, fee: float, passthrough: bool = False) -> tuple[int, str]:
+async def update_pool(tx: SingleSwap | PassThroughSwap, contracts: dict, passthrough: bool = False) -> tuple[int, str]:
     """Given a swap tx object, the contracts dict, and the fee,
     Calculates the updated reserves of the pool after the swap,
     Updates the contract dict, and returns the amount out and denom out.
@@ -17,35 +17,26 @@ async def update_pool(tx: SingleSwap | PassThroughSwap, contracts: dict, fee: fl
         tuple[int, str]: Amount out and denom out of the swap
     """
     contract_info = contracts[tx.contract_address]["info"]
+
     # Changes the input and output reserves based on the input and output tokens
     if tx.input_token == "Token1":
-        if contracts[tx.contract_address]["dex"] == "junoswap":
-            amount_out, new_reserves_in, new_reserves_out = calculate_swap(reserves_in=contract_info['token1_reserves'],
-                                                                           reserves_out=contract_info['token2_reserves'],
-                                                                           amount_in=tx.input_amount,
-                                                                           fee=fee)
-        elif contracts[tx.contract_address]["dex"] == "loop":
-            amount_out, new_reserves_in, new_reserves_out = calculate_loop_swap(reserves_in=contract_info['token1_reserves'],
-                                                                                reserves_out=contract_info['token2_reserves'],
-                                                                                amount_in=tx.input_amount,
-                                                                                fee=fee)
-        contracts[tx.contract_address]["info"]["token1_reserves"] = new_reserves_in
-        contracts[tx.contract_address]["info"]["token2_reserves"] = new_reserves_out
+        input_reserves = "token1_reserves"
+        output_reserves = "token2_reserves"
         denom_out = contracts[tx.contract_address]["info"]["token2_denom"]
     else:
-        if contracts[tx.contract_address]["dex"] == "junoswap":
-            amount_out, new_reserves_in, new_reserves_out = calculate_swap(reserves_in=contract_info['token2_reserves'],
-                                                                           reserves_out=contract_info['token1_reserves'],
-                                                                           amount_in=tx.input_amount,
-                                                                           fee=fee)
-        elif contracts[tx.contract_address]["dex"] == "loop":
-            amount_out, new_reserves_in, new_reserves_out = calculate_loop_swap(reserves_in=contract_info['token2_reserves'],
-                                                                                reserves_out=contract_info['token1_reserves'],
-                                                                                amount_in=tx.input_amount,
-                                                                                fee=fee)
-        contracts[tx.contract_address]["info"]["token2_reserves"] = new_reserves_in
-        contracts[tx.contract_address]["info"]["token1_reserves"] = new_reserves_out
+        input_reserves = "token2_reserves"
+        output_reserves = "token1_reserves"
         denom_out = contracts[tx.contract_address]["info"]["token1_denom"]
+
+    amount_out, new_reserves_in, new_reserves_out = calculate_swap(reserves_in=contract_info[input_reserves],
+                                                                   reserves_out=contract_info[output_reserves],
+                                                                   amount_in=tx.input_amount,
+                                                                   lp_fee=contract_info['lp_fee'],
+                                                                   protocol_fee=contract_info['protocol_fee'],
+                                                                   fee_from_input=contract_info["fee_from_input"])
+
+    contracts[tx.contract_address]["info"][input_reserves] = new_reserves_in
+    contracts[tx.contract_address]["info"][output_reserves] = new_reserves_out
 
     if passthrough:
         return amount_out, denom_out
@@ -53,7 +44,7 @@ async def update_pool(tx: SingleSwap | PassThroughSwap, contracts: dict, fee: fl
         return [tx.contract_address]
 
 
-async def update_pools(tx: PassThroughSwap, contracts: dict, fee: float) -> list:
+async def update_pools(tx: PassThroughSwap, contracts: dict) -> list:
     """Given a passthrough swap tx object, the contracts dict, and the fee,
     Calculates the updated reserves of the pools after the swaps,
     Updates the contract dict, and returns a list of pools to check for arb opportunities.
@@ -66,37 +57,28 @@ async def update_pools(tx: PassThroughSwap, contracts: dict, fee: float) -> list
     Returns:
         list: List of pools to check for arb opportunities
     """
-    amount_in, denom_in = await update_pool(tx, contracts, fee, True)
+    amount_in, denom_in = await update_pool(tx, contracts, True)
     contract_info = contracts[tx.output_amm_address]["info"]
+
     # Changes the input and output reserves based on the input and output tokens
     if denom_in == contracts[tx.output_amm_address]["info"]["token1_denom"]:
-        if contracts[tx.output_amm_address]["dex"] == "junoswap":
-            _, new_reserves_in, new_reserves_out = calculate_swap(reserves_in=contract_info['token1_reserves'],
-                                                                  reserves_out=contract_info['token2_reserves'],
-                                                                  amount_in=amount_in,
-                                                                  fee=fee)
-        elif contracts[tx.output_amm_address]["dex"] == "loop":
-            _, new_reserves_in, new_reserves_out = calculate_loop_swap(reserves_in=contract_info['token1_reserves'],
-                                                                       reserves_out=contract_info['token2_reserves'],
-                                                                       amount_in=amount_in,
-                                                                       fee=fee)
-        contracts[tx.output_amm_address]["info"]["token1_reserves"] = new_reserves_in
-        contracts[tx.output_amm_address]["info"]["token2_reserves"] = new_reserves_out
+        input_reserves = "token1_reserves"
+        output_reserves = "token2_reserves"
         tx.second_pool_output_token = "Token2"
     else:
-        if contracts[tx.output_amm_address]["dex"] == "junoswap":
-            _, new_reserves_in, new_reserves_out = calculate_swap(reserves_in=contract_info['token2_reserves'],
-                                                                  reserves_out=contract_info['token1_reserves'],
-                                                                  amount_in=amount_in,
-                                                                  fee=fee)
-        elif contracts[tx.output_amm_address]["dex"] == "loop":
-            _, new_reserves_in, new_reserves_out = calculate_loop_swap(reserves_in=contract_info['token2_reserves'],
-                                                                       reserves_out=contract_info['token1_reserves'],
-                                                                       amount_in=amount_in,
-                                                                       fee=fee)
-        contracts[tx.output_amm_address]["info"]["token2_reserves"] = new_reserves_in
-        contracts[tx.output_amm_address]["info"]["token1_reserves"] = new_reserves_out
+        input_reserves = "token2_reserves"
+        output_reserves = "token1_reserves"
         tx.second_pool_output_token = "Token1"
+
+    _, new_reserves_in, new_reserves_out = calculate_swap(reserves_in=contract_info[input_reserves],
+                                                          reserves_out=contract_info[output_reserves],
+                                                          amount_in=amount_in,
+                                                          lp_fee=contract_info['lp_fee'],
+                                                          protocol_fee=contract_info['protocol_fee'],
+                                                          fee_from_input=contract_info["fee_from_input"])
+                                                          
+    contracts[tx.output_amm_address]["info"][input_reserves] = new_reserves_in
+    contracts[tx.output_amm_address]["info"][output_reserves] = new_reserves_out
         
     return [tx.contract_address, tx.output_amm_address]
 
@@ -128,8 +110,12 @@ async def update_fees(contract_address: str, contracts: dict, rpc_url: str):
         contract_address (str): The contract address of the DEX pool
     """
     if contracts[contract_address]["dex"] == "junoswap":
-        fee = await junoswap_fee(rpc_url, contract_address)
-        contracts[contract_address]["info"]["swap_fee"] = fee
+        lp_fee, protocol_fee = await junoswap_fee(rpc_url, contract_address)
+        contracts[contract_address]["info"]["lp_fee"] = lp_fee
+        contracts[contract_address]["info"]["protocol_fee"] = protocol_fee
+        contracts[contract_address]["info"]["fee_from_input"] = True
     elif contracts[contract_address]["dex"] == "loop":
         fee = await terraswap_fee(rpc_url, contract_address)
-        contracts[contract_address]["info"]["swap_fee"] = fee
+        contracts[contract_address]["info"]["lp_fee"] = fee
+        contracts[contract_address]["info"]["protocol_fee"] = 0.0
+        contracts[contract_address]["info"]["fee_from_input"] = False

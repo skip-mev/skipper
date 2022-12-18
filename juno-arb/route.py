@@ -10,6 +10,9 @@ class Route:
                        first_pool_output_token,
                        first_pool_input_denom,
                        first_pool_output_denom,
+                       first_pool_lp_fee,
+                       first_pool_protocol_fee,
+                       first_pool_fee_from_input,
                        second_pool_contract_address,
                        second_pool_dex,
                        second_pool_input_reserves, 
@@ -18,6 +21,9 @@ class Route:
                        second_pool_output_token,
                        second_pool_input_denom,
                        second_pool_output_denom,
+                       second_pool_lp_fee,
+                       second_pool_protocol_fee,
+                       second_pool_fee_from_input,
                        third_pool_contract_address,
                        third_pool_dex,
                        third_pool_input_reserves, 
@@ -25,7 +31,10 @@ class Route:
                        third_pool_input_token,
                        third_pool_output_token,
                        third_pool_input_denom,
-                       third_pool_output_denom):
+                       third_pool_output_denom,
+                       third_pool_lp_fee,
+                       third_pool_protocol_fee,
+                       third_pool_fee_from_input):
 
         self.first_pool_contract_address = first_pool_contract_address
         self.first_pool_dex = first_pool_dex
@@ -35,6 +44,9 @@ class Route:
         self.first_pool_output_token = first_pool_output_token
         self.first_pool_input_denom = first_pool_input_denom
         self.first_pool_output_denom = first_pool_output_denom
+        self.first_pool_lp_fee = first_pool_lp_fee
+        self.first_pool_protocol_fee = first_pool_protocol_fee
+        self.first_pool_fee_from_input = first_pool_fee_from_input
 
         self.second_pool_contract_address = second_pool_contract_address
         self.second_pool_dex = second_pool_dex
@@ -44,6 +56,9 @@ class Route:
         self.second_pool_output_token = second_pool_output_token
         self.second_pool_input_denom = second_pool_input_denom
         self.second_pool_output_denom = second_pool_output_denom
+        self.second_pool_lp_fee = second_pool_lp_fee
+        self.second_pool_protocol_fee = second_pool_protocol_fee
+        self.second_pool_fee_from_input = second_pool_fee_from_input
 
         self.third_pool_contract_address = third_pool_contract_address
         self.third_pool_dex = third_pool_dex
@@ -53,6 +68,9 @@ class Route:
         self.third_pool_output_token = third_pool_output_token
         self.third_pool_input_denom = third_pool_input_denom
         self.third_pool_output_denom = third_pool_output_denom
+        self.third_pool_lp_fee = third_pool_lp_fee
+        self.third_pool_protocol_fee = third_pool_protocol_fee
+        self.third_pool_fee_from_input = third_pool_fee_from_input
 
         self.first_pool_amount_in = 0
         self.first_pool_amount_out = 0
@@ -174,6 +192,9 @@ def get_route_object(tx, address: str, contracts: dict, route: list) -> Route:
                          first_pool_output_denom=first_pool_output_denom,
                          first_pool_input_token=first_pool_input_token,
                          first_pool_output_token=first_pool_output_token,
+                         first_pool_lp_fee=contracts[ordered_route[0]]["info"]['lp_fee'],
+                         first_pool_protocol_fee=contracts[ordered_route[0]]["info"]['protocol_fee'],
+                         first_pool_fee_from_input=contracts[ordered_route[0]]["info"]['fee_from_input'],
                          second_pool_contract_address=ordered_route[1],
                          second_pool_dex=contracts[ordered_route[1]]["dex"],
                          second_pool_input_reserves=second_pool_input_reserves,
@@ -182,6 +203,9 @@ def get_route_object(tx, address: str, contracts: dict, route: list) -> Route:
                          second_pool_output_denom=second_pool_output_denom,
                          second_pool_input_token=second_pool_input_token,
                          second_pool_output_token=second_pool_output_token,
+                         second_pool_lp_fee=contracts[ordered_route[1]]["info"]['lp_fee'],
+                         second_pool_protocol_fee=contracts[ordered_route[1]]["info"]['protocol_fee'],
+                         second_pool_fee_from_input=contracts[ordered_route[1]]["info"]['fee_from_input'],
                          third_pool_contract_address=ordered_route[2],
                          third_pool_dex=contracts[ordered_route[2]]["dex"],
                          third_pool_input_reserves=third_pool_input_reserves,
@@ -189,5 +213,8 @@ def get_route_object(tx, address: str, contracts: dict, route: list) -> Route:
                          third_pool_input_denom=third_pool_input_denom,
                          third_pool_output_denom=third_pool_output_denom,
                          third_pool_input_token=third_pool_input_token,
-                         third_pool_output_token=third_pool_output_token)
+                         third_pool_output_token=third_pool_output_token,
+                         third_pool_lp_fee=contracts[ordered_route[2]]["info"]['lp_fee'],
+                         third_pool_protocol_fee=contracts[ordered_route[2]]["info"]['protocol_fee'],
+                         third_pool_fee_from_input=contracts[ordered_route[2]]["info"]['fee_from_input'])
     return route_object

@@ -5,7 +5,9 @@ from cosmpy.protos.cosmwasm.wasm.v1.query_pb2 import (
     QuerySmartContractStateRequest,
     QuerySmartContractStateResponse)
 
-DEFAULT_JUNOSWAP_FEE = 0.003
+DEFAULT_JUNOSWAP_LP_FEE = 0.003
+DEFAULT_JUNOSWAP_PROTOCOL_FEE = 0.0
+
 
 async def junoswap_info(rpc_url: str, contract_address: str) -> dict:
     """Given a JunoSwap contract address, and an rpc url,
@@ -35,7 +37,7 @@ async def junoswap_info(rpc_url: str, contract_address: str) -> dict:
     return pool_info
 
 
-async def junoswap_fee(rpc_url: str, contract_address: str) -> float:
+async def junoswap_fee(rpc_url: str, contract_address: str) -> tuple[float, float]:
     """Given a JunoSwap contract address, and an rpc url,
        Query the node for the fees of the pool. Decode the
        response. Return 0.003 if the fee does not exist
@@ -62,12 +64,13 @@ async def junoswap_fee(rpc_url: str, contract_address: str) -> float:
         response = await client.post(rpc_url, json=payload)
 
     if response.json()["result"]["response"]["value"] is None:
-        return DEFAULT_JUNOSWAP_FEE
+        return DEFAULT_JUNOSWAP_LP_FEE, DEFAULT_JUNOSWAP_PROTOCOL_FEE
     else :
         val = b64decode(response.json()["result"]["response"]["value"])
         fee_dict = json.loads(QuerySmartContractStateResponse.FromString(val).data.decode())
-        fee = (float(fee_dict['lp_fee_percent']) + float(fee_dict['protocol_fee_percent'])) / 100
-        return fee
+        lp_fee = float(fee_dict['lp_fee_percent']) / 100
+        protocol_fee = float(fee_dict['protocol_fee_percent']) / 100
+        return lp_fee, protocol_fee
 
 
 async def terraswap_info(rpc_url: str, contract_address: str) -> dict:
