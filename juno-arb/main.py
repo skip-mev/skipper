@@ -30,13 +30,14 @@ from create_tx import create_tx
 from messages import create_route_msgs
 from route import get_route_object
 
-# Logging configuration, default is sent to a log file
-logging.basicConfig(filename='skip_response.log', encoding='utf-8', level=logging.INFO)
-
 # Load environment variables
 load_dotenv('juno.env')
 
 # All global variables to be used throughout the program
+
+# Logging configuration, default is sent to a log file specified in the .env file
+LOG_FILE = os.environ.get("LOG_FILE")
+logging.basicConfig(filename=LOG_FILE, encoding='utf-8', level=logging.INFO)
 
 # Mnenomic to generate private key
 # Replace with your own mnemonic
@@ -182,7 +183,7 @@ async def main():
         # message from Junoswap
         # This can be further extended to trigger logic
         # Based on other messages.
-        backrun_list = check_for_swap_txs_in_mempool(RPC_URL, already_seen)
+        backrun_list = check_for_swap_txs_in_mempool(RPC_URL, already_seen, contracts)
 
         # Everytime the bot sees a new transaction it needs may 
         # want to backrun, we get the latest info on all the
@@ -253,14 +254,11 @@ async def main():
                         # we only swap the account balance
                         # minus the gas fee and auction bid
                         if optimal_amount_in <= 0:
-                            #logging.info(f"Non-Positive Optimal Amount In: {optimal_amount_in}")
                             continue
                         elif optimal_amount_in > account_balance - GAS_FEE:
                             amount_in = account_balance - GAS_FEE
-                            logging.info(f"Optimal Amount In Greater Than Balance - Amount in: {amount_in}")
                         else:
                             amount_in = optimal_amount_in
-                            logging.info(f"Optimal Amount In Less Than Balance - Amount in: {amount_in}")
 
                         # Calculate the profit we will make from the
                         # Cyclic route

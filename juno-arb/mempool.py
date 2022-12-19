@@ -11,8 +11,9 @@ import cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 as cosmwasm_tx_pb2
 
 # Local imports
 from swaps import SingleSwap, PassThroughSwap
+from tx_parser import parse_junoswap, parse_terraswap
 
-def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set) -> list:
+def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set, contracts: dict) -> list:
     """Queries the mempool of an rpc node,
     scans tx for JunoSwap swap and pass through swap messages,
     returns a list of txs with swap and pass through swap messages.
@@ -77,45 +78,27 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set) -> list:
                 # Parse the message
                 message_value = cosmwasm_tx_pb2.MsgExecuteContract().FromString(message.value)
                 msg = json.loads(message_value.msg.decode("utf-8"))
-                # If the message is a JunoSwap swap
-                if "swap" in msg and "input_token" in msg["swap"]:
-                    # Create a Swap object, append to the list
-                    # of txs we may be interested in backrunning
-                    try:
-                        swap_tx = SingleSwap(tx=tx,
-                                             tx_bytes=tx_bytes,
-                                             sender=message_value.sender,
-                                             contract_address=message_value.contract,
-                                             input_token=msg['swap']['input_token'],
-                                             input_amount=int(msg['swap']['input_amount']),
-                                             min_output=int(msg['swap']['min_output']))
-                        backrun_potential_list.append(swap_tx)
-                        break
-                    except KeyError:
-                        logging.error("KeyError, most likely a non-junoswap contract-swap message: ", message_value.contract)
+
+                if message_value.contract not in contracts:
+                    if "send" in msg and "contract" in msg["send"] and msg["send"]["contract"] in contracts:
+                        pool_contract = msg["send"]["contract"]
+                        parser = contracts[pool_contract]["info"]["parser"]
+                    else:
                         continue
-                    except TypeError:
-                        logging.error("TypeError, most likely a non-junoswap contract-swap message: ", message_value.contract)
-                        print(decoded_pb_tx)
-                        continue
-                # If the message is a JunoSwap pass through swap
-                elif "pass_through_swap" in msg:
-                    # Create a PassThroughSwap object, append to the list
-                    # of txs we may be interested in backrunning
-                    try:                            
-                        pass_through_swap_tx = PassThroughSwap(tx=tx,
-                                                               tx_bytes=tx_bytes,
-                                                               sender=message_value.sender,
-                                                               contract_address=message_value.contract,
-                                                               input_token=msg['pass_through_swap']['input_token'],
-                                                               input_amount=int(msg['pass_through_swap']['input_token_amount']),
-                                                               output_amm_address=msg['pass_through_swap']['output_amm_address'],
-                                                               output_min_token_amount=int(msg['pass_through_swap']['output_min_token']))
-                        backrun_potential_list.append(pass_through_swap_tx)
-                        break 
-                    except KeyError:
-                        logging.error("KeyError, most likely a non-junoswap contract-pass_through_swap message: ", message_value.contract)
-                        continue
+                else:
+                    parser = contracts[message_value.contract]["info"]["parser"]
+
+                match parser:
+                    case "junoswap":
+                        swap = parse_junoswap(tx=tx, tx_bytes=tx_bytes, message_value=message_value, msg=msg)
+                        if swap is not None:
+                            backrun_potential_list.append(swap)
+                    case "terraswap":
+                        swap = parse_terraswap(tx=tx, tx_bytes=tx_bytes, message_value=message_value, msg=msg)
+                        if swap is not None:
+                            backrun_potential_list.append(swap)
+                    case _:
+                        logging.info("Unknown parser, should not happen: ", parser)
         # If we found a tx with a swap message, return the list
         # to begin the process of checking for an arb opportunity   
         if len(backrun_potential_list) > 0:

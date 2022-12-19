@@ -10,7 +10,7 @@ class Swap:
 
 
 class SingleSwap(Swap):
-    def __init__(self, tx, tx_bytes, sender, contract_address, input_token, input_amount, min_output):
+    def __init__(self, tx, tx_bytes, sender, contract_address, input_token, input_amount, min_output = None):
         Swap.__init__(self, tx, tx_bytes, sender, contract_address, input_token, input_amount)
         self.min_output = min_output
 

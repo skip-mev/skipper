@@ -7,7 +7,8 @@
             "token2_type": "native",
             "lp_fee": 0.0029,
             "protocol_fee": 0.0,
-            "fee_from_input": false
+            "fee_from_input": false,
+            "parser": "terraswap"
         },
         "dex": "loop",
         "routes": [
@@ -46,7 +47,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -65,7 +67,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.002,
             "protocol_fee": 0.002,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -104,7 +107,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -163,7 +167,8 @@
             "token2_type": "native",
             "lp_fee": 0.0029,
             "protocol_fee": 0.0,
-            "fee_from_input": false
+            "fee_from_input": false,
+            "parser": "terraswap"
         },
         "dex": "loop",
         "routes": [
@@ -192,7 +197,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -221,7 +227,8 @@
             "token2_type": "native",
             "lp_fee": 0.0029,
             "protocol_fee": 0.0,
-            "fee_from_input": false
+            "fee_from_input": false,
+            "parser": "terraswap"
         },
         "dex": "loop",
         "routes": [
@@ -255,7 +262,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -274,7 +282,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -293,7 +302,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -312,7 +322,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -341,7 +352,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -365,7 +377,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -389,7 +402,8 @@
             "token2_type": "native",
             "lp_fee": 0.0029,
             "protocol_fee": 0.0,
-            "fee_from_input": false
+            "fee_from_input": false,
+            "parser": "terraswap"
         },
         "dex": "loop",
         "routes": [
@@ -408,7 +422,8 @@
             "token2_type": "native",
             "lp_fee": 0.002,
             "protocol_fee": 0.002,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -432,7 +447,8 @@
             "token2_type": "native",
             "lp_fee": 0.0029,
             "protocol_fee": 0.0,
-            "fee_from_input": false
+            "fee_from_input": false,
+            "parser": "terraswap"
         },
         "dex": "loop",
         "routes": [
@@ -451,7 +467,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -475,7 +492,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -494,7 +512,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -513,7 +532,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -532,7 +552,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -551,7 +572,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -575,7 +597,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -594,7 +617,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -613,7 +637,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -632,7 +657,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -651,7 +677,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.0029,
             "protocol_fee": 0.0,
-            "fee_from_input": false
+            "fee_from_input": false,
+            "parser": "terraswap"
         },
         "dex": "loop",
         "routes": [
@@ -670,7 +697,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -689,7 +717,8 @@
             "token2_type": "native",
             "lp_fee": 0.002,
             "protocol_fee": 0.002,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -708,7 +737,8 @@
             "token2_type": "native",
             "lp_fee": 0.003,
             "protocol_fee": 0.0,
-            "fee_from_input": true
+            "fee_from_input": true,
+            "parser": "junoswap"
         },
         "dex": "junoswap",
         "routes": [
@@ -727,7 +757,8 @@
             "token2_type": "native",
             "lp_fee": 0.002,
             "protocol_fee": 0.001,
-            "fee_from_input": false
+            "fee_from_input": false,
+            "parser": "terraswap"
         },
         "dex": "white_whale",
         "routes": [
@@ -746,7 +777,8 @@
             "token2_type": "cw20",
             "lp_fee": 0.0029,
             "protocol_fee": 0.0,
-            "fee_from_input": false
+            "fee_from_input": false,
+            "parser": "terraswap"
         },
         "dex": "loop",
         "routes": [
@@ -765,7 +797,8 @@
             "token2_type": "native",
             "lp_fee": 0.002,
             "protocol_fee": 0.001,
-            "fee_from_input": false
+            "fee_from_input": false,
+            "parser": "terraswap"
         },
         "dex": "white_whale",
         "routes": [
