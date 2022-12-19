@@ -11,7 +11,7 @@ import cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 as cosmwasm_tx_pb2
 
 # Local imports
 from swaps import SingleSwap, PassThroughSwap
-from tx_parser import parse_junoswap, parse_terraswap
+from tx_parser import parse_tx
 
 def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set, contracts: dict) -> list:
     """Queries the mempool of an rpc node,
@@ -87,18 +87,11 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set, contracts: di
                         continue
                 else:
                     parser = contracts[message_value.contract]["info"]["parser"]
+                
+                swap = parse_tx(parser=parser, tx=tx, tx_bytes=tx_bytes, message_value=message_value, msg=msg)
+                if swap is not None:
+                    backrun_potential_list.append(swap)
 
-                match parser:
-                    case "junoswap":
-                        swap = parse_junoswap(tx=tx, tx_bytes=tx_bytes, message_value=message_value, msg=msg)
-                        if swap is not None:
-                            backrun_potential_list.append(swap)
-                    case "terraswap":
-                        swap = parse_terraswap(tx=tx, tx_bytes=tx_bytes, message_value=message_value, msg=msg)
-                        if swap is not None:
-                            backrun_potential_list.append(swap)
-                    case _:
-                        logging.info("Unknown parser, should not happen: ", parser)
         # If we found a tx with a swap message, return the list
         # to begin the process of checking for an arb opportunity   
         if len(backrun_potential_list) > 0:

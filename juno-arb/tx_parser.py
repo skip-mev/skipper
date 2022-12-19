@@ -2,6 +2,15 @@
 from swaps import SingleSwap, PassThroughSwap
 
 
+def parse_tx(parser, tx, tx_bytes, message_value, msg) -> SingleSwap or PassThroughSwap or None:
+    if parser == "junoswap":
+        return parse_junoswap(tx, tx_bytes, message_value, msg)
+    elif parser == "terraswap":
+        return parse_terraswap(tx, tx_bytes, message_value, msg)
+    else:
+        return None
+
+
 def parse_junoswap(tx, tx_bytes, message_value, msg) -> SingleSwap or PassThroughSwap or None:
     if "swap" in msg:
         swap_tx = SingleSwap(tx=tx,
