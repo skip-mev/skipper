@@ -109,7 +109,7 @@ async def main():
     wallet = LocalWallet(PrivateKey(bip44_def_ctx.PrivateKey().Raw().ToBytes()), prefix=ADDRESS_PREFIX)
 
     # This repo pre-populates a json file with contract
-    # addresses for DEX pools (Junoswap and Loop), 
+    # addresses for DEX pools (Junoswap, Loop, and White Whale), 
     # metadata on each pool used throughout the bot,
     # and cyclic routes for each pool that can be used 
     # in an arbitrage transaction. This json file is not
@@ -209,173 +209,169 @@ async def main():
         # we obtained from the mempool that we may
         # be interested in backrunning
         for tx in backrun_list:
-            # Check if the contract address from the mempool
-            # transaction is in our list of contracts we are tracking
-            # If not, skip it since we don't have cyclic routes for it
-            if tx.contract_address in contracts:
-                # If the transaction is a swap, we update the pools
-                # reserves with the new reserves after the swap
-                # from the transaction processes (remember: you are arbing
-                # after this transction processes, so need to calculate what
-                # the new reserves will be after the swap)
-                if isinstance(tx, SingleSwap):
-                    pools_swapped_against = await update_pool(tx=tx, contracts=contracts)
-                # If the transaction is a pass through swap, we update the pools
-                # reserves with the new reserves after their respective
-                # swaps process
-                elif isinstance(tx, PassThroughSwap):
-                    # Check if the contract address in the second part of
-                    # the pass through swap is in our list of contracts we are tracking
-                    # If not, skip it since we don't have cyclic routes for it
-                    # This can be improved upon in the future to just focus
-                    # on the first contract in the pass through swap
-                    if tx.output_amm_address in contracts:
-                        pools_swapped_against = await update_pools(tx=tx, contracts=contracts)
+            # If the transaction is a swap, we update the pools
+            # reserves with the new reserves after the swap
+            # from the transaction processes (remember: you are arbing
+            # after this transction processes, so need to calculate what
+            # the new reserves will be after the swap)
+            if isinstance(tx, SingleSwap):
+                pools_swapped_against = await update_pool(tx=tx, contracts=contracts)
+            # If the transaction is a pass through swap, we update the pools
+            # reserves with the new reserves after their respective
+            # swaps process
+            elif isinstance(tx, PassThroughSwap):
+                # Check if the contract address in the second part of
+                # the pass through swap is in our list of contracts we are tracking
+                # If not, skip it since we don't have cyclic routes for it
+                # This can be improved upon in the future to just focus
+                # on the first contract in the pass through swap
+                if tx.output_amm_address in contracts:
+                    pools_swapped_against = await update_pools(tx=tx, contracts=contracts)
+                else:
+                    continue
+
+            # Iterate through each pool we swapped against
+            for pool in pools_swapped_against:
+                # Get the cyclic routes for the pool we swapped against
+                # and begin iterating through each route
+                for route in contracts[pool]["routes"]:
+
+                    # Create a route object to be used in the backrun
+                    route_obj = get_route_object(tx=tx, address=pool, contracts=contracts, route=route)
+
+                    # Calculate the optimal amount to swap in the first pool
+                    # To maximize our profit from the cyclic route
+                    optimal_amount_in = calculate_optimal_amount_in(route=route_obj)
+                    #logging.info(f"Optimal amount in: {optimal_amount_in}")
+
+                    # If the optimal amount to swap is 
+                    # greater than your account balance
+                    # minus the gas fee and auction bid,
+                    # we only swap the account balance
+                    # minus the gas fee and auction bid
+                    if optimal_amount_in <= 0:
+                        continue
+                    elif optimal_amount_in > account_balance - GAS_FEE:
+                        amount_in = account_balance - GAS_FEE
                     else:
+                        amount_in = optimal_amount_in
+
+                    # Calculate the profit we will make from the
+                    # Cyclic route
+                    try:
+                        profit = get_profit_from_route(route=route_obj, amount_in=amount_in)
+                        logging.info(f"Profit: {profit}")
+                    except ValueError as e:
+                        logging.error(e)
                         continue
 
-                # Iterate through each pool we swapped against
-                for pool in pools_swapped_against:
-                    # Get the cyclic routes for the pool we swapped against
-                    # and begin iterating through each route
-                    for route in contracts[pool]["routes"]:
+                    # If the profit we will make is greater than
+                    # The gas fee and auction bid we have to 
+                    # Pay to backrun the transaction, we send it
+                    if profit > GAS_FEE:
+                        logging.info("Arbitrage opportunity found!")
+                        logging.info(f"Optimal amount in: {optimal_amount_in}")
+                        logging.info(f"Amount in: {amount_in}")
+                        logging.info(f"Profit: {profit}")
+                        logging.info(f"Sender: {tx.sender}")
 
-                        # Create a route object to be used in the backrun
-                        route_obj = get_route_object(tx=tx, address=pool, contracts=contracts, route=route)
+                        # Skip auction bid amount is the profit minus the gas fee
+                        # multiplied by the auction bid percentage
+                        # This will be sent to the skip auction house address via a MsgSend
+                        bid_amount = math.floor((profit - GAS_FEE) * AUCTION_BID_PROFIT_PERCENTAGE)
 
-                        # Calculate the optimal amount to swap in the first pool
-                        # To maximize our profit from the cyclic route
-                        optimal_amount_in = calculate_optimal_amount_in(route=route_obj)
-                        #logging.info(f"Optimal amount in: {optimal_amount_in}")
+                        # Create all the messages for the transaction
+                        # We will be generating to backrun the tx we 
+                        # Found in the mempool
+                        msg_list = create_route_msgs(wallet=wallet,
+                                                     route=route_obj, 
+                                                     contracts=contracts,
+                                                     bid_amount=bid_amount,
+                                                     auction_house_address=AUCTION_HOUSE_ADDRESS,
+                                                     expiration=10000000,
+                                                     balance=account_balance,
+                                                     gas_fee=GAS_FEE)
 
-                        # If the optimal amount to swap is 
-                        # greater than your account balance
-                        # minus the gas fee and auction bid,
-                        # we only swap the account balance
-                        # minus the gas fee and auction bid
-                        if optimal_amount_in <= 0:
-                            continue
-                        elif optimal_amount_in > account_balance - GAS_FEE:
-                            amount_in = account_balance - GAS_FEE
-                        else:
-                            amount_in = optimal_amount_in
+                        # Create the transaction we will be sending
+                        arb_tx_bytes, _ = create_tx(client=client,
+                                                    wallet=wallet,
+                                                    msg_list=msg_list,
+                                                    gas_limit=GAS_LIMIT,
+                                                    gas_fee=GAS_FEE,
+                                                    fee_denom=FEE_DENOM)
 
-                        # Calculate the profit we will make from the
-                        # Cyclic route
+                        # FIRE AWAY!
+                        # Send the bundle to the skip auction!
                         try:
-                            profit = get_profit_from_route(route=route_obj, amount_in=amount_in)
-                            logging.info(f"Profit: {profit}")
-                        except ValueError as e:
-                            logging.error(e)
-                            continue
+                            # Use the skip-python helper library to sign and send the bundle
+                            # For more information on the skip-python library, check out:
+                            # https://github.com/skip-mev/skip-py
+                            response = skip.sign_and_send_bundle(bundle=[tx.tx_bytes, arb_tx_bytes],
+                                                                 private_key=wallet.signer().private_key_bytes,
+                                                                 public_key=wallet.signer().public_key,
+                                                                 rpc_url=SKIP_RPC_URL,
+                                                                 desired_height=0,
+                                                                 sync=True,
+                                                                 timeout=10)
+                            logging.info(response.json())
+                            logging.info(f"Route and reserves: {route_obj.__dict__}")
+                        except httpx.ReadTimeout:
+                            logging.error("Read timeout while waiting for response from Skip")
+                            break
 
-                        # If the profit we will make is greater than
-                        # The gas fee and auction bid we have to 
-                        # Pay to backrun the transaction, we send it
-                        if profit > GAS_FEE:
-                            logging.info("Arbitrage opportunity found!")
-                            logging.info(f"Optimal amount in: {optimal_amount_in}")
-                            logging.info(f"Amount in: {amount_in}")
-                            logging.info(f"Profit: {profit}")
-                            logging.info(f"Sender: {tx.sender}")
+                        # Check the error code from the response returned by Skip
+                        # For more information on error codes, check out:
+                        # https://skip-protocol.notion.site/Skip-Searcher-Documentation-0af486e8dccb4081bdb0451fe9538c99
 
-                            # Skip auction bid amount is the profit minus the gas fee
-                            # multiplied by the auction bid percentage
-                            # This will be sent to the skip auction house address via a MsgSend
-                            bid_amount = math.floor((profit - GAS_FEE) * AUCTION_BID_PROFIT_PERCENTAGE)
-
-                            # Create all the messages for the transaction
-                            # We will be generating to backrun the tx we 
-                            # Found in the mempool
-                            msg_list = create_route_msgs(wallet=wallet,
-                                                            route=route_obj, 
-                                                            contracts=contracts,
-                                                            bid_amount=bid_amount,
-                                                            auction_house_address=AUCTION_HOUSE_ADDRESS,
-                                                            expiration=10000000,
-                                                            balance=account_balance,
-                                                            gas_fee=GAS_FEE)
-
-                            # Create the transaction we will be sending
-                            arb_tx_bytes, _ = create_tx(client=client,
-                                                        wallet=wallet,
-                                                        msg_list=msg_list,
-                                                        gas_limit=GAS_LIMIT,
-                                                        gas_fee=GAS_FEE,
-                                                        fee_denom=FEE_DENOM)
-
-                            # FIRE AWAY!
-                            # Send the bundle to the skip auction!
-                            try:
-                                # Use the skip-python helper library to sign and send the bundle
-                                # For more information on the skip-python library, check out:
-                                # https://github.com/skip-mev/skip-py
-                                response = skip.sign_and_send_bundle(bundle=[tx.tx_bytes, arb_tx_bytes],
-                                                                        private_key=wallet.signer().private_key_bytes,
-                                                                        public_key=wallet.signer().public_key,
-                                                                        rpc_url=SKIP_RPC_URL,
-                                                                        desired_height=0,
-                                                                        sync=True,
-                                                                        timeout=10)
-                                logging.info(response.json())
-                                logging.info(f"Route and reserves: {route_obj.__dict__}")
-                            except httpx.ReadTimeout:
-                                logging.error("Read timeout while waiting for response from Skip")
-                                break
-
-                            # Check the error code from the response returned by Skip
-                            # For more information on error codes, check out:
-                            # https://skip-protocol.notion.site/Skip-Searcher-Documentation-0af486e8dccb4081bdb0451fe9538c99
-
-                            # If the error code is 0, the simulation was successful
-                            # (Note, this does not necessarily mean we wont the auction,
-                            # but the bot carries and begins scanning the mempool again
-                            # for the next transaction to backrun)
-                            if response.json()["result"]["code"] == 0:
-                                logging.info("Simulation successful!")
-                                reset_balance = True
-                            # If the error code is 4, it means a skip validator is not up
-                            # for the next block, so we sign and send the entire bundle again
-                            # If the error code is 8, it likely means the tx aimed to be backran
-                            # was already included in the previous block, so we sign and send a 
-                            # bundle again, but this time only including our transaction
-                            # For more info on Skip error codes, see: 
-                            elif response.json()["result"]["code"] == 4 or response.json()["result"]["code"] == 8:
-                                move_on = False
-                                # Keep sending the bundles until we get a success or deliver tx failure
-                                while move_on is False:
-                                    # We sleep for 1 second to space out the time we send bundles
-                                    # to the skip auction, as we don't want to spam the auction
-                                    time.sleep(1)
-                                    try:
-                                        response = skip.sign_and_send_bundle(bundle=[arb_tx_bytes],
-                                                                                private_key=wallet.signer().private_key_bytes,
-                                                                                public_key=wallet.signer().public_key,
-                                                                                rpc_url=SKIP_RPC_URL,
-                                                                                desired_height=0,
-                                                                                sync=True,
-                                                                                timeout=10)
-                                        logging.info(response.json())
-                                    except httpx.ReadTimeout:
-                                        logging.error("Read timeout while waiting for response from Skip")
-                                        break
-                                    try:
-                                        # If we get a 0 error code, we move on to the next transaction
-                                        if response.json()["result"]["code"] == 0:
-                                            logging.info("Simulation successful!")
-                                            reset_balance = True
-                                            move_on = True
-                                        # If we get a deliver tx error, we move on to the next transaction
-                                        elif response.json()["result"]["code"] == 8:
-                                            logging.info("Simulation failed!")
-                                            move_on = True
-                                        # If we get a check tx error, we move on to the next transaction
-                                        elif response.json()["result"]["code"] == 5:
-                                            logging.info("Simulation failed!")
-                                            move_on = True
-                                    except KeyError:
-                                        logging.info("KeyError in response from Skip")
-                                        break
+                        # If the error code is 0, the simulation was successful
+                        # (Note, this does not necessarily mean we wont the auction,
+                        # but the bot carries and begins scanning the mempool again
+                        # for the next transaction to backrun)
+                        if response.json()["result"]["code"] == 0:
+                            logging.info("Simulation successful!")
+                            reset_balance = True
+                        # If the error code is 4, it means a skip validator is not up
+                        # for the next block, so we sign and send the entire bundle again
+                        # If the error code is 8, it likely means the tx aimed to be backran
+                        # was already included in the previous block, so we sign and send a 
+                        # bundle again, but this time only including our transaction
+                        # For more info on Skip error codes, see: 
+                        elif response.json()["result"]["code"] == 4 or response.json()["result"]["code"] == 8:
+                            move_on = False
+                            # Keep sending the bundles until we get a success or deliver tx failure
+                            while move_on is False:
+                                # We sleep for 1 second to space out the time we send bundles
+                                # to the skip auction, as we don't want to spam the auction
+                                time.sleep(1)
+                                try:
+                                    response = skip.sign_and_send_bundle(bundle=[arb_tx_bytes],
+                                                                         private_key=wallet.signer().private_key_bytes,
+                                                                         public_key=wallet.signer().public_key,
+                                                                         rpc_url=SKIP_RPC_URL,
+                                                                         desired_height=0,
+                                                                         sync=True,
+                                                                         timeout=10)
+                                    logging.info(response.json())
+                                except httpx.ReadTimeout:
+                                    logging.error("Read timeout while waiting for response from Skip")
+                                    break
+                                try:
+                                    # If we get a 0 error code, we move on to the next transaction
+                                    if response.json()["result"]["code"] == 0:
+                                        logging.info("Simulation successful!")
+                                        reset_balance = True
+                                        move_on = True
+                                    # If we get a deliver tx error, we move on to the next transaction
+                                    elif response.json()["result"]["code"] == 8:
+                                        logging.info("Simulation failed!")
+                                        move_on = True
+                                    # If we get a check tx error, we move on to the next transaction
+                                    elif response.json()["result"]["code"] == 5:
+                                        logging.info("Simulation failed!")
+                                        move_on = True
+                                except KeyError:
+                                    logging.info("KeyError in response from Skip")
+                                    break
 
 # Printer go brrr
 if __name__ == "__main__":
