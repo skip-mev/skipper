@@ -4,7 +4,10 @@
             "token1_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
             "token1_type": "cw20",
             "token2_denom": "ujuno",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.0029,
+            "protocol_fee": 0.0,
+            "fee_from_input": false
         },
         "dex": "loop",
         "routes": [
@@ -27,6 +30,11 @@
                 "juno1jz50fj5zkcv3h6hmcfr3nr6eer7rj5pmsry5qj5jc8rfvpeavyzsgknm83",
                 "juno1mz8yzrgyp9mmq9aksxgpy83vmu8p4j8h3qyf9waxcd2epchqx5ps0ekj27",
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07"
+            ],
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t",
+                "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n"
             ]
         ]
     },
@@ -35,7 +43,10 @@
             "token1_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
             "token1_type": "cw20",
             "token2_denom": "juno15u3dt79t6sxxa3x3kpkhzsy56edaa5a66wvt3kxmukqjz2sx0hes5sn38g",
-            "token2_type": "cw20"
+            "token2_type": "cw20",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -51,7 +62,10 @@
             "token1_denom": "ujuno",
             "token1_type": "native",
             "token2_denom": "juno15u3dt79t6sxxa3x3kpkhzsy56edaa5a66wvt3kxmukqjz2sx0hes5sn38g",
-            "token2_type": "cw20"
+            "token2_type": "cw20",
+            "lp_fee": 0.002,
+            "protocol_fee": 0.002,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -87,7 +101,10 @@
             "token1_denom": "ujuno",
             "token1_type": "native",
             "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -130,6 +147,11 @@
                 "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
                 "juno1v842hl5mtn2kjeu4sscr4e3y9jmv7tf0h7cy4wm6nusyf4v8j6ssh8gkgp",
                 "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl"
             ]
         ]
     },
@@ -138,7 +160,10 @@
             "token1_denom": "juno1wwnhkagvcd3tjz6f8vsdsw5plqnw8qy2aj3rrhqr2axvktzv9q2qz8jxn3",
             "token1_type": "cw20",
             "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.0029,
+            "protocol_fee": 0.0,
+            "fee_from_input": false
         },
         "dex": "loop",
         "routes": [
@@ -151,6 +176,11 @@
                 "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
                 "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
                 "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
+            ],
+            [
+                "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh"
             ]
         ]
     },
@@ -159,7 +189,10 @@
             "token1_denom": "juno1wwnhkagvcd3tjz6f8vsdsw5plqnw8qy2aj3rrhqr2axvktzv9q2qz8jxn3",
             "token1_type": "cw20",
             "token2_denom": "ujuno",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -167,6 +200,16 @@
                 "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n",
                 "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
                 "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl"
+            ],
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t",
+                "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n"
+            ],
+            [
+                "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh"
             ]
         ]
     },
@@ -175,7 +218,10 @@
             "token1_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
             "token1_type": "cw20",
             "token2_denom": "ujuno",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.0029,
+            "protocol_fee": 0.0,
+            "fee_from_input": false
         },
         "dex": "loop",
         "routes": [
@@ -206,7 +252,10 @@
             "token1_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
             "token1_type": "cw20",
             "token2_denom": "juno15u3dt79t6sxxa3x3kpkhzsy56edaa5a66wvt3kxmukqjz2sx0hes5sn38g",
-            "token2_type": "cw20"
+            "token2_type": "cw20",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -222,7 +271,10 @@
             "token1_denom": "ujuno",
             "token1_type": "native",
             "token2_denom": "ibc/2DA4136457810BCB9DAAB620CA67BC342B17C3C70151CA70490A170DF7C9CB27",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -238,7 +290,10 @@
             "token1_denom": "juno17c7zyezg3m8p2tf9hqgue9jhahvle70d59e8j9nmrvhw9anrpk8qxlrghx",
             "token1_type": "cw20",
             "token2_denom": "ibc/2DA4136457810BCB9DAAB620CA67BC342B17C3C70151CA70490A170DF7C9CB27",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -254,7 +309,10 @@
             "token1_denom": "juno17c7zyezg3m8p2tf9hqgue9jhahvle70d59e8j9nmrvhw9anrpk8qxlrghx",
             "token1_type": "cw20",
             "token2_denom": "ujuno",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -280,7 +338,10 @@
             "token1_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
             "token1_type": "cw20",
             "token2_denom": "juno15u3dt79t6sxxa3x3kpkhzsy56edaa5a66wvt3kxmukqjz2sx0hes5sn38g",
-            "token2_type": "cw20"
+            "token2_type": "cw20",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -301,7 +362,10 @@
             "token1_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
             "token1_type": "cw20",
             "token2_denom": "ujuno",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -322,7 +386,10 @@
             "token1_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
             "token1_type": "cw20",
             "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.0029,
+            "protocol_fee": 0.0,
+            "fee_from_input": false
         },
         "dex": "loop",
         "routes": [
@@ -338,7 +405,10 @@
             "token1_denom": "ujuno",
             "token1_type": "native",
             "token2_denom": "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.002,
+            "protocol_fee": 0.002,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -346,6 +416,11 @@
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
                 "juno1utkr0ep06rkxgsesq6uryug93daklyd6wneesmtvxjkz0xjlte9qdj2s8q",
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07"
+            ],
+            [
+                "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl"
             ]
         ]
     },
@@ -354,7 +429,10 @@
             "token1_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
             "token1_type": "cw20",
             "token2_denom": "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.0029,
+            "protocol_fee": 0.0,
+            "fee_from_input": false
         },
         "dex": "loop",
         "routes": [
@@ -370,7 +448,10 @@
             "token1_denom": "juno1y9rf7ql6ffwkv02hsgd4yruz23pn4w97p75e2slsnkm0mnamhzysvqnxaq",
             "token1_type": "cw20",
             "token2_denom": "ujuno",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -391,7 +472,10 @@
             "token1_denom": "juno1y9rf7ql6ffwkv02hsgd4yruz23pn4w97p75e2slsnkm0mnamhzysvqnxaq",
             "token1_type": "cw20",
             "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -407,7 +491,10 @@
             "token1_denom": "juno17c7zyezg3m8p2tf9hqgue9jhahvle70d59e8j9nmrvhw9anrpk8qxlrghx",
             "token1_type": "cw20",
             "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -423,7 +510,10 @@
             "token1_denom": "juno17c7zyezg3m8p2tf9hqgue9jhahvle70d59e8j9nmrvhw9anrpk8qxlrghx",
             "token1_type": "cw20",
             "token2_denom": "juno1vaeuky9hqacenay9nmuualugvv54tdhyt2wsvhnjasx9s946hhmqaq3kh7",
-            "token2_type": "cw20"
+            "token2_type": "cw20",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -439,7 +529,10 @@
             "token1_denom": "ujuno",
             "token1_type": "native",
             "token2_denom": "juno1vaeuky9hqacenay9nmuualugvv54tdhyt2wsvhnjasx9s946hhmqaq3kh7",
-            "token2_type": "cw20"
+            "token2_type": "cw20",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -455,7 +548,10 @@
             "token1_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
             "token1_type": "cw20",
             "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -476,7 +572,10 @@
             "token1_denom": "juno1y9rf7ql6ffwkv02hsgd4yruz23pn4w97p75e2slsnkm0mnamhzysvqnxaq",
             "token1_type": "cw20",
             "token2_denom": "juno1g2g7ucurum66d42g8k5twk34yegdq8c82858gz0tq2fc75zy7khssgnhjl",
-            "token2_type": "cw20"
+            "token2_type": "cw20",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -492,7 +591,10 @@
             "token1_denom": "ujuno",
             "token1_type": "native",
             "token2_denom": "juno1g2g7ucurum66d42g8k5twk34yegdq8c82858gz0tq2fc75zy7khssgnhjl",
-            "token2_type": "cw20"
+            "token2_type": "cw20",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -508,7 +610,10 @@
             "token1_denom": "juno1wwnhkagvcd3tjz6f8vsdsw5plqnw8qy2aj3rrhqr2axvktzv9q2qz8jxn3",
             "token1_type": "cw20",
             "token2_denom": "ujuno",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -524,7 +629,10 @@
             "token1_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
             "token1_type": "cw20",
             "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -540,7 +648,10 @@
             "token1_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
             "token1_type": "cw20",
             "token2_denom": "juno14lycavan8gvpjn97aapzvwmsj8kyrvf644p05r0hu79namyj3ens87650k",
-            "token2_type": "cw20"
+            "token2_type": "cw20",
+            "lp_fee": 0.0029,
+            "protocol_fee": 0.0,
+            "fee_from_input": false
         },
         "dex": "loop",
         "routes": [
@@ -556,7 +667,10 @@
             "token1_denom": "ujuno",
             "token1_type": "native",
             "token2_denom": "juno14lycavan8gvpjn97aapzvwmsj8kyrvf644p05r0hu79namyj3ens87650k",
-            "token2_type": "cw20"
+            "token2_type": "cw20",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -572,7 +686,10 @@
             "token1_denom": "juno15u3dt79t6sxxa3x3kpkhzsy56edaa5a66wvt3kxmukqjz2sx0hes5sn38g",
             "token1_type": "cw20",
             "token2_denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.002,
+            "protocol_fee": 0.002,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -588,7 +705,10 @@
             "token1_denom": "ujuno",
             "token1_type": "native",
             "token2_denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-            "token2_type": "native"
+            "token2_type": "native",
+            "lp_fee": 0.003,
+            "protocol_fee": 0.0,
+            "fee_from_input": true
         },
         "dex": "junoswap",
         "routes": [
@@ -596,6 +716,57 @@
                 "juno1el6rfmz6h9pwpdlf6k2qf4dwt3y5wqd7k3xpyvytklsnkt9uv2aqe8aq4v",
                 "juno17h4sgpaksygdnswpx74szv98hggddc08ny4zv5ca63jv53qptxrshacvku",
                 "juno124d0zymrkdxv72ccyuqrquur8dkesmxmx2unfn7dej95yqx5yn8s70x3yj"
+            ]
+        ]
+    },
+    "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx": {
+        "info": {
+            "token1_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
+            "token1_type": "native",
+            "token2_denom": "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034",
+            "token2_type": "native"
+        },
+        "dex": "white_whale",
+        "routes": [
+            [
+                "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl"
+            ]
+        ]
+    },
+    "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t": {
+        "info": {
+            "token1_denom": "juno1wwnhkagvcd3tjz6f8vsdsw5plqnw8qy2aj3rrhqr2axvktzv9q2qz8jxn3",
+            "token1_type": "cw20",
+            "token2_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
+            "token2_type": "cw20",
+            "lp_fee": 0.0029,
+            "protocol_fee": 0.0,
+            "fee_from_input": false
+        },
+        "dex": "loop",
+        "routes": [
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t",
+                "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n"
+            ]
+        ]
+    },
+    "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh": {
+        "info": {
+            "token1_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
+            "token1_type": "native",
+            "token2_denom": "ujuno",
+            "token2_type": "native"
+        },
+        "dex": "white_whale",
+        "routes": [
+            [
+                "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh"
             ]
         ]
     }
