@@ -9,7 +9,8 @@ DEFAULT_JUNOSWAP_LP_FEE = 0.003
 DEFAULT_JUNOSWAP_PROTOCOL_FEE = 0.0
 
 
-async def junoswap_info(rpc_url: str, contract_address: str) -> dict:
+async def junoswap_info(rpc_url: str, contract_address: str, height: str = "") -> dict:
+    # TODO: Docstring Out of Date
     """Given a JunoSwap contract address, and an rpc url,
        Query the node for the contract info, decode the 
        Response, and return the pool info as a dict
@@ -24,20 +25,29 @@ async def junoswap_info(rpc_url: str, contract_address: str) -> dict:
     data = QuerySmartContractStateRequest.SerializeToString(
                 QuerySmartContractStateRequest(address=contract_address, 
                      query_data=json.dumps({"info":{}}).encode('utf-8')))
-    payload = {
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "abci_query",
-        "params": {"path": "/cosmwasm.wasm.v1.Query/SmartContractState", 
-                   "data": b16encode(data).decode("utf-8"), "prove": False}}
+
+    if height != "":
+        params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+                  "data": b16encode(data).decode("utf-8"), "height": height, "prove": False}
+    else:
+        params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+                  "data": b16encode(data).decode("utf-8"), "prove": False}
+
+    payload = {"jsonrpc": "2.0",
+               "id": 1,
+               "method": "abci_query",
+               "params": params}
+               
     async with httpx.AsyncClient() as client:
         response = await client.post(rpc_url, json=payload)
+
     val = b64decode(response.json()["result"]["response"]["value"])
     pool_info = json.loads(QuerySmartContractStateResponse.FromString(val).data.decode())
     return pool_info
 
 
-async def junoswap_fee(rpc_url: str, contract_address: str) -> tuple[float, float]:
+async def junoswap_fee(rpc_url: str, contract_address: str, height: str = "") -> tuple[float, float]:
+    # TODO: Docstring Out of Date
     """Given a JunoSwap contract address, and an rpc url,
        Query the node for the fees of the pool. Decode the
        response. Return 0.003 if the fee does not exist
@@ -53,12 +63,18 @@ async def junoswap_fee(rpc_url: str, contract_address: str) -> tuple[float, floa
     data = QuerySmartContractStateRequest.SerializeToString(
                 QuerySmartContractStateRequest(address=contract_address, 
                      query_data=json.dumps({"fee":{}}).encode('utf-8')))
+
+    if height != "":
+        params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+                  "data": b16encode(data).decode("utf-8"), "height": height, "prove": False}
+    else:
+        params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+                  "data": b16encode(data).decode("utf-8"), "prove": False}
     payload = {
         "jsonrpc": "2.0",
         "id": 1,
         "method": "abci_query",
-        "params": {"path": "/cosmwasm.wasm.v1.Query/SmartContractState", 
-                   "data": b16encode(data).decode("utf-8"), "prove": False}}
+        "params": params}
 
     async with httpx.AsyncClient() as client:
         response = await client.post(rpc_url, json=payload)
@@ -73,7 +89,8 @@ async def junoswap_fee(rpc_url: str, contract_address: str) -> tuple[float, floa
         return lp_fee, protocol_fee
 
 
-async def terraswap_info(rpc_url: str, contract_address: str) -> dict:
+async def terraswap_info(rpc_url: str, contract_address: str, height: str = "") -> dict:
+    # TODO: Docstring Out of Date
     """Given a TerraSwap contract address, and an rpc url,
        Query the node for the contract info, decode the 
        Response, and return the pool info as a dict
@@ -88,20 +105,30 @@ async def terraswap_info(rpc_url: str, contract_address: str) -> dict:
     data = QuerySmartContractStateRequest.SerializeToString(
                 QuerySmartContractStateRequest(address=contract_address, 
                     query_data=json.dumps({"pool": {}}).encode('utf-8')))
+
+    if height != "":
+        params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+                  "data": b16encode(data).decode("utf-8"), "height": height, "prove": False}
+    else:
+        params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+                  "data": b16encode(data).decode("utf-8"), "prove": False}
+
     payload = {
         "jsonrpc": "2.0",
         "id": 1,
         "method": "abci_query",
-        "params": {"path": "/cosmwasm.wasm.v1.Query/SmartContractState", 
-                   "data": b16encode(data).decode("utf-8"), "prove": False}}
+        "params": params}
+
     async with httpx.AsyncClient() as client:
         response = await client.post(rpc_url, json=payload)
+
     val = b64decode(response.json()["result"]["response"]["value"])
     pool_info = json.loads(QuerySmartContractStateResponse.FromString(val).data.decode())
     return pool_info
 
 
-async def terraswap_fee(rpc_url: str, contract_address: str) -> dict:
+async def terraswap_fee(rpc_url: str, contract_address: str, height: str = "") -> dict:
+    # TODO: Docstring Out of Date
     """Given a TerraSwap contract address, and an rpc url,
        Query the node for the contract info, decode the 
        Response, and return the pool info as a dict
@@ -116,12 +143,19 @@ async def terraswap_fee(rpc_url: str, contract_address: str) -> dict:
     data = QuerySmartContractStateRequest.SerializeToString(
                 QuerySmartContractStateRequest(address=contract_address, 
                     query_data=json.dumps({"query_config": {}}).encode('utf-8')))
+
+    if height != "":
+        params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+                  "data": b16encode(data).decode("utf-8"), "height": height, "prove": False}
+    else:
+        params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+                  "data": b16encode(data).decode("utf-8"), "prove": False}
+
     payload = {
         "jsonrpc": "2.0",
         "id": 1,
         "method": "abci_query",
-        "params": {"path": "/cosmwasm.wasm.v1.Query/SmartContractState", 
-                   "data": b16encode(data).decode("utf-8"), "prove": False}}
+        "params": params}
 
     async with httpx.AsyncClient() as client:
         response = await client.post(rpc_url, json=payload)
@@ -129,3 +163,42 @@ async def terraswap_fee(rpc_url: str, contract_address: str) -> dict:
     fee_dict = json.loads(QuerySmartContractStateResponse.FromString(val).data.decode())
     fee = float(fee_dict['commission_rate'])
     return fee
+
+
+async def whitewhale_fee(rpc_url: str, contract_address: str, height: str = "") -> tuple[float, float]:
+    # TODO: Docstring Out of Date
+    """Given a White Whale AMM contract address, and an rpc url,
+       Query the node for the contract info, decode the 
+       Response, and return the pool info as a dict
+
+    Args:
+        rpc_url (str): The rpc url of the node to query
+        contract_address (str): The TerraSwap contract address
+
+    Returns:
+        dict: The contract info
+    """
+    data = QuerySmartContractStateRequest.SerializeToString(
+                QuerySmartContractStateRequest(address=contract_address, 
+                    query_data=json.dumps({"config": {}}).encode('utf-8')))
+
+    if height != "":
+        params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+                  "data": b16encode(data).decode("utf-8"), "height": height, "prove": False}
+    else:
+        params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+                  "data": b16encode(data).decode("utf-8"), "prove": False}
+
+    payload = {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "abci_query",
+        "params": params}
+
+    async with httpx.AsyncClient() as client:
+        response = await client.post(rpc_url, json=payload)
+    val = b64decode(response.json()["result"]["response"]["value"])
+    fee_dict = json.loads(QuerySmartContractStateResponse.FromString(val).data.decode())
+    lp_fee = float(fee_dict["pool_fees"]["swap_fee"]['share'])
+    protocol_fee = float(fee_dict["pool_fees"]["protocol_fee"]['share'])
+    return lp_fee, protocol_fee
