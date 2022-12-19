@@ -1,6 +1,6 @@
 from swaps import SingleSwap, PassThroughSwap
-from calculate import calculate_swap, calculate_loop_swap
-from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee
+from calculate import calculate_swap
+from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee, whitewhale_fee
 
 
 async def update_pool(tx: SingleSwap | PassThroughSwap, contracts: dict, passthrough: bool = False) -> tuple[int, str]:
@@ -76,7 +76,7 @@ async def update_pools(tx: PassThroughSwap, contracts: dict) -> list:
                                                           lp_fee=contract_info['lp_fee'],
                                                           protocol_fee=contract_info['protocol_fee'],
                                                           fee_from_input=contract_info["fee_from_input"])
-                                                          
+
     contracts[tx.output_amm_address]["info"][input_reserves] = new_reserves_in
     contracts[tx.output_amm_address]["info"][output_reserves] = new_reserves_out
         
@@ -99,6 +99,10 @@ async def update_reserves(contract_address: str, contracts: dict, rpc_url: str):
         contract_info = await terraswap_info(rpc_url, contract_address)
         contracts[contract_address]["info"]["token1_reserves"] = int(contract_info['assets'][0]['amount'])
         contracts[contract_address]["info"]["token2_reserves"] = int(contract_info['assets'][1]['amount'])
+    elif contracts[contract_address]["dex"] == "white_whale":
+        contract_info = await terraswap_info(rpc_url, contract_address)
+        contracts[contract_address]["info"]["token1_reserves"] = int(contract_info['assets'][0]['amount'])
+        contracts[contract_address]["info"]["token2_reserves"] = int(contract_info['assets'][1]['amount'])
 
 
 async def update_fees(contract_address: str, contracts: dict, rpc_url: str):
@@ -118,4 +122,9 @@ async def update_fees(contract_address: str, contracts: dict, rpc_url: str):
         fee = await terraswap_fee(rpc_url, contract_address)
         contracts[contract_address]["info"]["lp_fee"] = fee
         contracts[contract_address]["info"]["protocol_fee"] = 0.0
+        contracts[contract_address]["info"]["fee_from_input"] = False
+    elif contracts[contract_address]["dex"] == "white_whale":
+        lp_fee, protocol_fee = await whitewhale_fee(rpc_url, contract_address)
+        contracts[contract_address]["info"]["lp_fee"] = lp_fee
+        contracts[contract_address]["info"]["protocol_fee"] = protocol_fee
         contracts[contract_address]["info"]["fee_from_input"] = False
