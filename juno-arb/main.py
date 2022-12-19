@@ -25,7 +25,7 @@ from cosmpy.crypto.keypairs import PrivateKey
 from mempool import check_for_swap_txs_in_mempool
 from update_reserves import update_pool, update_pools, update_reserves, update_fees
 from swaps import SingleSwap, PassThroughSwap
-from calculate import check_no_arbitrage_condition, calculate_optimal_amount_in, get_profit_from_route
+from calculate import calculate_optimal_amount_in, get_profit_from_route
 from create_tx import create_tx
 from messages import create_route_msgs
 from route import get_route_object
@@ -135,11 +135,14 @@ async def main():
     try:
         await aiometer.run_all(jobs_fees)
     except anyio._backends._asyncio.ExceptionGroup as e:
-        logging.error("ExcetionGroup - Updating Fees")
+        logging.error("ExcetionGroup - Updating Fees - " + str(e))
     except json.decoder.JSONDecodeError as e:
-        logging.error("JSON Exception - Updating Fees")
+        logging.error("JSON Exception - Updating Fees - " + str(e))
     except Exception as e:
-        logging.error("General Exception - Updaing Fees")
+        logging.error("General Exception - Updating Fees - " + str(e))
+
+    with open("contracts.json", "w") as f:
+        json.dump(contracts, f, indent=4)
 
     # Create the jobs for the async batch update
     # of pool contract info when a swap is seen
@@ -179,20 +182,7 @@ async def main():
         # message from Junoswap
         # This can be further extended to trigger logic
         # Based on other messages.
-        try:
-            backrun_list = check_for_swap_txs_in_mempool(RPC_URL, already_seen)
-        except httpx.ConnectTimeout:
-            logging.error("Timeout error, retrying...")
-            continue
-        except json.decoder.JSONDecodeError:
-            logging.error("JSON decode error, retrying...")
-            continue
-        except httpx.ReadTimeout:
-            logging.error("Read timeout error, retrying...")
-            continue
-        except httpx.ConnectError:
-            logging.error("Connect error, retrying...")
-            continue
+        backrun_list = check_for_swap_txs_in_mempool(RPC_URL, already_seen)
 
         # Everytime the bot sees a new transaction it needs may 
         # want to backrun, we get the latest info on all the
@@ -210,7 +200,7 @@ async def main():
             time.sleep(60)
             continue
         except Exception as e:
-            logging.error("General Exception: Sleeping for 60 seconds...")
+            logging.error("General Exception: Sleeping for 60 seconds... " + str(e))
             time.sleep(60)
             continue
 
@@ -255,19 +245,22 @@ async def main():
                         # Calculate the optimal amount to swap in the first pool
                         # To maximize our profit from the cyclic route
                         optimal_amount_in = calculate_optimal_amount_in(route=route_obj)
-                        logging.info(f"Optimal amount in: {optimal_amount_in}")
+                        #logging.info(f"Optimal amount in: {optimal_amount_in}")
 
                         # If the optimal amount to swap is 
                         # greater than your account balance
                         # minus the gas fee and auction bid,
                         # we only swap the account balance
                         # minus the gas fee and auction bid
-                        if optimal_amount_in > account_balance - GAS_FEE:
+                        if optimal_amount_in <= 0:
+                            #logging.info(f"Non-Positive Optimal Amount In: {optimal_amount_in}")
+                            continue
+                        elif optimal_amount_in > account_balance - GAS_FEE:
                             amount_in = account_balance - GAS_FEE
-                            logging.info(f"Greater than - Amount in: {amount_in}")
+                            logging.info(f"Optimal Amount In Greater Than Balance - Amount in: {amount_in}")
                         else:
                             amount_in = optimal_amount_in
-                            logging.info(f"Less than - Amount in: {amount_in}")
+                            logging.info(f"Optimal Amount In Less Than Balance - Amount in: {amount_in}")
 
                         # Calculate the profit we will make from the
                         # Cyclic route

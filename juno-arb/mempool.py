@@ -31,9 +31,26 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set) -> list:
         # Queriies the rpc node with the mempool endpoint
         # For more information on valid tendermint queries, see:
         # https://docs.tendermint.com/v0.34/rpc/
-        response = httpx.get(rpc_url + "unconfirmed_txs?limit=1000") 
-        # Parse the response to get mempool txs
-        mempool = response.json()['result']
+        try:
+            response = httpx.get(rpc_url + "unconfirmed_txs?limit=1000") 
+        except httpx.ConnectTimeout:
+            logging.error("Timeout error, retrying...")
+            continue
+        except httpx.ReadTimeout:
+            logging.error("Read timeout error, retrying...")
+            continue
+        except httpx.ConnectError:
+            logging.error("Connect error, retrying...")
+            continue
+
+        # Parse the response to to a json object
+        try:
+            mempool = response.json()['result']
+        except json.decoder.JSONDecodeError:
+            logging.error("JSON decode error, retrying...")
+            continue
+
+        # Get the txs from the mempool
         mempool_txs = mempool['txs']
         # Create list to fill with txs that
         # we may be interested in backrunning
@@ -61,7 +78,7 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set) -> list:
                 message_value = cosmwasm_tx_pb2.MsgExecuteContract().FromString(message.value)
                 msg = json.loads(message_value.msg.decode("utf-8"))
                 # If the message is a JunoSwap swap
-                if 'swap' in msg:
+                if "swap" in msg and "input_token" in msg["swap"]:
                     # Create a Swap object, append to the list
                     # of txs we may be interested in backrunning
                     try:
@@ -79,9 +96,10 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set) -> list:
                         continue
                     except TypeError:
                         logging.error("TypeError, most likely a non-junoswap contract-swap message: ", message_value.contract)
+                        print(decoded_pb_tx)
                         continue
                 # If the message is a JunoSwap pass through swap
-                elif 'pass_through_swap' in msg:
+                elif "pass_through_swap" in msg:
                     # Create a PassThroughSwap object, append to the list
                     # of txs we may be interested in backrunning
                     try:                            
