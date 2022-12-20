@@ -188,7 +188,6 @@ async def main():
         # we obtained from the mempool that we may
         # be interested in backrunning
         for tx in backrun_list:
-            print("Analyzing tx")
             # If the transaction is a swap, we update the pools
             # reserves with the new reserves after the swap
             # from the transaction processes (remember: you are arbing

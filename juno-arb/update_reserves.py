@@ -89,18 +89,22 @@ async def update_pools(tx: PassThroughSwap, contracts: dict) -> list:
     return [tx.contract_address, tx.output_amm_address]
 
 
-async def batch_update_reserves(jobs):
+async def batch_update_reserves(jobs) -> bool:
     try:
         await aiometer.run_all(jobs)
+        return True
     except anyio._backends._asyncio.ExceptionGroup as e:
         logging.error("ExcetionGroup: Sleeping for 60 seconds...")
         time.sleep(60)
+        return False
     except json.decoder.JSONDecodeError as e:
         logging.error("JSON Exception: Sleeping for 60 seconds...")
         time.sleep(60)
+        return False
     except Exception as e:
         logging.error("General Exception: Sleeping for 60 seconds... " + str(e))
         time.sleep(60)
+        return False
 
 
 async def update_reserves(contract_address: str, contracts: dict, rpc_url: str):
