@@ -11,7 +11,7 @@ import cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 as cosmwasm_tx_pb2
 
 # Local imports
 from swaps import SingleSwap, PassThroughSwap
-from tx_parser import parse_tx
+from parse import parse_swap, parse_mempool_tx
 
 def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set, contracts: dict) -> list:
     """Queries the mempool of an rpc node,
@@ -65,51 +65,3 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set, contracts: di
         # to begin the process of checking for an arb opportunity   
         if len(backrun_potential_list) > 0:
             return backrun_potential_list
-
-
-def parse_mempool_tx(tx: str, contracts: dict, already_seen: set, backrun_potential_list: list) -> None:
-    """Parses a transaction from the mempool to determine if it is a JunoSwap swap or pass through swap.
-
-    Args:
-        tx (str): Transaction to parse.
-        contracts (dict): Dictionary of contracts to parse.
-        already_seen (set): Set of transactions that have already been seen.
-        backrun_potential_list (list): List of txs that may backrunnable.
-
-    Returns:
-        None: Returns None.
-    """
-    # Decode the tx
-    tx_bytes = b64decode(tx)
-    decoded_pb_tx = cosmos_tx_pb2.Tx().FromString(tx_bytes)
-    # If we have already seen this transaction, skip it
-    # Otherwise, add it to the list of transactions we have seen
-    # This is to avoid processing the same transaction multiple times
-    if tx in already_seen:
-        return None
-    else:
-        already_seen.add(tx)
-    
-    # Iterate through the messages in the tx
-    for message in decoded_pb_tx.body.messages:
-        # Ignore the message if it's not a MsgExecuteContract
-        if message.type_url != "/cosmwasm.wasm.v1.MsgExecuteContract":
-            continue
-        # Parse the message
-        message_value = cosmwasm_tx_pb2.MsgExecuteContract().FromString(message.value)
-        msg = json.loads(message_value.msg.decode("utf-8"))
-
-        if message_value.contract not in contracts:
-            if "send" in msg and "contract" in msg["send"] and msg["send"]["contract"] in contracts:
-                pool_contract = msg["send"]["contract"]
-                parser = contracts[pool_contract]["info"]["parser"]
-            else:
-                continue
-        else:
-            parser = contracts[message_value.contract]["info"]["parser"]
-        
-        swap = parse_tx(parser=parser, tx=tx, tx_bytes=tx_bytes, message_value=message_value, msg=msg)
-        if swap is not None:
-            backrun_potential_list.append(swap)
-
-    return None
