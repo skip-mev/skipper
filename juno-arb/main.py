@@ -133,7 +133,7 @@ async def main():
     # Run the batch update of pool fees
     # If there is an exception, continue using old fees 
     # already stored in the contracts json file
-    batch_update_fees(jobs_fees)
+    await batch_update_fees(jobs_fees, contracts)
 
     # Create the jobs for the async batch update
     # of pool contract info when a swap is seen
@@ -181,7 +181,7 @@ async def main():
         # to know the current reserves of the pools it may use
         # within the cyclic arbitrage route. Returns True if
         # the batch update was successful, False otherwise
-        if not batch_update_reserves(jobs_reserves):
+        if not await batch_update_reserves(jobs_reserves):
             continue
 
         # Begin iteration through each transaction
@@ -254,6 +254,8 @@ async def main():
                         logging.info(f"Amount in: {amount_in}")
                         logging.info(f"Profit: {profit}")
                         logging.info(f"Sender: {tx.sender}")
+                        logging.info(f"Pool Swapped Against: {pool}")
+                        logging.info(f"Dex: {contracts[pool]['dex']}")
 
                         # Skip auction bid amount is the profit minus the gas fee
                         # multiplied by the auction bid percentage
