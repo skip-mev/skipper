@@ -23,7 +23,7 @@ from cosmpy.crypto.keypairs import PrivateKey
 
 # Local imports
 from mempool import check_for_swap_txs_in_mempool
-from update_reserves import update_pool, update_pools, update_reserves, update_fees
+from update_reserves import update_pool, update_pools, update_reserves, update_fees, batch_update_fees, batch_update_reserves
 from swaps import SingleSwap, PassThroughSwap
 from calculate import calculate_optimal_amount_in, get_profit_from_route
 from create_tx import create_tx
@@ -133,17 +133,7 @@ async def main():
     # Run the batch update of pool fees
     # If there is an exception, continue using old fees 
     # already stored in the contracts json file
-    try:
-        await aiometer.run_all(jobs_fees)
-    except anyio._backends._asyncio.ExceptionGroup as e:
-        logging.error("ExcetionGroup - Updating Fees - " + str(e))
-    except json.decoder.JSONDecodeError as e:
-        logging.error("JSON Exception - Updating Fees - " + str(e))
-    except Exception as e:
-        logging.error("General Exception - Updating Fees - " + str(e))
-
-    with open("contracts.json", "w") as f:
-        json.dump(contracts, f, indent=4)
+    batch_update_fees(jobs_fees)
 
     # Create the jobs for the async batch update
     # of pool contract info when a swap is seen
@@ -189,26 +179,16 @@ async def main():
         # want to backrun, we get the latest info on all the
         # pools we are tracking. This is because the bot needs
         # to know the current reserves of the pools it may use
-        # withint the cyclic arbitrage route.
-        try:
-            await aiometer.run_all(jobs_reserves)
-        except anyio._backends._asyncio.ExceptionGroup as e:
-            logging.error("ExcetionGroup: Sleeping for 60 seconds...")
-            time.sleep(60)
-            continue
-        except json.decoder.JSONDecodeError as e:
-            logging.error("JSON Exception: Sleeping for 60 seconds...")
-            time.sleep(60)
-            continue
-        except Exception as e:
-            logging.error("General Exception: Sleeping for 60 seconds... " + str(e))
-            time.sleep(60)
+        # within the cyclic arbitrage route. Returns True if
+        # the batch update was successful, False otherwise
+        if not batch_update_reserves(jobs_reserves):
             continue
 
         # Begin iteration through each transaction
         # we obtained from the mempool that we may
         # be interested in backrunning
         for tx in backrun_list:
+            print("Analyzing tx")
             # If the transaction is a swap, we update the pools
             # reserves with the new reserves after the swap
             # from the transaction processes (remember: you are arbing

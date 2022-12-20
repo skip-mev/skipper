@@ -1,3 +1,9 @@
+import json
+import logging
+import aiometer
+import anyio
+import time
+
 from swaps import SingleSwap, PassThroughSwap
 from calculate import calculate_swap
 from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee, whitewhale_fee
@@ -83,6 +89,20 @@ async def update_pools(tx: PassThroughSwap, contracts: dict) -> list:
     return [tx.contract_address, tx.output_amm_address]
 
 
+async def batch_update_reserves(jobs):
+    try:
+        await aiometer.run_all(jobs)
+    except anyio._backends._asyncio.ExceptionGroup as e:
+        logging.error("ExcetionGroup: Sleeping for 60 seconds...")
+        time.sleep(60)
+    except json.decoder.JSONDecodeError as e:
+        logging.error("JSON Exception: Sleeping for 60 seconds...")
+        time.sleep(60)
+    except Exception as e:
+        logging.error("General Exception: Sleeping for 60 seconds... " + str(e))
+        time.sleep(60)
+
+
 async def update_reserves(contract_address: str, contracts: dict, rpc_url: str):
     """This function is used to update the reserve amounts
        for a given DEX pool (Junoswap or Loop). The update
@@ -103,6 +123,20 @@ async def update_reserves(contract_address: str, contracts: dict, rpc_url: str):
         contract_info = await terraswap_info(rpc_url, contract_address)
         contracts[contract_address]["info"]["token1_reserves"] = int(contract_info['assets'][0]['amount'])
         contracts[contract_address]["info"]["token2_reserves"] = int(contract_info['assets'][1]['amount'])
+
+
+async def batch_update_fees(jobs, contracts: dict):
+    try:
+        await aiometer.run_all(jobs)
+    except anyio._backends._asyncio.ExceptionGroup as e:
+        logging.error("ExcetionGroup - Updating Fees - " + str(e))
+    except json.decoder.JSONDecodeError as e:
+        logging.error("JSON Exception - Updating Fees - " + str(e))
+    except Exception as e:
+        logging.error("General Exception - Updating Fees - " + str(e))
+
+    with open("contracts.json", "w") as f:
+        json.dump(contracts, f, indent=4)
 
 
 async def update_fees(contract_address: str, contracts: dict, rpc_url: str):
