@@ -23,7 +23,7 @@ from cosmpy.crypto.keypairs import PrivateKey
 
 # Local imports
 from mempool import check_for_swap_txs_in_mempool
-from update_reserves import update_pool, update_pools, update_reserves, update_fees, batch_update_fees, batch_update_reserves
+from update_pools import update_pool, update_pools, update_reserves, update_fees, batch_update_fees, batch_update_reserves
 from swaps import SingleSwap, PassThroughSwap
 from calculate import calculate_optimal_amount_in, get_profit_from_route
 from create_tx import create_tx
@@ -38,6 +38,9 @@ load_dotenv('juno.env')
 # Logging configuration, default is sent to a log file specified in the .env file
 LOG_FILE = os.environ.get("LOG_FILE")
 logging.basicConfig(filename=LOG_FILE, encoding='utf-8', level=logging.INFO)
+
+# Path to contracts file
+CONTRACTS_FILE = os.environ.get("CONTRACTS_FILE")
 
 # Mnenomic to generate private key
 # Replace with your own mnemonic
@@ -118,7 +121,7 @@ async def main():
     # evolves on Juno.
 
     # Get contract info
-    with open("contracts.json") as f:
+    with open(CONTRACTS_FILE) as f:
         global contracts
         contracts = json.load(f)
 
@@ -134,6 +137,10 @@ async def main():
     # If there is an exception, continue using old fees 
     # already stored in the contracts json file
     await batch_update_fees(jobs_fees, contracts)
+
+    # Update the contracts json file with the new fees
+    with open(CONTRACTS_FILE, 'w') as f:
+        json.dump(contracts, f, indent=4)
 
     # Create the jobs for the async batch update
     # of pool contract info when a swap is seen
