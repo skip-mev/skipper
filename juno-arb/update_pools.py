@@ -139,9 +139,6 @@ async def batch_update_fees(jobs, contracts: dict):
     except Exception as e:
         logging.error("General Exception - Updating Fees - " + str(e))
 
-    with open("contracts.json", "w") as f:
-        json.dump(contracts, f, indent=4)
-
 
 async def update_fees(contract_address: str, contracts: dict, rpc_url: str):
     """This function is used to update the swap fee
