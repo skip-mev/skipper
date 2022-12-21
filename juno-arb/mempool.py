@@ -11,7 +11,7 @@ import cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 as cosmwasm_tx_pb2
 
 # Local imports
 from swaps import SingleSwap, PassThroughSwap
-from parse import parse_swap, parse_mempool_tx
+from parse import parse_swap, parse_cw_mempool_tx, parse_evm_mempool_tx
 
 def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set, contracts: dict) -> list:
     """Queries the mempool of an rpc node,
@@ -49,6 +49,7 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set, contracts: di
             mempool = response.json()['result']
         except json.decoder.JSONDecodeError:
             logging.error("JSON decode error, retrying...")
+            logging.error(response)
             continue
 
         # Get the txs from the mempool
@@ -59,7 +60,7 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set, contracts: di
         # Iterate through mempool txs
         for tx in mempool_txs:
             # Parse the tx, decode the tx
-            parse_mempool_tx(tx, contracts, already_seen, backrun_potential_list)
+            parse_cw_mempool_tx(tx, contracts, already_seen, backrun_potential_list)
             
         # If we found a tx with a swap message, return the list
         # to begin the process of checking for an arb opportunity   

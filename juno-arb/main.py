@@ -10,6 +10,9 @@ import logging
 import requests
 import functools
 import math
+import copy
+from base64 import b64encode, b64decode
+from hashlib import sha256
 from dotenv import load_dotenv
 
 # Skip helper library Import
@@ -20,6 +23,8 @@ from bip_utils import Bip39SeedGenerator, Bip44, Bip44Coins
 from cosmpy.aerial.client import LedgerClient, NetworkConfig
 from cosmpy.aerial.wallet import LocalWallet
 from cosmpy.crypto.keypairs import PrivateKey
+from terra_sdk.client.lcd import LCDClient
+from terra_sdk.key.mnemonic import MnemonicKey
 
 # Local imports
 from mempool import check_for_swap_txs_in_mempool
@@ -32,6 +37,7 @@ from route import get_route_object
 
 # Load environment variables
 load_dotenv('juno.env')
+#load_dotenv('terra.env')
 
 # All global variables to be used throughout the program
 
@@ -106,10 +112,16 @@ async def main():
     )
     client = LedgerClient(cfg)
 
-    # Get wallet object from mnemonic seed phrase
-    seed_bytes = Bip39SeedGenerator(MNEMONIC).Generate()
-    bip44_def_ctx = Bip44.FromSeed(seed_bytes, Bip44Coins.COSMOS).DeriveDefaultPath()
-    wallet = LocalWallet(PrivateKey(bip44_def_ctx.PrivateKey().Raw().ToBytes()), prefix=ADDRESS_PREFIX)
+    if CHAIN_ID == "juno-1":
+        # Get wallet object from mnemonic seed phrase
+        seed_bytes = Bip39SeedGenerator(MNEMONIC).Generate()
+        bip44_def_ctx = Bip44.FromSeed(seed_bytes, Bip44Coins.COSMOS).DeriveDefaultPath()
+        wallet = LocalWallet(PrivateKey(bip44_def_ctx.PrivateKey().Raw().ToBytes()), prefix=ADDRESS_PREFIX)
+    elif CHAIN_ID == "phoenix-1":
+        mk = MnemonicKey(mnemonic=MNEMONIC)
+        terra = LCDClient("https://phoenix-lcd.terra.dev", "phoenix-1")
+        terra_wallet = terra.wallet(mk)
+        wallet = LocalWallet(PrivateKey(terra_wallet.key.private_key), prefix=ADDRESS_PREFIX)
 
     # This repo pre-populates a json file with contract
     # addresses for DEX pools (Junoswap, Loop, and White Whale), 
@@ -195,13 +207,14 @@ async def main():
         # we obtained from the mempool that we may
         # be interested in backrunning
         for tx in backrun_list:
+            contracts_copy = copy.deepcopy(contracts)
             # If the transaction is a swap, we update the pools
             # reserves with the new reserves after the swap
             # from the transaction processes (remember: you are arbing
             # after this transction processes, so need to calculate what
             # the new reserves will be after the swap)
             if isinstance(tx, SingleSwap):
-                pools_swapped_against = await update_pool(tx=tx, contracts=contracts)
+                pools_swapped_against = await update_pool(tx=tx, contracts=contracts_copy)
             # If the transaction is a pass through swap, we update the pools
             # reserves with the new reserves after their respective
             # swaps process
@@ -211,8 +224,8 @@ async def main():
                 # If not, skip it since we don't have cyclic routes for it
                 # This can be improved upon in the future to just focus
                 # on the first contract in the pass through swap
-                if tx.output_amm_address in contracts:
-                    pools_swapped_against = await update_pools(tx=tx, contracts=contracts)
+                if tx.output_amm_address in contracts_copy:
+                    pools_swapped_against = await update_pools(tx=tx, contracts=contracts_copy)
                 else:
                     continue
 
@@ -220,10 +233,10 @@ async def main():
             for pool in pools_swapped_against:
                 # Get the cyclic routes for the pool we swapped against
                 # and begin iterating through each route
-                for route in contracts[pool]["routes"]:
+                for route in contracts_copy[pool]["routes"]:
 
                     # Create a route object to be used in the backrun
-                    route_obj = get_route_object(tx=tx, address=pool, contracts=contracts, route=route)
+                    route_obj = get_route_object(tx=tx, address=pool, contracts=contracts_copy, route=route)
 
                     # Calculate the optimal amount to swap in the first pool
                     # To maximize our profit from the cyclic route
@@ -261,7 +274,8 @@ async def main():
                         logging.info(f"Profit: {profit}")
                         logging.info(f"Sender: {tx.sender}")
                         logging.info(f"Pool Swapped Against: {pool}")
-                        logging.info(f"Dex: {contracts[pool]['dex']}")
+                        logging.info(f"Dex: {contracts_copy[pool]['dex']}")
+                        logging.info(f"Tx Hash: {sha256(b64decode(tx.tx)).hexdigest()}")
 
                         # Skip auction bid amount is the profit minus the gas fee
                         # multiplied by the auction bid percentage
@@ -273,7 +287,7 @@ async def main():
                         # Found in the mempool
                         msg_list = create_route_msgs(wallet=wallet,
                                                      route=route_obj, 
-                                                     contracts=contracts,
+                                                     contracts=contracts_copy,
                                                      bid_amount=bid_amount,
                                                      auction_house_address=AUCTION_HOUSE_ADDRESS,
                                                      expiration=10000000,
@@ -302,7 +316,7 @@ async def main():
                                                                  sync=True,
                                                                  timeout=10)
                             logging.info(response.json())
-                            logging.info(f"Route and reserves: {route_obj.__dict__}")
+                            #logging.info(f"Route and reserves: {route_obj.__dict__}")
                         except httpx.ReadTimeout:
                             logging.error("Read timeout while waiting for response from Skip")
                             break

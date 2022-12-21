@@ -1,4 +1,5 @@
 import json
+import logging
 
 # Crypto/Cosmpy Imports
 from base64 import b64decode
@@ -9,7 +10,7 @@ import cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 as cosmwasm_tx_pb2
 from swaps import SingleSwap, PassThroughSwap
 
 
-def parse_mempool_tx(tx: str, contracts: dict, already_seen: set, backrun_potential_list: list) -> None:
+def parse_cw_mempool_tx(tx: str, contracts: dict, already_seen: set, backrun_potential_list: list) -> None:
     """Parses a transaction from the mempool to determine if it is a JunoSwap swap or pass through swap.
 
     Args:
@@ -55,6 +56,10 @@ def parse_mempool_tx(tx: str, contracts: dict, already_seen: set, backrun_potent
     return None
 
 
+def parse_evm_mempool_tx():
+    pass
+
+
 def parse_swap(parser, tx, tx_bytes, message_value, msg) -> SingleSwap or PassThroughSwap or None:
     if parser == "junoswap":
         return parse_junoswap(tx, tx_bytes, message_value, msg)
@@ -89,6 +94,10 @@ def parse_junoswap(tx, tx_bytes, message_value, msg) -> SingleSwap or PassThroug
 
 
 def parse_terraswap(tx, tx_bytes, message_value, msg) -> SingleSwap or PassThroughSwap or None:
+    #logging.info("Parsing TerraSwap tx...")
+    #logging.info(tx)
+    #logging.info(message_value)
+    #logging.info(msg)
     if "swap" in msg:
         swap_tx = SingleSwap(tx=tx,
                              tx_bytes=tx_bytes,
