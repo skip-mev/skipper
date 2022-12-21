@@ -165,6 +165,35 @@ async def terraswap_fee(rpc_url: str, contract_address: str, height: str = "") -
     return fee
 
 
+async def terraswap_factory(rpc_url: str, contract_address: str, height: str = "", start_after: list = []) -> dict:
+    pairs = {"pairs": {"limit": 30}}
+
+    if start_after != []:
+        pairs["pairs"]["start_after"] = start_after
+
+    data = QuerySmartContractStateRequest.SerializeToString(
+                QuerySmartContractStateRequest(address=contract_address, 
+                    query_data=json.dumps(pairs).encode('utf-8')))
+                    
+    params = {"path": "/cosmwasm.wasm.v1.Query/SmartContractState",
+              "data": b16encode(data).decode("utf-8"), "prove": False}
+
+    if height != "":
+        params["height"] = height
+
+    payload = {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "abci_query",
+        "params": params}
+
+    async with httpx.AsyncClient() as client:
+        response = await client.post(rpc_url, json=payload)
+    val = b64decode(response.json()["result"]["response"]["value"])
+    response_dict = json.loads(QuerySmartContractStateResponse.FromString(val).data.decode())
+    return response_dict
+
+
 async def whitewhale_fee(rpc_url: str, contract_address: str, height: str = "") -> tuple[float, float]:
     # TODO: Docstring Out of Date
     """Given a White Whale AMM contract address, and an rpc url,
