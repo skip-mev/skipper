@@ -6,7 +6,7 @@ import time
 
 from swaps import SingleSwap, PassThroughSwap
 from calculate import calculate_swap
-from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee, whitewhale_fee
+from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee, whitewhale_fee, terraswap_factory
 
 
 async def update_pool(tx: SingleSwap | PassThroughSwap, contracts: dict, passthrough: bool = False) -> tuple[int, str]:
@@ -127,6 +127,10 @@ async def update_reserves(contract_address: str, contracts: dict, rpc_url: str):
         contract_info = await terraswap_info(rpc_url, contract_address)
         contracts[contract_address]["info"]["token1_reserves"] = int(contract_info['assets'][0]['amount'])
         contracts[contract_address]["info"]["token2_reserves"] = int(contract_info['assets'][1]['amount'])
+    elif contracts[contract_address]["dex"] == "terraswap":
+        contract_info = await terraswap_info(rpc_url, contract_address)
+        contracts[contract_address]["info"]["token1_reserves"] = int(contract_info['assets'][0]['amount'])
+        contracts[contract_address]["info"]["token2_reserves"] = int(contract_info['assets'][1]['amount'])
 
 
 async def batch_update_fees(jobs, contracts: dict):
@@ -163,3 +167,28 @@ async def update_fees(contract_address: str, contracts: dict, rpc_url: str):
         contracts[contract_address]["info"]["lp_fee"] = lp_fee
         contracts[contract_address]["info"]["protocol_fee"] = protocol_fee
         contracts[contract_address]["info"]["fee_from_input"] = False
+
+
+async def update_all_factory_pools(contracts: dict, rpc_url: str):
+    """This function is used to update the reserve amounts
+       for all DEX pools (Junoswap or Loop). The update
+       happens on the global contracts dict
+
+    Args:
+        contracts (dict): The global contracts dict
+    """
+    for factory_address in contracts["factories"]:
+        all_pairs = []
+        pairs = await terraswap_factory(rpc_url=rpc_url, contract_address=factory_address)
+
+        while len(pairs["pairs"]) == 30:
+            all_pairs.extend(pairs["pairs"])
+            pairs = await terraswap_factory(rpc_url=rpc_url, contract_address=factory_address, start_after=pairs["pairs"][-1]["asset_infos"])
+
+        all_pairs.extend(pairs["pairs"])
+
+        print(f"Total Pairs: {len(all_pairs)}")
+
+        for pair in all_pairs:
+            contracts[pair['contract_addr']] = {"info": {"parser": "terraswap"}, "dex": "terraswap"}
+
