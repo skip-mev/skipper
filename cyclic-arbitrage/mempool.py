@@ -4,14 +4,8 @@ import json
 import time
 import logging
 
-# Crypto/Cosmpy Imports
-from base64 import b64decode
-import cosmpy.protos.cosmos.tx.v1beta1.tx_pb2 as cosmos_tx_pb2
-import cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 as cosmwasm_tx_pb2
-
 # Local imports
-from swaps import SingleSwap, PassThroughSwap
-from parse import parse_swap, parse_cw_mempool_tx, parse_evm_mempool_tx
+from parse import parse_mempool_tx
 
 def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set, contracts: dict) -> list:
     """Queries the mempool of an rpc node,
@@ -59,9 +53,15 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: set, contracts: di
         backrun_potential_list = []
         # Iterate through mempool txs
         for tx in mempool_txs:
-            # Parse the tx, decode the tx
-            parse_cw_mempool_tx(tx, contracts, already_seen, backrun_potential_list)
-            
+            # Ignore the tx if we have already seen it
+            if tx in already_seen:
+                continue
+            already_seen.add(tx)
+            # Parse the tx to determine if it is a swap tx
+            transaction = parse_mempool_tx(tx, contracts)
+            if transaction is not None:
+                backrun_potential_list.append(transaction)
+
         # If we found a tx with a swap message, return the list
         # to begin the process of checking for an arb opportunity   
         if len(backrun_potential_list) > 0:

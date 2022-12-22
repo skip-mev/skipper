@@ -1,17 +1,15 @@
 # General Imports
 import os
 import json
-import aiometer
 import asyncio
 import time
-import anyio
 import httpx
 import logging
 import requests
 import functools
 import math
 import copy
-from base64 import b64encode, b64decode
+from base64 import b64decode
 from hashlib import sha256
 from dotenv import load_dotenv
 
@@ -28,16 +26,15 @@ from terra_sdk.key.mnemonic import MnemonicKey
 
 # Local imports
 from mempool import check_for_swap_txs_in_mempool
-from update_pools import update_pool, update_pools, update_reserves, update_fees, batch_update_fees, batch_update_reserves
-from swaps import SingleSwap, PassThroughSwap
+from update_contracts import simulate_tx, update_reserves, update_fees, batch_update_fees, batch_update_reserves
 from calculate import calculate_optimal_amount_in, get_profit_from_route
 from create_tx import create_tx
-from messages import create_route_msgs
+from create_messages import create_route_msgs
 from route import get_route_object
 
 # Load environment variables
-load_dotenv('juno.env')
-#load_dotenv('terra.env')
+#load_dotenv('envs/juno.env')
+load_dotenv('envs/terra.env')
 
 # All global variables to be used throughout the program
 
@@ -148,11 +145,11 @@ async def main():
     # Run the batch update of pool fees
     # If there is an exception, continue using old fees 
     # already stored in the contracts json file
-    await batch_update_fees(jobs_fees, contracts)
+    #await batch_update_fees(jobs_fees)
 
     # Update the contracts json file with the new fees
-    with open(CONTRACTS_FILE, 'w') as f:
-        json.dump(contracts, f, indent=4)
+    #with open(CONTRACTS_FILE, 'w') as f:
+    #    json.dump(contracts, f, indent=4)
 
     # Create the jobs for the async batch update
     # of pool contract info when a swap is seen
@@ -194,6 +191,8 @@ async def main():
         # Based on other messages.
         backrun_list = check_for_swap_txs_in_mempool(RPC_URL, already_seen, contracts)
 
+        print(f"Found {len(backrun_list)} txs to backrun")
+
         # Everytime the bot sees a new transaction it needs may 
         # want to backrun, we get the latest info on all the
         # pools we are tracking. This is because the bot needs
@@ -208,38 +207,17 @@ async def main():
         # be interested in backrunning
         for tx in backrun_list:
             contracts_copy = copy.deepcopy(contracts)
-            # If the transaction is a swap, we update the pools
-            # reserves with the new reserves after the swap
-            # from the transaction processes (remember: you are arbing
-            # after this transction processes, so need to calculate what
-            # the new reserves will be after the swap)
-            if isinstance(tx, SingleSwap):
-                pools_swapped_against = await update_pool(tx=tx, contracts=contracts_copy)
-            # If the transaction is a pass through swap, we update the pools
-            # reserves with the new reserves after their respective
-            # swaps process
-            elif isinstance(tx, PassThroughSwap):
-                # Check if the contract address in the second part of
-                # the pass through swap is in our list of contracts we are tracking
-                # If not, skip it since we don't have cyclic routes for it
-                # This can be improved upon in the future to just focus
-                # on the first contract in the pass through swap
-                if tx.output_amm_address in contracts_copy:
-                    pools_swapped_against = await update_pools(tx=tx, contracts=contracts_copy)
-                else:
-                    continue
+            
+            print("Simulating tx")
+            simulate_tx(contracts=contracts_copy, tx=tx)
 
-            # Iterate through each pool we swapped against
-            for pool in pools_swapped_against:
-                # Get the cyclic routes for the pool we swapped against
-                # and begin iterating through each route
-                for route in contracts_copy[pool]["routes"]:
-
-                    # Create a route object to be used in the backrun
-                    route_obj = get_route_object(tx=tx, address=pool, contracts=contracts_copy, route=route)
+            for swap in tx.swaps:
+                for route in contracts_copy[swap.contract_address]["routes"]:
+                    route_obj = get_route_object(swap=swap, contracts=contracts_copy, route=route, arb_denom=FEE_DENOM)
 
                     # Calculate the optimal amount to swap in the first pool
                     # To maximize our profit from the cyclic route
+                    print("Calculating optimal amount in")
                     optimal_amount_in = calculate_optimal_amount_in(route=route_obj)
                     #logging.info(f"Optimal amount in: {optimal_amount_in}")
 
@@ -273,8 +251,8 @@ async def main():
                         logging.info(f"Amount in: {amount_in}")
                         logging.info(f"Profit: {profit}")
                         logging.info(f"Sender: {tx.sender}")
-                        logging.info(f"Pool Swapped Against: {pool}")
-                        logging.info(f"Dex: {contracts_copy[pool]['dex']}")
+                        logging.info(f"Pool Swapped Against: {swap.contract_address}")
+                        logging.info(f"Dex: {contracts_copy[swap.contract_address]['dex']}")
                         logging.info(f"Tx Hash: {sha256(b64decode(tx.tx)).hexdigest()}")
 
                         # Skip auction bid amount is the profit minus the gas fee
