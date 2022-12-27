@@ -7,10 +7,7 @@ from base64 import b64decode
 from swaps import Transaction
 from calculate import calculate_swap
 from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee, whitewhale_fee, terraswap_factory, create_payload, query_node_and_return_response
-from cosmpy.protos.cosmwasm.wasm.v1.query_pb2 import (
-    QuerySmartContractStateRequest,
-    QuerySmartContractStateResponse)
-
+from cosmpy.protos.cosmwasm.wasm.v1.query_pb2 import QuerySmartContractStateResponse
 
 
 def simulate_tx(contracts: dict, tx: Transaction):
