@@ -15,7 +15,7 @@ DEFAULT_JUNOSWAP_PROTOCOL_FEE = 0.0
 ################################################################################
 #                                Utilities                                     #
 ################################################################################
-def create_payload(contract_address: str, query: dict, height: str) -> dict:
+def create_payload(contract_address: str, query: dict, height: str = "") -> dict:
     """Creates the payload for an abci_query"""
     data = QuerySmartContractStateRequest.SerializeToString(
                 QuerySmartContractStateRequest(address=contract_address, 
@@ -39,6 +39,12 @@ async def query_node_and_decode_response(rpc_url: str, payload: dict) -> dict:
     decoded_value = json.loads(QuerySmartContractStateResponse.FromString(value).data.decode())
     return decoded_value
 
+
+async def query_node_and_return_response(rpc_url: str, payload: dict) -> dict:
+    """Query node and decode response"""
+    async with httpx.AsyncClient() as client:
+        response = await client.post(rpc_url, json=payload)
+    return response.json()
 
 ################################################################################
 #                                Junoswap                                      #

@@ -3,10 +3,14 @@ import logging
 import aiometer
 import anyio
 import time
-
+from base64 import b64decode
 from swaps import Transaction
 from calculate import calculate_swap
-from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee, whitewhale_fee, terraswap_factory
+from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee, whitewhale_fee, terraswap_factory, create_payload, query_node_and_return_response
+from cosmpy.protos.cosmwasm.wasm.v1.query_pb2 import (
+    QuerySmartContractStateRequest,
+    QuerySmartContractStateResponse)
+
 
 
 def simulate_tx(contracts: dict, tx: Transaction):
@@ -18,8 +22,10 @@ def simulate_tx(contracts: dict, tx: Transaction):
         else:
             input_reserves = "token2_reserves"
             output_reserves = "token1_reserves"
+
         if swap.input_amount is None and amount_out is not None:
             swap.input_amount = amount_out
+
         amount_out, new_reserves_in, new_reserves_out = calculate_swap(reserves_in=contract_info[input_reserves],
                                                                        reserves_out=contract_info[output_reserves],
                                                                        amount_in=swap.input_amount,
@@ -47,6 +53,21 @@ async def batch_update_reserves(jobs) -> bool:
         time.sleep(60)
         return False
 
+
+async def batch_rpc_call_update_reserves(contracts: dict, rpc_url: str):
+    query = {"pool":{}}
+    batch_payload = []
+    contract_list = []
+    for contract_address in contracts:
+        contract_list.append(contract_address)
+        batch_payload.append(create_payload(contract_address=contract_address, query=query))
+    responses = await query_node_and_return_response(rpc_url, batch_payload)
+    for i in range(len(responses)):
+        value = b64decode(responses[i]["result"]["response"]["value"])
+        contract_info = json.loads(QuerySmartContractStateResponse.FromString(value).data.decode())
+        contracts[contract_list[i]]["info"]["token1_reserves"] = int(contract_info['assets'][0]['amount'])
+        contracts[contract_list[i]]["info"]["token2_reserves"] = int(contract_info['assets'][1]['amount'])
+    
 
 async def update_reserves(contract_address: str, contracts: dict, rpc_url: str):
     """This function is used to update the reserve amounts

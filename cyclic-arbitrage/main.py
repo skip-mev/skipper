@@ -26,7 +26,7 @@ from terra_sdk.key.mnemonic import MnemonicKey
 
 # Local imports
 from mempool import check_for_swap_txs_in_mempool
-from update_contracts import simulate_tx, update_reserves, update_fees, batch_update_fees, batch_update_reserves
+from update_contracts import simulate_tx, update_reserves, update_fees, batch_update_fees, batch_update_reserves, batch_rpc_call_update_reserves
 from calculate import calculate_optimal_amount_in, get_profit_from_route
 from create_tx import create_tx
 from create_messages import create_route_msgs
@@ -199,8 +199,11 @@ async def main():
         # to know the current reserves of the pools it may use
         # within the cyclic arbitrage route. Returns True if
         # the batch update was successful, False otherwise
-        if not await batch_update_reserves(jobs_reserves):
-            continue
+        if CHAIN_ID == "juno-1":
+            if not await batch_update_reserves(jobs_reserves):
+                continue
+        elif CHAIN_ID == "phoenix-1":
+            await batch_rpc_call_update_reserves(contracts, RPC_URL)
 
         # Begin iteration through each transaction
         # we obtained from the mempool that we may

@@ -92,7 +92,7 @@ def create_route_msgs(wallet,
                                        input_denom=route.first_pool_input_denom))
     # Append message(s) for second pool
     if contracts[route.second_pool_contract_address]["dex"] == "junoswap":
-        if route.second_pool_input_denom.startswith("juno"):
+        if route.second_pool_input_denom.startswith("juno") or route.second_pool_input_denom.startswith("terra"):
             msg_list.append(junoswap_increase_allowance(wallet=wallet,
                                                         contract_address=route.second_pool_input_denom,
                                                         amount=route.first_pool_amount_out,
@@ -105,7 +105,7 @@ def create_route_msgs(wallet,
                                       input_denom=route.second_pool_input_denom,
                                       min_output=1))
     else:
-        if route.second_pool_input_denom.startswith("juno"):
+        if route.second_pool_input_denom.startswith("juno") or route.second_pool_input_denom.startswith("terra"):
             msg_list.append(terraswap_send(wallet=wallet,
                                            denom=route.second_pool_input_denom,
                                            contract_address=route.second_pool_contract_address,
@@ -114,7 +114,7 @@ def create_route_msgs(wallet,
             msg_list.append(terraswap_swap(wallet=wallet,
                                            contract_address=route.second_pool_contract_address,
                                            input_amount=route.first_pool_amount_out,
-                                           input_denom=route.second_pool_input_denom))
+                                           input_denom=route.second_pool_input_denom))                  
     # Append message(s) for third pool
     if contracts[route.third_pool_contract_address]["dex"] == "junoswap":
         if route.third_pool_input_denom.startswith("juno"):
@@ -130,7 +130,7 @@ def create_route_msgs(wallet,
                                       input_denom=route.third_pool_input_denom,
                                       min_output=1))
     else:
-        if route.third_pool_input_denom.startswith("juno"):
+        if route.third_pool_input_denom.startswith("juno") or route.second_pool_input_denom.startswith("terra"):
             msg_list.append(terraswap_send(wallet=wallet,
                                            denom=route.third_pool_input_denom,
                                            contract_address=route.third_pool_contract_address,
