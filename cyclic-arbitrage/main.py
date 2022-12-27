@@ -13,16 +13,8 @@ from base64 import b64decode
 from hashlib import sha256
 from dotenv import load_dotenv
 
-# Skip helper library Import
-import skip
-
 # Crypto/Cosmos Imports
-from bip_utils import Bip39SeedGenerator, Bip44, Bip44Coins
 from cosmpy.aerial.client import LedgerClient, NetworkConfig
-from cosmpy.aerial.wallet import LocalWallet
-from cosmpy.crypto.keypairs import PrivateKey
-from terra_sdk.client.lcd import LCDClient
-from terra_sdk.key.mnemonic import MnemonicKey
 
 # Local imports
 from mempool import check_for_swap_txs_in_mempool
@@ -32,6 +24,7 @@ from create_transactions import create_arb_tx
 from create_messages import create_route_msgs
 from route import get_route_object
 from bundle import fire
+from wallet import create_wallet
 
 # Load environment variables
 load_dotenv('envs/juno.env')
@@ -110,16 +103,7 @@ async def main():
     )
     client = LedgerClient(cfg)
 
-    if CHAIN_ID == "juno-1":
-        # Get wallet object from mnemonic seed phrase
-        seed_bytes = Bip39SeedGenerator(MNEMONIC).Generate()
-        bip44_def_ctx = Bip44.FromSeed(seed_bytes, Bip44Coins.COSMOS).DeriveDefaultPath()
-        wallet = LocalWallet(PrivateKey(bip44_def_ctx.PrivateKey().Raw().ToBytes()), prefix=ADDRESS_PREFIX)
-    elif CHAIN_ID == "phoenix-1":
-        mk = MnemonicKey(mnemonic=MNEMONIC)
-        terra = LCDClient("https://phoenix-lcd.terra.dev", "phoenix-1")
-        terra_wallet = terra.wallet(mk)
-        wallet = LocalWallet(PrivateKey(terra_wallet.key.private_key), prefix=ADDRESS_PREFIX)
+    wallet = create_wallet(CHAIN_ID, MNEMONIC, ADDRESS_PREFIX)
 
     # This repo pre-populates a json file with contract
     # addresses for DEX pools (Junoswap, Loop, and White Whale), 
@@ -278,11 +262,11 @@ async def main():
 
                         # Create the transaction we will be sending
                         arb_tx_bytes, _ = create_arb_tx(client=client,
-                                                    wallet=wallet,
-                                                    msg_list=msg_list,
-                                                    gas_limit=GAS_LIMIT,
-                                                    gas_fee=GAS_FEE,
-                                                    fee_denom=FEE_DENOM)
+                                                        wallet=wallet,
+                                                        msg_list=msg_list,
+                                                        gas_limit=GAS_LIMIT,
+                                                        gas_fee=GAS_FEE,
+                                                        fee_denom=FEE_DENOM)
 
                         # FIRE AWAY!
                         # Send the bundle to the skip auction!
