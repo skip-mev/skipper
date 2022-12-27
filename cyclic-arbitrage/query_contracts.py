@@ -81,7 +81,7 @@ async def terraswap_info(rpc_url: str, contract_address: str, height: str = "") 
     return pool_info
 
 
-async def terraswap_fee(rpc_url: str, contract_address: str, height: str = "") -> dict:
+async def terraswap_fee(rpc_url: str, contract_address: str, height: str = "") -> float:
     """Query node for TerraSwap pool fee"""
     query = {"query_config": {}}
     payload = create_payload(contract_address=contract_address, query=query, height=height)
@@ -98,6 +98,17 @@ async def terraswap_factory(rpc_url: str, contract_address: str, height: str = "
     payload = create_payload(contract_address=contract_address, query=query, height=height)
     factory_info = await query_node_and_decode_response(rpc_url, payload)
     return factory_info
+
+################################################################################
+#                                   Loop                                       #
+################################################################################
+async def loop_fee(rpc_url: str, contract_address: str, height: str = "") -> float:
+    """Query node for Loop's extra commission info"""
+    query = {"extra_commission_info": {}}
+    payload = create_payload(contract_address=contract_address, query=query, height=height)
+    extra_commission_info = await query_node_and_decode_response(rpc_url, payload)
+    fee_allocation = float(extra_commission_info["fee_allocation"])
+    return fee_allocation
 
 
 ################################################################################

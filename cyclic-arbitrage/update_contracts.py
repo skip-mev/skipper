@@ -6,10 +6,17 @@ import time
 from base64 import b64decode
 from swaps import Transaction
 from calculate import calculate_swap
-from query_contracts import junoswap_info, terraswap_info, junoswap_fee, terraswap_fee, whitewhale_fee, terraswap_factory, create_payload, query_node_and_return_response
+from query_contracts import (
+    junoswap_info, terraswap_info, 
+    junoswap_fee, terraswap_fee, whitewhale_fee, loop_fee,
+    terraswap_factory, create_payload, query_node_and_return_response
+)
 from cosmpy.protos.cosmwasm.wasm.v1.query_pb2 import QuerySmartContractStateResponse
 
 
+################################################################################
+#                                Simulation                                    #
+################################################################################
 def simulate_tx(contracts: dict, tx: Transaction):
     for swap in tx.swaps:
         contract_info = contracts[swap.contract_address]["info"]
@@ -33,6 +40,35 @@ def simulate_tx(contracts: dict, tx: Transaction):
         contracts[swap.contract_address]["info"][output_reserves] = new_reserves_out
 
 
+################################################################################
+#                                  Tokens                                      #
+################################################################################
+async def update_pool_info(contract_address: str, contracts: dict, rpc_url: str):
+    if contracts[contract_address]["dex"] == "junoswap":
+        contract_info = await junoswap_info(rpc_url, contract_address)
+        contracts[contract_address]["info"]["token1_type"] = int(list(contract_info['token1_denom'].keys())[0])
+        contracts[contract_address]["info"]["token1_denom"] = contract_info['token1_denom'][contracts[contract_address]["info"]["token1_type"]]
+        contracts[contract_address]["info"]["token2_type"] = int(list(contract_info['token2_denom'].keys())[0])
+        contracts[contract_address]["info"]["token2_denom"] = contract_info['token2_denom'][contracts[contract_address]["info"]["token2_type"]]
+    elif contracts[contract_address]["dex"] in ["loop", "white_whale", "terraswap", "astroport", "phoenix"]:
+        contract_info = await terraswap_info(rpc_url, contract_address)
+        token1_type = list(contract_info['assets'][0]['info'].keys())[0]
+        contracts[contract_address]["info"]["token1_type"] = token1_type
+        if token1_type == "token":
+            contracts[contract_address]["info"]["token1_denom"] = contract_info['assets'][0]['info'][token1_type]['contract_addr']
+        elif token1_type == "native_token":
+            contracts[contract_address]["info"]["token1_denom"] = contract_info['assets'][0]['info'][token1_type]['denom']
+        token2_type = list(contract_info['assets'][1]['info'].keys())[0]
+        contracts[contract_address]["info"]["token2_type"] = token2_type
+        if token2_type == "token":
+            contracts[contract_address]["info"]["token2_denom"] = contract_info['assets'][1]['info'][token2_type]['contract_addr']
+        elif token2_type == "native_token":
+            contracts[contract_address]["info"]["token2_denom"] = contract_info['assets'][1]['info'][token2_type]['denom']
+
+
+################################################################################
+#                                 Reserves                                     #
+################################################################################
 async def batch_update_reserves(jobs) -> bool:
     try:
         await aiometer.run_all(jobs)
@@ -84,31 +120,9 @@ async def update_reserves(contract_address: str, contracts: dict, rpc_url: str):
         contracts[contract_address]["info"]["token2_reserves"] = int(contract_info['assets'][1]['amount'])
 
 
-async def update_pool_info(contract_address: str, contracts: dict, rpc_url: str):
-    if contracts[contract_address]["dex"] == "junoswap":
-        contract_info = await junoswap_info(rpc_url, contract_address)
-        contracts[contract_address]["info"]["token1_type"] = int(list(contract_info['token1_denom'].keys())[0])
-        contracts[contract_address]["info"]["token1_denom"] = contract_info['token1_denom'][contracts[contract_address]["info"]["token1_type"]]
-        contracts[contract_address]["info"]["token2_type"] = int(list(contract_info['token2_denom'].keys())[0])
-        contracts[contract_address]["info"]["token2_denom"] = contract_info['token2_denom'][contracts[contract_address]["info"]["token2_type"]]
-    elif contracts[contract_address]["dex"] in ["loop", "white_whale", "terraswap", "astroport", "phoenix"]:
-        print("Updating pool info for " + contract_address, contracts[contract_address]["dex"])
-
-        contract_info = await terraswap_info(rpc_url, contract_address)
-        token1_type = list(contract_info['assets'][0]['info'].keys())[0]
-        contracts[contract_address]["info"]["token1_type"] = token1_type
-        if token1_type == "token":
-            contracts[contract_address]["info"]["token1_denom"] = contract_info['assets'][0]['info'][token1_type]['contract_addr']
-        elif token1_type == "native_token":
-            contracts[contract_address]["info"]["token1_denom"] = contract_info['assets'][0]['info'][token1_type]['denom']
-        token2_type = list(contract_info['assets'][1]['info'].keys())[0]
-        contracts[contract_address]["info"]["token2_type"] = token2_type
-        if token2_type == "token":
-            contracts[contract_address]["info"]["token2_denom"] = contract_info['assets'][1]['info'][token2_type]['contract_addr']
-        elif token2_type == "native_token":
-            contracts[contract_address]["info"]["token2_denom"] = contract_info['assets'][1]['info'][token2_type]['denom']
-
-
+################################################################################
+#                                   Fees                                       #
+################################################################################
 async def batch_update_fees(jobs):
     try:
         await aiometer.run_all(jobs)
@@ -135,8 +149,11 @@ async def update_fees(contract_address: str, contracts: dict, rpc_url: str):
         contracts[contract_address]["info"]["fee_from_input"] = True
     elif contracts[contract_address]["dex"] == "loop":
         fee = await terraswap_fee(rpc_url, contract_address)
-        contracts[contract_address]["info"]["lp_fee"] = fee
-        contracts[contract_address]["info"]["protocol_fee"] = 0.0
+        fee_allocation = await loop_fee(rpc_url, contract_address)
+        protocol_fee = fee * (fee_allocation / 100)
+        lp_fee = fee - protocol_fee
+        contracts[contract_address]["info"]["lp_fee"] = lp_fee
+        contracts[contract_address]["info"]["protocol_fee"] = protocol_fee
         contracts[contract_address]["info"]["fee_from_input"] = False
     elif contracts[contract_address]["dex"] == "white_whale":
         lp_fee, protocol_fee = await whitewhale_fee(rpc_url, contract_address)
@@ -145,6 +162,9 @@ async def update_fees(contract_address: str, contracts: dict, rpc_url: str):
         contracts[contract_address]["info"]["fee_from_input"] = False
 
 
+################################################################################
+#                                Factories                                     #
+################################################################################
 async def update_all_factory_pools(contracts: dict, rpc_url: str, factory_contracts: dict):
     """This function is used to update the DEX pools
     given factory contracts. This is currently used for
@@ -206,6 +226,9 @@ async def update_all_factory_pools(contracts: dict, rpc_url: str, factory_contra
             contracts[contract]["info"]["fee_from_input"] = False
 
 
+################################################################################
+#                                  Routes                                      #
+################################################################################
 def generate_three_pool_cyclic_routes(contracts: dict, arb_denom: str):
     # Generate a dict of all token pairs, the keys are the denoms and the value is a list of pools
     token_pairs = {}
