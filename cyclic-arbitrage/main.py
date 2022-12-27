@@ -265,7 +265,7 @@ async def main():
 
                         # FIRE AWAY!
                         # Send the bundle to the skip auction!
-                        success = fire(wallet=wallet, skip_rpc_url=SKIP_RPC_URL, tx=tx, tx_bytes=arb_tx_bytes)
+                        success = fire(wallet=wallet, skip_rpc_url=SKIP_RPC_URL, tx=tx, arb_tx_bytes=arb_tx_bytes)
 
 # Printer go brrr
 if __name__ == "__main__":
