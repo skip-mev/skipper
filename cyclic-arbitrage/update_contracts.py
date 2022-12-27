@@ -123,15 +123,16 @@ async def update_reserves(contract_address: str, contracts: dict, rpc_url: str):
 ################################################################################
 #                                   Fees                                       #
 ################################################################################
-async def batch_update_fees(jobs):
-    try:
-        await aiometer.run_all(jobs)
-    except anyio._backends._asyncio.ExceptionGroup as e:
-        logging.error("ExcetionGroup - Updating Fees - " + str(e))
-    except json.decoder.JSONDecodeError as e:
-        logging.error("JSON Exception - Updating Fees - " + str(e))
-    except Exception as e:
-        logging.error("General Exception - Updating Fees - " + str(e))
+async def batch_update_fees(jobs, chain_id):
+    if chain_id == "juno-1":
+        try:
+            await aiometer.run_all(jobs)
+        except anyio._backends._asyncio.ExceptionGroup as e:
+            logging.error("ExcetionGroup - Updating Fees - " + str(e))
+        except json.decoder.JSONDecodeError as e:
+            logging.error("JSON Exception - Updating Fees - " + str(e))
+        except Exception as e:
+            logging.error("General Exception - Updating Fees - " + str(e))
 
 
 async def update_fees(contract_address: str, contracts: dict, rpc_url: str):

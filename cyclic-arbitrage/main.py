@@ -130,11 +130,11 @@ async def main():
     # Run the batch update of pool fees
     # If there is an exception, continue using old fees 
     # already stored in the contracts json file
-    #await batch_update_fees(jobs_fees)
+    await batch_update_fees(jobs_fees, CHAIN_ID)
 
     # Update the contracts json file with the new fees
-    #with open(CONTRACTS_FILE, 'w') as f:
-    #    json.dump(contracts, f, indent=4)
+    with open(CONTRACTS_FILE, 'w') as f:
+        json.dump(contracts, f, indent=4)
 
     # Create the jobs for the async batch update
     # of pool contract info when a swap is seen
