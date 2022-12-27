@@ -117,7 +117,6 @@ def calculate_optimal_amount_in(route: Route) -> int:
     Returns:
         int: Optimal amount to swap into the first pool
     """
-    print(route.__dict__)
     a_1_2 = route.first_pool_input_reserves
     a_2_1 = route.first_pool_output_reserves
     r1_0 = 1 - (route.first_pool_lp_fee + route.first_pool_protocol_fee) if route.first_pool_fee_from_input else 1
