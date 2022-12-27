@@ -28,13 +28,14 @@ from terra_sdk.key.mnemonic import MnemonicKey
 from mempool import check_for_swap_txs_in_mempool
 from update_contracts import simulate_tx, update_reserves, update_fees, batch_update_fees, batch_update_reserves, batch_rpc_call_update_reserves
 from calculate import calculate_optimal_amount_in, get_profit_from_route
-from create_tx import create_tx
+from create_transactions import create_arb_tx
 from create_messages import create_route_msgs
 from route import get_route_object
+from bundle import fire
 
 # Load environment variables
-#load_dotenv('envs/juno.env')
-load_dotenv('envs/terra.env')
+load_dotenv('envs/juno.env')
+#load_dotenv('envs/terra.env')
 
 # All global variables to be used throughout the program
 
@@ -158,7 +159,7 @@ async def main():
     # Used as a flag to check if the bot
     # Needs to update our tracked account balance
     # This is triggered after the bot send a bundle
-    reset_balance = True
+    success = True
 
     # Used as a hashmap of transactions to track what
     # the bot has already seen from the mempool to 
@@ -172,10 +173,10 @@ async def main():
         # its account balance to reflect the new balance
         # after the bundle has been sent (in case we win
         # the auction and have an updated balance)
-        if reset_balance:
+        if success:
             try:
                 account_balance = client.query_bank_balance(wallet.address(), denom=FEE_DENOM)
-                reset_balance = False
+                success = False
             except requests.exceptions.ConnectionError:
                 client = LedgerClient(cfg)
                 continue
@@ -276,7 +277,7 @@ async def main():
                                                      gas_fee=GAS_FEE)
 
                         # Create the transaction we will be sending
-                        arb_tx_bytes, _ = create_tx(client=client,
+                        arb_tx_bytes, _ = create_arb_tx(client=client,
                                                     wallet=wallet,
                                                     msg_list=msg_list,
                                                     gas_limit=GAS_LIMIT,
@@ -285,76 +286,7 @@ async def main():
 
                         # FIRE AWAY!
                         # Send the bundle to the skip auction!
-                        try:
-                            # Use the skip-python helper library to sign and send the bundle
-                            # For more information on the skip-python library, check out:
-                            # https://github.com/skip-mev/skip-py
-                            response = skip.sign_and_send_bundle(bundle=[tx.tx_bytes, arb_tx_bytes],
-                                                                 private_key=wallet.signer().private_key_bytes,
-                                                                 public_key=wallet.signer().public_key,
-                                                                 rpc_url=SKIP_RPC_URL,
-                                                                 desired_height=0,
-                                                                 sync=True,
-                                                                 timeout=10)
-                            logging.info(response.json())
-                            #logging.info(f"Route and reserves: {route_obj.__dict__}")
-                        except httpx.ReadTimeout:
-                            logging.error("Read timeout while waiting for response from Skip")
-                            break
-
-                        # Check the error code from the response returned by Skip
-                        # For more information on error codes, check out:
-                        # https://skip-protocol.notion.site/Skip-Searcher-Documentation-0af486e8dccb4081bdb0451fe9538c99
-
-                        # If the error code is 0, the simulation was successful
-                        # (Note, this does not necessarily mean we wont the auction,
-                        # but the bot carries and begins scanning the mempool again
-                        # for the next transaction to backrun)
-                        if response.json()["result"]["code"] == 0:
-                            logging.info("Simulation successful!")
-                            reset_balance = True
-                        # If the error code is 4, it means a skip validator is not up
-                        # for the next block, so we sign and send the entire bundle again
-                        # If the error code is 8, it likely means the tx aimed to be backran
-                        # was already included in the previous block, so we sign and send a 
-                        # bundle again, but this time only including our transaction
-                        # For more info on Skip error codes, see: 
-                        elif response.json()["result"]["code"] == 4 or response.json()["result"]["code"] == 8:
-                            move_on = False
-                            # Keep sending the bundles until we get a success or deliver tx failure
-                            while move_on is False:
-                                # We sleep for 1 second to space out the time we send bundles
-                                # to the skip auction, as we don't want to spam the auction
-                                time.sleep(1)
-                                try:
-                                    response = skip.sign_and_send_bundle(bundle=[arb_tx_bytes],
-                                                                         private_key=wallet.signer().private_key_bytes,
-                                                                         public_key=wallet.signer().public_key,
-                                                                         rpc_url=SKIP_RPC_URL,
-                                                                         desired_height=0,
-                                                                         sync=True,
-                                                                         timeout=10)
-                                    logging.info(response.json())
-                                except httpx.ReadTimeout:
-                                    logging.error("Read timeout while waiting for response from Skip")
-                                    break
-                                try:
-                                    # If we get a 0 error code, we move on to the next transaction
-                                    if response.json()["result"]["code"] == 0:
-                                        logging.info("Simulation successful!")
-                                        reset_balance = True
-                                        move_on = True
-                                    # If we get a deliver tx error, we move on to the next transaction
-                                    elif response.json()["result"]["code"] == 8:
-                                        logging.info("Simulation failed!")
-                                        move_on = True
-                                    # If we get a check tx error, we move on to the next transaction
-                                    elif response.json()["result"]["code"] == 5:
-                                        logging.info("Simulation failed!")
-                                        move_on = True
-                                except KeyError:
-                                    logging.info("KeyError in response from Skip")
-                                    break
+                        success = fire(wallet=wallet, skip_rpc_url=SKIP_RPC_URL, tx=tx, tx_bytes=arb_tx_bytes)
 
 # Printer go brrr
 if __name__ == "__main__":
