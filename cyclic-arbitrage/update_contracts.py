@@ -146,12 +146,15 @@ async def update_fees(contract_address: str, contracts: dict, rpc_url: str):
 
 
 async def update_all_factory_pools(contracts: dict, rpc_url: str, factory_contracts: dict):
-    """This function is used to update the reserve amounts
-       for all DEX pools (Junoswap or Loop). The update
-       happens on the global contracts dict
+    """This function is used to update the DEX pools
+    given factory contracts. This is currently used for
+    Terra. This functions is to be run once at startup
+    of the bot.
 
     Args:
-        contracts (dict): The global contracts dict
+        contracts (dict): Contracts dictionary that will be the json file for the bot
+        rpc_url (str): RPC URL for the chain, used for querying
+        factory_contracts (dict): Dictionary of factory contracts
     """
     for protocol in factory_contracts:
         all_pairs = []
@@ -177,6 +180,30 @@ async def update_all_factory_pools(contracts: dict, rpc_url: str, factory_contra
                     if counter == 3:
                         print(f"Failed to update pool info for {pair['contract_addr']}")
                         raise
+    
+    # TerraSwap, Phoenix, and Astroport fees are derived from their documentation
+    # ATM, their fees cannot be queried from the blockchain
+    # TerraSwap: https://docs.terraswap.io/docs/introduction/trading_fees/
+    # Phoenix: https://docs.phoenixfi.so/phoenix-dex-basics/trading-fees
+    # Astroport: https://docs.astroport.fi/astroport/tokenomics/fees
+    for contract in contracts:
+        if contracts[contract]["dex"] == "terraswap":
+            contracts[contract]["info"]["lp_fee"] = 0.003
+            contracts[contract]["info"]["protocol_fee"] = 0.0
+            contracts[contract]["info"]["fee_from_input"] = False
+        elif contracts[contract]["dex"] == "phoenix":
+            contracts[contract]["info"]["lp_fee"] = 0.0025
+            contracts[contract]["info"]["protocol_fee"] = 0.0
+            contracts[contract]["info"]["fee_from_input"] = False
+        elif contracts[contract]["dex"] == "astroport":
+            contracts[contract]["info"]["lp_fee"] = 0.002
+            contracts[contract]["info"]["protocol_fee"] = 0.001
+            contracts[contract]["info"]["fee_from_input"] = False
+        elif contracts[contract]["dex"] == "white_whale":
+            lp_fee, protcol_fee = await whitewhale_fee(rpc_url, contract)
+            contracts[contract]["info"]["lp_fee"] = lp_fee
+            contracts[contract]["info"]["protocol_fee"] = protcol_fee
+            contracts[contract]["info"]["fee_from_input"] = False
 
 
 def generate_three_pool_cyclic_routes(contracts: dict, arb_denom: str):
