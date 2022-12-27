@@ -1,7 +1,8 @@
 from base64 import b64encode
 from cosmpy.aerial.tx import Transaction, SigningCfg
 
-def create_tx(client, wallet, msg_list: list, gas_limit: int, gas_fee: int, fee_denom: str) -> tuple[bytes, str]:
+
+def create_arb_tx(client, wallet, msg_list: list, gas_limit: int, gas_fee: int, fee_denom: str) -> tuple[bytes, str]:
     """Creates, signs, and encodes a transaction given
     the follow input arguments (returning both the tx_bytes
     and the base64 encoded tx_bytes):
