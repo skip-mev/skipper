@@ -6,15 +6,17 @@ from cosmpy.crypto.keypairs import PrivateKey
 from terra_sdk.client.lcd import LCDClient
 from terra_sdk.key.mnemonic import MnemonicKey
 
+JUNO_CHAIN_ID = "juno-1"
+TERRA_CHAIN_ID = "phoenix-1"
 TERRA_LCD_URL = "https://phoenix-lcd.terra.dev"
 
 def create_wallet(chain_id, mnemonic, address_prefix) -> LocalWallet:
-    if chain_id == "juno-1":
+    if chain_id == JUNO_CHAIN_ID:
         # Get wallet object from mnemonic seed phrase
         seed_bytes = Bip39SeedGenerator(mnemonic).Generate()
         bip44_def_ctx = Bip44.FromSeed(seed_bytes, Bip44Coins.COSMOS).DeriveDefaultPath()
         wallet = LocalWallet(PrivateKey(bip44_def_ctx.PrivateKey().Raw().ToBytes()), prefix=address_prefix)
-    elif chain_id == "phoenix-1":
+    elif chain_id == TERRA_CHAIN_ID:
         mk = MnemonicKey(mnemonic=mnemonic)
         terra = LCDClient(TERRA_LCD_URL, chain_id)
         terra_wallet = terra.wallet(mk)
