@@ -176,8 +176,6 @@ async def main():
         # Based on other messages.
         backrun_list = check_for_swap_txs_in_mempool(RPC_URL, already_seen, contracts)
 
-        print(f"Found {len(backrun_list)} txs to backrun")
-
         # Everytime the bot sees a new transaction it needs may 
         # want to backrun, we get the latest info on all the
         # pools we are tracking. This is because the bot needs
@@ -196,7 +194,6 @@ async def main():
         for tx in backrun_list:
             contracts_copy = copy.deepcopy(contracts)
             
-            print("Simulating tx")
             simulate_tx(contracts=contracts_copy, tx=tx)
 
             for swap in tx.swaps:
@@ -205,9 +202,7 @@ async def main():
 
                     # Calculate the optimal amount to swap in the first pool
                     # To maximize our profit from the cyclic route
-                    print("Calculating optimal amount in")
                     optimal_amount_in = calculate_optimal_amount_in(route=route_obj)
-                    #logging.info(f"Optimal amount in: {optimal_amount_in}")
 
                     # If the optimal amount to swap is 
                     # greater than your account balance
@@ -234,7 +229,7 @@ async def main():
                     # The gas fee and auction bid we have to 
                     # Pay to backrun the transaction, we send it
                     if profit > GAS_FEE:
-                        logging.info("Arbitrage opportunity found!")
+                        logging.info(f"Arbitrage opportunity found!")
                         logging.info(f"Optimal amount in: {optimal_amount_in}")
                         logging.info(f"Amount in: {amount_in}")
                         logging.info(f"Profit: {profit}")
