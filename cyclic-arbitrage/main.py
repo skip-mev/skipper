@@ -27,8 +27,8 @@ from bundle import fire
 from wallet import create_wallet
 
 # Load environment variables
-load_dotenv('envs/juno.env')
-#load_dotenv('envs/terra.env')
+#load_dotenv('envs/juno.env')
+load_dotenv('envs/terra.env')
 
 # All global variables to be used throughout the program
 
@@ -132,13 +132,13 @@ async def main():
     # already stored in the contracts json file
     await batch_update_fees(jobs_fees, CHAIN_ID)
 
-    # Update the contracts json file with the new fees
-    with open(CONTRACTS_FILE, 'w') as f:
-        json.dump(contracts, f, indent=4)
-
     # Create the jobs for the async batch update
     # of pool contract info when a swap is seen
     jobs_reserves = [functools.partial(update_reserves, contract, contracts, RPC_URL) for contract in contract_list]
+
+    # Update the contracts json file with the new fees
+    with open(CONTRACTS_FILE, 'w') as f:
+        json.dump(contracts, f, indent=4)
 
     # Used as a flag to check if the bot
     # Needs to update our tracked account balance
@@ -253,7 +253,7 @@ async def main():
                                                      auction_house_address=AUCTION_HOUSE_ADDRESS,
                                                      expiration=10000000,
                                                      balance=account_balance,
-                                                     gas_fee=GAS_FEE)
+                                                     arb_denom=FEE_DENOM)
 
                         # Create the transaction we will be sending
                         arb_tx_bytes, _ = create_arb_tx(client=client,

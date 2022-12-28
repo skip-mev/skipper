@@ -55,7 +55,7 @@ def create_route_msgs(wallet,
                       auction_house_address: str, 
                       expiration: int, 
                       balance: int, 
-                      gas_fee: int) -> list:
+                      arb_denom: str) -> list:
     """Given the arguments, create a list of all the 
     messages needed to create a backrun cyclic arb capturing
     tx, with a skip bid send and a profit check send.
@@ -146,11 +146,11 @@ def create_route_msgs(wallet,
     msg_list.append(send(from_address=address,
                          to_address=auction_house_address,
                          amount=bid_amount,
-                         denom="ujuno"))
+                         denom=arb_denom))
 
     # Assert profitability, via skip simulation
     msg_list.append(send(from_address=address,
                          to_address=address,
                          amount=balance,
-                         denom="ujuno"))
+                         denom=arb_denom))
     return msg_list

@@ -29,12 +29,12 @@ def fire(wallet, skip_rpc_url, tx, arb_tx_bytes) -> bool:
         # For more information on the skip-python library, check out:
         # https://github.com/skip-mev/skip-py
         response = skip.sign_and_send_bundle(bundle=[tx.tx_bytes, arb_tx_bytes],
-                                                private_key=wallet.signer().private_key_bytes,
-                                                public_key=wallet.signer().public_key,
-                                                rpc_url=skip_rpc_url,
-                                                desired_height=DESIRED_HEIGHT,
-                                                sync=SYNC,
-                                                timeout=READ_TIMEOUT)
+                                             private_key=wallet.signer().private_key_bytes,
+                                             public_key=wallet.signer().public_key,
+                                             rpc_url=skip_rpc_url,
+                                             desired_height=DESIRED_HEIGHT,
+                                             sync=SYNC,
+                                             timeout=READ_TIMEOUT)
         logging.info(response.json())
         #logging.info(f"Route and reserves: {route_obj.__dict__}")
     except httpx.ReadTimeout:
