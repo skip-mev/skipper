@@ -59,6 +59,10 @@ def terraswap_send(wallet, denom: str, contract_address: str, input_amount: int)
 ################################################################################
 
 
+
+################################################################################
+#                          Create Arbitrage Messages                           #
+################################################################################
 def create_route_msgs(wallet, 
                       route: Route, 
                       contracts: dict, 
