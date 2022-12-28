@@ -3,13 +3,18 @@ from cosmpy.protos.cosmos.bank.v1beta1.tx_pb2 import MsgSend
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 from route import Route
 
-
+################################################################################
+#                                  Cosmos                                      #
+################################################################################
 def send(from_address: str, to_address: str, amount: int, denom: str):
     msg_send = MsgSend(from_address=from_address, to_address=to_address)
     msg_send.amount.append(Coin(amount=str(amount), denom=denom))
     return msg_send
 
 
+################################################################################
+#                              Juno - JunoSwap                                 #
+################################################################################
 def junoswap_swap(wallet, contract_address: str, input_token: str, input_amount: int, input_denom: str, min_output: int):
     msg = create_cosmwasm_execute_msg(sender_address=wallet.address(), 
                                       contract_address=contract_address, 
@@ -29,7 +34,9 @@ def junoswap_increase_allowance(wallet, contract_address: str, amount: int, spen
                                                                    "expires": {"at_height": expiration}}})
     return msg
 
-
+################################################################################
+#                              Juno - Loop/White Whale                         #
+################################################################################
 def terraswap_swap(wallet, contract_address: str, input_amount: int, input_denom: str):
     msg = create_cosmwasm_execute_msg(sender_address=wallet.address(), 
                                       contract_address=contract_address, 
@@ -46,6 +53,10 @@ def terraswap_send(wallet, denom: str, contract_address: str, input_amount: int)
                                                      "contract": contract_address,
                                                      "msg": "eyJzd2FwIjp7fX0="}})
     return msg
+
+################################################################################
+#                             Terra - TerraSwap                                #
+################################################################################
 
 
 def create_route_msgs(wallet, 
