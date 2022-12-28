@@ -120,6 +120,38 @@ async def update_reserves(contract_address: str, contracts: dict, rpc_url: str):
         contracts[contract_address]["info"]["token2_reserves"] = int(contract_info['assets'][1]['amount'])
 
 
+def filter_out_zero_reserves(contracts: dict) -> dict:
+    """This function is used to filter out DEX pools
+       that have zero reserves
+
+    Args:
+        contracts (dict): The global contracts dict
+
+    Returns:
+        dict: The filtered contracts dict
+    """
+    filtered_contracts = {}
+    zero_reserves_contracts = []
+    for contract_address in contracts:
+        if contracts[contract_address]["info"]["token1_reserves"] > 0 and contracts[contract_address]["info"]["token2_reserves"] > 0:
+            filtered_contracts[contract_address] = contracts[contract_address]
+        else:
+            zero_reserves_contracts.append(contract_address)
+    
+    for contract_address in filtered_contracts:
+        filtered_routes = []
+        for route in filtered_contracts[contract_address]["routes"]:
+            no_zero_reserves = True
+            for pool in route:
+                if pool in zero_reserves_contracts:
+                    no_zero_reserves = False
+            if no_zero_reserves:
+                filtered_routes.append(route)
+        filtered_contracts[contract_address]["routes"] = filtered_routes
+                    
+    return filtered_contracts
+
+
 ################################################################################
 #                                   Fees                                       #
 ################################################################################
