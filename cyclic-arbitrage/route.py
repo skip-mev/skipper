@@ -1,79 +1,17 @@
+from dataclasses import dataclass, field
+from pool import Pool, RoutePool
+
+@dataclass
 class Route:
-    def __init__(self, first_pool_contract_address = None, 
-                       first_pool_dex = None,
-                       first_pool_input_reserves = None, 
-                       first_pool_output_reserves = None, 
-                       first_pool_input_token = None,
-                       first_pool_output_token = None,
-                       first_pool_input_denom = None,
-                       first_pool_output_denom = None,
-                       first_pool_lp_fee = None,
-                       first_pool_protocol_fee = None,
-                       first_pool_fee_from_input = None,
-                       second_pool_contract_address = None,
-                       second_pool_dex = None,
-                       second_pool_input_reserves = None, 
-                       second_pool_output_reserves = None, 
-                       second_pool_input_token = None,
-                       second_pool_output_token = None,
-                       second_pool_input_denom = None,
-                       second_pool_output_denom = None,
-                       second_pool_lp_fee = None,
-                       second_pool_protocol_fee = None,
-                       second_pool_fee_from_input = None,
-                       third_pool_contract_address = None,
-                       third_pool_dex = None,
-                       third_pool_input_reserves = None, 
-                       third_pool_output_reserves = None,
-                       third_pool_input_token = None,
-                       third_pool_output_token = None,
-                       third_pool_input_denom = None,
-                       third_pool_output_denom = None,
-                       third_pool_lp_fee = None,
-                       third_pool_protocol_fee = None,
-                       third_pool_fee_from_input = None):
+    pools: list[RoutePool] = field(init=False)
+    amount_in: int = field(init=False)
+    amount_out: int = field(init=False)
+    second_pool_amount_out: int = field(init=False)
+    third_pool_amount_out: int = field(init=False)
+    profit: int = field(init=False)
 
-        self.first_pool_contract_address = first_pool_contract_address
-        self.first_pool_dex = first_pool_dex
-        self.first_pool_input_reserves = first_pool_input_reserves
-        self.first_pool_output_reserves = first_pool_output_reserves
-        self.first_pool_input_token = first_pool_input_token
-        self.first_pool_output_token = first_pool_output_token
-        self.first_pool_input_denom = first_pool_input_denom
-        self.first_pool_output_denom = first_pool_output_denom
-        self.first_pool_lp_fee = first_pool_lp_fee
-        self.first_pool_protocol_fee = first_pool_protocol_fee
-        self.first_pool_fee_from_input = first_pool_fee_from_input
-
-        self.second_pool_contract_address = second_pool_contract_address
-        self.second_pool_dex = second_pool_dex
-        self.second_pool_input_reserves = second_pool_input_reserves
-        self.second_pool_output_reserves = second_pool_output_reserves
-        self.second_pool_input_token = second_pool_input_token
-        self.second_pool_output_token = second_pool_output_token
-        self.second_pool_input_denom = second_pool_input_denom
-        self.second_pool_output_denom = second_pool_output_denom
-        self.second_pool_lp_fee = second_pool_lp_fee
-        self.second_pool_protocol_fee = second_pool_protocol_fee
-        self.second_pool_fee_from_input = second_pool_fee_from_input
-
-        self.third_pool_contract_address = third_pool_contract_address
-        self.third_pool_dex = third_pool_dex
-        self.third_pool_input_reserves = third_pool_input_reserves
-        self.third_pool_output_reserves = third_pool_output_reserves
-        self.third_pool_input_token = third_pool_input_token
-        self.third_pool_output_token = third_pool_output_token
-        self.third_pool_input_denom = third_pool_input_denom
-        self.third_pool_output_denom = third_pool_output_denom
-        self.third_pool_lp_fee = third_pool_lp_fee
-        self.third_pool_protocol_fee = third_pool_protocol_fee
-        self.third_pool_fee_from_input = third_pool_fee_from_input
-
-        self.first_pool_amount_in = 0
-        self.first_pool_amount_out = 0
-        self.second_pool_amount_out = 0
-        self.third_pool_amount_out = 0
-        self.profit = 0
+    def add_pool(self, pool: RoutePool):
+        self.pools.append(pool)
 
 
 def order_route(swap, contracts: dict, route: list, arb_denom: str) -> list:
@@ -122,7 +60,8 @@ def order_route(swap, contracts: dict, route: list, arb_denom: str) -> list:
     return ordered_route
 
 
-def get_route_object(swap, contracts: dict, route: list, arb_denom: str) -> Route:
+def get_route_object(swap, contracts: dict, route_list: list, arb_denom: str) -> Route:
+    # TODO: Docstring Out of Date
     """Given a tx, pool address and it's route list, and contracts dict,
     return a Route object containing the reserves of the pools in the route,
     ordered in the direction for the cyclice arb execution.
@@ -136,85 +75,58 @@ def get_route_object(swap, contracts: dict, route: list, arb_denom: str) -> Rout
     Returns:
         Route: Route object containing the ordered reserves of the pools in the route
     """
-    ordered_route = order_route(swap, contracts, route, arb_denom)
-    # Assign values to route object init params
-    # First pool
-    if contracts[ordered_route[0]]["info"]["token1_denom"] == arb_denom:
-        first_pool_input_denom = contracts[ordered_route[0]]["info"]["token1_denom"]
-        first_pool_output_denom = contracts[ordered_route[0]]["info"]["token2_denom"]
-        first_pool_input_token = "Token1"
-        first_pool_output_token = "Token2"
-        first_pool_input_reserves = contracts[ordered_route[0]]["info"]["token1_reserves"]
-        first_pool_output_reserves = contracts[ordered_route[0]]["info"]["token2_reserves"]
-    else:
-        first_pool_input_denom = contracts[ordered_route[0]]["info"]["token2_denom"]
-        first_pool_output_denom = contracts[ordered_route[0]]["info"]["token1_denom"]
-        first_pool_input_token = "Token2"
-        first_pool_output_token = "Token1"
-        first_pool_input_reserves = contracts[ordered_route[0]]["info"]["token2_reserves"]
-        first_pool_output_reserves = contracts[ordered_route[0]]["info"]["token1_reserves"]
-    # Second pool
-    if contracts[ordered_route[1]]["info"]["token1_denom"] == first_pool_output_denom:
-        second_pool_input_denom = contracts[ordered_route[1]]["info"]["token1_denom"]
-        second_pool_output_denom = contracts[ordered_route[1]]["info"]["token2_denom"]
-        second_pool_input_token = "Token1"
-        second_pool_output_token = "Token2"
-        second_pool_input_reserves = contracts[ordered_route[1]]["info"]["token1_reserves"]
-        second_pool_output_reserves = contracts[ordered_route[1]]["info"]["token2_reserves"]
-    else:
-        second_pool_input_denom = contracts[ordered_route[1]]["info"]["token2_denom"]
-        second_pool_output_denom = contracts[ordered_route[1]]["info"]["token1_denom"]
-        second_pool_input_token = "Token2"
-        second_pool_output_token = "Token1"
-        second_pool_input_reserves = contracts[ordered_route[1]]["info"]["token2_reserves"]
-        second_pool_output_reserves = contracts[ordered_route[1]]["info"]["token1_reserves"]
-    # Third pool
-    if contracts[ordered_route[2]]["info"]["token1_denom"] == arb_denom:
-        third_pool_input_denom = contracts[ordered_route[2]]["info"]["token2_denom"]
-        third_pool_output_denom = contracts[ordered_route[2]]["info"]["token1_denom"]
-        third_pool_input_token = "Token2"
-        third_pool_output_token = "Token1"
-        third_pool_input_reserves = contracts[ordered_route[2]]["info"]["token2_reserves"]
-        third_pool_output_reserves = contracts[ordered_route[2]]["info"]["token1_reserves"]
-    else:
-        third_pool_input_denom = contracts[ordered_route[2]]["info"]["token1_denom"]
-        third_pool_output_denom = contracts[ordered_route[2]]["info"]["token2_denom"]
-        third_pool_input_token = "Token1"
-        third_pool_output_token = "Token2"
-        third_pool_input_reserves = contracts[ordered_route[2]]["info"]["token1_reserves"]
-        third_pool_output_reserves = contracts[ordered_route[2]]["info"]["token2_reserves"]
-    # Initialize route object
-    route_object = Route(first_pool_contract_address=ordered_route[0],
-                         first_pool_dex=contracts[ordered_route[0]]["dex"],
-                         first_pool_input_reserves=first_pool_input_reserves,
-                         first_pool_output_reserves=first_pool_output_reserves,
-                         first_pool_input_denom=first_pool_input_denom,
-                         first_pool_output_denom=first_pool_output_denom,
-                         first_pool_input_token=first_pool_input_token,
-                         first_pool_output_token=first_pool_output_token,
-                         first_pool_lp_fee=contracts[ordered_route[0]]["info"]['lp_fee'],
-                         first_pool_protocol_fee=contracts[ordered_route[0]]["info"]['protocol_fee'],
-                         first_pool_fee_from_input=contracts[ordered_route[0]]["info"]['fee_from_input'],
-                         second_pool_contract_address=ordered_route[1],
-                         second_pool_dex=contracts[ordered_route[1]]["dex"],
-                         second_pool_input_reserves=second_pool_input_reserves,
-                         second_pool_output_reserves=second_pool_output_reserves,
-                         second_pool_input_denom=second_pool_input_denom,
-                         second_pool_output_denom=second_pool_output_denom,
-                         second_pool_input_token=second_pool_input_token,
-                         second_pool_output_token=second_pool_output_token,
-                         second_pool_lp_fee=contracts[ordered_route[1]]["info"]['lp_fee'],
-                         second_pool_protocol_fee=contracts[ordered_route[1]]["info"]['protocol_fee'],
-                         second_pool_fee_from_input=contracts[ordered_route[1]]["info"]['fee_from_input'],
-                         third_pool_contract_address=ordered_route[2],
-                         third_pool_dex=contracts[ordered_route[2]]["dex"],
-                         third_pool_input_reserves=third_pool_input_reserves,
-                         third_pool_output_reserves=third_pool_output_reserves,
-                         third_pool_input_denom=third_pool_input_denom,
-                         third_pool_output_denom=third_pool_output_denom,
-                         third_pool_input_token=third_pool_input_token,
-                         third_pool_output_token=third_pool_output_token,
-                         third_pool_lp_fee=contracts[ordered_route[2]]["info"]['lp_fee'],
-                         third_pool_protocol_fee=contracts[ordered_route[2]]["info"]['protocol_fee'],
-                         third_pool_fee_from_input=contracts[ordered_route[2]]["info"]['fee_from_input'])
+    ordered_route = order_route(swap, contracts, route_list, arb_denom)
+    route_object = Route()
+    for i in range(len(ordered_route)):
+        pool = Pool(contract_address=ordered_route[i],
+                    dex=contracts[ordered_route[i]]["dex"],
+                    lp_fee=contracts[ordered_route[i]]["info"]["lp_fee"],
+                    protocol_fee=contracts[ordered_route[i]]["info"]["protocol_fee"],
+                    fee_from_input=contracts[ordered_route[i]]["info"]["fee_from_input"],
+                    token1_denom=contracts[ordered_route[i]]["info"]["token1_denom"],
+                    token2_denom=contracts[ordered_route[i]]["info"]["token2_denom"],
+                    token1_reserves=contracts[ordered_route[i]]["info"]["token1_reserves"],
+                    token2_reserves=contracts[ordered_route[i]]["info"]["token2_reserves"])
+                    
+        if i == 0:
+            if pool.token1_denom == arb_denom:
+                input_denom = pool.token1_denom
+                output_denom = pool.token2_denom
+                input_token = "Token1"
+                output_token = "Token2"
+                input_reserves = pool.token1_reserves
+                output_reserves = pool.token2_reserves
+            else:
+                input_denom = pool.token2_denom
+                output_denom = pool.token1_denom
+                input_token = "Token2"
+                output_token = "Token1"
+                input_reserves = pool.token2_reserves
+                output_reserves = pool.token1_reserves
+        else:
+            if pool.token1_denom == route_object.pools[i-1].output_denom:
+                input_denom = pool.token1_denom
+                output_denom = pool.token2_denom
+                input_token = "Token1"
+                output_token = "Token2"
+                input_reserves = pool.token1_reserves
+                output_reserves = pool.token2_reserves
+            else:
+                input_denom = pool.token2_denom
+                output_denom = pool.token1_denom
+                input_token = "Token1"
+                output_token = "Token2"
+                input_reserves = pool.token2_reserves
+                output_reserves = pool.token1_reserves
+        
+        pool = RoutePool(**vars(pool),
+                         input_reserves=input_reserves,
+                         output_reserves=output_reserves,
+                         input_denom=input_denom,
+                         output_denom=output_denom,
+                         input_token=input_token,
+                         output_token=output_token)
+
+        route_object.add_pool(pool)
+
     return route_object
