@@ -1,9 +1,11 @@
+from dataclasses import dataclass, field
+
+@dataclass
 class Swap:
-    def __init__(self, contract_address, input_denom, input_amount, output_denom):
-        self.contract_address = contract_address
-        self.input_denom = input_denom
-        self.input_amount = input_amount
-        self.output_denom = output_denom
+    contract_address: str
+    input_denom: str
+    input_amount: int
+    output_denom: str
 
 
 class JunoSwap(Swap):
