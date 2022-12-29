@@ -86,35 +86,24 @@ def get_route_object(swap, contracts: dict, route_list: list, arb_denom: str) ->
                     token2_reserves=contracts[ordered_route[i]]["info"]["token2_reserves"])
                     
         if i == 0:
-            if pool.token1_denom == arb_denom:
-                input_denom = pool.token1_denom
-                output_denom = pool.token2_denom
-                input_token = "Token1"
-                output_token = "Token2"
-                input_reserves = pool.token1_reserves
-                output_reserves = pool.token2_reserves
-            else:
-                input_denom = pool.token2_denom
-                output_denom = pool.token1_denom
-                input_token = "Token2"
-                output_token = "Token1"
-                input_reserves = pool.token2_reserves
-                output_reserves = pool.token1_reserves
+            input_denom_check = arb_denom
         else:
-            if pool.token1_denom == route_object.pools[i-1].output_denom:
-                input_denom = pool.token1_denom
-                output_denom = pool.token2_denom
-                input_token = "Token1"
-                output_token = "Token2"
-                input_reserves = pool.token1_reserves
-                output_reserves = pool.token2_reserves
-            else:
-                input_denom = pool.token2_denom
-                output_denom = pool.token1_denom
-                input_token = "Token1"
-                output_token = "Token2"
-                input_reserves = pool.token2_reserves
-                output_reserves = pool.token1_reserves
+            input_denom_check = route_object.pools[i-1].output_denom
+
+        if pool.token1_denom == input_denom_check:
+            input_denom = pool.token1_denom
+            output_denom = pool.token2_denom
+            input_token = "Token1"
+            output_token = "Token2"
+            input_reserves = pool.token1_reserves
+            output_reserves = pool.token2_reserves
+        else:
+            input_denom = pool.token2_denom
+            output_denom = pool.token1_denom
+            input_token = "Token2"
+            output_token = "Token1"
+            input_reserves = pool.token2_reserves
+            output_reserves = pool.token1_reserves
         
         pool = RoutePool(**vars(pool),
                          input_reserves=input_reserves,
