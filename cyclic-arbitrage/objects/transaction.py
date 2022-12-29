@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 @dataclass
 class Transaction:
@@ -6,7 +6,7 @@ class Transaction:
     tx_bytes: bytes
     sender: str
     contract_address: str
-    swaps: list = []
+    swaps: list = field(default_factory=list) 
 
     def add_swap(self, swap):
         self.swaps.append(swap)

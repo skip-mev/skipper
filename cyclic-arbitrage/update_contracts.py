@@ -215,7 +215,9 @@ async def update_all_factory_pools(contracts: dict, rpc_url: str, factory_contra
 
         while len(pairs["pairs"]) == 30:
             all_pairs.extend(pairs["pairs"])
-            pairs = await terraswap_factory(rpc_url=rpc_url, contract_address=factory_contracts[protocol], start_after=pairs["pairs"][-1]["asset_infos"])
+            pairs = await terraswap_factory(rpc_url=rpc_url, 
+                                            contract_address=factory_contracts[protocol], 
+                                            start_after=pairs["pairs"][-1]["asset_infos"])
 
         all_pairs.extend(pairs["pairs"])
 

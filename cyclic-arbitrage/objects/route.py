@@ -4,7 +4,7 @@ from objects.pool import Pool, RoutePool
 
 @dataclass
 class Route:
-    pools: list[RoutePool] = field(init=False)
+    pools: list[RoutePool] = field(default_factory=list)
     profit: int = field(init=False)
 
     def add_pool(self, pool: RoutePool):
