@@ -4,7 +4,7 @@ import aiometer
 import anyio
 import time
 from base64 import b64decode
-from swaps import Transaction
+from types.transaction import Transaction
 from calculate import calculate_swap
 from query_contracts import (
     junoswap_info, terraswap_info, 

@@ -1,7 +1,7 @@
 from cosmpy.aerial.contract import create_cosmwasm_execute_msg
 from cosmpy.protos.cosmos.bank.v1beta1.tx_pb2 import MsgSend
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
-from route import Route
+from types.route import Route
 
 ################################################################################
 #                                  Cosmos                                      #
