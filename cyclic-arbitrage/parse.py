@@ -6,8 +6,8 @@ import cosmpy.protos.cosmos.tx.v1beta1.tx_pb2 as cosmos_tx_pb2
 import cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 as cosmwasm_tx_pb2
 
 # Local imports
-from types.swaps import Swap, JunoSwap
-from types.transaction import Transaction
+from objects.swaps import Swap, JunoSwap
+from objects.transaction import Transaction
 
 ###############################################################################
 #                                  Utilities                                  #

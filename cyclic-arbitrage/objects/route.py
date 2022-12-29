@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from pool import Pool, RoutePool
+from objects.pool import Pool, RoutePool
 
 
 @dataclass

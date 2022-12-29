@@ -22,7 +22,7 @@ from update_contracts import simulate_tx, update_reserves, update_fees, batch_up
 from calculate import calculate_optimal_amount_in, get_profit_from_route
 from create_transactions import create_arb_tx
 from create_messages import create_route_msgs
-from route import get_route_object
+from objects.route import get_route_object
 from bundle import fire
 from wallet import create_wallet
 

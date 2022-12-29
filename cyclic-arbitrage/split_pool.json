@@ -1,0 +1,84 @@
+{
+    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07": {
+        "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup": {
+            "input_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
+            "output_denom": "ujuno",
+            "input_type": "cw20",
+            "output_type": "native",
+            "input_token": "Token1",
+            "output_token": "Token2",
+            "dex": "loop",
+            "parser": "terraswap",
+            "lp_fee": 0.00145,
+            "protocol_fee": 0.00145,
+            "fee_from_input": false,
+            "routes": [
+                [
+                    "juno124d0zymrkdxv72ccyuqrquur8dkesmxmx2unfn7dej95yqx5yn8s70x3yj",
+                    "juno1qt7uzjg9su3mk78jpt695rmxce4sa7evz7wa0edexjrsxghy35hsgje5l9",
+                    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07"
+                ],
+                [
+                    "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                    "juno1dl8zdygs57lcwm3e9tnq4pdmmp8nhhf08jcne72nsjkf7qntfz3s0e99x3",
+                    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07"
+                ],
+                [
+                    "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
+                    "juno1utkr0ep06rkxgsesq6uryug93daklyd6wneesmtvxjkz0xjlte9qdj2s8q",
+                    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07"
+                ],
+                [
+                    "juno1jz50fj5zkcv3h6hmcfr3nr6eer7rj5pmsry5qj5jc8rfvpeavyzsgknm83",
+                    "juno1mz8yzrgyp9mmq9aksxgpy83vmu8p4j8h3qyf9waxcd2epchqx5ps0ekj27",
+                    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07"
+                ],
+                [
+                    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                    "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t",
+                    "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n"
+                ]
+            ]
+        },
+        "ujuno": {
+            "input_denom": "ujuno",
+            "output_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
+            "input_type": "native",
+            "output_type": "cw20",
+            "input_token": "Token2",
+            "output_token": "Token1",
+            "dex": "loop",
+            "parser": "terraswap",
+            "lp_fee": 0.00145,
+            "protocol_fee": 0.00145,
+            "fee_from_input": false,
+            "routes": [
+                [
+                    "juno124d0zymrkdxv72ccyuqrquur8dkesmxmx2unfn7dej95yqx5yn8s70x3yj",
+                    "juno1qt7uzjg9su3mk78jpt695rmxce4sa7evz7wa0edexjrsxghy35hsgje5l9",
+                    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07"
+                ],
+                [
+                    "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                    "juno1dl8zdygs57lcwm3e9tnq4pdmmp8nhhf08jcne72nsjkf7qntfz3s0e99x3",
+                    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07"
+                ],
+                [
+                    "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
+                    "juno1utkr0ep06rkxgsesq6uryug93daklyd6wneesmtvxjkz0xjlte9qdj2s8q",
+                    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07"
+                ],
+                [
+                    "juno1jz50fj5zkcv3h6hmcfr3nr6eer7rj5pmsry5qj5jc8rfvpeavyzsgknm83",
+                    "juno1mz8yzrgyp9mmq9aksxgpy83vmu8p4j8h3qyf9waxcd2epchqx5ps0ekj27",
+                    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07"
+                ],
+                [
+                    "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                    "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t",
+                    "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n"
+                ]
+            ]
+        }
+    }
+}
