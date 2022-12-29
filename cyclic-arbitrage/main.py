@@ -248,7 +248,6 @@ async def main():
                         # Found in the mempool
                         msg_list = create_route_msgs(wallet=wallet,
                                                      route=route_obj, 
-                                                     contracts=contracts_copy,
                                                      bid_amount=bid_amount,
                                                      auction_house_address=AUCTION_HOUSE_ADDRESS,
                                                      expiration=10000000,

@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 
+
 @dataclass
 class Pool:
     contract_address: str
@@ -11,6 +12,7 @@ class Pool:
     token2_denom: str
     token1_reserves: int
     token2_reserves: int
+
 
 @dataclass
 class RoutePool(Pool):

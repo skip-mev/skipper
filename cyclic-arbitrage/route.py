@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from pool import Pool, RoutePool
 
+
 @dataclass
 class Route:
     pools: list[RoutePool] = field(init=False)
