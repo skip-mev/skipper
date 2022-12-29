@@ -92,69 +92,31 @@ def create_route_msgs(wallet,
     address = str(wallet.address())
     msg_list = []
 
-    # Append message(s) for first pool
-    if contracts[route.first_pool_contract_address]["dex"] == "junoswap":
-        msg_list.append(junoswap_swap(wallet=wallet,
-                                      contract_address=route.first_pool_contract_address,
-                                      input_token=route.first_pool_input_token,
-                                      input_amount=route.first_pool_amount_in,
-                                      input_denom=route.first_pool_input_denom,
-                                      min_output=1))
-    else:
-        msg_list.append(terraswap_swap(wallet=wallet,
-                                       contract_address=route.first_pool_contract_address,
-                                       input_amount=route.first_pool_amount_in,
-                                       input_denom=route.first_pool_input_denom))
-    # Append message(s) for second pool
-    if contracts[route.second_pool_contract_address]["dex"] == "junoswap":
-        if route.second_pool_input_denom.startswith("juno") or route.second_pool_input_denom.startswith("terra"):
-            msg_list.append(junoswap_increase_allowance(wallet=wallet,
-                                                        contract_address=route.second_pool_input_denom,
-                                                        amount=route.first_pool_amount_out,
-                                                        spender=route.second_pool_contract_address,
-                                                        expiration=expiration))
-        msg_list.append(junoswap_swap(wallet=wallet,
-                                      contract_address=route.second_pool_contract_address,
-                                      input_token=route.second_pool_input_token,
-                                      input_amount=route.first_pool_amount_out,
-                                      input_denom=route.second_pool_input_denom,
-                                      min_output=1))
-    else:
-        if route.second_pool_input_denom.startswith("juno") or route.second_pool_input_denom.startswith("terra"):
-            msg_list.append(terraswap_send(wallet=wallet,
-                                           denom=route.second_pool_input_denom,
-                                           contract_address=route.second_pool_contract_address,
-                                           input_amount=route.first_pool_amount_out))
+    for i in range(len(route.pools)):
+        if route.pools[i].dex == "junoswap":
+            if route.pools[i].input_denom.startswith("juno") or route.pools[i].input_denom.startswith("terra"):
+                msg_list.append(junoswap_increase_allowance(wallet=wallet,
+                                                            contract_address=route.pools[i].input_denom,
+                                                            amount=route.pools[i].amount_in,
+                                                            spender=route.pools[i].contract_address,
+                                                            expiration=expiration))
+            msg_list.append(junoswap_swap(wallet=wallet,
+                                          contract_address=route.pools[i].contract_address,
+                                          input_token=route.pools[i].input_token,
+                                          input_amount=route.pools[i].amount_in,
+                                          input_denom=route.pools[i].input_denom,
+                                          min_output=1))
         else:
-            msg_list.append(terraswap_swap(wallet=wallet,
-                                           contract_address=route.second_pool_contract_address,
-                                           input_amount=route.first_pool_amount_out,
-                                           input_denom=route.second_pool_input_denom))                  
-    # Append message(s) for third pool
-    if contracts[route.third_pool_contract_address]["dex"] == "junoswap":
-        if route.third_pool_input_denom.startswith("juno"):
-            msg_list.append(junoswap_increase_allowance(wallet=wallet,
-                                                        contract_address=route.third_pool_input_denom,
-                                                        amount=route.second_pool_amount_out,
-                                                        spender=route.third_pool_contract_address,
-                                                        expiration=expiration))
-        msg_list.append(junoswap_swap(wallet=wallet,
-                                      contract_address=route.third_pool_contract_address,
-                                      input_token=route.third_pool_input_token,
-                                      input_amount=route.second_pool_amount_out,
-                                      input_denom=route.third_pool_input_denom,
-                                      min_output=1))
-    else:
-        if route.third_pool_input_denom.startswith("juno") or route.second_pool_input_denom.startswith("terra"):
-            msg_list.append(terraswap_send(wallet=wallet,
-                                           denom=route.third_pool_input_denom,
-                                           contract_address=route.third_pool_contract_address,
-                                           input_amount=route.second_pool_amount_out))
-        else:
-            msg_list.append(terraswap_swap(wallet=wallet,
-                                           contract_address=route.third_pool_contract_address,
-                                           input_amount=route.second_pool_amount_out,
-                                           input_denom=route.third_pool_input_denom))
+            if route.pools[i].input_denom.startswith("juno") or route.pools[i].input_denom.startswith("terra"):
+                msg_list.append(terraswap_send(wallet=wallet,
+                                               denom=route.pools[i].input_denom,
+                                               contract_address=route.pools[i].contract_address,
+                                               input_amount=route.pools[i].amount_in))
+            else:
+                msg_list.append(terraswap_swap(wallet=wallet,
+                                               contract_address=route.pools[i].contract_address,
+                                               input_amount=route.pools[i].amount_in,
+                                               input_denom=route.pools[i].input_denom))
 
     # Append the bid message which sends the bid amount to the auction house
     # The highest bidder wins the auction if competing for the same tx to backrun

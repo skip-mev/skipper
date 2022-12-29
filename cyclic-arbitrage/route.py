@@ -4,10 +4,6 @@ from pool import Pool, RoutePool
 @dataclass
 class Route:
     pools: list[RoutePool] = field(init=False)
-    amount_in: int = field(init=False)
-    amount_out: int = field(init=False)
-    second_pool_amount_out: int = field(init=False)
-    third_pool_amount_out: int = field(init=False)
     profit: int = field(init=False)
 
     def add_pool(self, pool: RoutePool):
