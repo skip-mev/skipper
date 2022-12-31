@@ -1,13 +1,13 @@
 from dataclasses import dataclass, field
-from objects.pool import Pool, RoutePool
+from contract.pools.pool import Pool
 
 
 @dataclass
 class Route:
-    pools: list[RoutePool] = field(default_factory=list)
+    pools: list[Pool] = field(default_factory=list)
     profit: int = field(init=False)
 
-    def add_pool(self, pool: RoutePool):
+    def add_pool(self, pool: Pool):
         self.pools.append(pool)
 
 
@@ -105,13 +105,13 @@ def get_route_object(swap, contracts: dict, route_list: list, arb_denom: str) ->
             input_reserves = pool.token2_reserves
             output_reserves = pool.token1_reserves
         
-        pool = RoutePool(**vars(pool),
-                         input_reserves=input_reserves,
-                         output_reserves=output_reserves,
-                         input_denom=input_denom,
-                         output_denom=output_denom,
-                         input_token=input_token,
-                         output_token=output_token)
+        pool = Pool(**vars(pool),
+                    input_reserves=input_reserves,
+                    output_reserves=output_reserves,
+                    input_denom=input_denom,
+                    output_denom=output_denom,
+                    input_token=input_token,
+                    output_token=output_token)
 
         route_object.add_pool(pool)
 

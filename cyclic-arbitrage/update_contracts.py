@@ -46,7 +46,7 @@ def simulate_tx(contracts: dict, tx: Transaction):
 async def update_pool_info(contract_address: str, contracts: dict, rpc_url: str):
     if contracts[contract_address]["dex"] == "junoswap":
         contract_info = await junoswap_info(rpc_url, contract_address)
-        contracts[contract_address]["info"]["token1_type"] = int(list(contract_info['token1_denom'].keys())[0])
+        contracts[contract_address]["info"]["token1_type"] = list(contract_info['token1_denom'].keys())[0]
         contracts[contract_address]["info"]["token1_denom"] = contract_info['token1_denom'][contracts[contract_address]["info"]["token1_type"]]
         contracts[contract_address]["info"]["token2_type"] = int(list(contract_info['token2_denom'].keys())[0])
         contracts[contract_address]["info"]["token2_denom"] = contract_info['token2_denom'][contracts[contract_address]["info"]["token2_type"]]
