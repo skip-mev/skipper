@@ -188,9 +188,10 @@ class Route:
         
         return tx.tx.SerializeToString()
     
+    
 def _add_profitability_invariant(bot: Bot,
-                                    tx: Tx, 
-                                    account_balance: int):
+                                 tx: Tx, 
+                                 account_balance: int):
     """ Add profitability invariant to transaction"""
     tx.add_message(
         MsgSend(
@@ -203,8 +204,8 @@ def _add_profitability_invariant(bot: Bot,
 
 
 def _add_auction_bid(bot: Bot,
-                    tx: Tx,
-                    bid: int):
+                     tx: Tx,
+                     bid: int):
     """ Add auction bid to transaction"""
     tx.add_message(
         MsgSend(
