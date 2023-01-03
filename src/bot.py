@@ -100,8 +100,8 @@ class Bot:
         """ Build backrun bundle for transaction"""
         
         # Add all potential routes to the transaction
-        transaction.add_routes(contracts=contracts_copy,
-                               arb_denom=bot.arb_denom)
+        transaction.add_routes(contracts=contracts,
+                               arb_denom=self.arb_denom)
         
         # Calculate the profit for each route
         for route in transaction.routes:
@@ -162,11 +162,10 @@ class Bot:
         # Retry if we get a not a skip val or a deliver tx failure
         if response.json()["result"]["code"] in RETRY_FAILURE_CODES:
             # Keep sending the bundles until we get a success or deliver tx failure
-            return self.keep_retrying(bundle=bundle)
+            return self._keep_retrying(bundle=bundle)
         return False
             
-                
-    def keep_retrying(self, bundle: list[bytes]) -> bool:
+    def _keep_retrying(self, bundle: list[bytes]) -> bool:
         """ Keeps sending the bundle until we get a success or deliver tx failure"""
         base64_encoded_bundle, bundle_signature = skip.sign_bundle(
                                                         bundle=bundle[1:],
@@ -174,10 +173,10 @@ class Bot:
                                                         )
         retry_response = self.retry(base64_encoded_bundle, bundle_signature)
         while retry_response is None:
-            retry_response = self.retry(base64_encoded_bundle, bundle_signature)
+            retry_response = self._retry(base64_encoded_bundle, bundle_signature)
         return retry_response
             
-    def retry(self, base64_encoded_bundle, bundle_signature) -> bool:
+    def _retry(self, base64_encoded_bundle, bundle_signature) -> bool:
         """ Signs and sends the bundle to the Skip auction.
             Retrying and handling errors as necessary.
         """
