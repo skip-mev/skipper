@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from pools.terraswap import Terraswap
+from pools import Terraswap
 
 
 @dataclass

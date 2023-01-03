@@ -4,20 +4,13 @@ from contract import Contract
 from decoders import CosmWasmDecoder
 
 
-class DecoderFactory:
-    def __init__(self):
-        self.impls = {
-            "cosmwasm": CosmWasmDecoder
-            }
-    
-    def create(self, impl: str):
-        return self.impls[impl]()
-    
-    def get_implementation(self, impl: str):
-        return self.impls[impl]
-    
-    def get_implementations(self):
-        return self.impls
+"""@DEV TODO: Add more queriers here"""    
+def create_decoder(decoder):
+    decoders = {
+        "cosmwasm": CosmWasmDecoder
+        }
+    decoders[decoder]()
+
 
 @dataclass
 class Decoder(ABC):

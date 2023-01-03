@@ -3,7 +3,7 @@ import math
 from dataclasses import dataclass, field
 from contract import Pool
 from swap import calculate_swap
-from config import Config
+from bot import Bot
 
 from cosmpy.aerial.tx import Transaction as Tx, SigningCfg
 from cosmpy.protos.cosmos.bank.v1beta1.tx_pb2 import MsgSend
@@ -15,6 +15,7 @@ class Route:
     pools: list[Pool] = field(default_factory=list)
     profit: int = 0
     optimal_amount_in: int = 0
+    amount_in: int = 0
     
     def order_pools(self,
                     contracts: dict, 
@@ -67,11 +68,11 @@ class Route:
         if input_denom == arb_denom:
             self.pools.reverse()
             
-    def calculate_profit(self, amount_in) -> None:
+    def calculate_and_set_profit(self) -> None:
         """ Calculate the profit of the self."""
         for i, pool in enumerate(self.pools):
             if i == 0:
-                pool.amount_in = amount_in
+                pool.amount_in = self.amount_in
             else:
                 pool.amount_in = self.pools[i-1].amount_out
                 
@@ -87,7 +88,7 @@ class Route:
         self.profit = self.pools[-1].amount_out - self.pools[0].amount_in
         return self.profit
     
-    def calculate_optimal_amount_in(self) -> int:
+    def calculate_and_set_optimal_amount_in(self) -> None:
         """Given an ordered route, calculate the optimal amount into 
             the first pool that maximizes the profit of swapping through the route.
             Implements three pool cylic arb from this paper: https://arxiv.org/abs/2105.02784
@@ -130,12 +131,18 @@ class Route:
             (math.sqrt(r1[0] * r2[0] * a_prime * a) - a) 
             / (r1[0])
             )
-        
-        return self.optimal_amount_in
+    
+    def calculate_and_set_amount_in(self, bot: Bot) -> None:
+        """ Set the amount to swap into the first pool"""
+        if self.optimal_amount_in <= 0:
+            pass
+        elif self.optimal_amount_in > bot.account_balance - bot.gas_fee:
+            self.amount_in = bot.account_balance - bot.gas_fee
+        else:
+            self.amount_in = self.optimal_amount_in
         
     def build_backrun_tx(self,
-                         config: Config, 
-                         account_balance: int,
+                         bot: Bot, 
                          bid: int) -> bytes:
         """ Build backrun transaction for route"""
         tx = Tx()
@@ -147,19 +154,19 @@ class Route:
         for msg in msgs:
             tx.add_message(msg)
             
-        account = config.client.query_account(
-                    str(config.wallet.address())
+        account = bot.client.query_account(
+                    str(bot.wallet.address())
                     )
         
         _add_profitability_invariant(
-            config=config,
+            bot=bot,
             tx=tx,
-            account_balance=account_balance
+            account_balance=bot.account_balance
             )
                                     
         # Bid to Skip Auction
         _add_auction_bid(
-            config=config,
+            bot=bot,
             tx=tx,
             bid=bid
         )
@@ -167,43 +174,43 @@ class Route:
         tx.seal(
             signing_cfgs=[
                 SigningCfg.direct(
-                    config.wallet.public_key(), 
+                    bot.wallet.public_key(), 
                     account.sequence)], 
-            fee=config.fee, 
-            gas_limit=config.gas_limit
+            fee=bot.fee, 
+            gas_limit=bot.gas_limit
             )
         tx.sign(
-            config.wallet.signer(), 
-            config.chain_id, 
+            bot.wallet.signer(), 
+            bot.chain_id, 
             account.number
             )
         tx.complete()
         
         return tx.tx.SerializeToString()
     
-def _add_profitability_invariant(config: Config,
+def _add_profitability_invariant(bot: Bot,
                                     tx: Tx, 
                                     account_balance: int):
     """ Add profitability invariant to transaction"""
     tx.add_message(
         MsgSend(
-            from_address=config.wallet.address(),
-            to_address=config.wallet.address(),
+            from_address=bot.wallet.address(),
+            to_address=bot.wallet.address(),
             amount=[Coin(amount=str(account_balance), 
-                        denom=config.fee_denom)]
+                        denom=bot.fee_denom)]
             )
         )
 
 
-def _add_auction_bid(config: Config,
+def _add_auction_bid(bot: Bot,
                     tx: Tx,
                     bid: int):
     """ Add auction bid to transaction"""
     tx.add_message(
         MsgSend(
-            from_address=config.wallet.address(),
-            to_address=config.auction_house_address,
+            from_address=bot.wallet.address(),
+            to_address=bot.auction_house_address,
             amount=[Coin(amount=str(bid),
-                        denom=config.fee_denom)]
+                        denom=bot.fee_denom)]
         )
     )

@@ -1,10 +1,14 @@
+import math
+import logging
+from base64 import b64decode
+from hashlib import sha256
 from copy import deepcopy
 
 from decoder import Decoder
 from contract import Contract, Pool
 from route import Route
 from swap import Swap
-from config import Config
+from bot import Bot
 
 
 class Transaction:    
@@ -54,10 +58,9 @@ class Transaction:
     
     def add_routes(self, 
                    contracts: dict, 
-                   swaps: list[Swap], 
                    arb_denom: str) -> None:
         """ Builds the routes of the transaction."""
-        for swap in swaps:
+        for swap in self.swaps:
             for pools in contracts[swap.contract_address].routes:
                 self.add_route(contracts=contracts, 
                                swap=swap, 
@@ -89,20 +92,3 @@ class Transaction:
             route.pools.append(pool)
             
         self.routes.append(route)
-        
-    def build_bundle(self,
-                     config: Config,
-                     account_balance: int,
-                     bid: int) -> list[bytes]:
-        """ Build backrun bundle for transaction"""
-        highest_profit_route: Route = self.routes.sort(
-                                            key=lambda route: route.profit, 
-                                            reverse=True)[0]
-        
-        if highest_profit_route.profit <= 0:
-            return []
-        
-        return [self.tx_bytes, 
-                highest_profit_route.build_backrun_tx(config=config, 
-                                                      account_balance=account_balance,
-                                                      bid=bid)]

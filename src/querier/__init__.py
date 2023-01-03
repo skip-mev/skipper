@@ -1,1 +1,1 @@
-from .querier import Querier, QuerierFactory
+from .querier import Querier, create_querier
