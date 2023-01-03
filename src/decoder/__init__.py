@@ -1,1 +1,1 @@
-from .decoder import Decoder, DecoderFactory
+from .decoder import Decoder, create_decoder

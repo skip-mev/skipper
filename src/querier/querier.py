@@ -3,20 +3,12 @@ from abc import ABC, abstractmethod, abstractstaticmethod
 from queriers import CosmWasmQuerier 
 
 
-class QuerierFactory:
-    def __init__(self):
-        self.impls = {
-            "cosmwasm": CosmWasmQuerier
-            }
-    
-    def create(self, impl: str, rpc_url: str):
-        return self.impls[impl](rpc_url)
-    
-    def get_implementation(self, impl: str):
-        return self.impls[impl]
-    
-    def get_implementations(self):
-        return self.impls
+"""@DEV TODO: Add more queriers here"""    
+def create_querier(querier, rpc_url):
+    queriers = {
+        "cosmwasm": CosmWasmQuerier
+        }
+    queriers[querier](rpc_url=rpc_url)
 
 
 @dataclass
@@ -32,9 +24,13 @@ class Querier(ABC):
         """"""
 
     @abstractmethod
-    def query_node_for_mempool_txs(self) -> list[str]:
+    def query_node_for_new_mempool_txs(self) -> list[str]:
         """"""
         
     @abstractstaticmethod
     def create_payload(contract_address: str, query: dict, height: str = "") -> dict:
+        """"""
+        
+    @abstractmethod
+    def update_account_balance(self, bot) -> int:
         """"""

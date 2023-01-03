@@ -6,8 +6,12 @@ from cosmpy.protos.cosmwasm.wasm.v1.query_pb2 import (
     QuerySmartContractStateResponse)
 import logging
 import time
+import requests
 
-from querier.querier import Querier
+from cosmpy.aerial.client import LedgerClient
+
+from querier import Querier
+from bot import Bot
 
 class CosmWasmQuerier(Querier):
 
@@ -102,3 +106,14 @@ class CosmWasmQuerier(Querier):
                    "params": params}
         
         return payload
+    
+    def update_account_balance(self, bot: Bot) -> int:
+        if bot.reset: 
+            try:
+                bot.account_balance = bot.client.query_bank_balance(
+                                                address=bot.wallet.address(), 
+                                                denom=bot.fee_denom
+                                                )
+                bot.reset = False
+            except requests.exceptions.ConnectionError:
+                bot.client = LedgerClient(bot.network_bot)
