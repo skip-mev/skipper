@@ -108,6 +108,9 @@ class CosmWasmQuerier(Querier):
         return payload
     
     def update_account_balance(self, bot: Bot) -> int:
+        """ Updates the account balance of the bot
+            if the bot needs to be reset.
+        """
         if bot.reset: 
             try:
                 bot.account_balance = bot.client.query_bank_balance(

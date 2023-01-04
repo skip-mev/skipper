@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from cosmpy.aerial.client import LedgerClient, NetworkConfig
 from hashlib import sha256
 from base64 import b64decode
+from dataclasses import dataclass, field
 
 import math
 import time
@@ -21,9 +22,13 @@ from transaction import Transaction
 from route import Route
 from contract import Pool
 
-""" USER TODO: CHOOSE ENVIRONMENT VARIABLES PATH"""
+
+"""#############################################"""
+"""@USER TODO: CHOOSE ENVIRONMENT VARIABLES PATH"""
 #ENV_FILE_PATH = "envs/juno.env"
 ENV_FILE_PATH = "envs/terra.env"
+"""#############################################"""
+
 
 DELAY_BETWEEN_SENDS = 1
 DESIRED_HEIGHT = 0
@@ -32,6 +37,7 @@ READ_TIMEOUT = 10
 SUCCESS_CODE = 0
 RETRY_FAILURE_CODES = [4, 8]
 NOT_A_SKIP_VAL_CODE = 4
+
 
 class Bot:
     def __init__(self):
@@ -57,7 +63,9 @@ class Bot:
         self.auction_house_address = os.environ.get("AUCTION_HOUSE_ADDRESS")
         self.auction_bid_profit_percentage = os.environ.get("AUCTION_BID_PROFIT_PERCENTAGE")
         # Create and set Queryer and Decoder
-        self.querier: Querier = create_querier(querier=os.environ.get("QUERIER"), rpc_url=self.rpc_url)
+        self.querier: Querier = create_querier(
+                                    querier=os.environ.get("QUERIER"), 
+                                    rpc_url=self.rpc_url)
         self.decoder: Decoder = create_decoder(decoder=os.environ.get("DECODER"))
         # Set factory and router contracts
         self.factory_contracts = ast.literal_eval(os.environ.get("FACTORY_CONTRACTS"))
@@ -66,7 +74,9 @@ class Bot:
         self.reset: bool = True
         self.account_balance: int = 0
         # Set up logging
-        logging.basicConfig(filename=os.environ.get("LOG_FILE"), encoding='utf-8', level=logging.INFO)
+        logging.basicConfig(filename=os.environ.get("LOG_FILE"), 
+                            encoding='utf-8', 
+                            level=logging.INFO)
         # Create and set client and wallet
         self.network_config = NetworkConfig(
                                     chain_id=self.chain_id,
@@ -76,7 +86,9 @@ class Bot:
                                     staking_denomination=self.fee_denom,
                                     )
         self.client = LedgerClient(self.network_config)
-        self.wallet = create_wallet(self.chain_id, self.mnemonic, self.address_prefix)
+        self.wallet = create_wallet(self.chain_id, 
+                                    self.mnemonic, 
+                                    self.address_prefix)
         # Get any existing contracts from the contracts file
         with open(self.contracts_file) as f:
             self.init_contracts: dict = json.load(f)
@@ -157,6 +169,7 @@ class Bot:
         # For more information on error codes, check out:
         # https://skip-protocol.notion.site/Skip-Searcher-Documentation-0af486e8dccb4081bdb0451fe9538c99
         if response.json()["result"]["code"] == SUCCESS_CODE:
+            self.reset = True
             logging.info("Simulation successful!")
             return True
         # Retry if we get a not a skip val or a deliver tx failure
@@ -202,6 +215,7 @@ class Bot:
                 return None
             # If we get a 0 error code, we move on to the next transaction
             if response.json()["result"]["code"] == SUCCESS_CODE:
+                self.reset = True
                 logging.info("Simulation successful!")
                 return True
             # If we get any other error code, we move on to the next transaction
