@@ -17,15 +17,17 @@ def calculate_swap(reserves_in: int,
                    lp_fee: float, 
                    protocol_fee: float, 
                    fee_from_input: bool) -> tuple[int, int, int]:
-
+    """ Given info about a pool and an amount to swap in, calculate 
+        and return the amount out from and update reserves.
+    """
     if amount_in <= 0:
         raise ValueError("Amount in must be greater than 0 to calculate swap")
-
+    # Calculate CFMM invariant and fees
     k = reserves_in * reserves_out
     total_fee = lp_fee + protocol_fee
     total_swap_fee = 1 - total_fee
     lp_swap_fee = 1 - lp_fee
-
+    # Calculate based on which side the fee is taken from
     if fee_from_input:
         amount_in_after_fee = amount_in * total_swap_fee
         lp_fee_amount = math.floor((amount_in - math.floor(amount_in_after_fee)) * (lp_fee / total_fee))

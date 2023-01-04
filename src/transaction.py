@@ -1,14 +1,9 @@
-import math
-import logging
-from base64 import b64decode
-from hashlib import sha256
 from copy import deepcopy
 
-from decoder import Decoder
 from contract import Contract, Pool
+from decoder import Decoder
 from route import Route
 from swap import Swap
-from bot import Bot
 
 
 class Transaction:    
@@ -16,15 +11,19 @@ class Transaction:
                  contracts: dict, 
                  tx_str: str,
                  decoder: Decoder):
-                
+        """ @DEV TODO: Add more attributes to transaction 
+            object if adding new strategy. Currently supports
+            objects for arbs (swaps and routes).
+        """
+        # Decode transaction
         tx_bytes, decoded_pb_tx = decoder.decode_tx(tx_str)
-        
+        # Set tx attributes
         self.tx_str: str = tx_str
         self.tx_bytes: bytes = tx_bytes
-        
         self.swaps: list[Swap] = []
         self.routes: list[Route] = []
-        
+        # Iterate through messages in transaction and
+        # extend transactions based on type of contract.
         for message in decoded_pb_tx.body.messages:
             self._init_message(
                     message=message,
@@ -35,9 +34,15 @@ class Transaction:
                       message,
                       decoder: Decoder,
                       contracts: dict):
+        """ Decode message, get relevant contract, 
+            and extend transactions based on type
+            of contract.
+            @DEV TODO: Add more contract types here 
+                       if adding new strategy.
+        """
         if message.type_url != decoder.relevant_type_url:
             return
-        
+        # Decode message and get relevant contract
         message_value, msg = decoder.decode_message(message)
         contract: Contract = decoder.get_relevant_contract(
                                             contracts=contracts, 
@@ -46,8 +51,7 @@ class Transaction:
                                             )
         if contract is None:
             return
-        
-        # Update this based on new startegy implemented
+        # Extend transactions based on type of contract
         if isinstance(contract, Pool):
             self.swaps.extend(
                 contract.get_swaps_from_message(
@@ -59,7 +63,7 @@ class Transaction:
     def add_routes(self, 
                    contracts: dict, 
                    arb_denom: str) -> None:
-        """ Builds the routes of the transaction."""
+        """ Sets the routes of the transaction."""
         for swap in self.swaps:
             for pools in contracts[swap.contract_address].routes:
                 self.add_route(contracts=contracts, 
@@ -72,7 +76,7 @@ class Transaction:
                   swap: Swap, 
                   arb_denom: str,
                   pools: list[str]) -> None:
-        """ Builds the route of the transaction."""
+        """ Sets the route of the transaction."""
         route: Route = Route()
         route.pools = [contracts[pool] for pool in pools]
         route.order_pools(
@@ -82,13 +86,13 @@ class Transaction:
                     )
         for i, _ in enumerate(route.pools):
             pool: Pool = deepcopy(route.pools[i])
-            
+            # Set input denom depending on pool index
             if i == 0:
                 input_denom = arb_denom
             else:
                 input_denom = route.pools[i-1].output_denom
-                
+            # Set pool input and output params
             pool.set_input_output_vars(input_denom) 
             route.pools.append(pool)
-            
+        # Add route to transaction
         self.routes.append(route)

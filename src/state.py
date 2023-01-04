@@ -1,11 +1,11 @@
+import time
+import json
 import copy
+import logging
+import functools
 import aiometer
 import anyio
-import json
-import logging
-import time
-import functools
-
+import itertools
 from dataclasses import dataclass, field
 
 from transaction import Transaction
@@ -17,6 +17,9 @@ from swap import calculate_swap
 
 @dataclass
 class State:
+    """@DEV TODO: Add more update all jobs if adding new strategy.
+       currently works for dex / arb related strategies.
+    """
     contracts: dict[str, Pool] = field(default_factory=dict)
     update_all_tokens_jobs = field(default_factory=list)
     update_all_reserves_jobs = field(default_factory=list)
@@ -26,22 +29,19 @@ class State:
                                      querier: Querier,
                                      factory_contracts: dict,
                                      arb_denom: str):
-        """This function is used to update the DEX pools
-        given factory contracts. This is currently used for
-        Terra. This functions is to be run once at startup
-        of the bot.
-
-        Args:
-            contracts (dict): Contracts dictionary that will be the json file for the bot
-            rpc_url (str): RPC URL for the chain, used for querying
-            factory_contracts (dict): Dictionary of factory contracts
+        """ This function is used to set all the pool contracts
+            in state taking into account factory contracts and
+            contracts loaded into the bot.
         """
         for protocol in factory_contracts:
-            factory: Factory = create_factory(contract_address=factory_contracts[protocol],
-                                     protocol=protocol)
+            factory: Factory = create_factory(
+                                    contract_address=factory_contracts[protocol],
+                                    protocol=protocol
+                                    )
             all_pairs = await factory.get_all_pairs(querier=querier)
-            self.contracts = {pair['contract_addr']: Pool(contract_address=pair['contract_addr'], 
-                                                          protocol=protocol) 
+            self.contracts = {pair['contract_addr']: 
+                                    Pool(contract_address=pair['contract_addr'], 
+                                         protocol=protocol) 
                                     for pair in all_pairs}   
             
         self.set_all_jobs(querier=querier)
@@ -113,18 +113,21 @@ class State:
                 token_pairs[denom].setdefault(other_denom, []).append(contract_address) 
                 
         return token_pairs
-
+                        
     def _set_contract_routes(self, arb_denom, token_pairs):
-        set_routes = []                                    
+        """ This function is used to set the routes for each contract."""
+        set_routes = []
         for denom in token_pairs[arb_denom]:
             for denom_2 in token_pairs[denom]:
                 if denom_2 not in token_pairs[arb_denom]:
                     continue
-                
-                for contract_address, contract_address_2, contract_address_3 in zip(token_pairs[arb_denom][denom], 
-                                                                                    token_pairs[denom][denom_2], 
-                                                                                    token_pairs[denom_2][arb_denom]):
-                    route: list[str] = [contract_address, contract_address_2, contract_address_3]
+                contracts = itertools.product(
+                                token_pairs[arb_denom][denom],
+                                token_pairs[denom][denom_2],
+                                token_pairs[denom_2][arb_denom],
+                                )
+                for contract_addresses in contracts:
+                    route = list(contract_addresses)
                     set_route = set(route)
                     if set_route in set_routes:
                         continue
