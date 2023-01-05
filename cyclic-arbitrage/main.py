@@ -198,7 +198,7 @@ async def main():
 
             for swap in tx.swaps:
                 for route in contracts_copy[swap.contract_address]["routes"]:
-                    route_obj = get_route_object(swap=swap, contracts=contracts_copy, route=route, arb_denom=FEE_DENOM)
+                    route_obj = get_route_object(swap=swap, contracts=contracts_copy, route_list=route, arb_denom=FEE_DENOM)
 
                     # Calculate the optimal amount to swap in the first pool
                     # To maximize our profit from the cyclic route
