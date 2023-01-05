@@ -27,8 +27,8 @@ from bundle import fire
 from wallet import create_wallet
 
 # Load environment variables
-#load_dotenv('envs/juno.env')
-load_dotenv('envs/terra.env')
+load_dotenv('envs/juno.env')
+#load_dotenv('envs/terra.env')
 
 # All global variables to be used throughout the program
 
