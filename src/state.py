@@ -53,12 +53,21 @@ class State:
             
     def set_all_jobs(self, querier: Querier):
         """ This function is used to set all the jobs"""
-        self.update_all_tokens_jobs = [functools.partial(contract.update_tokens, querier) 
-                                            for contract in self.contracts.values()]
-        self.update_all_reserves_jobs = [functools.partial(contract.update_reserves, querier) 
-                                            for contract in self.contracts.values()]
-        self.update_all_fees_jobs = [functools.partial(contract.update_fees, querier) 
-                                            for contract in self.contracts.values()]
+        self.update_all_tokens_jobs = [functools.partial(
+                                                contract.update_tokens, 
+                                                querier) 
+                                            for contract 
+                                            in self.contracts.values()]
+        self.update_all_reserves_jobs = [functools.partial(
+                                                contract.update_reserves, 
+                                                querier) 
+                                            for contract 
+                                            in self.contracts.values()]
+        self.update_all_fees_jobs = [functools.partial(
+                                                contract.update_fees, 
+                                                querier) 
+                                            for contract 
+                                            in self.contracts.values()]
         
     async def update_all(self, jobs: list) -> bool:
         """ This function is used to update all the contracts
