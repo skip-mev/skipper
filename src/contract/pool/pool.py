@@ -24,7 +24,7 @@ def create_pool(contract_address: str,
         "astroport": Astroport,
         "loop": Loop,
         "phoenix": Phoenix,
-        "whitewhale": Whitewhale
+        "white_whale": Whitewhale
         }
     wallets[pool](contract_address, pool)
 

@@ -92,16 +92,17 @@ class Bot:
         # Get any existing contracts from the contracts file
         with open(self.contracts_file) as f:
             self.init_contracts: dict = json.load(f)
-        # Get list of all contract addresses
-        self.contract_list: list = list(self.contracts.keys())
         # Initialize the state
         self.state: State = State()
         # Update all pool contracts in state
         self.state.set_all_pool_contracts(
+                        init_contracts=self.init_contracts,
                         querier=self.querier,
                         factory_contracts=self.factory_contracts,
                         arb_denom=self.arb_denom
                         )
+        # Get list of all contract addresses
+        self.contract_list: list = list(self.state.contracts.keys())
         # Update the contracts json file with the update values
         with open(self.contracts_file, 'w') as f:
             json.dump(self.state.contracts, f, indent=4)

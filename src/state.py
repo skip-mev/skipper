@@ -9,7 +9,7 @@ import itertools
 from dataclasses import dataclass, field
 
 from transaction import Transaction
-from contract import Pool
+from contract import Pool, create_pool
 from contract.factory import Factory, create_factory
 from querier import Querier
 from swap import calculate_swap
@@ -26,12 +26,40 @@ class State:
     update_all_fees_jobs = field(default_factory=list)
         
     async def set_all_pool_contracts(self,
+                                     init_contracts: dict,
                                      querier: Querier,
                                      factory_contracts: dict,
-                                     arb_denom: str):
+                                     arb_denom: str) -> None:
         """ This function is used to set all the pool contracts
             in state taking into account factory contracts and
             contracts loaded into the bot.
+        """ 
+        self.set_all_init_contracts(init_contracts=init_contracts)
+        await self.set_all_factory_contracts(factory_contracts=factory_contracts,
+                                             querier=querier)
+        self.set_all_jobs(querier=querier)
+        await self.update_all(self.update_all_tokens_jobs)
+        await self.update_all(self.update_all_fees_jobs)
+        await self.update_all(self.update_all_reserves_jobs) 
+        self.filter_out_zero_reserves()
+        self.set_cyclic_routes(arb_denom=arb_denom)
+        
+    def set_all_init_contracts(self, init_contracts: dict) -> None:
+        """ This method is used to set all the contracts
+            loaded into the bot via init_contracts.
+        """
+        self.contracts = {contract:
+                            create_pool(contract_address=contract,
+                                        pool=init_contracts[contract]["dex"])
+                            for contract
+                            in init_contracts}
+        
+    async def set_all_factory_contracts(self, 
+                                        factory_contracts: dict, 
+                                        querier: Querier) -> None:
+        """ This method is used to set all the pools
+            created by the factory contracts. This is preferred
+            method for any pools that implements a factory.
         """
         for protocol in factory_contracts:
             factory: Factory = create_factory(
@@ -39,19 +67,13 @@ class State:
                                     protocol=protocol
                                     )
             all_pairs = await factory.get_all_pairs(querier=querier)
-            self.contracts = {pair['contract_addr']: 
-                                    Pool(contract_address=pair['contract_addr'], 
-                                         protocol=protocol) 
-                                    for pair in all_pairs}   
+            self.contracts = {pair['contract_addr']:
+                                    create_pool(contract_address=pair['contract_addr'],
+                                                pool=protocol)
+                                    for pair
+                                    in all_pairs}
             
-        self.set_all_jobs(querier=querier)
-        await self.update_all(self.update_all_tokens_jobs)
-        await self.update_all(self.update_all_fees_jobs)
-        await self.update_all(self.update_all_reserves_jobs) 
-        self.filter_out_zero_reserves()
-        self.set_cyclic_routes(arb_denom=arb_denom)
-            
-    def set_all_jobs(self, querier: Querier):
+    def set_all_jobs(self, querier: Querier) -> None:
         """ This function is used to set all the jobs"""
         self.update_all_tokens_jobs = [functools.partial(
                                                 contract.update_tokens, 
