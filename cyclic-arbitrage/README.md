@@ -42,6 +42,11 @@ Shell into container & check logs
 docker exec -it mevbot cat logs/juno.log
 ```
 
+Change env variables after image is built
+```
+docker exec -it mevbot /bin/sh
+```
+
 # How the Bot Works
 
 This example bot searches for 3-pool cyclic arbitrage opportunities
