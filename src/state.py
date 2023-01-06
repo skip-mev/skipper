@@ -114,7 +114,9 @@ class State:
                 
         return token_pairs
                         
-    def _set_contract_routes(self, arb_denom, token_pairs):
+    def _set_contract_routes(self, 
+                             arb_denom: str, 
+                             token_pairs: dict[str, dict[str, list]]):
         """ This function is used to set the routes for each contract."""
         set_routes = []
         for denom in token_pairs[arb_denom]:

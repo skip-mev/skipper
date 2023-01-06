@@ -12,30 +12,26 @@ from pools import (
     Whitewhale
     )
 
-
-class PoolFactory:
-    def __init__(self):
-        self.impls = {
-            "junoswap": Junoswap,
-            "terraswap": Terraswap,
-            "astroport": Astroport,
-            "loop": Loop,
-            "phoenix": Phoenix,
-            "whitewhale": Whitewhale
-            }
     
-    def create(self, contract_address: str, impl: str):
-        return self.impls[impl](contract_address, impl)
-    
-    def get_implementation(self, impl: str):
-        return self.impls[impl]
-    
-    def get_implementations(self):
-        return self.impls
+def create_pool(contract_address: str, 
+                pool: str) -> 'Pool':
+    """ Factory function to create pool objects based on identifiers.
+        @DEV TODO: Add more pools as they are laucnhed.
+    """
+    wallets = {
+        "junoswap": Junoswap,
+        "terraswap": Terraswap,
+        "astroport": Astroport,
+        "loop": Loop,
+        "phoenix": Phoenix,
+        "whitewhale": Whitewhale
+        }
+    wallets[pool](contract_address, pool)
 
 
 @dataclass
 class Pool(Contract, ABC):
+    """ This class is an abstract class for all pools."""
     protocol: str
 
     token1_denom: str = ""
@@ -58,41 +54,52 @@ class Pool(Contract, ABC):
 
     @abstractmethod
     async def update_tokens(self, querier: Querier) -> None:
-        """"""
+        """ This method updates the tokens of the pool.
+        """
 
     @abstractmethod
     async def update_reserves(self, querier: Querier) -> None:
-        """"""
+        """ This method updates the reserves of the pool.
+        """
 
     @abstractmethod
     async def update_fees(self, querier: Querier) -> None:
-        """"""
+        """ This method updates the fees of the pool.
+        """
         
     @abstractmethod
     def get_swaps_from_message(self, 
                                msg, 
                                message_value, 
                                contracts: dict) -> list[Swap]:
-        """"""
+        """ This method returns a list of swaps from a message.
+        """
 
     @abstractmethod
     def create_swap_msgs(self, 
                          input_amount: int, 
                          input_token: str, 
                          output_token: str):
-        """"""
+        """ This method creates swap messages.
+        """
         
     @abstractstaticmethod
-    def get_query_tokens_payload(contract_address: str, querier: Querier) -> dict:
-        """"""
+    def get_query_tokens_payload(contract_address: str, 
+                                 querier: Querier) -> dict:
+        """ This method returns the payload for querying the tokens.
+        """
 
     @abstractstaticmethod
-    def get_query_reserves_payload(contract_address: str, querier: Querier) -> dict:
-        """"""
+    def get_query_reserves_payload(contract_address: str, 
+                                   querier: Querier) -> dict:
+        """ This method returns the payload for querying the reserves.
+        """
     
     @abstractstaticmethod
-    def get_query_fees_payload(contract_address: str, querier: Querier) -> dict:
-        """"""
+    def get_query_fees_payload(contract_address: str, 
+                               querier: Querier) -> dict:
+        """ This method returns the payload for querying the fees.
+        """
     
     def get_swap_from_inputs(self,
                              sender: str,
@@ -108,7 +115,8 @@ class Pool(Contract, ABC):
                     input_amount=input_amount,
                     output_denom=output_denom)
 
-    def get_denoms_from_input_token(self, input_token: str) -> tuple[str, str]:
+    def get_denoms_from_input_token(self, 
+                                    input_token: str) -> tuple[str, str]:
         """ Returns the input and output denoms from the input token."""
         if input_token == "Token1":
             return (self.token1_denom, 
@@ -124,7 +132,8 @@ class Pool(Contract, ABC):
         else:
             return self.token1_denom
         
-    def get_reserves_from_input_denom(self, input_denom: str) -> tuple[int, int]:
+    def get_reserves_from_input_denom(self, 
+                                      input_denom: str) -> tuple[int, int]:
         """ Get the reserves from the input denom."""
         if input_denom == self.token1_denom:
             return self.token1_reserves, self.token2_reserves
@@ -132,6 +141,7 @@ class Pool(Contract, ABC):
             return self.token2_reserves, self.token1_reserves
         
     def set_token1_as_input(self) -> None:
+        """ Sets the token1 as the input token."""
         self.input_denom = self.token1_denom
         self.output_denom = self.token2_denom
         self.input_token = "Token1"
@@ -140,6 +150,7 @@ class Pool(Contract, ABC):
         self.output_reserves = self.token2_reserves
         
     def set_token2_as_input(self) -> None:
+        """ Sets the token2 as the input token."""
         self.input_denom = self.token2_denom
         self.output_denom = self.token1_denom
         self.input_token = "Token2"
@@ -148,6 +159,9 @@ class Pool(Contract, ABC):
         self.output_reserves = self.token1_reserves
         
     def set_input_output_vars(self, input_denom: str) -> None:
+        """ Sets the input and output variables 
+            based on the input denom.
+        """
         if input_denom == self.token1_denom:
             self.set_token1_as_input()
         else:

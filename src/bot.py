@@ -44,32 +44,32 @@ class Bot:
         # Load environment variables
         load_dotenv(ENV_FILE_PATH)
         # Set file paths
-        self.log_file = os.environ.get("LOG_FILE")
-        self.contracts_file = os.environ.get("CONTRACTS_FILE")
+        self.log_file: str = os.environ.get("LOG_FILE")
+        self.contracts_file: str = os.environ.get("CONTRACTS_FILE")
         # Set general chain / settings variables
-        self.mnemonic = os.environ.get("MNEMONIC")
-        self.rpc_url = os.environ.get("RPC_URL")
-        self.rest_url = os.environ.get("REST_URL")
-        self.chain_id = os.environ.get("CHAIN_ID")
-        self.fee_denom = os.environ.get("FEE_DENOM")
-        self.gas_limit = os.environ.get("GAS_LIMIT")
-        self.gas_price = os.environ.get("GAS_PRICE")
-        self.gas_fee = int(self.gas_limit * self.gas_price)
-        self.fee = f"{self.gas_fee}{self.fee_denom}"
-        self.arb_denom = os.environ.get("ARB_DENOM")
-        self.address_prefix = os.environ.get("ADDRESS_PREFIX")
+        self.mnemonic: str = os.environ.get("MNEMONIC")
+        self.rpc_url: str = os.environ.get("RPC_URL")
+        self.rest_url: str = os.environ.get("REST_URL")
+        self.chain_id: str = os.environ.get("CHAIN_ID")
+        self.fee_denom: str = os.environ.get("FEE_DENOM")
+        self.gas_limit: int = int(os.environ.get("GAS_LIMIT"))
+        self.gas_price: float = float(os.environ.get("GAS_PRICE"))
+        self.gas_fee: int = int(self.gas_limit * self.gas_price)
+        self.fee: str = f"{self.gas_fee}{self.fee_denom}"
+        self.arb_denom: str = os.environ.get("ARB_DENOM")
+        self.address_prefix: str = os.environ.get("ADDRESS_PREFIX")
         # Set Skip variables
-        self.skip_rpc_url = os.environ.get("SKIP_RPC_URL")
-        self.auction_house_address = os.environ.get("AUCTION_HOUSE_ADDRESS")
-        self.auction_bid_profit_percentage = os.environ.get("AUCTION_BID_PROFIT_PERCENTAGE")
+        self.skip_rpc_url: str = os.environ.get("SKIP_RPC_URL")
+        self.auction_house_address: str = os.environ.get("AUCTION_HOUSE_ADDRESS")
+        self.auction_bid_profit_percentage: float = float(os.environ.get("AUCTION_BID_PROFIT_PERCENTAGE"))
         # Create and set Queryer and Decoder
         self.querier: Querier = create_querier(
                                     querier=os.environ.get("QUERIER"), 
                                     rpc_url=self.rpc_url)
         self.decoder: Decoder = create_decoder(decoder=os.environ.get("DECODER"))
         # Set factory and router contracts
-        self.factory_contracts = ast.literal_eval(os.environ.get("FACTORY_CONTRACTS"))
-        self.router_contracts = ast.literal_eval(os.environ.get("ROUTER_CONTRACTS"))
+        self.factory_contracts: dict = ast.literal_eval(os.environ.get("FACTORY_CONTRACTS"))
+        self.router_contracts: dict = ast.literal_eval(os.environ.get("ROUTER_CONTRACTS"))
         # Set defaults for the bot
         self.reset: bool = True
         self.account_balance: int = 0
@@ -93,7 +93,7 @@ class Bot:
         with open(self.contracts_file) as f:
             self.init_contracts: dict = json.load(f)
         # Get list of all contract addresses
-        self.contract_list = list(self.contracts.keys())
+        self.contract_list: list = list(self.contracts.keys())
         # Initialize the state
         self.state: State = State()
         # Update all pool contracts in state

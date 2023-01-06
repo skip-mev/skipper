@@ -11,19 +11,20 @@ JUNO_CHAIN_ID = "juno-1"
 TERRA_CHAIN_ID = "phoenix-1"
 TERRA_LCD_URL = "https://phoenix-lcd.terra.dev"
 """#############################################"""
-
-
-def create_wallet(chain_id, mnemonic, address_prefix):
+    
+    
+def create_wallet(chain_id: str, mnemonic: str, address_prefix: str) -> LocalWallet:
     """ Factory function to create wallets based on chain.
-        @DEV TODO: Add more networks here.
+        @DEV TODO: Add more wallets here per chain if needed.
     """
-    if chain_id == JUNO_CHAIN_ID:
-        return create_juno_wallet(mnemonic, address_prefix)
-    elif chain_id == TERRA_CHAIN_ID:
-        return create_terra_wallet(mnemonic, address_prefix)
+    wallets = {
+        "juno-1": create_juno_wallet,
+        "phoenix-1": create_terra_wallet
+        }
+    wallets[chain_id](mnemonic, address_prefix)
 
 
-def create_juno_wallet(mnemonic, address_prefix):
+def create_juno_wallet(mnemonic: str, address_prefix: str) -> LocalWallet:
     """ Create Juno wallet."""
     seed_bytes = Bip39SeedGenerator(mnemonic).Generate()
     bip44_def_ctx = Bip44.FromSeed(seed_bytes, 
@@ -34,7 +35,7 @@ def create_juno_wallet(mnemonic, address_prefix):
                 prefix=address_prefix)
 
 
-def create_terra_wallet(mnemonic, address_prefix):
+def create_terra_wallet(mnemonic: str, address_prefix: str) -> LocalWallet:
     """ Create Terra wallet."""
     mk = MnemonicKey(mnemonic=mnemonic)
     terra = LCDClient(TERRA_LCD_URL, TERRA_CHAIN_ID)

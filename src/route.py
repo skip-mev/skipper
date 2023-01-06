@@ -6,7 +6,7 @@ from cosmpy.protos.cosmos.bank.v1beta1.tx_pb2 import MsgSend
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 
 from contract import Pool
-from swap import calculate_swap
+from swap import Swap, calculate_swap
 from bot import Bot
 
 
@@ -19,7 +19,7 @@ class Route:
     
     def order_pools(self,
                     contracts: dict, 
-                    swap, 
+                    swap: Swap, 
                     arb_denom: str) -> None:
         """Given a swap and self, reorder the self so that the
            swap is in the opposite direction of the self.

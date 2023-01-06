@@ -12,8 +12,10 @@ def create_factory(contract_address: str, protocol: str):
 
 
 class Factory(Contract, ABC):
+    """ This class is an abstract class for all factories."""
     protocol: str
     
     @abstractmethod
     def get_all_pairs(self, querier: Querier) -> list:
-        """"""
+        """ This method returns all pairs of the factory.
+        """
