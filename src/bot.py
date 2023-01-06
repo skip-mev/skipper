@@ -40,6 +40,9 @@ NOT_A_SKIP_VAL_CODE = 4
 
 
 class Bot:
+    """ This class holds all the bot configuration and state.
+        It is used to create a bot instance and run the bot.
+    """
     def __init__(self):
         # Load environment variables
         load_dotenv(ENV_FILE_PATH)
@@ -105,6 +108,31 @@ class Bot:
         # Update the contracts json file with the update values
         with open(self.contracts_file, 'w') as f:
             json.dump(self.state.contracts, f, indent=4)
+            
+    async def run(self):
+        while True:
+            # Update the account balance
+            self.querier.update_account_balance(bot=self) 
+            # Query the mempool for new transactions, returns once new txs are found
+            backrun_list = self.querier.query_node_for_new_mempool_txs()
+            # Update the reserves of all pools when a new txs are found
+            await self.state.update_all(jobs=self.state.update_all_reserves_jobs)
+            # Iterate through each tx and assess for profitable opportunities
+            for tx_str in backrun_list:
+                # Create a transaction object
+                transaction: Transaction = Transaction(contracts=self.state.contracts, 
+                                                       tx_str=tx_str, 
+                                                       decoder=self.decoder,
+                                                       arb_denom=self.arb_denom)
+                # Simulate the transaction on a copy of contract state 
+                # and return the copied state post-transaction simulation
+                contracts_copy = self.state.simulate_transaction(transaction=transaction)
+                # Build the most profitable bundle from 
+                bundle: list = self.build_most_profitable_bundle(transactions=transaction,
+                                                                 contracts=contracts_copy)
+                # If there is a profitable bundle, fire away!
+                if bundle:
+                    self.fire(bundle=bundle)
             
     def build_most_profitable_bundle(self,
                                      transaction: Transaction,
