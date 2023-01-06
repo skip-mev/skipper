@@ -51,7 +51,7 @@ Change env variables after image is built
 docker exec -it mevbot /bin/sh
 ```
 ```
-nano juno.env -> edit to your liking
+cd envs && nano juno.env -> edit to your liking
 ```
 ```
 exit
