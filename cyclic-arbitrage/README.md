@@ -15,9 +15,8 @@ Once you have python 3.10, install all the dependencies:
 pip install -r requirements.txt
 ```
 
-Then, edit the global variables in the main.py file to 
-your liking. The most important being your mnemonic.
-```python
+Rename example_juno.env i.e. juno.env and edit to your liking, the most important being your mnemonic, and example.env matches main.py callback.
+```
 MNEMONIC = "<your mnemonic>"
 ```
 
@@ -27,6 +26,11 @@ python main.py
 ```
 
 # Run bot with docker
+Rename example_juno.env i.e. juno.env and edit to your liking, the most important being your mnemonic, and example.env matches main.py callback.
+```
+MNEMONIC = "<your mnemonic>"
+```
+
 Build the docker image
 ``` 
 cd cyclic-arbitrage && docker build -t mevbot
@@ -45,6 +49,15 @@ docker exec -it mevbot cat logs/juno.log
 Change env variables after image is built
 ```
 docker exec -it mevbot /bin/sh
+```
+```
+nano juno.env -> edit to your liking
+```
+```
+exit
+```
+```
+docker restart mevbot
 ```
 
 # How the Bot Works
