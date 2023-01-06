@@ -33,7 +33,7 @@ MNEMONIC = "<your mnemonic>"
 
 Build the docker image
 ``` 
-cd cyclic-arbitrage && docker build -t mevbot
+docker build -t mevbot
 ```
 
 Run the docker image
