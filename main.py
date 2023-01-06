@@ -4,7 +4,7 @@ from src import Bot
 
 
 async def main():
-    """ Main function to run bot"""
+    """ Main entry point to run bot."""
     bot: Bot = Bot()
     await bot.run()
 
