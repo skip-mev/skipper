@@ -1,4 +1,5 @@
 # General Imports
+import os
 import json
 import aiometer
 import asyncio
@@ -34,7 +35,7 @@ logging.basicConfig(filename='skip_response.log', encoding='utf-8', level=loggin
 
 # Mnenomic to generate private key
 # Replace with your own mnemonic
-MNEMONIC = "<your mnemonic>"
+MNEMONIC = os.environ.get("MNEMONIC")
 
 # RPC URL to stream mempool and query contract state from
 RPC_URL = "https://rpc-juno-ia.cosmosia.notional.ventures/"

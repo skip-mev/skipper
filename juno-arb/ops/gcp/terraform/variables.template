@@ -1,0 +1,29 @@
+variable project {
+    type = string
+    default = "PROJECT_ID"
+    description = "Project ID"
+}
+
+variable "zone" {
+  type = string
+  default = "ZONE"
+  description = "Zone"
+}
+
+variable "region" {
+  type = string
+  default = "us-central1"
+  description = "Region"
+}
+
+variable "instance_name" {
+  type = string
+  default = "INSTANCE_NAME"
+  description = "Instance Name"
+}
+
+variable "machine_type" {
+  type = string
+  default = "e2-small"
+  description = "Machine Type"
+}

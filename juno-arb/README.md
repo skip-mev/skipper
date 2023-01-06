@@ -15,10 +15,10 @@ Once you have python 3.10, install all the dependencies:
 pip install -r requirements.txt
 ```
 
-Then, edit the global variables in the main.py file to 
-your liking. The most important being your mnemonic.
-```python
-MNEMONIC = "<your mnemonic>"
+Copy .env.copy and populate with your mnemonic. **Don't commit this**
+
+```bash
+source .env
 ```
 
 Lastly, run the bot:

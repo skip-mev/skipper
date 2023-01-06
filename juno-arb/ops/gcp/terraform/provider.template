@@ -1,0 +1,4 @@
+provider "google" {
+  project     = "PROJECT_ID"
+  zone        = "ZONE"
+}

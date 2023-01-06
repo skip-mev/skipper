@@ -73,8 +73,13 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: dict) -> list:
                         backrun_potential_list.append(swap_tx)
                         break
                     except KeyError:
-                        logging.error("KeyError, most likely a non-junoswap contract-swap message: ", message_value.contract)
-                        continue
+                        msg = f"KeyError, most likely a non-junoswap contract-swap message: {message_value.contract}"
+                        try:
+                            logging.info(msg)
+                        except TypeError:
+                            print(msg)
+                        finally:
+                            continue
                 # If the message is a JunoSwap pass through swap
                 elif 'pass_through_swap' in msg:
                     # Create a PassThroughSwap object, append to the list
@@ -91,8 +96,13 @@ def check_for_swap_txs_in_mempool(rpc_url: str, already_seen: dict) -> list:
                         backrun_potential_list.append(pass_through_swap_tx)
                         break 
                     except KeyError:
-                        logging.error("KeyError, most likely a non-junoswap contract-pass_through_swap message: ", message_value.contract)
-                        continue
+                        msg = f"KeyError, most likely a non-junoswap contract-pass_through_swap message: {message_value.contract}"
+                        try:
+                            logging.info(msg)
+                        except TypeError:
+                            print(msg)
+                        finally:
+                            continue
         # If we found a tx with a swap message, return the list
         # to begin the process of checking for an arb opportunity   
         if len(backrun_potential_list) > 0:
