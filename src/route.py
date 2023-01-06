@@ -25,7 +25,9 @@ class Route:
            swap is in the opposite direction of the self.
         """        
         # Get the index of the pool swapped against in the route 
-        swapped_self_index = self.pools.index(contracts[swap.contract_address])
+        swapped_self_index = self.pools.index(
+                                contracts[swap.contract_address]
+                                )
         # Set our input denom to the output denom of the swap
         # We swap in the opposite direction as the original swap
         input_denom = swap.output_denom
@@ -119,14 +121,14 @@ class Route:
         a_1_3 = self.pools[2].output_reserves
 
         a_prime_1_3 = ((a_1_2 * a_2_3) 
-                        / (a_2_3 + (r1[1] * r2[0] * a_2_1)))
+                      / (a_2_3 + (r1[1] * r2[0] * a_2_1)))
         a_prime_3_1 = ((r1[1] * r2[1] * a_2_1 * a_3_2) 
-                        / (a_2_3 + (r1[1] * r2[0] * a_2_1)))
+                      / (a_2_3 + (r1[1] * r2[0] * a_2_1)))
 
         a = ((a_prime_1_3 * a_3_1) 
-                / (a_3_1 + (r1[2] * r2[1] * a_prime_3_1)))
+            / (a_3_1 + (r1[2] * r2[1] * a_prime_3_1)))
         a_prime = ((r1[2] * r2[2] * a_1_3 * a_prime_3_1) 
-                    / (a_3_1 + (r1[2] * r2[1] * a_prime_3_1)))
+                  / (a_3_1 + (r1[2] * r2[1] * a_prime_3_1)))
         # Set optimal amount in
         self.optimal_amount_in = math.floor(
                                     (math.sqrt(r1[0] * r2[0] * a_prime * a) - a) 
