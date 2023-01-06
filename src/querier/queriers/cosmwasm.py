@@ -13,7 +13,11 @@ from cosmpy.aerial.client import LedgerClient
 from querier import Querier
 from bot import Bot
 
+
 class CosmWasmQuerier(Querier):
+    """ CosmWasm VM implementation of the Querier class.
+        Currently works for Juno and Terra 2.
+    """
 
     async def query_node_and_return_response(self, 
                                              payload: dict, 
