@@ -4,9 +4,6 @@ import logging
 import ast
 from dotenv import load_dotenv
 from cosmpy.aerial.client import LedgerClient, NetworkConfig
-from hashlib import sha256
-from base64 import b64decode
-from dataclasses import dataclass, field
 
 import math
 import time
@@ -16,11 +13,10 @@ import skip
 
 from decoder import Decoder, create_decoder
 from querier import Querier, create_querier 
+from executor import Executor, create_executor 
 from state import State
 from wallet import create_wallet
 from transaction import Transaction
-from route import Route
-from contract import Pool
 
 
 """#############################################"""
@@ -70,6 +66,7 @@ class Bot:
                                     querier=os.environ.get("QUERIER"), 
                                     rpc_url=self.rpc_url)
         self.decoder: Decoder = create_decoder(decoder=os.environ.get("DECODER"))
+        self.executor: Executor = create_executor(executor=os.environ.get("EXECUTOR"))
         # Set factory and router contracts
         self.factory_contracts: dict = ast.literal_eval(os.environ.get("FACTORY_CONTRACTS"))
         self.router_contracts: dict = ast.literal_eval(os.environ.get("ROUTER_CONTRACTS"))
@@ -128,48 +125,13 @@ class Bot:
                 # and return the copied state post-transaction simulation
                 contracts_copy = self.state.simulate_transaction(transaction=transaction)
                 # Build the most profitable bundle from 
-                bundle: list = self.build_most_profitable_bundle(transactions=transaction,
-                                                                 contracts=contracts_copy)
+                bundle: list = self.executor.build_most_profitable_bundle(
+                                                    transactions=transaction,
+                                                    contracts=contracts_copy
+                                                    )
                 # If there is a profitable bundle, fire away!
                 if bundle:
                     self.fire(bundle=bundle)
-            
-    def build_most_profitable_bundle(self,
-                                     transaction: Transaction,
-                                     contracts: dict[str, Pool]) -> list[bytes]:
-        """ Build backrun bundle for transaction"""
-        
-        # Add all potential routes to the transaction
-        transaction.add_routes(contracts=contracts,
-                               arb_denom=self.arb_denom)
-        
-        # Calculate the profit for each route
-        for route in transaction.routes:
-            route.calculate_and_set_optimal_amount_in()
-            route.calculate_and_set_amount_in(bot=self) 
-            route.calculate_and_set_profit()
-                
-        highest_profit_route: Route = self.routes.sort(
-                                            key=lambda route: route.profit, 
-                                            reverse=True)[0]
-        
-        if highest_profit_route.profit <= 0:
-            return []
-        
-        bid = math.floor((highest_profit_route.profit - self.gas_fee) 
-                         * self.auction_bid_profit_percentage)
-        
-        logging.info(f"Arbitrage opportunity found!")
-        logging.info(f"Optimal amount in: {highest_profit_route.optimal_amount_in}")
-        logging.info(f"Amount in: {highest_profit_route.amount_in}")
-        logging.info(f"Profit: {highest_profit_route.profit}")
-        logging.info(f"Bid: {bid}")
-        logging.info(f"Sender: {transaction.sender}")
-        logging.info(f"Tx Hash: {sha256(b64decode(transaction.tx_str)).hexdigest()}")
-        
-        return [transaction.tx_bytes, 
-                highest_profit_route.build_backrun_tx(bot=self,
-                                                      bid=bid)]
         
     def fire(self, bundle: list[bytes]) -> bool:
         """ Signs and sends the bundle to the Skip auction.
