@@ -27,6 +27,20 @@ python main.py
 ```
 
 # Run bot with docker
+Build the docker image
+``` 
+cd cyclic-arbitrage && docker build -t mevbot
+```
+
+Run the docker image
+```
+docker run -d --name mevbot mevbot:latest
+```
+
+Shell into container & check logs
+```
+docker exec -it mevbot cat logs/juno.log
+```
 
 # How the Bot Works
 
