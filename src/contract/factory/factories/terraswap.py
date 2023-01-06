@@ -2,6 +2,7 @@ from factory import Factory
 from querier import Querier
 
 class Terraswap(Factory):
+    """ This class is a factory contract for TerraSwap."""
 
     async def get_all_pairs(self, querier: Querier) -> list:
         """ Returns a list of all pairs in the factory."""

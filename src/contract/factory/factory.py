@@ -5,6 +5,9 @@ from factories import Terraswap
 
     
 def create_factory(contract_address: str, protocol: str):
+    """ Factory function to create factory contracts.
+        @DEV TODO: Add more factory contracts here.
+    """
     protocols = {
         "terraswap": Terraswap,
         }
