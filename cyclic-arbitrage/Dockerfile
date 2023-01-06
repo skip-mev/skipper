@@ -1,5 +1,7 @@
 FROM python:3.10
 
+RUN apt-get update && apt-get install -y nano
+
 # Set the working directory to /app
 WORKDIR /cyclic-arbitrage
 
