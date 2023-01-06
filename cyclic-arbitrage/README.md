@@ -26,6 +26,8 @@ Lastly, run the bot:
 python main.py
 ```
 
+# Run bot with docker
+
 # How the Bot Works
 
 This example bot searches for 3-pool cyclic arbitrage opportunities
