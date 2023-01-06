@@ -70,3 +70,10 @@ resource.type="gce_instance"
 sourceLocation.function="main.setupAndRunScript"
 resource.labels.instance_id="THE_INSTANCE_ID_RETURNED_FROM_TERRAFORM"
 ```
+
+For the easy appoach
+
+1. Connect via the ssh command above, and run `screen`. This opens a persistent session
+2. python3 main.py
+3. Press ctrl + a, ctrl + d Now you can disconnect from ssh and your code will continue to run.
+4. You can reconnect to the screen via screen -r
