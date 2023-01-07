@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from pools import Terraswap
-from querier import Querier
+from src.contract.pool.pools import Terraswap
+from src.querier import Querier
 
 
 @dataclass

@@ -1,3 +1,3 @@
 from .contract import Contract
-from .pool.pool import Pool, create_pool
+from .pool.pool import Pool
 from .factory.factory import Factory

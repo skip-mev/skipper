@@ -1,1 +1,1 @@
-from .executor import Executor, create_executor
+from .executor import Executor

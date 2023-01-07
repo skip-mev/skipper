@@ -5,8 +5,8 @@ from dataclasses import dataclass
 from cosmpy.protos.cosmos.tx.v1beta1.tx_pb2 import Tx
 from cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 import MsgExecuteContract
 
-from decoder import Decoder
-from contract import Contract 
+from src.decoder import Decoder
+from src.contract import Contract 
 
 
 @dataclass

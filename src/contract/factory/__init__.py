@@ -1,1 +1,1 @@
-from .factory import Factory, create_factory
+from .factory import Factory

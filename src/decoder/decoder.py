@@ -1,17 +1,6 @@
 from abc import ABC, abstractstaticmethod
 from dataclasses import dataclass
-from contract import Contract
-from decoders import CosmWasmDecoder
-
-
-def create_decoder(decoder):
-    """ Factory function to create decoders bsaed on chain / vm.
-        @DEV TODO: Add more decoders here.
-    """
-    decoders = {
-        "cosmwasm": CosmWasmDecoder
-        }
-    decoders[decoder]()
+from src.contract import Contract
 
 
 @dataclass

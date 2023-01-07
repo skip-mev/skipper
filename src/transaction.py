@@ -1,9 +1,10 @@
 from copy import deepcopy
 
-from contract import Contract, Pool
-from decoder import Decoder
-from route import Route
-from swap import Swap
+from src.contract import Contract
+from src.contract.pool.pool import Pool
+from src.decoder import Decoder
+from src.route import Route
+from src.swap import Swap
 
 
 class Transaction:    

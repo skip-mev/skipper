@@ -8,11 +8,12 @@ import anyio
 import itertools
 from dataclasses import dataclass, field
 
-from transaction import Transaction
-from contract import Pool, create_pool
-from contract.factory import Factory, create_factory
-from querier import Querier
-from swap import calculate_swap
+from src.transaction import Transaction
+from src.contract import Pool
+from src.contract.factory import Factory
+from src.querier import Querier
+from src.swap import calculate_swap
+from src.creator import Creator
 
 
 @dataclass
@@ -21,55 +22,79 @@ class State:
        currently works for dex / arb related strategies.
     """
     contracts: dict[str, Pool] = field(default_factory=dict)
-    update_all_tokens_jobs = field(default_factory=list)
-    update_all_reserves_jobs = field(default_factory=list)
-    update_all_fees_jobs = field(default_factory=list)
+    update_all_tokens_jobs: list = field(default_factory=list)
+    update_all_reserves_jobs: list = field(default_factory=list)
+    update_all_fees_jobs: list = field(default_factory=list)
         
     async def set_all_pool_contracts(self,
                                      init_contracts: dict,
                                      querier: Querier,
+                                     creator: Creator,
                                      factory_contracts: dict,
                                      arb_denom: str) -> None:
         """ This function is used to set all the pool contracts
             in state taking into account factory contracts and
             contracts loaded into the bot.
         """ 
-        self.set_all_init_contracts(init_contracts=init_contracts)
-        await self.set_all_factory_contracts(factory_contracts=factory_contracts,
-                                             querier=querier)
+        self.set_all_init_contracts(
+                        init_contracts=init_contracts,
+                        creator=creator
+                        )
+        await self.set_all_factory_contracts(
+                        factory_contracts=factory_contracts,
+                        querier=querier,
+                        creator=creator
+                        )
+        
+        self.contracts_dict = {contract:
+                                    self.contracts[contract].__dict__
+                                for contract
+                                in self.contracts}
+        
+        with open("contracts/contracts_test.json", "w") as f:
+            json.dump(self.contracts_dict, f, indent=4)
+            
         self.set_all_jobs(querier=querier)
+        print("Updating all tokens...")
         await self.update_all(self.update_all_tokens_jobs)
+        print("Updating all fees...")
         await self.update_all(self.update_all_fees_jobs)
+        print("Updating all reserves...")
         await self.update_all(self.update_all_reserves_jobs) 
+        print("Filtering out zero reserves...")
         self.filter_out_zero_reserves()
+        print("Setting cyclic routes...")
         self.set_cyclic_routes(arb_denom=arb_denom)
         
-    def set_all_init_contracts(self, init_contracts: dict) -> None:
+    def set_all_init_contracts(self, 
+                               init_contracts: dict,
+                               creator: Creator) -> None:
         """ This method is used to set all the contracts
             loaded into the bot via init_contracts.
         """
         self.contracts = {contract:
-                            create_pool(contract_address=contract,
-                                        pool=init_contracts[contract]["dex"])
+                            creator.create_pool(contract_address=contract,
+                                                pool=init_contracts[contract]["dex"])
                             for contract
                             in init_contracts}
         
     async def set_all_factory_contracts(self, 
                                         factory_contracts: dict, 
-                                        querier: Querier) -> None:
+                                        querier: Querier,
+                                        creator: Creator) -> None:
         """ This method is used to set all the pools
             created by the factory contracts. This is preferred
             method for any pools that implements a factory.
         """
         for protocol in factory_contracts:
-            factory: Factory = create_factory(
+            factory: Factory = creator.create_factory(
                                     contract_address=factory_contracts[protocol],
                                     protocol=protocol
                                     )
             all_pairs = await factory.get_all_pairs(querier=querier)
             self.contracts = {pair['contract_addr']:
-                                    create_pool(contract_address=pair['contract_addr'],
-                                                pool=protocol)
+                                    creator.create_pool(contract_address=pair['contract_addr'],
+                                                        pool=protocol)
                                     for pair
                                     in all_pairs}
             
@@ -125,8 +150,13 @@ class State:
         """ This function is used to set the cyclic routes
             for the bot to use.
         """
+        print("Generating token pairs...")
         token_pairs = self._generate_token_pairs()
-        self._set_contract_routes(arb_denom, token_pairs)
+        with open("contracts/token_pairs.json", "w") as f:
+            json.dump(token_pairs, f, indent=4)
+        print("Setting contract routes...")
+        self._set_contract_routes(arb_denom=arb_denom, 
+                                  token_pairs=token_pairs)
                                     
     def _generate_token_pairs(self) -> dict[str, dict[str, list]]:
         """ This function is used to generate a nested dictionary
@@ -144,7 +174,7 @@ class State:
                 token_pairs[denom].setdefault(other_denom, []).append(contract_address) 
                 
         return token_pairs
-                        
+    
     def _set_contract_routes(self, 
                              arb_denom: str, 
                              token_pairs: dict[str, dict[str, list]]):
@@ -167,7 +197,7 @@ class State:
                     set_routes.append(set_route)
                     for contract_address in route:
                         self.contracts[contract_address].routes.append(route)
-        
+    
     def simulate_transaction(self, transaction: Transaction) -> dict[str, Pool]:
         """ Simulate a transaction on a copy of state and return the new state.
             This method does not modify the original state.

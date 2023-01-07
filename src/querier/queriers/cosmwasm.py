@@ -9,9 +9,9 @@ import time
 import requests
 
 from cosmpy.aerial.client import LedgerClient
+from cosmpy.aerial.wallet import LocalWallet
 
-from querier import Querier
-from bot import Bot
+from src.querier.querier import Querier
 
 
 class CosmWasmQuerier(Querier):
@@ -36,7 +36,7 @@ class CosmWasmQuerier(Querier):
     def query_node_for_new_mempool_txs(self) -> list[str]:
         """ Queries the rpc node for new mempool txs
             continuously until new txs are found to 
-            be processed by the bot.
+            be processed by the 
         """
         while True:
             time.sleep(1)
@@ -110,17 +110,21 @@ class CosmWasmQuerier(Querier):
                    "params": params}
         
         return payload
-    
-    def update_account_balance(self, bot: Bot) -> int:
+                
+    def update_account_balance(self, 
+                               wallet: LocalWallet,
+                               denom: str,
+                               network_config: str) -> tuple[int, bool]:
         """ Updates the account balance of the bot
             if the bot needs to be reset.
         """
-        if bot.reset: 
-            try:
-                bot.account_balance = bot.client.query_bank_balance(
-                                                address=bot.wallet.address(), 
-                                                denom=bot.fee_denom
-                                                )
-                bot.reset = False
-            except requests.exceptions.ConnectionError:
-                bot.client = LedgerClient(bot.network_bot)
+        try:
+            account_balance = client.query_bank_balance(
+                                            address=wallet.address(), 
+                                            denom=denom
+                                            )
+            return account_balance, False
+        except requests.exceptions.ConnectionError:
+            client = LedgerClient(network_config)
+            return 0, True
+                

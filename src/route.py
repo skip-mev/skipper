@@ -5,9 +5,8 @@ from cosmpy.aerial.tx import Transaction as Tx, SigningCfg
 from cosmpy.protos.cosmos.bank.v1beta1.tx_pb2 import MsgSend
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 
-from contract import Pool
-from swap import Swap, calculate_swap
-from bot import Bot
+from src.contract.pool.pool import Pool
+from src.swap import Swap, calculate_swap
 
 
 @dataclass 
@@ -134,86 +133,13 @@ class Route:
                                     (math.sqrt(r1[0] * r2[0] * a_prime * a) - a) 
                                     / (r1[0]))
     
-    def calculate_and_set_amount_in(self, bot: Bot) -> None:
+    def calculate_and_set_amount_in(self,
+                                    account_balance: int,
+                                    gas_fee: int) -> None:
         """ Set the amount to swap into the first pool"""
         if self.optimal_amount_in <= 0:
             pass
-        elif self.optimal_amount_in > bot.account_balance - bot.gas_fee:
-            self.amount_in = bot.account_balance - bot.gas_fee
+        elif self.optimal_amount_in > account_balance - gas_fee:
+            self.amount_in = account_balance - gas_fee
         else:
             self.amount_in = self.optimal_amount_in
-        
-    def build_backrun_tx(self,
-                         bot: Bot, 
-                         bid: int) -> bytes:
-        """ Build backrun transaction for route"""
-        tx = Tx()
-        msgs = []
-        
-        for pool in self.pools:
-            msgs.extend(pool.create_swap_msgs)
-            
-        for msg in msgs:
-            tx.add_message(msg)
-            
-        account = bot.client.query_account(
-                    str(bot.wallet.address())
-                    )
-        
-        _add_profitability_invariant(
-            bot=bot,
-            tx=tx,
-            account_balance=bot.account_balance
-            )
-                                    
-        # Bid to Skip Auction
-        _add_auction_bid(
-            bot=bot,
-            tx=tx,
-            bid=bid
-        )
-        
-        tx.seal(
-            signing_cfgs=[
-                SigningCfg.direct(
-                    bot.wallet.public_key(), 
-                    account.sequence)], 
-            fee=bot.fee, 
-            gas_limit=bot.gas_limit
-            )
-        tx.sign(
-            bot.wallet.signer(), 
-            bot.chain_id, 
-            account.number
-            )
-        tx.complete()
-        
-        return tx.tx.SerializeToString()
-    
-    
-def _add_profitability_invariant(bot: Bot,
-                                 tx: Tx, 
-                                 account_balance: int):
-    """ Add profitability invariant to transaction"""
-    tx.add_message(
-        MsgSend(
-            from_address=bot.wallet.address(),
-            to_address=bot.wallet.address(),
-            amount=[Coin(amount=str(account_balance), 
-                        denom=bot.fee_denom)]
-            )
-        )
-
-
-def _add_auction_bid(bot: Bot,
-                     tx: Tx,
-                     bid: int):
-    """ Add auction bid to transaction"""
-    tx.add_message(
-        MsgSend(
-            from_address=bot.wallet.address(),
-            to_address=bot.auction_house_address,
-            amount=[Coin(amount=str(bid),
-                        denom=bot.fee_denom)]
-        )
-    )

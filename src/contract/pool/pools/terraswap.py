@@ -1,13 +1,12 @@
 from dataclasses import dataclass
-from pool import Pool
-from transaction import Swap
-from querier import Querier
+from src.contract.pool.pool import Pool
+from src.transaction import Swap
+from src.querier import Querier
 
 from cosmpy.aerial.wallet import LocalWallet
 from cosmpy.aerial.contract import create_cosmwasm_execute_msg
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 from cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 import MsgExecuteContract
-
 
 
 @dataclass
@@ -19,6 +18,7 @@ class Terraswap(Pool):
     async def update_tokens(self, 
                             querier: Querier) -> None:
         """ Update the tokens in the pool."""
+        print(f"Updating tokens for Terraswap pool {self.contract_address}")
         payload = self.get_tokens_payload()
         pool_info = await querier.query_node_and_return_response(
                                         payload=payload,
@@ -39,6 +39,7 @@ class Terraswap(Pool):
     async def update_reserves(self, 
                               querier: Querier) -> None:
         """ Update the reserves of the pool."""
+        print(f"Updating reserves for Terraswap pool {self.contract_address}")
         payload = self.get_reserves_payload()
         pool_info = await querier.query_node_and_return_response(
                                         payload=payload,
@@ -49,6 +50,7 @@ class Terraswap(Pool):
 
     async def update_fees(self) -> None:
         """ Update the fees of the pool."""
+        print(f"Updating fees for Terraswap pool {self.contract_address}")
         self.lp_fee = self.DEFAULT_LP_FEE
         self.protocol_fee = self.DEFAULT_PROTOCOL_FEE
         self.fee_from_input = self.DEFAULT_FEE_FROM_INPUT
@@ -85,15 +87,15 @@ class Terraswap(Pool):
         pass
         
     @staticmethod
-    def get_tokens_payload(contract_address: str, query: Querier) -> dict:
+    def get_query_tokens_payload(contract_address: str, query: Querier) -> dict:
         return query.create_payload(contract_address, {"pool":{}})
 
     @staticmethod
-    def get_reserves_payload(contract_address: str, querier: Querier) -> dict:
+    def get_query_reserves_payload(contract_address: str, querier: Querier) -> dict:
         return querier.create_payload(contract_address, {"pool":{}})
     
     @staticmethod
-    def get_fees_payload(contract_address: str, querier: Querier) -> dict:
+    def get_query_fees_payload(contract_address: str, querier: Querier) -> dict:
         return querier.create_payload(contract_address, {"config": {}})
     
     def create_swap_msgs(self, 

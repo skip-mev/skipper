@@ -1,32 +1,8 @@
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod, abstractstaticmethod
-from contract import Contract
-from transaction import Swap
-from querier import Querier
-from pools import (
-    Junoswap,
-    Terraswap,
-    Astroport,
-    Loop,
-    Phoenix,
-    Whitewhale
-    )
-
-    
-def create_pool(contract_address: str, 
-                pool: str) -> 'Pool':
-    """ Factory function to create pool objects based on identifiers.
-        @DEV TODO: Add more pools as they are laucnhed.
-    """
-    wallets = {
-        "junoswap": Junoswap,
-        "terraswap": Terraswap,
-        "astroport": Astroport,
-        "loop": Loop,
-        "phoenix": Phoenix,
-        "white_whale": Whitewhale
-        }
-    wallets[pool](contract_address, pool)
+from src.contract import Contract
+from src.swap import Swap
+from src.querier import Querier
 
 
 @dataclass
@@ -66,7 +42,7 @@ class Pool(Contract, ABC):
     async def update_fees(self, querier: Querier) -> None:
         """ This method updates the fees of the pool.
         """
-        
+
     @abstractmethod
     def get_swaps_from_message(self, 
                                msg, 
