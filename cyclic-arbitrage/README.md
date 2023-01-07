@@ -36,6 +36,12 @@ pip install -r requirements.txt
 
 Rename example_juno.env i.e. juno.env and edit to your liking, the most important being your mnemonic, and example.env matches main.py callback.
 ```
+# Load environment variables
+load_dotenv('envs/juno.env')
+#load_dotenv('envs/terra.env')
+```
+
+```
 MNEMONIC = "<your mnemonic>"
 ```
 
