@@ -1,4 +1,4 @@
-from executor import Executor
+from src.executor import Executor
 
 class WhiteWhaleExecutor(Executor):
     

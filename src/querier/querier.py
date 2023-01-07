@@ -1,17 +1,6 @@
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod, abstractstaticmethod
-from queriers import CosmWasmQuerier 
-from bot import Bot
-
- 
-def create_querier(querier, rpc_url):
-    """ Factory function to create queriers bsaed on chain / vm.
-        @DEV TODO: Add more queriers here.
-    """
-    queriers = {
-        "cosmwasm": CosmWasmQuerier
-        }
-    queriers[querier](rpc_url=rpc_url)
+from cosmpy.aerial.wallet import LocalWallet
 
 
 @dataclass
@@ -49,7 +38,10 @@ class Querier(ABC):
         """
         
     @abstractmethod
-    def update_account_balance(self, bot: Bot) -> int:
+    def update_account_balance(self, 
+                               wallet: LocalWallet,
+                               denom: str,
+                               network_config: str) -> int:
         """ This method is used to update the account balance
             of the bot.
         """

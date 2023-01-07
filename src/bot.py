@@ -2,27 +2,32 @@ import os
 import json
 import logging
 import ast
+import math
 from dotenv import load_dotenv
+from hashlib import sha256
+from base64 import b64decode
 from cosmpy.aerial.client import LedgerClient, NetworkConfig
 
-import math
 import time
 import logging
 import httpx
 import skip
 
-from decoder import Decoder, create_decoder
-from querier import Querier, create_querier 
-from executor import Executor, create_executor 
-from state import State
-from wallet import create_wallet
-from transaction import Transaction
+from .decoder import Decoder
+from .querier import Querier
+from .executor import Executor
+from .creator import Creator
+from .state import State
+from .wallet import create_wallet
+from .transaction import Transaction
+from .contract.pool.pool import Pool
+from .route import Route
 
 
 """#############################################"""
 """@USER TODO: CHOOSE ENVIRONMENT VARIABLES PATH"""
-#ENV_FILE_PATH = "envs/juno.env"
-ENV_FILE_PATH = "envs/terra.env"
+ENV_FILE_PATH = "envs/juno.env"
+#ENV_FILE_PATH = "envs/terra.env"
 """#############################################"""
 
 
@@ -39,7 +44,9 @@ class Bot:
     """ This class holds all the bot configuration and state.
         It is used to create a bot instance and run the bot.
     """
-    def __init__(self):
+    
+    @classmethod
+    async def init(self):
         # Load environment variables
         load_dotenv(ENV_FILE_PATH)
         # Set file paths
@@ -62,11 +69,12 @@ class Bot:
         self.auction_house_address: str = os.environ.get("AUCTION_HOUSE_ADDRESS")
         self.auction_bid_profit_percentage: float = float(os.environ.get("AUCTION_BID_PROFIT_PERCENTAGE"))
         # Create and set Queryer and Decoder
-        self.querier: Querier = create_querier(
-                                    querier=os.environ.get("QUERIER"), 
-                                    rpc_url=self.rpc_url)
-        self.decoder: Decoder = create_decoder(decoder=os.environ.get("DECODER"))
-        self.executor: Executor = create_executor(executor=os.environ.get("EXECUTOR"))
+        self.creator: Creator = Creator()
+        self.querier: Querier = self.creator.create_querier(
+                                        querier=os.environ.get("QUERIER"), 
+                                        rpc_url=self.rpc_url)
+        self.decoder: Decoder = self.creator.create_decoder(decoder=os.environ.get("DECODER"))
+        self.executor: Executor = self.creator.create_executor(executor=os.environ.get("EXECUTOR"))
         # Set factory and router contracts
         self.factory_contracts: dict = ast.literal_eval(os.environ.get("FACTORY_CONTRACTS"))
         self.router_contracts: dict = ast.literal_eval(os.environ.get("ROUTER_CONTRACTS"))
@@ -95,22 +103,35 @@ class Bot:
         # Initialize the state
         self.state: State = State()
         # Update all pool contracts in state
-        self.state.set_all_pool_contracts(
-                        init_contracts=self.init_contracts,
-                        querier=self.querier,
-                        factory_contracts=self.factory_contracts,
-                        arb_denom=self.arb_denom
-                        )
+        print("Updating all pool contracts in state...")
+        await self.state.set_all_pool_contracts(
+                                init_contracts=self.init_contracts,
+                                querier=self.querier,
+                                creator=self.creator,
+                                factory_contracts=self.factory_contracts,
+                                arb_denom=self.arb_denom
+                                )
         # Get list of all contract addresses
         self.contract_list: list = list(self.state.contracts.keys())
         # Update the contracts json file with the update values
-        with open(self.contracts_file, 'w') as f:
+        print("Updating contracts json file...")
+        with open("contracts/juno_contracts_post_init.json", 'w') as f:
             json.dump(self.state.contracts, f, indent=4)
+            
+        raise
             
     async def run(self):
         while True:
             # Update the account balance
-            self.querier.update_account_balance(bot=self) 
+            if self.reset:
+                account_balance, reset = self.querier.update_account_balance(
+                                                            wallet=self.wallet,
+                                                            denom=self.arb_denom,
+                                                            network_config=self.network_config
+                                                            )
+                if not reset:
+                    self.reset = reset
+                    self.account_balance = account_balance
             # Query the mempool for new transactions, returns once new txs are found
             backrun_list = self.querier.query_node_for_new_mempool_txs()
             # Update the reserves of all pools when a new txs are found
@@ -133,6 +154,55 @@ class Bot:
                 # If there is a profitable bundle, fire away!
                 if bundle:
                     self.fire(bundle=bundle)
+                    
+    def build_most_profitable_bundle(self,
+                                     transaction: Transaction,
+                                     contracts: dict[str, Pool]) -> list[bytes]:
+        """ Build backrun bundle for transaction"""
+        
+        # Add all potential routes to the transaction
+        transaction.add_routes(contracts=contracts,
+                               arb_denom=self.arb_denom)
+        
+        # Calculate the profit for each route
+        for route in transaction.routes:
+            route.calculate_and_set_optimal_amount_in()
+            route.calculate_and_set_amount_in(
+                            account_balance=self.account_balance,
+                            gas_fee=self.gas_fee
+                            ) 
+            route.calculate_and_set_profit()
+                
+        highest_profit_route: Route = transaction.routes.sort(
+                                            key=lambda route: route.profit, 
+                                            reverse=True)[0]
+        
+        if highest_profit_route.profit <= 0:
+            return []
+        
+        bid = math.floor((highest_profit_route.profit - self.gas_fee) 
+                         * self.auction_bid_profit_percentage)
+        
+        logging.info(f"Arbitrage opportunity found!")
+        logging.info(f"Optimal amount in: {highest_profit_route.optimal_amount_in}")
+        logging.info(f"Amount in: {highest_profit_route.amount_in}")
+        logging.info(f"Profit: {highest_profit_route.profit}")
+        logging.info(f"Bid: {bid}")
+        logging.info(f"Sender: {transaction.sender}")
+        logging.info(f"Tx Hash: {sha256(b64decode(transaction.tx_str)).hexdigest()}")
+        
+        return [transaction.tx_bytes, 
+                self.executor.build_backrun_tx(
+                                    wallet=self.wallet,
+                                    client=self.client,
+                                    account_balance=self.account_balance,
+                                    auction_house_address=self.auction_house_address,
+                                    fee_denom=self.fee_denom,
+                                    fee=self.fee,
+                                    gas_limit=self.gas_limit,
+                                    route=highest_profit_route,
+                                    bid=bid,
+                                    chain_id=self.chain_id)]
         
     def fire(self, bundle: list[bytes]) -> bool:
         """ Signs and sends the bundle to the Skip auction.

@@ -1,5 +1,5 @@
-from factory import Factory
-from querier import Querier
+from src.contract.factory import Factory
+from src.querier import Querier
 
 class Terraswap(Factory):
     """ This class is a factory contract for TerraSwap."""

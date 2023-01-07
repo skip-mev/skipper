@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from pools import Terraswap
+from src.contract.pool.pools import Terraswap
 
 
 @dataclass

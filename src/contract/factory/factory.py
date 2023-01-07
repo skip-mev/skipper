@@ -1,17 +1,6 @@
 from abc import ABC, abstractmethod
-from querier import Querier
-from contract import Contract
-from factories import Terraswap 
-
-    
-def create_factory(contract_address: str, protocol: str):
-    """ Factory function to create factory contracts.
-        @DEV TODO: Add more factory contracts here.
-    """
-    protocols = {
-        "terraswap": Terraswap,
-        }
-    return protocols[protocol](contract_address, protocol)
+from src.querier import Querier
+from src.contract import Contract
 
 
 class Factory(Contract, ABC):

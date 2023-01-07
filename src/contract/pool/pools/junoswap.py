@@ -1,7 +1,7 @@
 from dataclasses import dataclass
-from querier import Querier
-from transaction import Swap
-from pool import Pool
+from src.querier import Querier
+from src.swap import Swap
+from src.contract.pool.pool import Pool
 
 from cosmpy.aerial.wallet import LocalWallet
 from cosmpy.aerial.contract import create_cosmwasm_execute_msg
@@ -16,6 +16,7 @@ class Junoswap(Pool):
     
     async def update_tokens(self, querier: Querier) -> None:
         """ Updates the token types and denoms for the pool."""
+        print(f"Updating tokens for Junoswap pool {self.contract_address}")
         payload = self.get_query_tokens_payload()
         pool_info = await querier.query_node_and_return_response(
                                         payload=payload,
@@ -28,6 +29,7 @@ class Junoswap(Pool):
 
     async def update_reserves(self, querier: Querier) -> None:
         """ Updates the token reserves for the pool."""
+        print(f"Updating reserves for Junoswap pool {self.contract_address}")
         payload = self.get_query_reserves_payload()
         pool_info = await querier.query_node_and_return_response(
                                         payload=payload,
@@ -38,6 +40,7 @@ class Junoswap(Pool):
 
     async def update_fees(self, querier: Querier) -> None:
         """ Updates the lp and protocol fees for the pool."""
+        print(f"Updating fees for Junoswap pool {self.contract_address}")
         payload = self.get_query_fees_payload()
         
         try:
