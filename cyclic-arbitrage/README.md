@@ -39,7 +39,7 @@ Rename example_juno.env i.e. juno.env and edit to your liking.
 cd cyclic-arbitrage
 cp envs/example_juno.env envs/juno.env
 ```
-The most important being your mnemonic, creating a new wallet is highly suggested to solely be used for this purpose. 
+The most important being your mnemonic, creating a new wallet is highly suggested for security, and for this wallet to only be used for this bot, as your mnemonic must be entered. 
 ```
 MNEMONIC = "<your mnemonic>"
 ```
@@ -72,7 +72,7 @@ Rename example_juno.env i.e. juno.env and edit to your liking.
 cd cyclic-arbitrage
 cp envs/example_juno.env envs/juno.env
 ```
-The most important being your mnemonic, creating a new wallet is highly suggested to solely be used for this purpose. 
+"The most important being your mnemonic, creating a new wallet is highly suggested for security, and for this wallet to only be used for this bot, as your mnemonic must be entered." 
 ```
 MNEMONIC = "<your mnemonic>"
 ```
