@@ -34,15 +34,20 @@ cd cyclic-arbitrage
 pip install -r requirements.txt
 ```
 
-Rename example_juno.env i.e. juno.env and edit to your liking, the most important being your mnemonic, and example.env matches main.py callback.
+Rename example_juno.env i.e. juno.env and edit to your liking.
+```
+cd cyclic-arbitrage
+cp envs/example_juno.env envs/juno.env
+```
+The most important being your mnemonic, creating a new wallet is highly suggested to solely be used for this purpose. 
+```
+MNEMONIC = "<your mnemonic>"
+```
+Also make sure your example.env name matches call back in main.py
 ```
 # Load environment variables
 load_dotenv('envs/juno.env')
 #load_dotenv('envs/terra.env')
-```
-
-```
-MNEMONIC = "<your mnemonic>"
 ```
 
 Lastly, run the bot:
@@ -62,12 +67,20 @@ deactivate
 sudo apt update -y && apt upgrade -y && apt autoremove -y
 sudo apt install docker.io docker-compose -y
 ```
-
-
-Rename example_juno.env i.e. juno.env and edit to your liking, the most important being your mnemonic, and example.env matches main.py callback.
-
+Rename example_juno.env i.e. juno.env and edit to your liking.
+```
+cd cyclic-arbitrage
+cp envs/example_juno.env envs/juno.env
+```
+The most important being your mnemonic, creating a new wallet is highly suggested to solely be used for this purpose. 
 ```
 MNEMONIC = "<your mnemonic>"
+```
+Also make sure your example.env name matches call back in main.py
+```
+# Load environment variables
+load_dotenv('envs/juno.env')
+#load_dotenv('envs/terra.env')
 ```
 
 Build the docker image
