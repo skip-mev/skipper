@@ -43,7 +43,7 @@ The most important being your mnemonic, creating a new wallet is highly suggeste
 ```
 MNEMONIC = "<your mnemonic>"
 ```
-Also make sure your example.env name matches call back in main.py
+Also make sure your .env file from the previous command (`juno.env`, or whatever you named it) matches the call back field in `main.py`
 ```
 # Load environment variables
 load_dotenv('envs/juno.env')
@@ -76,7 +76,7 @@ cp envs/example_juno.env envs/juno.env
 ```
 MNEMONIC = "<your mnemonic>"
 ```
-Also make sure your example.env name matches call back in main.py
+Also make sure your .env file from the previous command (`juno.env`, or whatever you named it) matches the call back field in `main.py`
 ```
 # Load environment variables
 load_dotenv('envs/juno.env')
