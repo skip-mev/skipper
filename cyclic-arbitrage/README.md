@@ -34,7 +34,7 @@ cd cyclic-arbitrage
 pip install -r requirements.txt
 ```
 
-Rename example_juno.env i.e. juno.env and edit to your liking.
+Rename `example_juno.env` i.e. `juno.env` and edit to your liking.
 ```
 cd cyclic-arbitrage
 cp envs/example_juno.env envs/juno.env
@@ -67,7 +67,7 @@ deactivate
 sudo apt update -y && apt upgrade -y && apt autoremove -y
 sudo apt install docker.io docker-compose -y
 ```
-Rename example_juno.env i.e. juno.env and edit to your liking.
+Rename `example_juno.env` i.e. `juno.env` and edit to your liking.
 ```
 cd cyclic-arbitrage
 cp envs/example_juno.env envs/juno.env
