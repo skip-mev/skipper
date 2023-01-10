@@ -86,6 +86,7 @@ class Bot:
         logging.basicConfig(filename=os.environ.get("LOG_FILE"), 
                             encoding='utf-8', 
                             level=logging.INFO)
+        logging.getLogger().addHandler(logging.StreamHandler())
         # Create and set client and wallet
         self.network_config = NetworkConfig(
                                     chain_id=self.chain_id,
