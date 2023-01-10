@@ -1,7 +1,6 @@
 from copy import deepcopy
 
-from src.contract import Contract
-from src.contract.pool.pool import Pool
+from src.contract import Contract, Pool
 from src.decoder import Decoder
 from src.route import Route
 from src.swap import Swap
@@ -11,7 +10,8 @@ class Transaction:
     def __init__(self,
                  contracts: dict, 
                  tx_str: str,
-                 decoder: Decoder):
+                 decoder: Decoder,
+                 arb_denom: str):
         """ @DEV TODO: Add more attributes to transaction 
             object if adding new strategy. Currently supports
             objects for arbs (swaps and routes).
@@ -23,6 +23,7 @@ class Transaction:
         self.tx_bytes: bytes = tx_bytes
         self.swaps: list[Swap] = []
         self.routes: list[Route] = []
+        self.mev_potential: bool = False
         # Iterate through messages in transaction and
         # extend transactions based on type of contract.
         for message in decoded_pb_tx.body.messages:
@@ -30,6 +31,9 @@ class Transaction:
                     message=message,
                     decoder=decoder,
                     contracts=contracts)
+            
+            if self.swaps:
+                self.mev_potential = True
     
     def _init_message(self,
                       message,
@@ -94,6 +98,6 @@ class Transaction:
                 input_denom = route.pools[i-1].output_denom
             # Set pool input and output params
             pool.set_input_output_vars(input_denom) 
-            route.pools.append(pool)
+            route.pools[i] = pool
         # Add route to transaction
         self.routes.append(route)

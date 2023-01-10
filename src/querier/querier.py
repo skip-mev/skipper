@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod, abstractstaticmethod
 from cosmpy.aerial.wallet import LocalWallet
+from cosmpy.aerial.client import LedgerClient
 
 
 @dataclass
@@ -39,6 +40,7 @@ class Querier(ABC):
         
     @abstractmethod
     def update_account_balance(self, 
+                               client: LedgerClient,
                                wallet: LocalWallet,
                                denom: str,
                                network_config: str) -> int:

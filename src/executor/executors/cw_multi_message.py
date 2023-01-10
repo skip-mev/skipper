@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 
+from cosmpy.aerial.wallet import LocalWallet
+from cosmpy.aerial.client import LedgerClient
 from cosmpy.aerial.tx import Transaction as Tx, SigningCfg
 from cosmpy.protos.cosmos.bank.v1beta1.tx_pb2 import MsgSend
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 
 from src.route import Route
 from src.executor import Executor
-from cosmpy.aerial.wallet import LocalWallet
-from cosmpy.aerial.client import LedgerClient
 
 
 @dataclass
@@ -27,19 +27,22 @@ class MultiMessageExecutor(Executor):
         """ Build backrun transaction for route"""
         tx = Tx()
         msgs = []
+        address = str(wallet.address())
         
         for pool in route.pools:
-            msgs.extend(pool.create_swap_msgs)
+            msgs.extend(
+                pool.create_swap_msgs(
+                        address=address,
+                        input_amount=route.amount_in,
+                        ))
             
         for msg in msgs:
             tx.add_message(msg)
             
-        account = client.query_account(
-                        str(wallet.address())
-                        )
+        account = client.query_account(address=address)
         
         _add_profitability_invariant(
-                wallet=wallet,
+                address=address,
                 fee_denom=fee_denom,
                 tx=tx,
                 account_balance=account_balance
@@ -47,7 +50,7 @@ class MultiMessageExecutor(Executor):
                                     
         # Bid to Skip Auction
         _add_auction_bid(
-            wallet=wallet,
+            address=address,
             fee_denom=fee_denom,
             auction_house_address=auction_house_address,
             tx=tx,
@@ -72,22 +75,22 @@ class MultiMessageExecutor(Executor):
         return tx.tx.SerializeToString()
     
     
-def _add_profitability_invariant(wallet: LocalWallet,
+def _add_profitability_invariant(address: str,
                                  fee_denom: str,
                                  tx: Tx, 
                                  account_balance: int):
     """ Add profitability invariant to transaction"""
     tx.add_message(
         MsgSend(
-            from_address=wallet.address(),
-            to_address=wallet.address(),
+            from_address=address,
+            to_address=address,
             amount=[Coin(amount=str(account_balance), 
                          denom=fee_denom)]
             )
         )
 
 
-def _add_auction_bid(wallet: LocalWallet,
+def _add_auction_bid(address: str,
                      fee_denom: str,
                      auction_house_address: str,
                      tx: Tx,
@@ -95,7 +98,7 @@ def _add_auction_bid(wallet: LocalWallet,
     """ Add auction bid to transaction"""
     tx.add_message(
         MsgSend(
-            from_address=wallet.address(),
+            from_address=address,
             to_address=auction_house_address,
             amount=[Coin(amount=str(bid),
                          denom=fee_denom)]

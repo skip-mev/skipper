@@ -7,6 +7,7 @@ from cosmpy.protos.cosmwasm.wasm.v1.query_pb2 import (
 import logging
 import time
 import requests
+import datetime
 
 from cosmpy.aerial.client import LedgerClient
 from cosmpy.aerial.wallet import LocalWallet
@@ -39,6 +40,7 @@ class CosmWasmQuerier(Querier):
             be processed by the 
         """
         while True:
+            print(f"{datetime.datetime.now()}: Querying node for new mempool txs...")
             time.sleep(1)
             
             if len(self.already_seen) > 200:
@@ -63,7 +65,8 @@ class CosmWasmQuerier(Querier):
 
             if new_txs:
                 return new_txs
-            
+    
+    @staticmethod
     def _get_mempool_from_response(response) -> dict | None:
         try:
             mempool = response.json()['result']
@@ -86,6 +89,9 @@ class CosmWasmQuerier(Querier):
             return None
         except httpx.ConnectError:
             logging.error("Connect error, retrying...")
+            return None
+        except httpx.RemoteProtocolError:
+            logging.error("Remote protocol error, retrying...")
             return None
             
     @staticmethod
@@ -112,6 +118,7 @@ class CosmWasmQuerier(Querier):
         return payload
                 
     def update_account_balance(self, 
+                               client: LedgerClient,
                                wallet: LocalWallet,
                                denom: str,
                                network_config: str) -> tuple[int, bool]:

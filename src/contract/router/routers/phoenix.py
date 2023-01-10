@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from router.router import Router
-from swap import Swap
+from src.contract.router.router import Router
+from src.swap import Swap
 
 
 @dataclass

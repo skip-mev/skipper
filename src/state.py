@@ -9,8 +9,7 @@ import itertools
 from dataclasses import dataclass, field
 
 from src.transaction import Transaction
-from src.contract import Pool
-from src.contract.factory import Factory
+from src.contract import Pool, Factory
 from src.querier import Querier
 from src.swap import calculate_swap
 from src.creator import Creator
@@ -50,9 +49,6 @@ class State:
                                     self.contracts[contract].__dict__
                                 for contract
                                 in self.contracts}
-        
-        with open("contracts/contracts_test.json", "w") as f:
-            json.dump(self.contracts_dict, f, indent=4)
             
         self.set_all_jobs(querier=querier)
         print("Updating all tokens...")
@@ -74,7 +70,7 @@ class State:
         """
         self.contracts = {contract:
                             creator.create_pool(contract_address=contract,
-                                                pool=init_contracts[contract]["dex"])
+                                                pool=init_contracts[contract]["protocol"])
                             for contract
                             in init_contracts}
         
@@ -207,10 +203,15 @@ class State:
         for swap in transaction.swaps:
             pool = contracts[swap.contract_address]
             
+            if pool.token1_denom == swap.input_denom:
+                input_token = "token_1"
+            else:
+                input_token = "token_2"
+            
             input_reserves, output_reserves = pool.get_reserves_from_input_denom(
                                                         swap.input_denom
                                                         )
-            if swap.input_amount is None and amount_out is not None:
+            if swap.input_amount == 0 and amount_out is not None:
                 swap.input_amount = amount_out
 
             amount_out, new_reserves_in, new_reserves_out = calculate_swap(
@@ -221,7 +222,13 @@ class State:
                             protocol_fee=pool.protocol_fee,
                             fee_from_input=pool.fee_from_input
                             )
-            pool.input_reserves = new_reserves_in
-            pool.output_reserves = new_reserves_out
+            
+            # Update the reserves
+            if input_token == "token_1":
+                pool.token1_reserves = new_reserves_in
+                pool.token2_reserves = new_reserves_out
+            else:
+                pool.token1_reserves = new_reserves_out
+                pool.token2_reserves = new_reserves_in
             
         return contracts

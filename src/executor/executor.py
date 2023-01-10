@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
 
-from src.route import Route
 from cosmpy.aerial.client import LedgerClient
 from cosmpy.aerial.wallet import LocalWallet
+
+from src.route import Route
 
 
 class Executor(ABC):

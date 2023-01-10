@@ -1,12 +1,14 @@
 from dataclasses import dataclass
-from src.querier import Querier
-from src.swap import Swap
-from src.contract.pool.pool import Pool
 
 from cosmpy.aerial.wallet import LocalWallet
 from cosmpy.aerial.contract import create_cosmwasm_execute_msg
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 from cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 import MsgExecuteContract
+
+from src.querier import Querier
+from src.swap import Swap
+from src.contract.pool.pool import Pool
+
 
 @dataclass
 class Junoswap(Pool):
@@ -16,8 +18,9 @@ class Junoswap(Pool):
     
     async def update_tokens(self, querier: Querier) -> None:
         """ Updates the token types and denoms for the pool."""
-        print(f"Updating tokens for Junoswap pool {self.contract_address}")
-        payload = self.get_query_tokens_payload()
+        payload = self.get_query_tokens_payload(
+                                contract_address=self.contract_address,
+                                querier=querier)
         pool_info = await querier.query_node_and_return_response(
                                         payload=payload,
                                         decoded=True
@@ -27,10 +30,14 @@ class Junoswap(Pool):
         self.token2_type = list(pool_info['token2_denom'].keys())[0]
         self.token2_denom = pool_info['token2_denom'][self.token2_type]
 
-    async def update_reserves(self, querier: Querier) -> None:
+    async def update_reserves(self, 
+                              querier: Querier,
+                              height: str = "") -> None:
         """ Updates the token reserves for the pool."""
-        print(f"Updating reserves for Junoswap pool {self.contract_address}")
-        payload = self.get_query_reserves_payload()
+        payload = self.get_query_reserves_payload(
+                                contract_address=self.contract_address,
+                                querier=querier,
+                                height=height)
         pool_info = await querier.query_node_and_return_response(
                                         payload=payload,
                                         decoded=True
@@ -40,9 +47,9 @@ class Junoswap(Pool):
 
     async def update_fees(self, querier: Querier) -> None:
         """ Updates the lp and protocol fees for the pool."""
-        print(f"Updating fees for Junoswap pool {self.contract_address}")
-        payload = self.get_query_fees_payload()
-        
+        payload = self.get_query_fees_payload(
+                                contract_address=self.contract_address,
+                                querier=querier)   
         try:
             fee_info = await querier.query_node_and_return_response(
                                             payload=payload,
@@ -51,12 +58,12 @@ class Junoswap(Pool):
             lp_fee = float(fee_info['lp_fee_percent']) / 100
             protocol_fee = float(fee_info['protocol_fee_percent']) / 100
         except:
-            lp_fee = self.default_lp_fee
-            protocol_fee = self.default_protocol_fee
+            lp_fee = self.DEFAULT_LP_FEE
+            protocol_fee = self.DEFAULT_PROTOCOL_FEE
             
         self.lp_fee = lp_fee
         self.protocol_fee = protocol_fee
-        self.fee_from_input = self.default_fee_from_input
+        self.fee_from_input = self.DEFAULT_FEE_FROM_INPUT
 
     def get_swaps_from_message(self,
                                msg,
@@ -109,39 +116,44 @@ class Junoswap(Pool):
         return querier.create_payload(contract_address, {"info":{}})
 
     @staticmethod
-    def get_query_reserves_payload(contract_address: str, querier: Querier) -> dict:
-        return querier.create_payload(contract_address, {"info":{}})
+    def get_query_reserves_payload(contract_address: str, 
+                                   querier: Querier,
+                                   height: str = "") -> dict:
+        return querier.create_payload(
+                            contract_address=contract_address, 
+                            query={"info":{}},
+                            height=height)
     
     @staticmethod
     def get_query_fees_payload(contract_address: str, querier: Querier) -> dict:
         return querier.create_payload(contract_address, {"fee":{}})
         
     def create_swap_msgs(self, 
-                         wallet: LocalWallet,
+                         address: str,
                          input_amount: int) -> list[MsgExecuteContract]:
         """ Returns a list msgs to swap against the pool."""
         msgs = []
         if self.input_denom.startswith(("juno")):
             msgs.append(
                 self._get_increase_allowance_msg(
-                    wallet=wallet,
+                    address=address,
                     amount=input_amount
                     )
                 )
         msgs.append(
             self._get_swap_msg(
-                wallet=wallet,
+                address=address,
                 input_amount=input_amount
                 )
             )
         return msgs
 
     def _get_swap_msg(self,
-                      wallet, 
+                      address: str, 
                       input_amount: int) -> MsgExecuteContract:
         """ Creates a MsgExecuteContract for JunoSwap's swap function."""
         msg = create_cosmwasm_execute_msg(
-                        sender_address=wallet.address(), 
+                        sender_address=address, 
                         contract_address=self.contract_address, 
                         args={"swap": {"input_token": self.input_token, 
                                        "input_amount": str(input_amount), 
@@ -156,11 +168,11 @@ class Junoswap(Pool):
         return msg
 
     def _get_increase_allowance_msg(self,
-                                    wallet, 
+                                    address: str, 
                                     amount: int) -> MsgExecuteContract:
         """ Creates a MsgExecuteContract for JunoSwap's increase_allowance function."""
         msg = create_cosmwasm_execute_msg(
-                    sender_address=wallet.address(), 
+                    sender_address=address, 
                     contract_address=self.contract_address, 
                     args={"increase_allowance": {
                                 "amount": str(amount), 

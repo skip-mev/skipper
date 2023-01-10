@@ -21,7 +21,7 @@ def calculate_swap(reserves_in: int,
         and return the amount out from and update reserves.
     """
     if amount_in <= 0:
-        raise ValueError("Amount in must be greater than 0 to calculate swap")
+        return 0, reserves_in, reserves_out
     # Calculate CFMM invariant and fees
     k = reserves_in * reserves_out
     total_fee = lp_fee + protocol_fee

@@ -1,8 +1,11 @@
-from src.querier.querier import Querier
-from src.querier.queriers import CosmWasmQuerier
+from src.querier import Querier, CosmWasmQuerier
 
 from src.executor.executor import Executor
-from src.executor.executors import MultiMessageExecutor, ContractExecutor, WhiteWhaleExecutor
+from src.executor.executors import (
+    MultiMessageExecutor, 
+    ContractExecutor, 
+    WhiteWhaleExecutor
+    )
 
 from src.decoder.decoder import Decoder
 from src.decoder.decoders import CosmWasmDecoder
@@ -15,6 +18,14 @@ import src.contract.pool.pools as pools
 
 from src.contract.factory.factory import Factory
 import src.contract.factory.factories as factories
+
+from src.contract.router.router import Router
+from src.contract.router.routers import (
+    TerraswapRouter, 
+    AstroportRouter, 
+    PhoenixRouter, 
+    WhiteWhaleRouter 
+    )
 
 class Creator:
     
@@ -51,7 +62,9 @@ class Creator:
         return decoders[decoder]()
 
     @staticmethod
-    def create_wallet(chain_id: str, mnemonic: str, address_prefix: str) -> LocalWallet:
+    def create_wallet(chain_id: str, 
+                      mnemonic: str, 
+                      address_prefix: str) -> LocalWallet:
         """ Factory function to create wallets based on chain.
             @DEV TODO: Add more wallets here per chain if needed.
         """
@@ -87,11 +100,14 @@ class Creator:
         return protocols[protocol](contract_address, protocol)
     
     @staticmethod
-    def create_router(contract_address: str, router: str):
+    def create_router(contract_address: str, router: str) -> Router:
+        """ Factory function to create router contracts.
+            @DEV TODO: Add more router contracts here.
+        """
         routers = {
-            "terraswap": "",
-            "astroport": "",
-            "phoenix": "",
-            "white_whale": ""
+            "terraswap": TerraswapRouter, 
+            "astroport": AstroportRouter,
+            "phoenix": PhoenixRouter,
+            "white_whale": WhiteWhaleRouter 
             }
         return routers[router](contract_address, router)

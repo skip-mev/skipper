@@ -13,15 +13,15 @@ import logging
 import httpx
 import skip
 
-from .decoder import Decoder
-from .querier import Querier
-from .executor import Executor
-from .creator import Creator
-from .state import State
-from .wallet import create_wallet
-from .transaction import Transaction
-from .contract.pool.pool import Pool
-from .route import Route
+from src.decoder import Decoder
+from src.querier import Querier
+from src.executor import Executor
+from src.creator import Creator
+from src.state import State
+from src.wallet import create_wallet
+from src.transaction import Transaction
+from src.contract import Pool
+from src.route import Route
 
 
 """#############################################"""
@@ -68,6 +68,7 @@ class Bot:
         self.skip_rpc_url: str = os.environ.get("SKIP_RPC_URL")
         self.auction_house_address: str = os.environ.get("AUCTION_HOUSE_ADDRESS")
         self.auction_bid_profit_percentage: float = float(os.environ.get("AUCTION_BID_PROFIT_PERCENTAGE"))
+        self.auction_bid_minimum: int = int(os.environ.get("AUCTION_BID_MINIMUM"))
         # Create and set Queryer and Decoder
         self.creator: Creator = Creator()
         self.querier: Querier = self.creator.create_querier(
@@ -113,18 +114,22 @@ class Bot:
                                 )
         # Get list of all contract addresses
         self.contract_list: list = list(self.state.contracts.keys())
-        # Update the contracts json file with the update values
-        print("Updating contracts json file...")
-        with open("contracts/juno_contracts_post_init.json", 'w') as f:
-            json.dump(self.state.contracts, f, indent=4)
+        
+        dict_pools = {}
+        for contract in self.state.contracts:
+            dict_pools[contract] = self.state.contracts[contract].__dict__
             
-        raise
+        print("Updating contracts json file...")
+        with open("contracts/juno_contracts_dict_post_init.json", 'w') as f:
+            json.dump(dict_pools, f, indent=4)
             
     async def run(self):
+        print("Scanning Mempool...")
         while True:
             # Update the account balance
             if self.reset:
                 account_balance, reset = self.querier.update_account_balance(
+                                                            client=self.client,
                                                             wallet=self.wallet,
                                                             denom=self.arb_denom,
                                                             network_config=self.network_config
@@ -134,23 +139,41 @@ class Bot:
                     self.account_balance = account_balance
             # Query the mempool for new transactions, returns once new txs are found
             backrun_list = self.querier.query_node_for_new_mempool_txs()
-            # Update the reserves of all pools when a new txs are found
-            await self.state.update_all(jobs=self.state.update_all_reserves_jobs)
+            print(f"{time.time()}: Found new transactions in mempool")
+            # Set flag to update reserves once per potential backrun list
+            new_backrun_list = True
             # Iterate through each tx and assess for profitable opportunities
             for tx_str in backrun_list:
                 # Create a transaction object
+                print(f"Iterating transaction {sha256(b64decode(tx_str)).digest().hex()}")
                 transaction: Transaction = Transaction(contracts=self.state.contracts, 
                                                        tx_str=tx_str, 
                                                        decoder=self.decoder,
                                                        arb_denom=self.arb_denom)
+                # If there are no swaps, continue
+                if not transaction.swaps:
+                    continue
+                # Update reserves once per potential backrun list
+                if new_backrun_list:
+                    print("Updating all reserves...")
+                    await self.state.update_all(jobs=self.state.update_all_reserves_jobs)
+                    new_backrun_list = False
                 # Simulate the transaction on a copy of contract state 
                 # and return the copied state post-transaction simulation
                 contracts_copy = self.state.simulate_transaction(transaction=transaction)
+                # Add routes to the transaction after simulation
+                transaction.add_routes(
+                                contracts=contracts_copy,
+                                arb_denom=self.arb_denom
+                                )
+                # If there are no routes, continue
+                if not transaction.routes:
+                    continue
                 # Build the most profitable bundle from 
-                bundle: list = self.executor.build_most_profitable_bundle(
-                                                    transactions=transaction,
-                                                    contracts=contracts_copy
-                                                    )
+                bundle: list = self.build_most_profitable_bundle(
+                                                transaction=transaction,
+                                                contracts=contracts_copy
+                                                )
                 # If there is a profitable bundle, fire away!
                 if bundle:
                     self.fire(bundle=bundle)
@@ -159,11 +182,6 @@ class Bot:
                                      transaction: Transaction,
                                      contracts: dict[str, Pool]) -> list[bytes]:
         """ Build backrun bundle for transaction"""
-        
-        # Add all potential routes to the transaction
-        transaction.add_routes(contracts=contracts,
-                               arb_denom=self.arb_denom)
-        
         # Calculate the profit for each route
         for route in transaction.routes:
             route.calculate_and_set_optimal_amount_in()
@@ -172,23 +190,30 @@ class Bot:
                             gas_fee=self.gas_fee
                             ) 
             route.calculate_and_set_profit()
-                
-        highest_profit_route: Route = transaction.routes.sort(
-                                            key=lambda route: route.profit, 
-                                            reverse=True)[0]
+            
+        transaction.routes.sort(
+                        key=lambda route: route.profit, 
+                        reverse=True)
         
-        if highest_profit_route.profit <= 0:
+        highest_profit_route: Route = transaction.routes[0]
+        
+        if (highest_profit_route.profit <= 0 
+            or highest_profit_route.profit <= self.gas_fee):
+            logging.info(f"No profitable routes found above gas fee")
             return []
         
         bid = math.floor((highest_profit_route.profit - self.gas_fee) 
                          * self.auction_bid_profit_percentage)
+        
+        if bid <= self.auction_bid_minimum:
+            logging.info(f"No profitable routes found above minimum bid")
+            return []
         
         logging.info(f"Arbitrage opportunity found!")
         logging.info(f"Optimal amount in: {highest_profit_route.optimal_amount_in}")
         logging.info(f"Amount in: {highest_profit_route.amount_in}")
         logging.info(f"Profit: {highest_profit_route.profit}")
         logging.info(f"Bid: {bid}")
-        logging.info(f"Sender: {transaction.sender}")
         logging.info(f"Tx Hash: {sha256(b64decode(transaction.tx_str)).hexdigest()}")
         
         return [transaction.tx_bytes, 
@@ -245,7 +270,7 @@ class Bot:
                                                         bundle=bundle[1:],
                                                         private_key=self.wallet.signer().private_key_bytes
                                                         )
-        retry_response = self.retry(base64_encoded_bundle, bundle_signature)
+        retry_response = self._retry(base64_encoded_bundle, bundle_signature)
         while retry_response is None:
             retry_response = self._retry(base64_encoded_bundle, bundle_signature)
         return retry_response

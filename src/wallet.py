@@ -21,7 +21,7 @@ def create_wallet(chain_id: str, mnemonic: str, address_prefix: str) -> LocalWal
         "juno-1": create_juno_wallet,
         "phoenix-1": create_terra_wallet
         }
-    wallets[chain_id](mnemonic, address_prefix)
+    return wallets[chain_id](mnemonic, address_prefix)
 
 
 def create_juno_wallet(mnemonic: str, address_prefix: str) -> LocalWallet:

@@ -1,4 +1,4 @@
-from src.contract.factory import Factory
+from src.contract import Factory
 from src.querier import Querier
 
 class Terraswap(Factory):

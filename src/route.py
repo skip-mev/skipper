@@ -5,7 +5,7 @@ from cosmpy.aerial.tx import Transaction as Tx, SigningCfg
 from cosmpy.protos.cosmos.bank.v1beta1.tx_pb2 import MsgSend
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 
-from src.contract.pool.pool import Pool
+from src.contract import Pool
 from src.swap import Swap, calculate_swap
 
 
@@ -55,7 +55,7 @@ class Route:
                            input_denom: str,
                            arb_denom: str):
         """ Order route based on 2nd pool."""
-        first_pool = contracts[self.pools[0]]
+        first_pool = self.pools[0]
         
         if first_pool.token1_denom != arb_denom:
             output_denom = first_pool.token1_denom
