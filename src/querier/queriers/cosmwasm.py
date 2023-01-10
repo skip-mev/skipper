@@ -40,7 +40,7 @@ class CosmWasmQuerier(Querier):
             be processed by the 
         """
         while True:
-            print(f"{datetime.datetime.now()}: Querying node for new mempool txs...")
+            #print(f"{datetime.datetime.now()}: Querying node for new mempool txs...")
             time.sleep(1)
             
             if len(self.already_seen) > 200:
