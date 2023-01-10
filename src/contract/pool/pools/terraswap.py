@@ -1,12 +1,13 @@
 from dataclasses import dataclass
-from src.contract.pool.pool import Pool
-from src.transaction import Swap
-from src.querier import Querier
 
 from cosmpy.aerial.wallet import LocalWallet
 from cosmpy.aerial.contract import create_cosmwasm_execute_msg
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 from cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 import MsgExecuteContract
+
+from src.contract.pool.pool import Pool
+from src.transaction import Swap
+from src.querier import Querier
 
 
 @dataclass
@@ -18,8 +19,9 @@ class Terraswap(Pool):
     async def update_tokens(self, 
                             querier: Querier) -> None:
         """ Update the tokens in the pool."""
-        print(f"Updating tokens for Terraswap pool {self.contract_address}")
-        payload = self.get_tokens_payload()
+        payload = self.get_query_tokens_payload(
+                                contract_address=self.contract_address,
+                                querier=querier)   
         pool_info = await querier.query_node_and_return_response(
                                         payload=payload,
                                         decoded=True
@@ -37,10 +39,14 @@ class Terraswap(Pool):
             self.token2_denom = pool_info['assets'][1]['info'][self.token2_type]['denom']
 
     async def update_reserves(self, 
-                              querier: Querier) -> None:
+                              querier: Querier,
+                              height: str = "") -> None:
         """ Update the reserves of the pool."""
-        print(f"Updating reserves for Terraswap pool {self.contract_address}")
-        payload = self.get_reserves_payload()
+        payload = self.get_query_reserves_payload(
+                                contract_address=self.contract_address,
+                                querier=querier,
+                                height=height
+                                )   
         pool_info = await querier.query_node_and_return_response(
                                         payload=payload,
                                         decoded=True
@@ -48,9 +54,8 @@ class Terraswap(Pool):
         self.token1_reserves = int(pool_info['assets'][0]['amount'])
         self.token2_reserves = int(pool_info['assets'][1]['amount'])
 
-    async def update_fees(self) -> None:
+    async def update_fees(self, querier: Querier) -> None:
         """ Update the fees of the pool."""
-        print(f"Updating fees for Terraswap pool {self.contract_address}")
         self.lp_fee = self.DEFAULT_LP_FEE
         self.protocol_fee = self.DEFAULT_PROTOCOL_FEE
         self.fee_from_input = self.DEFAULT_FEE_FROM_INPUT
@@ -80,51 +85,50 @@ class Terraswap(Pool):
         else:
             return []
         
-    def create_msg_swap(self, 
-                        input_amount: int, 
-                        input_token: str, 
-                        output_token: str):
-        pass
-        
     @staticmethod
-    def get_query_tokens_payload(contract_address: str, query: Querier) -> dict:
-        return query.create_payload(contract_address, {"pool":{}})
+    def get_query_tokens_payload(contract_address: str, querier: Querier) -> dict:
+        return querier.create_payload(contract_address, {"pool":{}})
 
     @staticmethod
-    def get_query_reserves_payload(contract_address: str, querier: Querier) -> dict:
-        return querier.create_payload(contract_address, {"pool":{}})
+    def get_query_reserves_payload(contract_address: str, 
+                                   querier: Querier,
+                                   height: str = "") -> dict:
+        return querier.create_payload(
+                            contract_address=contract_address, 
+                            query={"pool":{}},
+                            height=height)
     
     @staticmethod
     def get_query_fees_payload(contract_address: str, querier: Querier) -> dict:
         return querier.create_payload(contract_address, {"config": {}})
     
     def create_swap_msgs(self, 
-                         wallet: LocalWallet,
+                         address: str,
                          input_amount: int) -> list[MsgExecuteContract]:
         """ Returns a list msgs to swap against the pool."""
         msgs = []
         if self.input_denom.startswith(("juno", "terra")):
             msgs.append(
                 self._get_send_msg(
-                    wallet=wallet,
+                    address=address,
                     amount=input_amount
                     )
                 )
         else:
             msgs.append(
                 self._get_swap_msg(
-                    wallet=wallet,
+                    address=address,
                     input_amount=input_amount
                     )
                 )
         return msgs
 
     def _get_swap_msg(self,
-                      wallet, 
+                      address: str, 
                       input_amount: int) -> MsgExecuteContract:
         """ Creates a MsgExecuteContract for JunoSwap's swap function."""
         msg = create_cosmwasm_execute_msg(
-                    sender_address=wallet.address(), 
+                    sender_address=address, 
                     contract_address=self.contract_address, 
                     args={"swap": {
                             "offer_asset": {
@@ -140,15 +144,15 @@ class Terraswap(Pool):
         return msg
 
     def _get_send_msg(self,
-                      wallet, 
+                      address: str, 
                       amount: int) -> MsgExecuteContract:
         """ Creates a MsgExecuteContract for JunoSwap's increase_allowance function."""
         msg = create_cosmwasm_execute_msg(
-                sender_address=wallet.address(), 
-                contract_address=self.input_denom, 
-                args={"send": {"amount": str(amount),
-                                "contract": self.contract_address,
-                                "msg": "eyJzd2FwIjp7fX0="}})
+                    sender_address=address, 
+                    contract_address=self.input_denom, 
+                    args={"send": {"amount": str(amount),
+                                    "contract": self.contract_address,
+                                    "msg": "eyJzd2FwIjp7fX0="}})
         return msg
 
 

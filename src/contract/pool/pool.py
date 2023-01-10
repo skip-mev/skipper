@@ -1,5 +1,8 @@
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod, abstractstaticmethod
+
+from cosmpy.aerial.wallet import LocalWallet
+
 from src.contract import Contract
 from src.swap import Swap
 from src.querier import Querier
@@ -34,7 +37,9 @@ class Pool(Contract, ABC):
         """
 
     @abstractmethod
-    async def update_reserves(self, querier: Querier) -> None:
+    async def update_reserves(self, 
+                              querier: Querier,
+                              height: str = "") -> None:
         """ This method updates the reserves of the pool.
         """
 
@@ -53,9 +58,8 @@ class Pool(Contract, ABC):
 
     @abstractmethod
     def create_swap_msgs(self, 
-                         input_amount: int, 
-                         input_token: str, 
-                         output_token: str):
+                         address: str,
+                         input_amount: int) -> list:
         """ This method creates swap messages.
         """
         
@@ -67,7 +71,8 @@ class Pool(Contract, ABC):
 
     @abstractstaticmethod
     def get_query_reserves_payload(contract_address: str, 
-                                   querier: Querier) -> dict:
+                                   querier: Querier,
+                                   height: str = "") -> dict:
         """ This method returns the payload for querying the reserves.
         """
     

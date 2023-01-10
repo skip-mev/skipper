@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 from src.querier import Querier
 from src.contract import Contract
 

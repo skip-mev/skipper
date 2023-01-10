@@ -1,13 +1,13 @@
 import asyncio
 
-from src import Bot
+from src.bot import Bot 
 
 
 async def main():
     """ Main entry point to run bot."""
     bot: Bot = Bot()
     await bot.init()
-    await bot.run()
+    await bot.run() 
 
 
 if __name__ == "__main__":
