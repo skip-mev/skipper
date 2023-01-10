@@ -33,7 +33,7 @@ class MultiMessageExecutor(Executor):
             msgs.extend(
                 pool.create_swap_msgs(
                         address=address,
-                        input_amount=route.amount_in,
+                        input_amount=pool.amount_in,
                         ))
             
         for msg in msgs:
