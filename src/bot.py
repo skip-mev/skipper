@@ -139,13 +139,15 @@ class Bot:
                     self.account_balance = account_balance
             # Query the mempool for new transactions, returns once new txs are found
             backrun_list = self.querier.query_node_for_new_mempool_txs()
-            print(f"{time.time()}: Found new transactions in mempool")
+            #print(f"{time.time()}: Found new transactions in mempool")
+            start = time.time()
             # Set flag to update reserves once per potential backrun list
             new_backrun_list = True
             # Iterate through each tx and assess for profitable opportunities
             for tx_str in backrun_list:
                 # Create a transaction object
-                print(f"Iterating transaction {sha256(b64decode(tx_str)).digest().hex()}")
+                tx_hash = sha256(b64decode(tx_str)).digest().hex()
+                logging.info(f"Iterating transaction {tx_hash}")
                 transaction: Transaction = Transaction(contracts=self.state.contracts, 
                                                        tx_str=tx_str, 
                                                        decoder=self.decoder,
@@ -156,7 +158,10 @@ class Bot:
                 # Update reserves once per potential backrun list
                 if new_backrun_list:
                     print("Updating all reserves...")
+                    start_update = time.time()
                     await self.state.update_all(jobs=self.state.update_all_reserves_jobs)
+                    end_update = time.time()
+                    logging.info(f"Time to update all reserves: {end_update - start_update}")
                     new_backrun_list = False
                 # Simulate the transaction on a copy of contract state 
                 # and return the copied state post-transaction simulation
@@ -175,6 +180,8 @@ class Bot:
                                                 contracts=contracts_copy
                                                 )
                 # If there is a profitable bundle, fire away!
+                end = time.time()
+                logging.info(f"Time from seeing {tx_hash} in mempool and building bundle if exists: {end - start}")
                 if bundle:
                     self.fire(bundle=bundle)
                     
