@@ -173,7 +173,7 @@ class Junoswap(Pool):
         """ Creates a MsgExecuteContract for JunoSwap's increase_allowance function."""
         msg = create_cosmwasm_execute_msg(
                     sender_address=address, 
-                    contract_address=self.contract_address, 
+                    contract_address=self.input_denom, 
                     args={"increase_allowance": {
                                 "amount": str(amount), 
                                 "spender": self.contract_address,
