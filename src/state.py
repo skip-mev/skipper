@@ -35,10 +35,12 @@ class State:
             in state taking into account factory contracts and
             contracts loaded into the bot.
         """ 
+        print("Setting all init contracts...")
         self.set_all_init_contracts(
                         init_contracts=init_contracts,
                         creator=creator
                         )
+        print("Setting all factory contracts and pairs...")
         await self.set_all_factory_contracts(
                         factory_contracts=factory_contracts,
                         querier=querier,
@@ -87,6 +89,7 @@ class State:
                                     contract_address=factory_contracts[protocol],
                                     protocol=protocol
                                     )
+            print(f"Getting all pairs for {protocol}...")
             all_pairs = await factory.get_all_pairs(querier=querier)
             self.contracts = {pair['contract_addr']:
                                     creator.create_pool(contract_address=pair['contract_addr'],

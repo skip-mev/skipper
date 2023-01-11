@@ -96,6 +96,9 @@ class Creator:
         """
         protocols = {
             "terraswap": factories.Terraswap,
+            "astroport": factories.Terraswap,
+            "phoenix": factories.Terraswap,
+            "white_whale": factories.Terraswap
             }
         return protocols[protocol](contract_address, protocol)
     

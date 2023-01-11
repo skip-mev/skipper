@@ -16,10 +16,8 @@ class Terraswap(Factory):
                                         start_after=pairs["pairs"][-1]["asset_infos"]
                                         )
             
-        all_pairs.extend(pairs["pairs"])
-        
+        all_pairs.extend(pairs["pairs"])    
         return all_pairs
-    
     
     async def _query_terraswap_factory(self,
                                        querier: Querier, 
