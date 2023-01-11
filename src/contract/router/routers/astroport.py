@@ -7,8 +7,9 @@ from src.swap import Swap
 @dataclass
 class AstroportRouter(Router):
     
-    def get_swaps_from_msg(self, 
-                           msg, 
-                           message_value, 
-                           contracts: dict) -> list[Swap]:
+    def get_swaps_from_message(self, 
+                               msg, 
+                               message_value, 
+                               contracts: dict) -> list[Swap]:
         pass
+            
