@@ -1,17 +1,18 @@
+import skip
 import os
 import json
 import logging
 import ast
 import math
-from dotenv import load_dotenv
-from hashlib import sha256
-from base64 import b64decode
-from cosmpy.aerial.client import LedgerClient, NetworkConfig
-
 import time
 import logging
 import httpx
-import skip
+
+from dotenv import load_dotenv
+from hashlib import sha256
+from base64 import b64decode
+from dataclasses import dataclass   
+from cosmpy.aerial.client import LedgerClient, NetworkConfig
 
 from src.decoder import Decoder
 from src.querier import Querier
@@ -23,13 +24,6 @@ from src.contract import Pool
 from src.route import Route
 
 
-"""#############################################"""
-"""@USER TODO: CHOOSE ENVIRONMENT VARIABLES PATH"""
-ENV_FILE_PATH = "envs/juno.env"
-#ENV_FILE_PATH = "envs/terra.env"
-"""#############################################"""
-
-
 DELAY_BETWEEN_SENDS = 1
 DESIRED_HEIGHT = 0
 SYNC = True
@@ -39,15 +33,16 @@ RETRY_FAILURE_CODES = [4, 8]
 NOT_A_SKIP_VAL_CODE = 4
 
 
+@dataclass
 class Bot:
     """ This class holds all the bot configuration and state.
         It is used to create a bot instance and run the bot.
     """
+    env_file_path: str
     
-    @classmethod
     async def init(self):
         # Load environment variables
-        load_dotenv(ENV_FILE_PATH)
+        load_dotenv(self.env_file_path)
         # Set file paths
         self.log_file: str = os.environ.get("LOG_FILE")
         self.contracts_file: str = os.environ.get("CONTRACTS_FILE")
