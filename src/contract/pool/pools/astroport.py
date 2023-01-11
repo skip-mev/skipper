@@ -12,6 +12,6 @@ class Astroport(Terraswap):
 
     async def update_fees(self, querier: Querier) -> None:
         self.lp_fee = self.DEFAULT_LP_FEE
-        self.protocol_fee = self.protoDEFAULT_PROTOCOL_FEEcol_fee
+        self.protocol_fee = self.DEFAULT_PROTOCOL_FEE
         self.fee_from_input = self.DEFAULT_FEE_FROM_INPUT
 
