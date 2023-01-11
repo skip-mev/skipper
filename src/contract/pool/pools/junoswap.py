@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-from cosmpy.aerial.wallet import LocalWallet
 from cosmpy.aerial.contract import create_cosmwasm_execute_msg
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 from cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 import MsgExecuteContract
