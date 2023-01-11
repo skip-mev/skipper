@@ -11,8 +11,10 @@ class Terraswap(Factory):
 
         while len(pairs["pairs"]) == 30:
             all_pairs.extend(pairs["pairs"])
-            pairs = await self.terraswap_factory(querier=querier,
-                                                 start_after=pairs["pairs"][-1]["asset_infos"])
+            pairs = await self._query_terraswap_factory(
+                                        querier=querier,
+                                        start_after=pairs["pairs"][-1]["asset_infos"]
+                                        )
             
         all_pairs.extend(pairs["pairs"])
         
