@@ -91,11 +91,11 @@ class State:
                                     )
             print(f"Getting all pairs for {protocol}...")
             all_pairs = await factory.get_all_pairs(querier=querier)
-            self.contracts = {pair['contract_addr']:
+            self.contracts.update({pair['contract_addr']:
                                     creator.create_pool(contract_address=pair['contract_addr'],
                                                         pool=protocol)
                                     for pair
-                                    in all_pairs}
+                                    in all_pairs})
             
     def set_all_jobs(self, querier: Querier) -> None:
         """ This function is used to set all the jobs"""
