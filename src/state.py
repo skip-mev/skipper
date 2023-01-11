@@ -151,8 +151,6 @@ class State:
         """
         print("Generating token pairs...")
         token_pairs = self._generate_token_pairs()
-        with open("contracts/token_pairs.json", "w") as f:
-            json.dump(token_pairs, f, indent=4)
         print("Setting contract routes...")
         self._set_contract_routes(arb_denom=arb_denom, 
                                   token_pairs=token_pairs)
