@@ -18,7 +18,6 @@ from src.querier import Querier
 from src.executor import Executor
 from src.creator import Creator
 from src.state import State
-from src.wallet import create_wallet
 from src.transaction import Transaction
 from src.contract import Pool
 from src.route import Route
@@ -96,9 +95,9 @@ class Bot:
                                     staking_denomination=self.fee_denom,
                                     )
         self.client = LedgerClient(self.network_config)
-        self.wallet = create_wallet(self.chain_id, 
-                                    self.mnemonic, 
-                                    self.address_prefix)
+        self.wallet = self.creator.create_wallet(self.chain_id, 
+                                                 self.mnemonic, 
+                                                 self.address_prefix) 
         # Get any existing contracts from the contracts file
         with open(self.contracts_file) as f:
             self.init_contracts: dict = json.load(f)

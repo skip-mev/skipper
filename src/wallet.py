@@ -6,22 +6,10 @@ from bip_utils import Bip39SeedGenerator, Bip44, Bip44Coins
 
 
 """#############################################"""
-"""@DEV TODO: Add more networks here"""
-JUNO_CHAIN_ID = "juno-1"
+"""@DEV TODO: Add more globals here as needed."""
 TERRA_CHAIN_ID = "phoenix-1"
 TERRA_LCD_URL = "https://phoenix-lcd.terra.dev"
 """#############################################"""
-    
-    
-def create_wallet(chain_id: str, mnemonic: str, address_prefix: str) -> LocalWallet:
-    """ Factory function to create wallets based on chain.
-        @DEV TODO: Add more wallets here per chain if needed.
-    """
-    wallets = {
-        "juno-1": create_juno_wallet,
-        "phoenix-1": create_terra_wallet
-        }
-    return wallets[chain_id](mnemonic, address_prefix)
 
 
 def create_juno_wallet(mnemonic: str, address_prefix: str) -> LocalWallet:
