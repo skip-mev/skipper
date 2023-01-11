@@ -27,7 +27,7 @@ class Terraswap(Factory):
         if start_after:
             query["pairs"]["start_after"] = start_after
         payload = querier.create_payload(contract_address=self.contract_address, 
-                                         query={"pairs": {"limit": 30}})
+                                         query=query)
         factory_info = await querier.query_node_and_return_response(payload=payload, 
                                                                     decoded=True)
         return factory_info
