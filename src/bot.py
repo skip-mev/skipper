@@ -110,14 +110,18 @@ class Bot:
         # Get list of all contract addresses
         self.contract_list: list = list(self.state.contracts.keys())
         
+        # Update contracts file after init
+        # @USER TODO: Uncomment this line if you want to update the contracts file after init
+        #self._update_contracts_file()
+            
+    def _update_contracts_file(self):
         dict_pools = {}
         for contract in self.state.contracts:
             dict_pools[contract] = self.state.contracts[contract].__dict__
             
-        print("Updating contracts json file...")
-        with open("contracts/juno_contracts_dict_post_init.json", 'w') as f:
+        with open(self.contracts_file, 'w') as f:
             json.dump(dict_pools, f, indent=4)
-            
+    
     async def run(self):
         print("Scanning Mempool...")
         while True:
