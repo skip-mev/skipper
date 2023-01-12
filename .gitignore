@@ -1,3 +1,9 @@
 /venv/
 /__pycache__/
-juno-arb/__pycache__/
+/cyclic-arbitrage/__pycache__/
+.DS_Store
+/tests/__pycache__/
+.vscode
+.pytest_cache
+*.pyc
+/junk/
