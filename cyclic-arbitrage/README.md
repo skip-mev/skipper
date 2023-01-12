@@ -4,26 +4,112 @@ This bot requires:
 
 - Python 3.10
 
-Check your python version by entering:
+### **Install Python 3.10** ###
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.10 python3-pip python3-virtualenv python3.10-distutils 
+```
 
-```bash
-python3 --version
+Check your Python 3.10 is functioning:
+
+```
+python3.10 --version
+```
+
+Create a virtual environment
+```
+python3.10 -m virtualenv venv
+```
+Activate virtual Environment, (venv) will show on left-hand side of shell
+
+```
+source venv/bin/activate
 ```
 
 Once you have python 3.10, install all the dependencies:
-```bash
+```
+cd cyclic-arbitrage
 pip install -r requirements.txt
 ```
 
-Then, edit the global variables in the main.py file to 
-your liking. The most important being your mnemonic.
-```python
+Rename `example_juno.env` i.e. `juno.env` and edit to your liking.
+```
+cd cyclic-arbitrage
+cp envs/example_juno.env envs/juno.env
+```
+The most important being your mnemonic, creating a new wallet is highly suggested for security, and for this wallet to only be used for this bot, as your mnemonic must be entered. 
+```
 MNEMONIC = "<your mnemonic>"
+```
+Also make sure your .env file from the previous command (`juno.env`, or whatever you named it) matches the call back field in `main.py`
+```
+# Load environment variables
+load_dotenv('envs/juno.env')
+#load_dotenv('envs/terra.env')
 ```
 
 Lastly, run the bot:
 ```python
 python main.py
+```
+To leave the virtual environment use command
+```
+deactivate
+```
+
+# Run bot with docker
+
+### **Install pre-requisites** ###
+
+```
+sudo apt update -y && apt upgrade -y && apt autoremove -y
+sudo apt install docker.io docker-compose -y
+```
+Rename `example_juno.env` i.e. `juno.env` and edit to your liking.
+```
+cd cyclic-arbitrage
+cp envs/example_juno.env envs/juno.env
+```
+"The most important being your mnemonic, creating a new wallet is highly suggested for security, and for this wallet to only be used for this bot, as your mnemonic must be entered." 
+```
+MNEMONIC = "<your mnemonic>"
+```
+Also make sure your .env file from the previous command (`juno.env`, or whatever you named it) matches the call back field in `main.py`
+```
+# Load environment variables
+load_dotenv('envs/juno.env')
+#load_dotenv('envs/terra.env')
+```
+
+Build the docker image
+``` 
+docker build -t mevbot
+```
+
+Run the docker image
+```
+docker run -d --name mevbot mevbot:latest
+```
+
+Shell into container & check logs
+```
+docker exec -it mevbot cat logs/juno.log
+```
+
+Change env variables after image is built
+```
+docker exec -it mevbot /bin/sh
+```
+```
+cd envs && nano juno.env -> edit to your liking
+```
+```
+exit
+```
+```
+docker restart mevbot
 ```
 
 # How the Bot Works
