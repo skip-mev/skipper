@@ -6,3 +6,4 @@
 .vscode
 .pytest_cache
 *.pyc
+/junk/
