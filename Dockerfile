@@ -3,10 +3,10 @@ FROM python:3.10
 RUN apt-get update && apt-get install -y nano
 
 # Set the working directory to /app
-WORKDIR /cyclic-arbitrage
+WORKDIR /
 
 # Copy the current directory contents into the container at /app
-COPY . /cyclic-arbitrage
+COPY . /
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
