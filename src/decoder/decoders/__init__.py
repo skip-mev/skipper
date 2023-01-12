@@ -1,0 +1,1 @@
+from .cosmwasm import CosmWasmDecoder
