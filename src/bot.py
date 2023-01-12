@@ -181,12 +181,12 @@ class Bot:
                 # If there is a profitable bundle, fire away!
                 end = time.time()
                 #logging.info(f"Time from seeing {tx_hash} in mempool and building bundle if exists: {end - start}")
-                if bundle:
+                if bundle and bundle[-1] is not None:
                     self.fire(bundle=bundle)
                     
     def build_most_profitable_bundle(self,
                                      transaction: Transaction,
-                                     contracts: dict[str, Pool]) -> list[bytes]:
+                                     contracts: dict[str, Pool]) -> list[bytes | None]:
         """ Build backrun bundle for transaction"""
         # Calculate the profit for each route
         for route in transaction.routes:
