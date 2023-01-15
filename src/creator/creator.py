@@ -85,7 +85,8 @@ class Creator:
             "astroport": pools.Astroport,
             "loop": pools.Loop,
             "phoenix": pools.Phoenix,
-            "white_whale": pools.Whitewhale
+            "white_whale": pools.Whitewhale,
+            "hopers": pools.Hopers
             }
         return protocols[pool](contract_address, pool)
         
