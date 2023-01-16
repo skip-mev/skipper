@@ -146,7 +146,7 @@ class Bot:
             for tx_str in backrun_list:
                 # Create a transaction object
                 tx_hash = sha256(b64decode(tx_str)).digest().hex()
-                #logging.info(f"Iterating transaction {tx_hash}")
+                logging.info(f"Iterating transaction {tx_hash}")
                 transaction: Transaction = Transaction(contracts=self.state.contracts, 
                                                        tx_str=tx_str, 
                                                        decoder=self.decoder,
@@ -160,7 +160,7 @@ class Bot:
                     start_update = time.time()
                     await self.state.update_all(jobs=self.state.update_all_reserves_jobs)
                     end_update = time.time()
-                    #logging.info(f"Time to update all reserves: {end_update - start_update}")
+                    logging.info(f"Time to update all reserves: {end_update - start_update}")
                     new_backrun_list = False
                 # Simulate the transaction on a copy of contract state 
                 # and return the copied state post-transaction simulation
@@ -180,13 +180,13 @@ class Bot:
                                                 )
                 # If there is a profitable bundle, fire away!
                 end = time.time()
-                #logging.info(f"Time from seeing {tx_hash} in mempool and building bundle if exists: {end - start}")
-                if bundle:
+                logging.info(f"Time from seeing {tx_hash} in mempool and building bundle if exists: {end - start}")
+                if bundle and bundle[-1] is not None:
                     self.fire(bundle=bundle)
                     
     def build_most_profitable_bundle(self,
                                      transaction: Transaction,
-                                     contracts: dict[str, Pool]) -> list[bytes]:
+                                     contracts: dict[str, Pool]) -> list[bytes | None]:
         """ Build backrun bundle for transaction"""
         # Calculate the profit for each route
         for route in transaction.routes:

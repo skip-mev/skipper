@@ -1,3 +1,4 @@
+import logging
 from dataclasses import dataclass
 
 from cosmpy.aerial.wallet import LocalWallet
@@ -39,7 +40,11 @@ class MultiMessageExecutor(Executor):
         for msg in msgs:
             tx.add_message(msg)
             
-        account = client.query_account(address=address)
+        try:
+            account = client.query_account(address=address)
+        except RuntimeError as e:
+            logging.error(e)
+            return None
         
         _add_profitability_invariant(
                 address=address,
