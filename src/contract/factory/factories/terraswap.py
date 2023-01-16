@@ -17,7 +17,18 @@ class Terraswap(Factory):
                                         )
             
         all_pairs.extend(pairs["pairs"])    
-        return all_pairs
+        
+        # @USER TODO: The bot currently only support x*y=k pools,
+        # so filters out any other pools. Extend as you desire.
+        filtered_pairs = []
+        for pair in all_pairs:
+            if 'pair_type' not in pair:
+                filtered_pairs.append(pair)
+                continue
+            if 'xyk' in pair['pair_type']:
+                filtered_pairs.append(pair)
+            
+        return filtered_pairs
     
     async def _query_terraswap_factory(self,
                                        querier: Querier, 
