@@ -54,8 +54,8 @@
         "protocol": "terraswap",
         "token1_denom": "terra1ry9f6alqyf9dpj04u9ymq5u4whjndu485agh6gusn89dmqse3ggsnzducj",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 65911914576,
-        "token2_reserves": 1005542,
+        "token1_reserves": 61697769078,
+        "token2_reserves": 1074441,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -100,8 +100,8 @@
         "protocol": "terraswap",
         "token1_denom": "terra1ry9f6alqyf9dpj04u9ymq5u4whjndu485agh6gusn89dmqse3ggsnzducj",
         "token2_denom": "terra1d4j9lsl453mkvtlg4ctw8y52rdkhafsaefug0hq0z06phczuvvvs7uq0vg",
-        "token1_reserves": 28688008206,
-        "token2_reserves": 33110908563,
+        "token1_reserves": 29333060152,
+        "token2_reserves": 32384963363,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -277,8 +277,8 @@
         "protocol": "terraswap",
         "token1_denom": "terra1xumzh893lfa7ak5qvpwmnle5m5xp47t3suwwa9s0ydqa8d8s5faqn6x7al",
         "token2_denom": "uluna",
-        "token1_reserves": 4872085377,
-        "token2_reserves": 5008819211,
+        "token1_reserves": 4936992469,
+        "token2_reserves": 4943215707,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -302,8 +302,8 @@
         "protocol": "terraswap",
         "token1_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
         "token2_denom": "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF",
-        "token1_reserves": 7352739104,
-        "token2_reserves": 7353249495,
+        "token1_reserves": 7353458498,
+        "token2_reserves": 7356185195,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -368,8 +368,8 @@
         "protocol": "terraswap",
         "token1_denom": "uluna",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 27024079504,
-        "token2_reserves": 40894063187,
+        "token1_reserves": 22937545159,
+        "token2_reserves": 48433414122,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -392,26 +392,6 @@
             [
                 "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
                 "terra1req03gy0eyeeg9e7nwjyn0pct6hdqtphy837j784492l4hcsh0vqx2n8az",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
             ],
             [
@@ -442,22 +422,17 @@
             [
                 "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
+                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
@@ -503,11 +478,6 @@
                 "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
                 "terra1w579ysjvpx7xxhckxewk8sykxz70gm48wpcuruenl29rhe6p6raslhj0m6",
                 "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
             ],
             [
                 "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
@@ -579,8 +549,8 @@
         "protocol": "terraswap",
         "token1_denom": "terra1ee4g63c3sus9hnyyp3p2u3tulzdv5ag68l55q8ej64y4qpwswvus5mtag2",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 1597935179,
-        "token2_reserves": 796826,
+        "token1_reserves": 1339369105,
+        "token2_reserves": 951182,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -645,8 +615,8 @@
         "protocol": "terraswap",
         "token1_denom": "uluna",
         "token2_denom": "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF",
-        "token1_reserves": 8747910942,
-        "token2_reserves": 13208563951,
+        "token1_reserves": 7421785757,
+        "token2_reserves": 15623030466,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -657,28 +627,8 @@
                 "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
             ],
             [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
                 "terra1req03gy0eyeeg9e7nwjyn0pct6hdqtphy837j784492l4hcsh0vqx2n8az",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
                 "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
             ],
             [
@@ -687,28 +637,8 @@
                 "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
             ],
             [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
                 "terra1req03gy0eyeeg9e7nwjyn0pct6hdqtphy837j784492l4hcsh0vqx2n8az",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
                 "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
             ],
             [
@@ -730,16 +660,6 @@
                 "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c",
                 "terra1nmrt8ppp7jtm0nmtgxg0qcv9x4ksgvpz20l25w6fyuj28v52v6rshgse5w",
                 "terra12t3t0f0ga6hv6cw274mytcwhh9038x448ugthz9j0tkvdnlgnc5qdz2ael"
-            ],
-            [
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c",
-                "terra1stnej96md342vzlcaw04ju89f9femg3w4ed0hky5rlj6awwz56vswsfhaj",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c",
-                "terra1l4a4reyzrtu7ylrag7x3z8ejrfk58ts44hnqwck0y5p03xkltf7qnm6jkx",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
             ],
             [
                 "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c",
@@ -766,8 +686,8 @@
         "protocol": "terraswap",
         "token1_denom": "terra1ee4g63c3sus9hnyyp3p2u3tulzdv5ag68l55q8ej64y4qpwswvus5mtag2",
         "token2_denom": "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF",
-        "token1_reserves": 1588709594,
-        "token2_reserves": 795949,
+        "token1_reserves": 1320613245,
+        "token2_reserves": 958119,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -968,8 +888,8 @@
         "protocol": "terraswap",
         "token1_denom": "uluna",
         "token2_denom": "terra14xsm2wzvu7xaf567r693vgfkhmvfs08l68h4tjj5wjgyn5ky8e2qvzyanh",
-        "token1_reserves": 8531331399,
-        "token2_reserves": 7871427648,
+        "token1_reserves": 8495328753,
+        "token2_reserves": 7906789832,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -980,8 +900,18 @@
                 "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
             ],
             [
+                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
+                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
                 "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
             ],
             [
@@ -990,19 +920,19 @@
                 "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
             ],
             [
+                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
                 "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
             ],
             [
-                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
+                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
             ],
             [
                 "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28",
@@ -1054,33 +984,12 @@
         "protocol": "terraswap",
         "token1_denom": "terra1ecgazyd0waaj3g7l9cmy5gulhxkps2gmxu9ghducvuypjq68mq2s5lvsct",
         "token2_denom": "uluna",
-        "token1_reserves": 38201654958,
-        "token2_reserves": 41284774454,
+        "token1_reserves": 38187182523,
+        "token2_reserves": 41300687442,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
-        "routes": [
-            [
-                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ]
-        ],
+        "routes": [],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -1100,8 +1009,8 @@
         "protocol": "terraswap",
         "token1_denom": "terra1ee4g63c3sus9hnyyp3p2u3tulzdv5ag68l55q8ej64y4qpwswvus5mtag2",
         "token2_denom": "uluna",
-        "token1_reserves": 525482554122,
-        "token2_reserves": 205309862,
+        "token1_reserves": 526263031281,
+        "token2_reserves": 205006355,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -1206,79 +1115,13 @@
         "token1_type": "native_token",
         "token2_type": "native_token"
     },
-    "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8": {
-        "contract_address": "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-        "protocol": "phoenix",
-        "token1_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token2_denom": "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF",
-        "token1_reserves": 2188975563,
-        "token2_reserves": 2186734318,
-        "lp_fee": 0.0025,
-        "protocol_fee": 0.0,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.0025,
-        "DEFAULT_PROTOCOL_FEE": 0.0,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "native_token",
-        "token2_type": "native_token"
-    },
     "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw": {
         "contract_address": "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
         "protocol": "phoenix",
         "token1_denom": "terra14xsm2wzvu7xaf567r693vgfkhmvfs08l68h4tjj5wjgyn5ky8e2qvzyanh",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 967707661,
-        "token2_reserves": 1572187570,
+        "token1_reserves": 819746280,
+        "token2_reserves": 1856890949,
         "lp_fee": 0.0025,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -1291,32 +1134,12 @@
             [
                 "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
                 "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
             ],
             [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
@@ -1331,32 +1154,12 @@
             [
                 "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
                 "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
             ],
             [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
@@ -1383,8 +1186,8 @@
         "protocol": "phoenix",
         "token1_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
         "token2_denom": "uluna",
-        "token1_reserves": 1480901232,
-        "token2_reserves": 985414707,
+        "token1_reserves": 1753393774,
+        "token2_reserves": 835993689,
         "lp_fee": 0.0025,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -1407,26 +1210,6 @@
             [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
                 "terra1req03gy0eyeeg9e7nwjyn0pct6hdqtphy837j784492l4hcsh0vqx2n8az",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
             ],
             [
@@ -1457,22 +1240,17 @@
             [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
+                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
@@ -1521,11 +1299,6 @@
             ],
             [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
                 "terra108psz4xadgpytu76dfztaytkldvrh6zl35nwdy6n2cltvn0dkt8qu26rde",
                 "terra1wfm57qavephsengsrjedvjgwrngvcvs0046fj3aq0mekjzq7gpcqt7sqrx"
             ],
@@ -1569,8 +1342,8 @@
         "protocol": "phoenix",
         "token1_denom": "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF",
         "token2_denom": "uluna",
-        "token1_reserves": 688490190,
-        "token2_reserves": 458798516,
+        "token1_reserves": 816028460,
+        "token2_reserves": 387796278,
         "lp_fee": 0.0025,
         "protocol_fee": 0.0,
         "fee_from_input": false,
@@ -1581,28 +1354,8 @@
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
             ],
             [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
                 "terra1req03gy0eyeeg9e7nwjyn0pct6hdqtphy837j784492l4hcsh0vqx2n8az",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
             ],
             [
@@ -1611,28 +1364,8 @@
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
             ],
             [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
                 "terra1req03gy0eyeeg9e7nwjyn0pct6hdqtphy837j784492l4hcsh0vqx2n8az",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
             ],
             [
@@ -1654,16 +1387,6 @@
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz",
                 "terra1nmrt8ppp7jtm0nmtgxg0qcv9x4ksgvpz20l25w6fyuj28v52v6rshgse5w",
                 "terra12t3t0f0ga6hv6cw274mytcwhh9038x448ugthz9j0tkvdnlgnc5qdz2ael"
-            ],
-            [
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz",
-                "terra1stnej96md342vzlcaw04ju89f9femg3w4ed0hky5rlj6awwz56vswsfhaj",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz",
-                "terra1l4a4reyzrtu7ylrag7x3z8ejrfk58ts44hnqwck0y5p03xkltf7qnm6jkx",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
             ],
             [
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz",
@@ -1683,67 +1406,6 @@
         "DEFAULT_PROTOCOL_FEE": 0.0,
         "DEFAULT_FEE_FROM_INPUT": false,
         "token1_type": "native_token",
-        "token2_type": "native_token"
-    },
-    "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8": {
-        "contract_address": "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8",
-        "protocol": "phoenix",
-        "token1_denom": "terra14xsm2wzvu7xaf567r693vgfkhmvfs08l68h4tjj5wjgyn5ky8e2qvzyanh",
-        "token2_denom": "uluna",
-        "token1_reserves": 3152617316,
-        "token2_reserves": 3698374380,
-        "lp_fee": 0.0025,
-        "protocol_fee": 0.0,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
-            ],
-            [
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8",
-                "terra1wx8h3grl9w79awkp5lefx2pewzner324dcq6vycxrrn3kj0lf0fqy74ple",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.0025,
-        "DEFAULT_PROTOCOL_FEE": 0.0,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "token",
         "token2_type": "native_token"
     },
     "terra1phz9fk5zrpj40el0px2h4rmnfyrlvxgwfz863nv96a0835tf3ljqpdsnru": {
@@ -1771,232 +1433,17 @@
         "token1_type": "token",
         "token2_type": "native_token"
     },
-    "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r": {
-        "contract_address": "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-        "protocol": "astroport",
-        "token1_denom": "ibc/14ACCAD1750327C74BB35978AD0C3E97B184DAB9F0BF4BD876FBD1F782B57110",
-        "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 61730776,
-        "token2_reserves": 79219937,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "native_token",
-        "token2_type": "native_token"
-    },
-    "terra1stnej96md342vzlcaw04ju89f9femg3w4ed0hky5rlj6awwz56vswsfhaj": {
-        "contract_address": "terra1stnej96md342vzlcaw04ju89f9femg3w4ed0hky5rlj6awwz56vswsfhaj",
-        "protocol": "astroport",
-        "token1_denom": "ibc/14ACCAD1750327C74BB35978AD0C3E97B184DAB9F0BF4BD876FBD1F782B57110",
-        "token2_denom": "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF",
-        "token1_reserves": 379,
-        "token2_reserves": 1631,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c",
-                "terra1stnej96md342vzlcaw04ju89f9femg3w4ed0hky5rlj6awwz56vswsfhaj",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz",
-                "terra1stnej96md342vzlcaw04ju89f9femg3w4ed0hky5rlj6awwz56vswsfhaj",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "native_token",
-        "token2_type": "native_token"
-    },
-    "terra1tpm8tsf9dtmpkzup6lfadpfy5fewqtghhw5zs3wv3nf8wt6wl7xqtscvgg": {
-        "contract_address": "terra1tpm8tsf9dtmpkzup6lfadpfy5fewqtghhw5zs3wv3nf8wt6wl7xqtscvgg",
-        "protocol": "astroport",
-        "token1_denom": "terra1rwg5kt6kcyxtz69acjgpeut7dgr4y3r7tvntdxqt03dvpqktrfxq4jrvpq",
-        "token2_denom": "ibc/14ACCAD1750327C74BB35978AD0C3E97B184DAB9F0BF4BD876FBD1F782B57110",
-        "token1_reserves": 2667,
-        "token2_reserves": 8,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza",
-                "terra1tpm8tsf9dtmpkzup6lfadpfy5fewqtghhw5zs3wv3nf8wt6wl7xqtscvgg",
-                "terra1wfm57qavephsengsrjedvjgwrngvcvs0046fj3aq0mekjzq7gpcqt7sqrx"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "token",
-        "token2_type": "native_token"
-    },
     "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza": {
         "contract_address": "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza",
         "protocol": "astroport",
         "token1_denom": "ibc/14ACCAD1750327C74BB35978AD0C3E97B184DAB9F0BF4BD876FBD1F782B57110",
         "token2_denom": "uluna",
-        "token1_reserves": 34222525,
-        "token2_reserves": 22655445,
+        "token1_reserves": 70445730,
+        "token2_reserves": 41206676,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
-        "routes": [
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c",
-                "terra1stnej96md342vzlcaw04ju89f9femg3w4ed0hky5rlj6awwz56vswsfhaj",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz",
-                "terra1stnej96md342vzlcaw04ju89f9femg3w4ed0hky5rlj6awwz56vswsfhaj",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
-            ],
-            [
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza",
-                "terra1tpm8tsf9dtmpkzup6lfadpfy5fewqtghhw5zs3wv3nf8wt6wl7xqtscvgg",
-                "terra1wfm57qavephsengsrjedvjgwrngvcvs0046fj3aq0mekjzq7gpcqt7sqrx"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "native_token",
-        "token2_type": "native_token"
-    },
-    "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew": {
-        "contract_address": "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-        "protocol": "astroport",
-        "token1_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token2_denom": "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF",
-        "token1_reserves": 4590306227219,
-        "token2_reserves": 4531658155719,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ]
-        ],
+        "routes": [],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -2016,8 +1463,8 @@
         "protocol": "astroport",
         "token1_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
         "token2_denom": "terra13j2k5rfkg0qhk58vz63cze0uze4hwswlrfnm0fa4rnyggjyfrcnqcrs5z2",
-        "token1_reserves": 4307338027,
-        "token2_reserves": 136382451606,
+        "token1_reserves": 198114305,
+        "token2_reserves": 5398592142,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2057,17 +1504,58 @@
         "token1_type": "native_token",
         "token2_type": "token"
     },
-    "terra1z6azezq688a7pnrta3g855jsmwel492uvraty5zxv0zjn8rxz5yq8zdgah": {
-        "contract_address": "terra1z6azezq688a7pnrta3g855jsmwel492uvraty5zxv0zjn8rxz5yq8zdgah",
+    "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m": {
+        "contract_address": "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
         "protocol": "astroport",
-        "token1_denom": "terra13jlm0anpdd3hc0xctw9vtncmcfnrag8dh686s2juy7m226unwd4q0tmx2v",
-        "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 29763,
-        "token2_reserves": 3000000,
+        "token1_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
+        "token2_denom": "terra14xsm2wzvu7xaf567r693vgfkhmvfs08l68h4tjj5wjgyn5ky8e2qvzyanh",
+        "token1_reserves": 262026,
+        "token2_reserves": 117000,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
-        "routes": [],
+        "routes": [
+            [
+                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
+                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
+            ],
+            [
+                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
+                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
+            ],
+            [
+                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
+                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
+            ],
+            [
+                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
+                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
+            ]
+        ],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -2079,8 +1567,8 @@
         "DEFAULT_LP_FEE": 0.002,
         "DEFAULT_PROTOCOL_FEE": 0.001,
         "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "token",
-        "token2_type": "native_token"
+        "token1_type": "native_token",
+        "token2_type": "token"
     },
     "terra1074tgxqlxtav7ypzadkj30wkgrync9mm8s307r3u9hc3r2rjsjjsytp2cz": {
         "contract_address": "terra1074tgxqlxtav7ypzadkj30wkgrync9mm8s307r3u9hc3r2rjsjjsytp2cz",
@@ -2133,8 +1621,8 @@
         "protocol": "astroport",
         "token1_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
         "token2_denom": "terra17gck626vgax9jpe6utm7dhx4vdzawfkt0jhru03l7a3dzu98wedsfad4sz",
-        "token1_reserves": 55448446,
-        "token2_reserves": 13094149629,
+        "token1_reserves": 73098455,
+        "token2_reserves": 9949604797,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2179,8 +1667,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1d4j9lsl453mkvtlg4ctw8y52rdkhafsaefug0hq0z06phczuvvvs7uq0vg",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 1717614709954,
-        "token2_reserves": 24634969,
+        "token1_reserves": 1529840428128,
+        "token2_reserves": 27674524,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2245,8 +1733,8 @@
         "protocol": "astroport",
         "token1_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
         "token2_denom": "terra1ee4g63c3sus9hnyyp3p2u3tulzdv5ag68l55q8ej64y4qpwswvus5mtag2",
-        "token1_reserves": 805825,
-        "token2_reserves": 1560666104,
+        "token1_reserves": 2898115,
+        "token2_reserves": 3641591274,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2311,8 +1799,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1gk0y0tcxj8pr65tanqvc8zyzv3c8szkwf2kcmzgqj9jm2t9z3f9q4xcnfz",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 2309948,
-        "token2_reserves": 886034,
+        "token1_reserves": 2458175,
+        "token2_reserves": 832714,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2336,8 +1824,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1gy73st560m2j0esw5c5rjmr899hvtv4rhh4seeajt3clfhr4aupszjss4j",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 29820391234929,
-        "token2_reserves": 70918699382,
+        "token1_reserves": 30370636035214,
+        "token2_reserves": 63426635678,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2428,33 +1916,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1l23rtnsp0fcfgs2zlww4gcd8dlznkm580p5yrsangcen9jjjhuqstd2sle",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 5677007900,
-        "token2_reserves": 16611212,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "token",
-        "token2_type": "native_token"
-    },
-    "terra1y0dp7jzr38uenmd2rncpqw9uegcdq2yqp5kcxc277ezklqdg2tcsj92x5e": {
-        "contract_address": "terra1y0dp7jzr38uenmd2rncpqw9uegcdq2yqp5kcxc277ezklqdg2tcsj92x5e",
-        "protocol": "astroport",
-        "token1_denom": "terra1mrdgys0e0hhq0n56zgy3e0htahcnwtdt4dy2ec9wcltcr6qjntmq0yen07",
-        "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 96608,
-        "token2_reserves": 2263266,
+        "token1_reserves": 4627536722,
+        "token2_reserves": 20438194,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2478,8 +1941,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1nsuqsk6kh58ulczatwev87ttq2z6r3pusulg9r24mfj2fvtzd4uq3exn26",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 21630486546386,
-        "token2_reserves": 1378369284439,
+        "token1_reserves": 12174302268884,
+        "token2_reserves": 989918092206,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2523,52 +1986,6 @@
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
                 "terra1w579ysjvpx7xxhckxewk8sykxz70gm48wpcuruenl29rhe6p6raslhj0m6",
                 "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "token",
-        "token2_type": "native_token"
-    },
-    "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4": {
-        "contract_address": "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-        "protocol": "astroport",
-        "token1_denom": "terra1qx284aak0wl7vrvlsc6cwcsn6xwajragkh6cjqj87m9p34hx5l2s22p3cp",
-        "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 12983158112,
-        "token2_reserves": 38766513,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
             ]
         ],
         "input_reserves": 0,
@@ -2590,8 +2007,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1rwg5kt6kcyxtz69acjgpeut7dgr4y3r7tvntdxqt03dvpqktrfxq4jrvpq",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 1063047387,
-        "token2_reserves": 11630734,
+        "token1_reserves": 711827753,
+        "token2_reserves": 17423351,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2636,8 +2053,8 @@
         "protocol": "astroport",
         "token1_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
         "token2_denom": "terra1ry9f6alqyf9dpj04u9ymq5u4whjndu485agh6gusn89dmqse3ggsnzducj",
-        "token1_reserves": 9764112,
-        "token2_reserves": 609086609666,
+        "token1_reserves": 10581623,
+        "token2_reserves": 562121725744,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2682,8 +2099,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1uc3r74qg44csdrl8hrm5muzlue9gf7umgkyv569pgazh7tudpr4qdtgqh6",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 46868297363141,
-        "token2_reserves": 794600476,
+        "token1_reserves": 25990595349251,
+        "token2_reserves": 1823349462,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2728,8 +2145,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1x62mjnme4y0rdnag3r8rfgjuutsqlkkyuh4ndgex0wl3wue25uksau39q8",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 3729,
-        "token2_reserves": 270,
+        "token1_reserves": 110825348,
+        "token2_reserves": 9794563,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2774,8 +2191,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1xe8umegahlqphtpvjsuwfzfvyjfvag5h8rffsx6ezm0el4xzsf8s7uzezk",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 29492312,
-        "token2_reserves": 7484465,
+        "token1_reserves": 27271578,
+        "token2_reserves": 8098481,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2820,8 +2237,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1xzkel96e5e8vfmqw7valzdzzv9hqasfyslclvnmvxdejvpda3xwsskxzus",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 18864094,
-        "token2_reserves": 3246220,
+        "token1_reserves": 14256409,
+        "token2_reserves": 4301452,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2845,8 +2262,8 @@
         "protocol": "astroport",
         "token1_denom": "uluna",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 1709740650440,
-        "token2_reserves": 2594545313110,
+        "token1_reserves": 1388702625572,
+        "token2_reserves": 2943287051797,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -2869,26 +2286,6 @@
             [
                 "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
                 "terra1req03gy0eyeeg9e7nwjyn0pct6hdqtphy837j784492l4hcsh0vqx2n8az",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
             ],
             [
@@ -2919,22 +2316,17 @@
             [
                 "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
+                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
@@ -2983,11 +2375,6 @@
             ],
             [
                 "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
                 "terra108psz4xadgpytu76dfztaytkldvrh6zl35nwdy6n2cltvn0dkt8qu26rde",
                 "terra1wfm57qavephsengsrjedvjgwrngvcvs0046fj3aq0mekjzq7gpcqt7sqrx"
             ],
@@ -3031,8 +2418,8 @@
         "protocol": "astroport",
         "token1_denom": "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF",
         "token2_denom": "terra1ee4g63c3sus9hnyyp3p2u3tulzdv5ag68l55q8ej64y4qpwswvus5mtag2",
-        "token1_reserves": 882982,
-        "token2_reserves": 1420967058,
+        "token1_reserves": 2736377,
+        "token2_reserves": 3420130051,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -3072,49 +2459,13 @@
         "token1_type": "native_token",
         "token2_type": "token"
     },
-    "terra1l4a4reyzrtu7ylrag7x3z8ejrfk58ts44hnqwck0y5p03xkltf7qnm6jkx": {
-        "contract_address": "terra1l4a4reyzrtu7ylrag7x3z8ejrfk58ts44hnqwck0y5p03xkltf7qnm6jkx",
-        "protocol": "astroport",
-        "token1_denom": "terra1qx284aak0wl7vrvlsc6cwcsn6xwajragkh6cjqj87m9p34hx5l2s22p3cp",
-        "token2_denom": "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF",
-        "token1_reserves": 1352996,
-        "token2_reserves": 12010,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c",
-                "terra1l4a4reyzrtu7ylrag7x3z8ejrfk58ts44hnqwck0y5p03xkltf7qnm6jkx",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ],
-            [
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz",
-                "terra1l4a4reyzrtu7ylrag7x3z8ejrfk58ts44hnqwck0y5p03xkltf7qnm6jkx",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "token",
-        "token2_type": "native_token"
-    },
     "terra1zz8u4y9h0dw6l7kgfcaz7t5yxgmdkhxmqg7anmk0l393guflnvzqjhvtl7": {
         "contract_address": "terra1zz8u4y9h0dw6l7kgfcaz7t5yxgmdkhxmqg7anmk0l393guflnvzqjhvtl7",
         "protocol": "astroport",
         "token1_denom": "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF",
         "token2_denom": "terra1rwg5kt6kcyxtz69acjgpeut7dgr4y3r7tvntdxqt03dvpqktrfxq4jrvpq",
-        "token1_reserves": 335592,
-        "token2_reserves": 29708041,
+        "token1_reserves": 397214,
+        "token2_reserves": 25108147,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -3169,31 +2520,6 @@
         "token1_type": "token",
         "token2_type": "native_token"
     },
-    "terra166rn40vza6qsvp754gr8k6gumjyyv8zuht3py3q5994u2p254u5qmmvcz8": {
-        "contract_address": "terra166rn40vza6qsvp754gr8k6gumjyyv8zuht3py3q5994u2p254u5qmmvcz8",
-        "protocol": "astroport",
-        "token1_denom": "terra10mdchp7kmpj8v5maqk902pwnm0ynj39shme66krac6nm2cw9zh4qxvvcx9",
-        "token2_denom": "terra1v0g6jel2c5rf00yw5szjw38fn527w5p6szujmw44n2x9azkfumcqpv4j9s",
-        "token1_reserves": 200000000,
-        "token2_reserves": 200000000,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "token",
-        "token2_type": "token"
-    },
     "terra12zp2u3g82g7kje37xwk2jn05klxank0fr5ejl4jtlfmszzdpc8ws9uvcww": {
         "contract_address": "terra12zp2u3g82g7kje37xwk2jn05klxank0fr5ejl4jtlfmszzdpc8ws9uvcww",
         "protocol": "astroport",
@@ -3229,13 +2555,7 @@
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
-        "routes": [
-            [
-                "terra1pxm9qtnrchzy90d99clpa0rkx8fyztlc67wt5t999pc8yvsrx90snpfe4v",
-                "terra1hrk3jt3n5nvl4za5nsf3z4xdp694697cs9cwj8dylhc4laf5gc0qnd72wr",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ]
-        ],
+        "routes": [],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -3249,37 +2569,6 @@
         "DEFAULT_FEE_FROM_INPUT": false,
         "token1_type": "token",
         "token2_type": "token"
-    },
-    "terra1pxm9qtnrchzy90d99clpa0rkx8fyztlc67wt5t999pc8yvsrx90snpfe4v": {
-        "contract_address": "terra1pxm9qtnrchzy90d99clpa0rkx8fyztlc67wt5t999pc8yvsrx90snpfe4v",
-        "protocol": "astroport",
-        "token1_denom": "terra13eekqp0zgj55arjuacpxqxzgqy2uydf5wzzqns9ddgpepj377afqflunf3",
-        "token2_denom": "uluna",
-        "token1_reserves": 7060948449,
-        "token2_reserves": 6297332635,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1pxm9qtnrchzy90d99clpa0rkx8fyztlc67wt5t999pc8yvsrx90snpfe4v",
-                "terra1hrk3jt3n5nvl4za5nsf3z4xdp694697cs9cwj8dylhc4laf5gc0qnd72wr",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "token",
-        "token2_type": "native_token"
     },
     "terra1ecn2farcatxc3et2au5v7wam4g03nezw9rf8475fu33lsehrjexsdaykzl": {
         "contract_address": "terra1ecn2farcatxc3et2au5v7wam4g03nezw9rf8475fu33lsehrjexsdaykzl",
@@ -3311,8 +2600,8 @@
         "protocol": "astroport",
         "token1_denom": "terra13j2k5rfkg0qhk58vz63cze0uze4hwswlrfnm0fa4rnyggjyfrcnqcrs5z2",
         "token2_denom": "terra1e9s5m6vrl9ms75q0862llq2vcsz8r43czm36s6xnn3vh8dfmwe0s3c86e8",
-        "token1_reserves": 157756755096,
-        "token2_reserves": 64095212513,
+        "token1_reserves": 159554156231,
+        "token2_reserves": 63602122400,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -3336,8 +2625,8 @@
         "protocol": "astroport",
         "token1_denom": "terra13j2k5rfkg0qhk58vz63cze0uze4hwswlrfnm0fa4rnyggjyfrcnqcrs5z2",
         "token2_denom": "terra1ry9f6alqyf9dpj04u9ymq5u4whjndu485agh6gusn89dmqse3ggsnzducj",
-        "token1_reserves": 132949878,
-        "token2_reserves": 256056595925,
+        "token1_reserves": 12242361,
+        "token2_reserves": 23566521176,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -3367,8 +2656,8 @@
         "protocol": "astroport",
         "token1_denom": "terra13j2k5rfkg0qhk58vz63cze0uze4hwswlrfnm0fa4rnyggjyfrcnqcrs5z2",
         "token2_denom": "uluna",
-        "token1_reserves": 10533012725124,
-        "token2_reserves": 221883946059,
+        "token1_reserves": 9961850892309,
+        "token2_reserves": 176906567309,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -3438,95 +2727,19 @@
         "token1_type": "token",
         "token2_type": "token"
     },
-    "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy": {
-        "contract_address": "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-        "protocol": "astroport",
-        "token1_denom": "terra1ecgazyd0waaj3g7l9cmy5gulhxkps2gmxu9ghducvuypjq68mq2s5lvsct",
-        "token2_denom": "terra14xsm2wzvu7xaf567r693vgfkhmvfs08l68h4tjj5wjgyn5ky8e2qvzyanh",
-        "token1_reserves": 1921749,
-        "token2_reserves": 2117568,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
-            ],
-            [
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
-            ],
-            [
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
-            ],
-            [
-                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "token",
-        "token2_type": "token"
-    },
     "terra1wx8h3grl9w79awkp5lefx2pewzner324dcq6vycxrrn3kj0lf0fqy74ple": {
         "contract_address": "terra1wx8h3grl9w79awkp5lefx2pewzner324dcq6vycxrrn3kj0lf0fqy74ple",
         "protocol": "astroport",
         "token1_denom": "terra14xsm2wzvu7xaf567r693vgfkhmvfs08l68h4tjj5wjgyn5ky8e2qvzyanh",
         "token2_denom": "terra1x62mjnme4y0rdnag3r8rfgjuutsqlkkyuh4ndgex0wl3wue25uksau39q8",
-        "token1_reserves": 15341954,
-        "token2_reserves": 379746822,
+        "token1_reserves": 12430920,
+        "token2_reserves": 345800689,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
         "routes": [
             [
                 "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28",
-                "terra1wx8h3grl9w79awkp5lefx2pewzner324dcq6vycxrrn3kj0lf0fqy74ple",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ],
-            [
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8",
-                "terra1wx8h3grl9w79awkp5lefx2pewzner324dcq6vycxrrn3kj0lf0fqy74ple",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ],
-            [
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508",
                 "terra1wx8h3grl9w79awkp5lefx2pewzner324dcq6vycxrrn3kj0lf0fqy74ple",
                 "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
             ],
@@ -3548,67 +2761,6 @@
         "DEFAULT_PROTOCOL_FEE": 0.001,
         "DEFAULT_FEE_FROM_INPUT": false,
         "token1_type": "token",
-        "token2_type": "token"
-    },
-    "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508": {
-        "contract_address": "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508",
-        "protocol": "astroport",
-        "token1_denom": "uluna",
-        "token2_denom": "terra14xsm2wzvu7xaf567r693vgfkhmvfs08l68h4tjj5wjgyn5ky8e2qvzyanh",
-        "token1_reserves": 708472517525,
-        "token2_reserves": 341815670267,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
-            ],
-            [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
-            ],
-            [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
-            ],
-            [
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
-            ],
-            [
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508",
-                "terra1wx8h3grl9w79awkp5lefx2pewzner324dcq6vycxrrn3kj0lf0fqy74ple",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "native_token",
         "token2_type": "token"
     },
     "terra1a044rg849fdtzvkr8sgq7dzrktmxd93at8pf2nr56aydgm45h3fsj8w6lc": {
@@ -3719,23 +2871,17 @@
         "token1_type": "token",
         "token2_type": "native_token"
     },
-    "terra1hapant9z9454s0sl2pjwpct2apft4uxu6ypem0u290fe0626gvzqg4xzlp": {
-        "contract_address": "terra1hapant9z9454s0sl2pjwpct2apft4uxu6ypem0u290fe0626gvzqg4xzlp",
+    "terra1ulf4j2tqzgzwywn9yxm0759yuldmvjs26m9gdx0u9qywy0vjrejqsa6lpv": {
+        "contract_address": "terra1ulf4j2tqzgzwywn9yxm0759yuldmvjs26m9gdx0u9qywy0vjrejqsa6lpv",
         "protocol": "astroport",
         "token1_denom": "terra16h7keds26d52xj8rn9jfx6lj2x0ja79lt56yxnmlm4xsttf5mu5smq5f78",
-        "token2_denom": "terra1rwg5kt6kcyxtz69acjgpeut7dgr4y3r7tvntdxqt03dvpqktrfxq4jrvpq",
-        "token1_reserves": 1279186980,
-        "token2_reserves": 12033035,
+        "token2_denom": "terra1hspy32cecnj72wwpma59eldpmsmfndlrwqxnzx6awfdtarns66qqw5kn85",
+        "token1_reserves": 123886817489,
+        "token2_reserves": 100943382128,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
-        "routes": [
-            [
-                "terra1sxdrn5efjuf3z2lzuwnew839zus4lm2dndwzw589t0kzku6kmhnsuhsxq3",
-                "terra1hapant9z9454s0sl2pjwpct2apft4uxu6ypem0u290fe0626gvzqg4xzlp",
-                "terra1wfm57qavephsengsrjedvjgwrngvcvs0046fj3aq0mekjzq7gpcqt7sqrx"
-            ]
-        ],
+        "routes": [],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -3750,23 +2896,17 @@
         "token1_type": "token",
         "token2_type": "token"
     },
-    "terra1sxdrn5efjuf3z2lzuwnew839zus4lm2dndwzw589t0kzku6kmhnsuhsxq3": {
-        "contract_address": "terra1sxdrn5efjuf3z2lzuwnew839zus4lm2dndwzw589t0kzku6kmhnsuhsxq3",
+    "terra1hapant9z9454s0sl2pjwpct2apft4uxu6ypem0u290fe0626gvzqg4xzlp": {
+        "contract_address": "terra1hapant9z9454s0sl2pjwpct2apft4uxu6ypem0u290fe0626gvzqg4xzlp",
         "protocol": "astroport",
         "token1_denom": "terra16h7keds26d52xj8rn9jfx6lj2x0ja79lt56yxnmlm4xsttf5mu5smq5f78",
-        "token2_denom": "uluna",
-        "token1_reserves": 464132215698,
-        "token2_reserves": 14652032,
+        "token2_denom": "terra1rwg5kt6kcyxtz69acjgpeut7dgr4y3r7tvntdxqt03dvpqktrfxq4jrvpq",
+        "token1_reserves": 1011717097,
+        "token2_reserves": 15251205,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
-        "routes": [
-            [
-                "terra1sxdrn5efjuf3z2lzuwnew839zus4lm2dndwzw589t0kzku6kmhnsuhsxq3",
-                "terra1hapant9z9454s0sl2pjwpct2apft4uxu6ypem0u290fe0626gvzqg4xzlp",
-                "terra1wfm57qavephsengsrjedvjgwrngvcvs0046fj3aq0mekjzq7gpcqt7sqrx"
-            ]
-        ],
+        "routes": [],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -3779,15 +2919,15 @@
         "DEFAULT_PROTOCOL_FEE": 0.001,
         "DEFAULT_FEE_FROM_INPUT": false,
         "token1_type": "token",
-        "token2_type": "native_token"
+        "token2_type": "token"
     },
     "terra1vnvcfaxw9tlucpsjkf8z7q6qwqksy8xvp2qxta3zutw4gqkhq7rsg9fyqs": {
         "contract_address": "terra1vnvcfaxw9tlucpsjkf8z7q6qwqksy8xvp2qxta3zutw4gqkhq7rsg9fyqs",
         "protocol": "astroport",
         "token1_denom": "terra170e8mepwmndwfgs5897almdewrt6phnkksktlf958s90eh055xvsrndvku",
         "token2_denom": "uluna",
-        "token1_reserves": 5000000,
-        "token2_reserves": 5000000,
+        "token1_reserves": 17000001,
+        "token2_reserves": 17000001,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -3816,13 +2956,7 @@
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
-        "routes": [
-            [
-                "terra1h32epkd72x7st0wk49z35qlpsxf26pw4ydacs8acq6uka7hgshmq7z7vl9",
-                "terra1sd4wzqh4uefjt7nwgezdg7ahn9n6943rc3xq87mvtt270ev2ejcqyrsgga",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ]
-        ],
+        "routes": [],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -3837,44 +2971,13 @@
         "token1_type": "token",
         "token2_type": "token"
     },
-    "terra1h32epkd72x7st0wk49z35qlpsxf26pw4ydacs8acq6uka7hgshmq7z7vl9": {
-        "contract_address": "terra1h32epkd72x7st0wk49z35qlpsxf26pw4ydacs8acq6uka7hgshmq7z7vl9",
-        "protocol": "astroport",
-        "token1_denom": "terra17aj4ty4sz4yhgm08na8drc0v03v2jwr3waxcqrwhajj729zhl7zqnpc0ml",
-        "token2_denom": "uluna",
-        "token1_reserves": 370178843666,
-        "token2_reserves": 430314069910,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1h32epkd72x7st0wk49z35qlpsxf26pw4ydacs8acq6uka7hgshmq7z7vl9",
-                "terra1sd4wzqh4uefjt7nwgezdg7ahn9n6943rc3xq87mvtt270ev2ejcqyrsgga",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "token",
-        "token2_type": "native_token"
-    },
     "terra1yx28vf8z0ph94h6mwxurfjuqzqcc6chzpd85ls8uvr0ajpkdvzhqrmp2sv": {
         "contract_address": "terra1yx28vf8z0ph94h6mwxurfjuqzqcc6chzpd85ls8uvr0ajpkdvzhqrmp2sv",
         "protocol": "astroport",
         "token1_denom": "terra17gck626vgax9jpe6utm7dhx4vdzawfkt0jhru03l7a3dzu98wedsfad4sz",
         "token2_denom": "uluna",
-        "token1_reserves": 600212213160,
-        "token2_reserves": 1640034826,
+        "token1_reserves": 532036142265,
+        "token2_reserves": 1852443376,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -3914,17 +3017,64 @@
         "token1_type": "token",
         "token2_type": "native_token"
     },
+    "terra1asyd64qhwj6cypzzuq6yrla624a2a37gwy2flpenvqu9yy4nvdsq35d2uk": {
+        "contract_address": "terra1asyd64qhwj6cypzzuq6yrla624a2a37gwy2flpenvqu9yy4nvdsq35d2uk",
+        "protocol": "astroport",
+        "token1_denom": "terra19p20mfnvwh9yvyr7aus3a6z6g6uk28fv4jhx9kmnc2m7krg27q2qkfenjw",
+        "token2_denom": "terra1nsuqsk6kh58ulczatwev87ttq2z6r3pusulg9r24mfj2fvtzd4uq3exn26",
+        "token1_reserves": 130220986498,
+        "token2_reserves": 38278723085,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "terra1h4cakgms4ju3eryhrmw00xegtjxkgyv88yqllg9ryz9qxek4qz9sz3swn2",
+                "terra1asyd64qhwj6cypzzuq6yrla624a2a37gwy2flpenvqu9yy4nvdsq35d2uk",
+                "terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw"
+            ],
+            [
+                "terra1h4cakgms4ju3eryhrmw00xegtjxkgyv88yqllg9ryz9qxek4qz9sz3swn2",
+                "terra1asyd64qhwj6cypzzuq6yrla624a2a37gwy2flpenvqu9yy4nvdsq35d2uk",
+                "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "token"
+    },
     "terra1h4cakgms4ju3eryhrmw00xegtjxkgyv88yqllg9ryz9qxek4qz9sz3swn2": {
         "contract_address": "terra1h4cakgms4ju3eryhrmw00xegtjxkgyv88yqllg9ryz9qxek4qz9sz3swn2",
         "protocol": "astroport",
         "token1_denom": "terra19p20mfnvwh9yvyr7aus3a6z6g6uk28fv4jhx9kmnc2m7krg27q2qkfenjw",
         "token2_denom": "uluna",
-        "token1_reserves": 471193523117,
-        "token2_reserves": 5353825597,
+        "token1_reserves": 485536617081,
+        "token2_reserves": 5560000253,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
-        "routes": [],
+        "routes": [
+            [
+                "terra1h4cakgms4ju3eryhrmw00xegtjxkgyv88yqllg9ryz9qxek4qz9sz3swn2",
+                "terra1asyd64qhwj6cypzzuq6yrla624a2a37gwy2flpenvqu9yy4nvdsq35d2uk",
+                "terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw"
+            ],
+            [
+                "terra1h4cakgms4ju3eryhrmw00xegtjxkgyv88yqllg9ryz9qxek4qz9sz3swn2",
+                "terra1asyd64qhwj6cypzzuq6yrla624a2a37gwy2flpenvqu9yy4nvdsq35d2uk",
+                "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6"
+            ]
+        ],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -3944,12 +3094,18 @@
         "protocol": "astroport",
         "token1_denom": "terra1a2gdn43yjllg3jvna7xcv2zea0ppjchsww2fedd63l9k2azg6j7qg6v3pj",
         "token2_denom": "terra1uc3r74qg44csdrl8hrm5muzlue9gf7umgkyv569pgazh7tudpr4qdtgqh6",
-        "token1_reserves": 180555533,
-        "token2_reserves": 31002098989283,
+        "token1_reserves": 442856769,
+        "token2_reserves": 27130746230580,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
-        "routes": [],
+        "routes": [
+            [
+                "terra1lkl5xd7ptjyu2wnfrsp2uca5gc6psm9f4dh0fratx4tjvvmx2c9qz063rf",
+                "terra12hcs6mkg3zhg2vdnrl8ep8yejjhnynyvz42uewpupdmg0ksmlcts5v4uvv",
+                "terra1ghrgxen482dag6777mp4pzkcafh995y9xp7jqsfvdaal5ld3d2hs4q0v5v"
+            ]
+        ],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -3964,13 +3120,44 @@
         "token1_type": "token",
         "token2_type": "token"
     },
+    "terra1lkl5xd7ptjyu2wnfrsp2uca5gc6psm9f4dh0fratx4tjvvmx2c9qz063rf": {
+        "contract_address": "terra1lkl5xd7ptjyu2wnfrsp2uca5gc6psm9f4dh0fratx4tjvvmx2c9qz063rf",
+        "protocol": "astroport",
+        "token1_denom": "uluna",
+        "token2_denom": "terra1a2gdn43yjllg3jvna7xcv2zea0ppjchsww2fedd63l9k2azg6j7qg6v3pj",
+        "token1_reserves": 604583075,
+        "token2_reserves": 297032287,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "terra1lkl5xd7ptjyu2wnfrsp2uca5gc6psm9f4dh0fratx4tjvvmx2c9qz063rf",
+                "terra12hcs6mkg3zhg2vdnrl8ep8yejjhnynyvz42uewpupdmg0ksmlcts5v4uvv",
+                "terra1ghrgxen482dag6777mp4pzkcafh995y9xp7jqsfvdaal5ld3d2hs4q0v5v"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native_token",
+        "token2_type": "token"
+    },
     "terra18635cslpa0jlc239ckmkmng6k532xqkc4cecc87h7qyncw5twclsky8ezz": {
         "contract_address": "terra18635cslpa0jlc239ckmkmng6k532xqkc4cecc87h7qyncw5twclsky8ezz",
         "protocol": "astroport",
         "token1_denom": "terra1ctelwayk6t2zu30a8v9kdg3u2gr0slpjdfny5pjp7m3tuquk32ysugyjdg",
         "token2_denom": "uluna",
-        "token1_reserves": 3500572,
-        "token2_reserves": 388188,
+        "token1_reserves": 983932,
+        "token2_reserves": 1388188,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -3994,8 +3181,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1d4j9lsl453mkvtlg4ctw8y52rdkhafsaefug0hq0z06phczuvvvs7uq0vg",
         "token2_denom": "terra1ry9f6alqyf9dpj04u9ymq5u4whjndu485agh6gusn89dmqse3ggsnzducj",
-        "token1_reserves": 889212833932,
-        "token2_reserves": 761851342170,
+        "token1_reserves": 834050229997,
+        "token2_reserves": 812344160757,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4030,8 +3217,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1d4j9lsl453mkvtlg4ctw8y52rdkhafsaefug0hq0z06phczuvvvs7uq0vg",
         "token2_denom": "uluna",
-        "token1_reserves": 1287838672185,
-        "token2_reserves": 11912369,
+        "token1_reserves": 1322050568249,
+        "token2_reserves": 11609444,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4111,8 +3298,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1e0uch3fwned9rfhkaeehqv9mnfuwjh9jfhawd4gxw248czljdttsh22jkg",
         "token2_denom": "terra1gk0y0tcxj8pr65tanqvc8zyzv3c8szkwf2kcmzgqj9jm2t9z3f9q4xcnfz",
-        "token1_reserves": 3923833668,
-        "token2_reserves": 110228828,
+        "token1_reserves": 3948833668,
+        "token2_reserves": 109532367,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4136,8 +3323,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1e9s5m6vrl9ms75q0862llq2vcsz8r43czm36s6xnn3vh8dfmwe0s3c86e8",
         "token2_denom": "terra1x62mjnme4y0rdnag3r8rfgjuutsqlkkyuh4ndgex0wl3wue25uksau39q8",
-        "token1_reserves": 8327540735,
-        "token2_reserves": 9908943491,
+        "token1_reserves": 8679002046,
+        "token2_reserves": 9523343270,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4161,8 +3348,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1hspy32cecnj72wwpma59eldpmsmfndlrwqxnzx6awfdtarns66qqw5kn85",
         "token2_denom": "terra1ecgazyd0waaj3g7l9cmy5gulhxkps2gmxu9ghducvuypjq68mq2s5lvsct",
-        "token1_reserves": 3463293022400,
-        "token2_reserves": 5472576,
+        "token1_reserves": 465445563251,
+        "token2_reserves": 80723416,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4181,59 +3368,13 @@
         "token1_type": "token",
         "token2_type": "token"
     },
-    "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4": {
-        "contract_address": "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4",
-        "protocol": "astroport",
-        "token1_denom": "uluna",
-        "token2_denom": "terra1ecgazyd0waaj3g7l9cmy5gulhxkps2gmxu9ghducvuypjq68mq2s5lvsct",
-        "token1_reserves": 676874360290,
-        "token2_reserves": 329530291622,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.001,
-        "fee_from_input": false,
-        "routes": [
-            [
-                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
-            ],
-            [
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
-            ],
-            [
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
-            ],
-            [
-                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
-            ]
-        ],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.002,
-        "DEFAULT_PROTOCOL_FEE": 0.001,
-        "DEFAULT_FEE_FROM_INPUT": false,
-        "token1_type": "native_token",
-        "token2_type": "token"
-    },
     "terra12t3t0f0ga6hv6cw274mytcwhh9038x448ugthz9j0tkvdnlgnc5qdz2ael": {
         "contract_address": "terra12t3t0f0ga6hv6cw274mytcwhh9038x448ugthz9j0tkvdnlgnc5qdz2ael",
         "protocol": "astroport",
         "token1_denom": "uluna",
         "token2_denom": "terra1ee4g63c3sus9hnyyp3p2u3tulzdv5ag68l55q8ej64y4qpwswvus5mtag2",
-        "token1_reserves": 199017987,
-        "token2_reserves": 506619818666,
+        "token1_reserves": 198445733,
+        "token2_reserves": 508122226625,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4368,8 +3509,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1nsuqsk6kh58ulczatwev87ttq2z6r3pusulg9r24mfj2fvtzd4uq3exn26",
         "token2_denom": "terra1gy73st560m2j0esw5c5rjmr899hvtv4rhh4seeajt3clfhr4aupszjss4j",
-        "token1_reserves": 45384600,
-        "token2_reserves": 1254111733,
+        "token1_reserves": 38024004,
+        "token2_reserves": 1499474939,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4404,8 +3545,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1gy73st560m2j0esw5c5rjmr899hvtv4rhh4seeajt3clfhr4aupszjss4j",
         "token2_denom": "uluna",
-        "token1_reserves": 9452665537,
-        "token2_reserves": 14447073,
+        "token1_reserves": 11736795697,
+        "token2_reserves": 11653771,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4510,8 +3651,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1kkpf3f049trkyscv0av2pa9ad02dzls7f6m8s24q07ehetggytesru7qqp",
         "token2_denom": "uluna",
-        "token1_reserves": 21105412,
-        "token2_reserves": 11500740,
+        "token1_reserves": 1359,
+        "token2_reserves": 741,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4657,13 +3798,49 @@
         "token1_type": "token",
         "token2_type": "native_token"
     },
+    "terra1h8qx27ty8gce8hvpc7dezzjkcj6m8e3gpj9nhmz78w3cpf7yeklqv35xrz": {
+        "contract_address": "terra1h8qx27ty8gce8hvpc7dezzjkcj6m8e3gpj9nhmz78w3cpf7yeklqv35xrz",
+        "protocol": "astroport",
+        "token1_denom": "terra1nsuqsk6kh58ulczatwev87ttq2z6r3pusulg9r24mfj2fvtzd4uq3exn26",
+        "token2_denom": "terra1q4r4zzde2tg52306qevhnaf3qw76a68hnyzw404uuvvzx09n3ckqe2ylrm",
+        "token1_reserves": 165891851,
+        "token2_reserves": 10859446,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw",
+                "terra1h8qx27ty8gce8hvpc7dezzjkcj6m8e3gpj9nhmz78w3cpf7yeklqv35xrz",
+                "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv"
+            ],
+            [
+                "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6",
+                "terra1h8qx27ty8gce8hvpc7dezzjkcj6m8e3gpj9nhmz78w3cpf7yeklqv35xrz",
+                "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "token"
+    },
     "terra1muhks8yr47lwe370wf65xg5dmyykrawqpkljfm39xhkwhf4r7jps0gwl4l": {
         "contract_address": "terra1muhks8yr47lwe370wf65xg5dmyykrawqpkljfm39xhkwhf4r7jps0gwl4l",
         "protocol": "astroport",
         "token1_denom": "terra1nsuqsk6kh58ulczatwev87ttq2z6r3pusulg9r24mfj2fvtzd4uq3exn26",
         "token2_denom": "terra1x62mjnme4y0rdnag3r8rfgjuutsqlkkyuh4ndgex0wl3wue25uksau39q8",
-        "token1_reserves": 434693636473,
-        "token2_reserves": 421005867450,
+        "token1_reserves": 346994180685,
+        "token2_reserves": 334184892275,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4698,8 +3875,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1nsuqsk6kh58ulczatwev87ttq2z6r3pusulg9r24mfj2fvtzd4uq3exn26",
         "token2_denom": "terra1xe8umegahlqphtpvjsuwfzfvyjfvag5h8rffsx6ezm0el4xzsf8s7uzezk",
-        "token1_reserves": 687760041,
-        "token2_reserves": 173637128,
+        "token1_reserves": 655914539,
+        "token2_reserves": 182269130,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4734,8 +3911,8 @@
         "protocol": "astroport",
         "token1_denom": "uluna",
         "token2_denom": "terra1nsuqsk6kh58ulczatwev87ttq2z6r3pusulg9r24mfj2fvtzd4uq3exn26",
-        "token1_reserves": 38453321558,
-        "token2_reserves": 912592312627,
+        "token1_reserves": 36883986280,
+        "token2_reserves": 953645690278,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -4761,9 +3938,19 @@
                 "terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw"
             ],
             [
+                "terra1h4cakgms4ju3eryhrmw00xegtjxkgyv88yqllg9ryz9qxek4qz9sz3swn2",
+                "terra1asyd64qhwj6cypzzuq6yrla624a2a37gwy2flpenvqu9yy4nvdsq35d2uk",
+                "terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw"
+            ],
+            [
                 "terra18a8f4q64tsa2r8s2cm95y8mmmgjtevh7qdf2t0x7mrvuw5l8z0wse3zk00",
                 "terra1zjfy562q4nw0fwhhp8hmck88td3trlj76wqhhkncal25qu4mck6sgpkau4",
                 "terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw"
+            ],
+            [
+                "terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw",
+                "terra1h8qx27ty8gce8hvpc7dezzjkcj6m8e3gpj9nhmz78w3cpf7yeklqv35xrz",
+                "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv"
             ],
             [
                 "terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw",
@@ -4845,12 +4032,18 @@
         "protocol": "astroport",
         "token1_denom": "terra1q4r4zzde2tg52306qevhnaf3qw76a68hnyzw404uuvvzx09n3ckqe2ylrm",
         "token2_denom": "terra1uc3r74qg44csdrl8hrm5muzlue9gf7umgkyv569pgazh7tudpr4qdtgqh6",
-        "token1_reserves": 1996596322,
-        "token2_reserves": 50216153746203,
+        "token1_reserves": 2567873426,
+        "token2_reserves": 39080341432943,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
-        "routes": [],
+        "routes": [
+            [
+                "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv",
+                "terra1634dltmg6vrw8wxl6hfap5njqjchqjuwlpnumrp73x7vqsqhtjqsw0acsw",
+                "terra1ghrgxen482dag6777mp4pzkcafh995y9xp7jqsfvdaal5ld3d2hs4q0v5v"
+            ]
+        ],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -4865,48 +4058,58 @@
         "token1_type": "token",
         "token2_type": "token"
     },
-    "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq": {
-        "contract_address": "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq",
+    "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv": {
+        "contract_address": "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv",
         "protocol": "astroport",
-        "token1_denom": "terra1qx284aak0wl7vrvlsc6cwcsn6xwajragkh6cjqj87m9p34hx5l2s22p3cp",
-        "token2_denom": "uluna",
-        "token1_reserves": 9704870,
-        "token2_reserves": 108355,
+        "token1_denom": "uluna",
+        "token2_denom": "terra1q4r4zzde2tg52306qevhnaf3qw76a68hnyzw404uuvvzx09n3ckqe2ylrm",
+        "token1_reserves": 484253469,
+        "token2_reserves": 943525089,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
         "routes": [
             [
-                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
+                "terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw",
+                "terra1h8qx27ty8gce8hvpc7dezzjkcj6m8e3gpj9nhmz78w3cpf7yeklqv35xrz",
+                "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv"
             ],
             [
-                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
+                "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6",
+                "terra1h8qx27ty8gce8hvpc7dezzjkcj6m8e3gpj9nhmz78w3cpf7yeklqv35xrz",
+                "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv"
             ],
             [
-                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ],
-            [
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c",
-                "terra1l4a4reyzrtu7ylrag7x3z8ejrfk58ts44hnqwck0y5p03xkltf7qnm6jkx",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ],
-            [
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz",
-                "terra1l4a4reyzrtu7ylrag7x3z8ejrfk58ts44hnqwck0y5p03xkltf7qnm6jkx",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
+                "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv",
+                "terra1634dltmg6vrw8wxl6hfap5njqjchqjuwlpnumrp73x7vqsqhtjqsw0acsw",
+                "terra1ghrgxen482dag6777mp4pzkcafh995y9xp7jqsfvdaal5ld3d2hs4q0v5v"
             ]
         ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native_token",
+        "token2_type": "token"
+    },
+    "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq": {
+        "contract_address": "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq",
+        "protocol": "astroport",
+        "token1_denom": "terra1qx284aak0wl7vrvlsc6cwcsn6xwajragkh6cjqj87m9p34hx5l2s22p3cp",
+        "token2_denom": "uluna",
+        "token1_reserves": 9704602,
+        "token2_reserves": 108358,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -4986,18 +4189,33 @@
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz",
                 "terra1zz8u4y9h0dw6l7kgfcaz7t5yxgmdkhxmqg7anmk0l393guflnvzqjhvtl7",
                 "terra1wfm57qavephsengsrjedvjgwrngvcvs0046fj3aq0mekjzq7gpcqt7sqrx"
-            ],
-            [
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza",
-                "terra1tpm8tsf9dtmpkzup6lfadpfy5fewqtghhw5zs3wv3nf8wt6wl7xqtscvgg",
-                "terra1wfm57qavephsengsrjedvjgwrngvcvs0046fj3aq0mekjzq7gpcqt7sqrx"
-            ],
-            [
-                "terra1sxdrn5efjuf3z2lzuwnew839zus4lm2dndwzw589t0kzku6kmhnsuhsxq3",
-                "terra1hapant9z9454s0sl2pjwpct2apft4uxu6ypem0u290fe0626gvzqg4xzlp",
-                "terra1wfm57qavephsengsrjedvjgwrngvcvs0046fj3aq0mekjzq7gpcqt7sqrx"
             ]
         ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "native_token"
+    },
+    "terra12wcgsshj8q0gnhpmjhwwnhzdaxrj7nfruukgwlwq4mpdp3s56mlqg48jca": {
+        "contract_address": "terra12wcgsshj8q0gnhpmjhwwnhzdaxrj7nfruukgwlwq4mpdp3s56mlqg48jca",
+        "protocol": "astroport",
+        "token1_denom": "terra1trh2tl98zdu4swpghhnxdnna4rf029eptxau95kgscz520f4tp9sexmvkv",
+        "token2_denom": "uluna",
+        "token1_reserves": 1000000000000,
+        "token2_reserves": 1000000,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -5017,8 +4235,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1uc3r74qg44csdrl8hrm5muzlue9gf7umgkyv569pgazh7tudpr4qdtgqh6",
         "token2_denom": "uluna",
-        "token1_reserves": 15148098042515,
-        "token2_reserves": 171458110,
+        "token1_reserves": 8887082887788,
+        "token2_reserves": 297343015,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5042,6 +4260,16 @@
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
                 "terra1lgnfv8tkh8wlqcs280nnpfcw7p5v6j8my4uga5t9d8dgw6nlx9qszjetaj",
                 "terra1ghrgxen482dag6777mp4pzkcafh995y9xp7jqsfvdaal5ld3d2hs4q0v5v"
+            ],
+            [
+                "terra1lkl5xd7ptjyu2wnfrsp2uca5gc6psm9f4dh0fratx4tjvvmx2c9qz063rf",
+                "terra12hcs6mkg3zhg2vdnrl8ep8yejjhnynyvz42uewpupdmg0ksmlcts5v4uvv",
+                "terra1ghrgxen482dag6777mp4pzkcafh995y9xp7jqsfvdaal5ld3d2hs4q0v5v"
+            ],
+            [
+                "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv",
+                "terra1634dltmg6vrw8wxl6hfap5njqjchqjuwlpnumrp73x7vqsqhtjqsw0acsw",
+                "terra1ghrgxen482dag6777mp4pzkcafh995y9xp7jqsfvdaal5ld3d2hs4q0v5v"
             ]
         ],
         "input_reserves": 0,
@@ -5063,8 +4291,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1uv8ltv32tuq4qf6xspytpv058p0pef64s5xdncfywjexv22lfjzs7mul8s",
         "token2_denom": "uluna",
-        "token1_reserves": 174488448215,
-        "token2_reserves": 225128021,
+        "token1_reserves": 170335566985,
+        "token2_reserves": 230628021,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5088,8 +4316,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1x62mjnme4y0rdnag3r8rfgjuutsqlkkyuh4ndgex0wl3wue25uksau39q8",
         "token2_denom": "uluna",
-        "token1_reserves": 52365043625,
-        "token2_reserves": 2295895926,
+        "token1_reserves": 56382108796,
+        "token2_reserves": 2280136500,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5120,28 +4348,8 @@
                 "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
             ],
             [
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8",
-                "terra1wx8h3grl9w79awkp5lefx2pewzner324dcq6vycxrrn3kj0lf0fqy74ple",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ],
-            [
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508",
-                "terra1wx8h3grl9w79awkp5lefx2pewzner324dcq6vycxrrn3kj0lf0fqy74ple",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ],
-            [
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp",
                 "terra1wx8h3grl9w79awkp5lefx2pewzner324dcq6vycxrrn3kj0lf0fqy74ple",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ],
-            [
-                "terra1pxm9qtnrchzy90d99clpa0rkx8fyztlc67wt5t999pc8yvsrx90snpfe4v",
-                "terra1hrk3jt3n5nvl4za5nsf3z4xdp694697cs9cwj8dylhc4laf5gc0qnd72wr",
-                "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
-            ],
-            [
-                "terra1h32epkd72x7st0wk49z35qlpsxf26pw4ydacs8acq6uka7hgshmq7z7vl9",
-                "terra1sd4wzqh4uefjt7nwgezdg7ahn9n6943rc3xq87mvtt270ev2ejcqyrsgga",
                 "terra10xergcw3a994882ra9gpefjwc9wupzpvdck8cemxgc5p6cg5scvqgjkuax"
             ],
             [
@@ -5174,8 +4382,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1xe8umegahlqphtpvjsuwfzfvyjfvag5h8rffsx6ezm0el4xzsf8s7uzezk",
         "token2_denom": "uluna",
-        "token1_reserves": 111409177900,
-        "token2_reserves": 18683708556,
+        "token1_reserves": 127600211817,
+        "token2_reserves": 17639612266,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5225,13 +4433,38 @@
         "token1_type": "token",
         "token2_type": "native_token"
     },
+    "terra1nckl6ex6239tv4kjzv03ecmuxwakjm8uj8cy6p850vmlmejfmj9sy094yr": {
+        "contract_address": "terra1nckl6ex6239tv4kjzv03ecmuxwakjm8uj8cy6p850vmlmejfmj9sy094yr",
+        "protocol": "astroport",
+        "token1_denom": "terra1xp9hrhthzddnl7j5du83gqqr4wmdjm5t0guzg9jp6jwrtpukwfjsjgy4f3",
+        "token2_denom": "uluna",
+        "token1_reserves": 10040063,
+        "token2_reserves": 3000000,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "native_token"
+    },
     "terra1jynmf6gteg4rd03ztldan5j2dp78su4tc3hfvkve8dl068c2yppsk5uszc": {
         "contract_address": "terra1jynmf6gteg4rd03ztldan5j2dp78su4tc3hfvkve8dl068c2yppsk5uszc",
         "protocol": "astroport",
         "token1_denom": "terra1xumzh893lfa7ak5qvpwmnle5m5xp47t3suwwa9s0ydqa8d8s5faqn6x7al",
         "token2_denom": "uluna",
-        "token1_reserves": 578024863,
-        "token2_reserves": 590607091,
+        "token1_reserves": 583988246,
+        "token2_reserves": 584728992,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5305,8 +4538,8 @@
         "protocol": "astroport",
         "token1_denom": "terra1zf90xr38pdgq0yjq2d56scclpfyu3ep4d720s9r2yw9gmwg7khaq0c30rl",
         "token2_denom": "uluna",
-        "token1_reserves": 385176058161587,
-        "token2_reserves": 1866862229,
+        "token1_reserves": 395001688302067,
+        "token2_reserves": 1710142268,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5330,8 +4563,8 @@
         "protocol": "white_whale",
         "token1_denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
         "token2_denom": "ibc/4CD525F166D32B0132C095F353F4C6F033B0FF5C49141470D1EFDA1D63303D04",
-        "token1_reserves": 156781765,
-        "token2_reserves": 1465430612,
+        "token1_reserves": 155889985,
+        "token2_reserves": 1473830612,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5355,8 +4588,8 @@
         "protocol": "white_whale",
         "token1_denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 304894147,
-        "token2_reserves": 3311480272,
+        "token1_reserves": 280902343,
+        "token2_reserves": 3425629458,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5401,8 +4634,8 @@
         "protocol": "white_whale",
         "token1_denom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
         "token2_denom": "uluna",
-        "token1_reserves": 1047197564,
-        "token2_reserves": 7490943999,
+        "token1_reserves": 1164160816,
+        "token2_reserves": 6744989362,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5447,8 +4680,8 @@
         "protocol": "white_whale",
         "token1_denom": "uluna",
         "token2_denom": "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4",
-        "token1_reserves": 17543212383,
-        "token2_reserves": 26586020882,
+        "token1_reserves": 14899991204,
+        "token2_reserves": 31394597720,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5471,26 +4704,6 @@
             [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
                 "terra1req03gy0eyeeg9e7nwjyn0pct6hdqtphy837j784492l4hcsh0vqx2n8az",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1dm2jkvxqwgnez8llnut46837ky29rvzxy9kl69kqh30r78qdj8rs4rksl8",
-                "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
-                "terra1u3wd9gu7weezw6vwfaaa4q589zjlazg6wt6gyer3lc42tgqrpggqv90c2c"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew",
                 "terra1gwnwqdwz7taadacdw45q7kwz3q7h0hfrc4f3xpxas4j869tqexxsxze6gz"
             ],
             [
@@ -5521,22 +4734,17 @@
             [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1z7705t2p5p6rel93fd7zrsh8a4luxyxz88a4zkmlctwf38yh520qt949n8"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
-                "terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1hmm6wkt2uq973hpykg46rtae34y3maplyl8l9fhpm2vfftrew5uq5t6a0r",
-                "terra1j88tckt0uyq6enw5747ayf5yd77e89yr6ljda5sza6tmpp00tfxs4xjmza"
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1h3wqh8fdsd8rr6rlz3yfp9sm8849wrec8vqsmkwksx0ndkqaxkjqellq28"
+            ],
+            [
+                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
@@ -5585,11 +4793,6 @@
             ],
             [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
-                "terra1l2r2dxss8j8su2tj6sf4zntu3zghqe76ee8gyx3e5dppxavfhe7q7qlcc4",
-                "terra1ergk3vej7yu9ljvjsmejdpp0ae3p0zgue6lzmcuq73s6jnjaquzst8a3yq"
-            ],
-            [
-                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
                 "terra108psz4xadgpytu76dfztaytkldvrh6zl35nwdy6n2cltvn0dkt8qu26rde",
                 "terra1wfm57qavephsengsrjedvjgwrngvcvs0046fj3aq0mekjzq7gpcqt7sqrx"
             ],
@@ -5633,8 +4836,8 @@
         "protocol": "white_whale",
         "token1_denom": "uluna",
         "token2_denom": "terra1nsuqsk6kh58ulczatwev87ttq2z6r3pusulg9r24mfj2fvtzd4uq3exn26",
-        "token1_reserves": 26694262901,
-        "token2_reserves": 629721883788,
+        "token1_reserves": 25533085432,
+        "token2_reserves": 659777339789,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5660,9 +4863,19 @@
                 "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6"
             ],
             [
+                "terra1h4cakgms4ju3eryhrmw00xegtjxkgyv88yqllg9ryz9qxek4qz9sz3swn2",
+                "terra1asyd64qhwj6cypzzuq6yrla624a2a37gwy2flpenvqu9yy4nvdsq35d2uk",
+                "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6"
+            ],
+            [
                 "terra18a8f4q64tsa2r8s2cm95y8mmmgjtevh7qdf2t0x7mrvuw5l8z0wse3zk00",
                 "terra1zjfy562q4nw0fwhhp8hmck88td3trlj76wqhhkncal25qu4mck6sgpkau4",
                 "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6"
+            ],
+            [
+                "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6",
+                "terra1h8qx27ty8gce8hvpc7dezzjkcj6m8e3gpj9nhmz78w3cpf7yeklqv35xrz",
+                "terra18hrusareag6jyfkgzlaam4nuc6f3np53ea6ejcwp0f7easske5dq23v2pv"
             ],
             [
                 "terra1e6t37fgjkxrzdx2s95fyq6jdra5s82720vhtmxvx4yhcvnsrey4ssmrya6",
@@ -5694,8 +4907,8 @@
         "protocol": "white_whale",
         "token1_denom": "uluna",
         "token2_denom": "terra14xsm2wzvu7xaf567r693vgfkhmvfs08l68h4tjj5wjgyn5ky8e2qvzyanh",
-        "token1_reserves": 1315741022,
-        "token2_reserves": 1214906055,
+        "token1_reserves": 1311875538,
+        "token2_reserves": 1218597402,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -5706,8 +4919,18 @@
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
+                "terra1zrs8p04zctj0a0f9azakwwennrqfrkh3l6zkttz9x89e7vehjzmqzg8v7n",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
+            ],
+            [
                 "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
+            ],
+            [
+                "terra190alph3r79rm2ypefamglwk53ln2qr3ud09sa3mnxexxf0p8xv3qzume3r",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
@@ -5716,19 +4939,19 @@
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
+                "terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
+            ],
+            [
                 "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
                 "terra1728806n8mgr3n25dwhnmlvgvkfqv9pfnjsqtdzqzk8xpr4h4rnnsttthnw",
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
-                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1ccxwgew8aup6fysd7eafjzjz6hw89n40h273sgu3pl4lxrajnk5st2hvfh"
-            ],
-            [
-                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp",
-                "terra18fr4keh3afk9e84tf466xsdkk9t8amstycjw7c8e6gukjqjq875q9zdavy",
-                "terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4"
+                "terra1ck8nkz35sa8mmqez3lqrm77vh36n2gd2f0dxjde4uemkwsjt22pqgk49zj",
+                "terra14vj2rpeej4jcsprhsc789rw4churp6j75jp9td03zjy7aeu6p04svxy36m",
+                "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp"
             ],
             [
                 "terra1qzux5j9he9nv95kq3unkuzy0hddf080um2t243raatg3f6requwsaahpqp",
