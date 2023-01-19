@@ -37,7 +37,7 @@ For more searcher documentation, please see: https://skip-protocol.notion.site/S
 
 For an overview of Skip, please see: https://woolen-background-b64.notion.site/Skip-What-it-is-How-it-Works-af39cd3eb5334920b41b16cf65665601
 
-# About our bots
+# About Skipper
 
 Skipper is a Python-based bot for Cosmos that captures cyclic arbitrage opportunities across all major DEXs on Juno and Terra 2 by backrunning transactions that trade against particular pools. You can read more about JUNO, Loop DEX, and JunoSwap in our [state of JUNO MEV report](https://medium.com/@skip_protocol/skips-state-of-mev-juno-667a51a17b70)
 
@@ -196,3 +196,10 @@ If you have any questions, join our discord and ask in the
 traders channel! Got our Skipper interns monitoring 24/7.
 
 Discord: https://discord.gg/UgazvFgKef
+
+# Contributing
+
+Skipper loves new contributors, feel free to open an issue or make a pull request!
+
+Please do your best to lead commits with emojis following this guide: https://gitmoji.dev/
+- Inspired by https://github.com/transmissions11/solmate
