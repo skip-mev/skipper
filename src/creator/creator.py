@@ -1,31 +1,11 @@
-from src.querier import Querier, CosmWasmQuerier
-
-from src.executor.executor import Executor
-from src.executor.executors import (
-    MultiMessageExecutor, 
-    ContractExecutor, 
-    WhiteWhaleExecutor
-    )
-
+from src.querier.querier import Querier
 from src.decoder.decoder import Decoder
-from src.decoder.decoders import CosmWasmDecoder
-
-from src.wallet import create_juno_wallet, create_terra_wallet
-from cosmpy.aerial.wallet import LocalWallet
-
+from src.executor.executor import Executor
 from src.contract.pool.pool import Pool
-import src.contract.pool.pools as pools
-
-from src.contract.factory.factory import Factory
-import src.contract.factory.factories as factories
-
 from src.contract.router.router import Router
-from src.contract.router.routers import (
-    TerraswapRouter, 
-    AstroportRouter, 
-    PhoenixRouter, 
-    WhiteWhaleRouter 
-    )
+from src.contract.factory.factory import Factory
+
+from cosmpy.aerial.wallet import LocalWallet
 
 class Creator:
     
@@ -34,32 +14,39 @@ class Creator:
         """ Factory function to create queriers bsaed on chain / vm.
             @DEV TODO: Add more queriers here.
         """
-        queriers = {
-            "cosmwasm": CosmWasmQuerier
-            }
-        return queriers[querier](rpc_url=rpc_url)
+        match querier:
+            case "cosmwasm":
+                from src.querier.queriers.cosmwasm import CosmWasmQuerier
+                return CosmWasmQuerier(rpc_url=rpc_url)
+            case "evm":
+                from src.querier.queriers.evm import EVMQuerier
+                return EVMQuerier(rpc_url=rpc_url)
     
     @staticmethod
     def create_executor(executor: str) -> Executor:
         """ Factory function to create different executors.
             @DEV TODO: Add more executors here.
         """
-        executors = {
-            "cw_multi_message": MultiMessageExecutor,
-            "evm_contract": ContractExecutor,
-            "cw_white_whale": WhiteWhaleExecutor,
-            }
-        return executors[executor]()
+        match executor:
+            case "cw_multi_message":
+                from src.executor.executors.cw_multi_message import MultiMessageExecutor
+                return MultiMessageExecutor()
+            case "cw_white_whale":
+                from src.executor.executors.cw_white_whale import WhiteWhaleExecutor
+                return WhiteWhaleExecutor()
+            case "evm_contract":
+                from src.executor.executors.evm_contract import ContractExecutor
+                return ContractExecutor()
         
     @staticmethod
     def create_decoder(decoder) -> Decoder:
         """ Factory function to create decoders bsaed on chain / vm.
             @DEV TODO: Add more decoders here.
         """
-        decoders = {
-            "cosmwasm": CosmWasmDecoder
-            }
-        return decoders[decoder]()
+        match decoder:
+            case "cosmwasm":
+                from src.decoder.decoders.cosmwasm import CosmWasmDecoder
+                return CosmWasmDecoder()
 
     @staticmethod
     def create_wallet(chain_id: str, 
@@ -68,50 +55,73 @@ class Creator:
         """ Factory function to create wallets based on chain.
             @DEV TODO: Add more wallets here per chain if needed.
         """
-        wallets = {
-            "juno-1": create_juno_wallet,
-            "phoenix-1": create_terra_wallet
-            }
-        return wallets[chain_id](mnemonic, address_prefix)
+        match chain_id:
+            case "juno-1":
+                from src.wallet import create_juno_wallet
+                return create_juno_wallet(mnemonic, address_prefix)
+            case "phoenix-1":
+                from src.wallet import create_terra_wallet
+                return create_terra_wallet(mnemonic, address_prefix)
         
     @staticmethod
     def create_pool(contract_address: str, pool: str) -> Pool:
         """ Factory function to create pool objects based on identifiers.
             @DEV TODO: Add more pools as they are laucnhed.
         """
-        protocols = {
-            "junoswap": pools.Junoswap,
-            "terraswap": pools.Terraswap,
-            "astroport": pools.Astroport,
-            "loop": pools.Loop,
-            "phoenix": pools.Phoenix,
-            "white_whale": pools.Whitewhale,
-            "hopers": pools.Hopers
-            }
-        return protocols[pool](contract_address, pool)
+        match pool:
+            case "junoswap":
+                from src.contract.pool.pools.junoswap import JunoswapPool
+                return JunoswapPool(contract_address, pool)
+            case "terraswap":
+                from src.contract.pool.pools.terraswap import TerraswapPool
+                return TerraswapPool(contract_address, pool)
+            case "astroport":
+                from src.contract.pool.pools.astroport import AstroportPool
+                return AstroportPool(contract_address, pool)
+            case "loop":
+                from src.contract.pool.pools.loop import LoopPool 
+                return LoopPool(contract_address, pool)
+            case "phoenix":
+                from src.contract.pool.pools.phoenix import PhoenixPool
+                return PhoenixPool(contract_address, pool)
+            case "white_whale":
+                from src.contract.pool.pools.whitewhale import WhiteWhalePool 
+                return WhiteWhalePool(contract_address, pool)
+            case "hopers":
+                from src.contract.pool.pools.hopers import HopersPool
+                return HopersPool(contract_address, pool)
+            case pool if pool in ["diffusion", "evmoswap", "cronus"]:
+                from src.contract.pool.pools.uniswap_v2 import UniswapV2Pool
+                return UniswapV2Pool(contract_address, pool)
         
     @staticmethod
     def create_factory(contract_address: str, protocol: str) -> Factory:
         """ Factory function to create factory contracts.
             @DEV TODO: Add more factory contracts here.
         """
-        protocols = {
-            "terraswap": factories.Terraswap,
-            "astroport": factories.Terraswap,
-            "phoenix": factories.Terraswap,
-            "white_whale": factories.Terraswap
-            }
-        return protocols[protocol](contract_address, protocol)
+        match protocol:
+            case protocol if protocol in ["terraswap", "astroport", "phoenix", "white_whale"]:
+                from src.contract.factory.factories.terraswap import TerraswapFactory
+                return TerraswapFactory(contract_address, protocol)
+            case protocol if protocol in ["diffusion", "evmoswap", "cronus"]:
+                from src.contract.factory.factories.uniswap_v2 import UniswapV2Factory 
+                return UniswapV2Factory(contract_address, protocol)
     
     @staticmethod
     def create_router(contract_address: str, router: str) -> Router:
         """ Factory function to create router contracts.
             @DEV TODO: Add more router contracts here.
         """
-        routers = {
-            "terraswap": TerraswapRouter, 
-            "astroport": AstroportRouter,
-            "phoenix": PhoenixRouter,
-            "white_whale": WhiteWhaleRouter 
-            }
-        return routers[router](contract_address, router)
+        match router:
+            case "terraswap":
+                from src.contract.router.routers.terraswap import TerraswapRouter
+                return TerraswapRouter(contract_address, router)
+            case "astroport":
+                from src.contract.router.routers.astroport import AstroportRouter
+                return AstroportRouter(contract_address, router)
+            case "phoenix":
+                from src.contract.router.routers.phoenix import PhoenixRouter
+                return PhoenixRouter(contract_address, router)
+            case "white_whale":
+                from src.contract.router.routers.whitewhale import WhiteWhaleRouter
+                return WhiteWhaleRouter(contract_address, router)
