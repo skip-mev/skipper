@@ -1,7 +1,10 @@
-from src.contract import Factory
-from src.querier import Querier
+from dataclasses import dataclass
 
-class Terraswap(Factory):
+from src.contract import Factory
+from src.querier.querier import Querier
+
+@dataclass
+class TerraswapFactory(Factory):
     """ This class is a factory contract for TerraSwap."""
 
     async def get_all_pairs(self, querier: Querier) -> list:
