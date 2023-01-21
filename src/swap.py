@@ -1,4 +1,4 @@
-import math
+from math import floor
 from dataclasses import dataclass
 
 
@@ -30,13 +30,13 @@ def calculate_swap(reserves_in: int,
     # Calculate based on which side the fee is taken from
     if fee_from_input:
         amount_in_after_fee = amount_in * total_swap_fee
-        lp_fee_amount = math.floor((amount_in - math.floor(amount_in_after_fee)) * (lp_fee / total_fee))
-        amount_out = math.floor(reserves_out - (k / (reserves_in + amount_in_after_fee)))
-        new_reserves_in = reserves_in + math.floor(amount_in_after_fee) + lp_fee_amount
+        lp_fee_amount = floor((amount_in - floor(amount_in_after_fee)) * (lp_fee / total_fee))
+        amount_out = floor(reserves_out - (k / (reserves_in + amount_in_after_fee)))
+        new_reserves_in = reserves_in + floor(amount_in_after_fee) + lp_fee_amount
         new_reserves_out = reserves_out - amount_out
         return amount_out, new_reserves_in, new_reserves_out
     else:
-        amount_out = math.floor(reserves_out - (k / (reserves_in + (amount_in))))
+        amount_out = floor(reserves_out - (k / (reserves_in + (amount_in))))
         new_reserves_in = reserves_in + amount_in
-        new_reserves_out = reserves_out - math.floor(amount_out*lp_swap_fee)
-        return math.floor(amount_out*total_swap_fee), new_reserves_in, new_reserves_out
+        new_reserves_out = reserves_out - floor(amount_out*lp_swap_fee)
+        return floor(amount_out*total_swap_fee), new_reserves_in, new_reserves_out
