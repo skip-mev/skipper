@@ -1,7 +1,9 @@
 from copy import deepcopy
 
-from src.contract import Contract, Pool
-from src.decoder import Decoder
+from src.contract.contract import Contract
+from src.contract.pool.pool import Pool
+from src.contract.router.router import Router
+from src.decoder.decoder import Decoder
 from src.route import Route
 from src.swap import Swap
 
@@ -10,8 +12,7 @@ class Transaction:
     def __init__(self,
                  contracts: dict, 
                  tx_str: str,
-                 decoder: Decoder,
-                 arb_denom: str):
+                 decoder: Decoder):
         """ @DEV TODO: Add more attributes to transaction 
             object if adding new strategy. Currently supports
             objects for arbs (swaps and routes).
@@ -57,7 +58,7 @@ class Transaction:
         if contract is None:
             return
         # Extend transactions based on type of contract
-        if isinstance(contract, Pool):
+        if isinstance(contract, (Pool, Router)):
             self.swaps.extend(
                 contract.get_swaps_from_message(
                             message_value=message_value, 

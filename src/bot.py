@@ -149,8 +149,7 @@ class Bot:
                 logging.info(f"Iterating transaction {tx_hash}")
                 transaction: Transaction = Transaction(contracts=self.state.contracts, 
                                                        tx_str=tx_str, 
-                                                       decoder=self.decoder,
-                                                       arb_denom=self.arb_denom)
+                                                       decoder=self.decoder)
                 # If there are no swaps, continue
                 if not transaction.swaps:
                     continue
