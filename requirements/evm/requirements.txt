@@ -124,7 +124,7 @@ rfc3986==1.5.0
 rlp==2.0.1
 rsa==4.9
 six==1.16.0
-skip-python==0.1.2
+skip-python==0.1.3
 sniffio==1.3.0
 soupsieve==2.3.2.post1
 stack-data==0.6.0
