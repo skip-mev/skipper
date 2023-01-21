@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 
 from src.transaction import Transaction
 from src.contract import Pool, Factory
-from src.querier import Querier
+from src.querier.querier import Querier
 from src.swap import calculate_swap
 from src.creator import Creator
 
