@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from cosmpy.aerial.client import LedgerClient, NetworkConfig
 
 from src.decoder import Decoder
-from src.querier import Querier
+from src.querier.querier import Querier
 from src.executor import Executor
 from src.creator import Creator
 from src.state import State
