@@ -1,15 +1,14 @@
 from dataclasses import dataclass
-
-from src.contract.pool.pools import Junoswap
-from src.querier import Querier
+from src.contract.pool.pools.junoswap import JunoswapPool
+from src.querier.queriers.cosmwasm import CosmWasmQuerier
 
 @dataclass
-class Hopers(Junoswap):
+class HopersPool(JunoswapPool):
     DEFAULT_LP_FEE: float = 0.0
     DEFAULT_PROTOCOL_FEE: float = 0.005
     DEFAULT_FEE_FROM_INPUT: bool = True
     
-    async def update_fees(self, querier: Querier) -> None:
+    async def update_fees(self, querier: CosmWasmQuerier) -> None:
         """ Updates the lp and protocol fees for the pool."""
         payload = self.get_query_fees_payload(
                                 contract_address=self.contract_address,

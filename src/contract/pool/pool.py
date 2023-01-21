@@ -5,7 +5,7 @@ from cosmpy.aerial.wallet import LocalWallet
 
 from src.contract import Contract
 from src.swap import Swap
-from src.querier import Querier
+from src.querier.querier import Querier
 
 
 @dataclass

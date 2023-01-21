@@ -7,17 +7,17 @@ from cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 import MsgExecuteContract
 
 from src.contract.pool.pool import Pool
 from src.transaction import Swap
-from src.querier import Querier
+from src.querier.queriers.cosmwasm import CosmWasmQuerier
 
 
 @dataclass
-class Terraswap(Pool):
+class TerraswapPool(Pool):
     DEFAULT_LP_FEE: float = 0.003
     DEFAULT_PROTOCOL_FEE: float = 0.0
     DEFAULT_FEE_FROM_INPUT: bool = False
     
     async def update_tokens(self, 
-                            querier: Querier) -> None:
+                            querier: CosmWasmQuerier) -> None:
         """ Update the tokens in the pool."""
         payload = self.get_query_tokens_payload(
                                 contract_address=self.contract_address,
@@ -39,7 +39,7 @@ class Terraswap(Pool):
             self.token2_denom = pool_info['assets'][1]['info'][self.token2_type]['denom']
 
     async def update_reserves(self, 
-                              querier: Querier,
+                              querier: CosmWasmQuerier,
                               height: str = "") -> None:
         """ Update the reserves of the pool."""
         payload = self.get_query_reserves_payload(
@@ -54,7 +54,7 @@ class Terraswap(Pool):
         self.token1_reserves = int(pool_info['assets'][0]['amount'])
         self.token2_reserves = int(pool_info['assets'][1]['amount'])
 
-    async def update_fees(self, querier: Querier) -> None:
+    async def update_fees(self, querier: CosmWasmQuerier) -> None:
         """ Update the fees of the pool."""
         self.lp_fee = self.DEFAULT_LP_FEE
         self.protocol_fee = self.DEFAULT_PROTOCOL_FEE
@@ -86,12 +86,12 @@ class Terraswap(Pool):
             return []
         
     @staticmethod
-    def get_query_tokens_payload(contract_address: str, querier: Querier) -> dict:
+    def get_query_tokens_payload(contract_address: str, querier: CosmWasmQuerier) -> dict:
         return querier.create_payload(contract_address, {"pool":{}})
 
     @staticmethod
     def get_query_reserves_payload(contract_address: str, 
-                                   querier: Querier,
+                                   querier: CosmWasmQuerier,
                                    height: str = "") -> dict:
         return querier.create_payload(
                             contract_address=contract_address, 
@@ -99,7 +99,7 @@ class Terraswap(Pool):
                             height=height)
     
     @staticmethod
-    def get_query_fees_payload(contract_address: str, querier: Querier) -> dict:
+    def get_query_fees_payload(contract_address: str, querier: CosmWasmQuerier) -> dict:
         return querier.create_payload(contract_address, {"config": {}})
     
     def create_swap_msgs(self, 

@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 
-from src.contract.pool.pools import Terraswap
-from src.querier import Querier
+from src.contract.pool.pools.terraswap import TerraswapPool
+from src.querier.queriers.cosmwasm import CosmWasmQuerier
 
 
 @dataclass
-class Loop(Terraswap):
+class LoopPool(TerraswapPool):
     DEFAULT_FEE_FROM_INPUT: bool = False
     
-    async def update_fees(self, querier: Querier) -> None:
+    async def update_fees(self, querier: CosmWasmQuerier) -> None:
         fee_info_payload = self.get_query_fees_payload(
                                     contract_address=self.contract_address,
                                     querier=querier)   
@@ -35,9 +35,9 @@ class Loop(Terraswap):
         self.fee_from_input = self.DEFAULT_FEE_FROM_INPUT
     
     @staticmethod
-    def get_query_fees_payload(contract_address: str, querier: Querier) -> dict:
+    def get_query_fees_payload(contract_address: str, querier: CosmWasmQuerier) -> dict:
         return querier.create_payload(contract_address, {"query_config":{}})
 
     @staticmethod
-    def get_extra_commission_info_payload(contract_address: str, querier: Querier) -> dict:
+    def get_extra_commission_info_payload(contract_address: str, querier: CosmWasmQuerier) -> dict:
         return querier.create_payload(contract_address, {"extra_commission_info":{}})

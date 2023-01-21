@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 
-from src.contract.pool.pools import Terraswap
-from src.querier import Querier
+from src.contract.pool.pools.terraswap import TerraswapPool
+from src.querier.queriers.cosmwasm import CosmWasmQuerier
 
 
 @dataclass
-class Whitewhale(Terraswap):
+class WhiteWhalePool(TerraswapPool):
     DEFAULT_FEE_FROM_INPUT: bool = False
 
-    async def update_fees(self, querier: Querier) -> None:
+    async def update_fees(self, querier: CosmWasmQuerier) -> None:
         payload = self.get_query_fees_payload(
                                 contract_address=self.contract_address,
                                 querier=querier)   

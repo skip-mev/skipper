@@ -4,18 +4,18 @@ from cosmpy.aerial.contract import create_cosmwasm_execute_msg
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 from cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 import MsgExecuteContract
 
-from src.querier import Querier
+from src.querier.queriers.cosmwasm import CosmWasmQuerier
 from src.swap import Swap
 from src.contract.pool.pool import Pool
 
 
 @dataclass
-class Junoswap(Pool):
+class JunoswapPool(Pool):
     DEFAULT_LP_FEE: float = 0.003
     DEFAULT_PROTOCOL_FEE: float = 0.0
     DEFAULT_FEE_FROM_INPUT: bool = True
     
-    async def update_tokens(self, querier: Querier) -> None:
+    async def update_tokens(self, querier: CosmWasmQuerier) -> None:
         """ Updates the token types and denoms for the pool."""
         payload = self.get_query_tokens_payload(
                                 contract_address=self.contract_address,
@@ -30,7 +30,7 @@ class Junoswap(Pool):
         self.token2_denom = pool_info['token2_denom'][self.token2_type]
 
     async def update_reserves(self, 
-                              querier: Querier,
+                              querier: CosmWasmQuerier,
                               height: str = "") -> None:
         """ Updates the token reserves for the pool."""
         payload = self.get_query_reserves_payload(
@@ -44,7 +44,7 @@ class Junoswap(Pool):
         self.token1_reserves = int(pool_info['token1_reserve'])
         self.token2_reserves = int(pool_info['token2_reserve'])
 
-    async def update_fees(self, querier: Querier) -> None:
+    async def update_fees(self, querier: CosmWasmQuerier) -> None:
         """ Updates the lp and protocol fees for the pool."""
         payload = self.get_query_fees_payload(
                                 contract_address=self.contract_address,
@@ -111,12 +111,12 @@ class Junoswap(Pool):
         return [swap_1, swap_2]
     
     @staticmethod
-    def get_query_tokens_payload(contract_address: str, querier: Querier) -> dict:
+    def get_query_tokens_payload(contract_address: str, querier: CosmWasmQuerier) -> dict:
         return querier.create_payload(contract_address, {"info":{}})
 
     @staticmethod
     def get_query_reserves_payload(contract_address: str, 
-                                   querier: Querier,
+                                   querier: CosmWasmQuerier,
                                    height: str = "") -> dict:
         return querier.create_payload(
                             contract_address=contract_address, 
@@ -124,7 +124,7 @@ class Junoswap(Pool):
                             height=height)
     
     @staticmethod
-    def get_query_fees_payload(contract_address: str, querier: Querier) -> dict:
+    def get_query_fees_payload(contract_address: str, querier: CosmWasmQuerier) -> dict:
         return querier.create_payload(contract_address, {"fee":{}})
         
     def create_swap_msgs(self, 

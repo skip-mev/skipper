@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
-from src.querier import Querier
+from src.querier.querier import Querier
 from src.contract import Contract
 
 
