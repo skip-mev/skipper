@@ -100,39 +100,33 @@ class Route:
            implementing this paper: https://arxiv.org/abs/2105.02784
            for three pool cyclic arbitrage.
         """
-        # r1 and r2 are list of fees 
-        r1 = []
-        r2 = []
-        # Determine which pool the fees are taken from
+        # lists of input and output reserves and fees
+        input_reserves, output_reserves, input_fees, output_fees = [], [], [], []
+        # Append the reserves and fees to the lists
         for pool in self.pools:
+            input_reserves.append(pool.input_reserves)
+            output_reserves.append(pool.output_reserves)
             if pool.fee_from_input:
-                r1.append(1 - (pool.lp_fee + pool.protocol_fee))
-                r2.append(1)
+                input_fees.append(1 - (pool.lp_fee + pool.protocol_fee))
+                output_fees.append(1)
             else:
-                r1.append(1)
-                r2.append(1 - (pool.lp_fee + pool.protocol_fee))
-        # Create varriable names that match the paper
-        a_1_2 = self.pools[0].input_reserves
-        a_2_1 = self.pools[0].output_reserves
-        a_2_3 = self.pools[1].input_reserves
-        a_3_2 = self.pools[1].output_reserves
-        a_3_1 = self.pools[2].input_reserves
-        a_1_3 = self.pools[2].output_reserves
-
-        a_prime_1_3 = ((a_1_2 * a_2_3) 
-                      / (a_2_3 + (r1[1] * r2[0] * a_2_1)))
-        a_prime_3_1 = ((r1[1] * r2[1] * a_2_1 * a_3_2) 
-                      / (a_2_3 + (r1[1] * r2[0] * a_2_1)))
-
-        a = ((a_prime_1_3 * a_3_1) 
-            / (a_3_1 + (r1[2] * r2[1] * a_prime_3_1)))
-        a_prime = ((r1[2] * r2[2] * a_1_3 * a_prime_3_1) 
-                  / (a_3_1 + (r1[2] * r2[1] * a_prime_3_1)))
+                input_fees.append(1)
+                output_fees.append(1 - (pool.lp_fee + pool.protocol_fee))
+        # Set a_prime_in and a_prime_out as the first pool reserves
+        a_prime_in = input_reserves[0]
+        a_prime_out = output_reserves[0]
+        # Iterate through the pools and calculate a_prime_in and a_prime_out
+        for in_res, out_res, in_fee, out_fee in zip(input_reserves[1:], 
+                                                    output_reserves[1:], 
+                                                    input_fees[1:], 
+                                                    output_fees[1:]):
+            a_prime_in = (a_prime_in * in_res) / (in_res + (in_fee * out_fee * a_prime_out))
+            a_prime_out = (in_fee * out_fee * out_res * a_prime_out) / (in_res + (in_fee * out_fee * a_prime_out))
         # Set optimal amount in
         self.optimal_amount_in = math.floor(
-                                    (math.sqrt(r1[0] * r2[0] * a_prime * a) - a) 
-                                    / (r1[0]))
-    
+                                    (math.sqrt(input_fees[0] * output_fees[0] * a_prime_out * a_prime_in) - a_prime_in)
+                                    / (input_fees[0]))
+        
     def calculate_and_set_amount_in(self,
                                     account_balance: int,
                                     gas_fee: int) -> None:
