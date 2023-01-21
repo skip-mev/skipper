@@ -1,20 +1,20 @@
 import httpx
 import json
-from base64 import b16encode, b64decode
-from cosmpy.protos.cosmwasm.wasm.v1.query_pb2 import (
-    QuerySmartContractStateRequest,
-    QuerySmartContractStateResponse)
 import logging
 import time
 import requests
-import datetime
+from base64 import b16encode, b64decode
+from dataclasses import dataclass
+from cosmpy.protos.cosmwasm.wasm.v1.query_pb2 import (
+    QuerySmartContractStateRequest,
+    QuerySmartContractStateResponse)
 
 from cosmpy.aerial.client import LedgerClient
 from cosmpy.aerial.wallet import LocalWallet
 
 from src.querier.querier import Querier
 
-
+@dataclass
 class CosmWasmQuerier(Querier):
     """ CosmWasm VM implementation of the Querier class.
         Currently works for Juno and Terra 2.
