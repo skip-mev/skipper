@@ -116,14 +116,14 @@ class State:
                                  querier: Querier,
                                  contracts: dict) -> None:
         w3 = Web3()
-        self.contracts.update({router:
+        self.contracts.update({w3.toChecksumAddress(address):
                                     creator.create_router(
-                                        contract_address=w3.toChecksumAddress(router_contracts[router]),
+                                        contract_address=w3.toChecksumAddress(address),
                                         router=router,
                                         querier=querier,
                                         contracts=contracts)
-                                for router
-                                in router_contracts})
+                                for router, address
+                                in router_contracts.items()})
             
     def set_all_jobs(self, querier: Querier) -> None:
         """ This function is used to set all the jobs"""
