@@ -14,7 +14,7 @@ from base64 import b64decode
 from dataclasses import dataclass   
 from cosmpy.aerial.client import LedgerClient, NetworkConfig
 
-from src.decoder import Decoder
+from src.decoder.decoder import Decoder
 from src.querier.querier import Querier
 from src.executor import Executor
 from src.creator import Creator
@@ -50,6 +50,7 @@ class Bot:
         self.mnemonic: str = os.environ.get("MNEMONIC")
         self.rpc_url: str = os.environ.get("RPC_URL")
         self.rest_url: str = os.environ.get("REST_URL")
+        self.json_rpc_url: str = os.environ.get("JSON_RPC_URL")
         self.chain_id: str = os.environ.get("CHAIN_ID")
         self.fee_denom: str = os.environ.get("FEE_DENOM")
         self.gas_limit: int = int(os.environ.get("GAS_LIMIT"))
@@ -67,7 +68,8 @@ class Bot:
         self.creator: Creator = Creator()
         self.querier: Querier = self.creator.create_querier(
                                         querier=os.environ.get("QUERIER"), 
-                                        rpc_url=self.rpc_url)
+                                        rpc_url=self.rpc_url,
+                                        json_rpc_url=self.json_rpc_url)
         self.decoder: Decoder = self.creator.create_decoder(decoder=os.environ.get("DECODER"))
         self.executor: Executor = self.creator.create_executor(executor=os.environ.get("EXECUTOR"))
         # Set factory and router contracts
@@ -102,6 +104,7 @@ class Bot:
         print("Updating all pool contracts in state...")
         await self.state.set_all_pool_contracts(
                                 init_contracts=self.init_contracts,
+                                router_contracts=self.router_contracts,
                                 querier=self.querier,
                                 creator=self.creator,
                                 factory_contracts=self.factory_contracts,
@@ -116,7 +119,11 @@ class Bot:
             
     def _update_contracts_file(self):
         dict_pools = {}
-        for contract in self.state.contracts:
+        for contract, contract_info in self.state.contracts.items():
+            if "contract" in contract_info.__dict__:
+                contract_info.__dict__.pop("contract")
+            if "abi" in contract_info.__dict__:
+                contract_info.__dict__.pop("abi")
             dict_pools[contract] = self.state.contracts[contract].__dict__
             
         with open(self.contracts_file, 'w') as f:
