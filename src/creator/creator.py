@@ -49,6 +49,9 @@ class Creator:
             case "cosmwasm":
                 from src.decoder.decoders.cosmwasm import CosmWasmDecoder
                 return CosmWasmDecoder()
+            case "evm":
+                from src.decoder.decoders.evm import EVMDecoder
+                return EVMDecoder()
 
     @staticmethod
     def create_wallet(chain_id: str, 
