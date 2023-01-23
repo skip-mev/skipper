@@ -82,7 +82,7 @@ class UniswapV2Pool(Pool):
         return reserves[0], reserves[1]
 
     def get_swaps_from_message(self, msg, message_value, contracts: dict[str, Pool]) -> list[Swap]:
-        pass
+        return []
     
     @staticmethod
     def get_query_tokens_payload(contract_address: str, querier: EVMQuerier) -> dict:
