@@ -4,7 +4,7 @@ import logging
 import time
 from eth_abi import abi
 from web3 import Web3, HTTPProvider
-from dataclasses import dataclass
+from dataclasses import dataclass, InitVar
 
 from cosmpy.aerial.client import LedgerClient
 from cosmpy.aerial.wallet import LocalWallet
@@ -16,10 +16,11 @@ class EVMQuerier(Querier):
     """ CosmWasm VM implementation of the Querier class.
         Currently works for Juno and Terra 2.
     """
+    json_rpc_url: str = ""
     web3: Web3 = Web3()
     
     def __post_init__(self):
-        self.web3 = Web3(HTTPProvider(self.rpc_url))
+        self.web3 = Web3(HTTPProvider(self.json_rpc_url))
 
     async def query_node_and_return_response(self, 
                                              payload: dict, 
@@ -29,7 +30,7 @@ class EVMQuerier(Querier):
            (logic handled at the contract level).
         """    
         async with httpx.AsyncClient() as client:
-            response = await client.post(self.rpc_url, json=payload)
+            response = await client.post(self.json_rpc_url, json=payload)
         return response.json()
     
     def query_node_for_new_mempool_txs(self) -> list[str]:
