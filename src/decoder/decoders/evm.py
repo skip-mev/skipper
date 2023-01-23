@@ -4,7 +4,12 @@ from dataclasses import dataclass
 
 from cosmpy.protos.cosmos.tx.v1beta1.tx_pb2 import Tx
 from cosmpy.protos.cosmwasm.wasm.v1.tx_pb2 import MsgExecuteContract
-from evmospy.evmosproto.ethermint.evm.v1.tx_pb2 import MsgEthereumTx, LegacyTx
+from evmospy.evmosproto.ethermint.evm.v1.tx_pb2 import (
+    MsgEthereumTx, 
+    LegacyTx, 
+    DynamicFeeTx,
+    AccessListTx
+)
 
 from src.decoder.decoder import Decoder
 from src.contract import Contract 
@@ -26,18 +31,26 @@ class EVMDecoder(Decoder):
         return tx_bytes, Tx().FromString(tx_bytes)
 
     @staticmethod
-    def decode_message(message) -> tuple[MsgExecuteContract, LegacyTx]:
+    def decode_message(message) -> tuple[MsgEthereumTx, DynamicFeeTx | LegacyTx]:
         """ This method is used to decode a message,
             and return the message value and the decoded msg.
         """
         message_value: MsgEthereumTx = MsgEthereumTx().FromString(message.value)
-        native_eth_tx: LegacyTx = LegacyTx().FromString(message_value.data.value)
-        return message_value, native_eth_tx
+        
+        match message_value.data.type_url:
+            case "/ethermint.evm.v1.DynamicFeeTx":
+                eth_tx = DynamicFeeTx().FromString(message_value.data.value)
+            case "/ethermint.evm.v1.LegacyTx":
+                eth_tx = LegacyTx().FromString(message_value.data.value)
+            case "/ethermint.evm.v1.AccessListTx":
+                eth_tx = AccessListTx().FromString(message_value.data.value)
+                
+        return message_value, eth_tx
 
     @staticmethod
     def get_relevant_contract(contracts: dict, 
                               message_value, 
-                              msg: LegacyTx) -> Contract or None:
+                              msg) -> Contract or None:
         """ This method is used to get the relevant contract
             from a message, if it exists.
         """
