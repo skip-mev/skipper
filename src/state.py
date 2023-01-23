@@ -7,6 +7,7 @@ import aiometer
 import anyio
 import itertools
 from dataclasses import dataclass, field
+from web3 import Web3
 
 from src.transaction import Transaction
 from src.contract import Pool, Factory
@@ -114,9 +115,10 @@ class State:
                                  creator: Creator,
                                  querier: Querier,
                                  contracts: dict) -> None:
+        w3 = Web3()
         self.contracts.update({router:
                                     creator.create_router(
-                                        contract_address=router_contracts[router],
+                                        contract_address=w3.toChecksumAddress(router_contracts[router]),
                                         router=router,
                                         querier=querier,
                                         contracts=contracts)
