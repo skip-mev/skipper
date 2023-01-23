@@ -30,8 +30,9 @@ class TerraswapFactory(Factory):
                 continue
             if 'xyk' in pair['pair_type']:
                 filtered_pairs.append(pair)
-            
-        return filtered_pairs
+        
+        pair_addresses = [pair["contract_addr"] for pair in filtered_pairs]
+        return pair_addresses
     
     async def _query_terraswap_factory(self,
                                        querier: Querier, 
