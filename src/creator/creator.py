@@ -10,7 +10,9 @@ from cosmpy.aerial.wallet import LocalWallet
 class Creator:
     
     @staticmethod
-    def create_querier(querier, rpc_url) -> Querier:
+    def create_querier(querier: str, 
+                       rpc_url: str, 
+                       json_rpc_url: str) -> Querier:
         """ Factory function to create queriers bsaed on chain / vm.
             @DEV TODO: Add more queriers here.
         """
@@ -20,7 +22,7 @@ class Creator:
                 return CosmWasmQuerier(rpc_url=rpc_url)
             case "evm":
                 from src.querier.queriers.evm import EVMQuerier
-                return EVMQuerier(rpc_url=rpc_url)
+                return EVMQuerier(rpc_url=rpc_url, json_rpc_url=json_rpc_url)
     
     @staticmethod
     def create_executor(executor: str) -> Executor:
@@ -39,7 +41,7 @@ class Creator:
                 return ContractExecutor()
         
     @staticmethod
-    def create_decoder(decoder) -> Decoder:
+    def create_decoder(decoder: str) -> Decoder:
         """ Factory function to create decoders bsaed on chain / vm.
             @DEV TODO: Add more decoders here.
         """
@@ -64,7 +66,9 @@ class Creator:
                 return create_terra_wallet(mnemonic, address_prefix)
         
     @staticmethod
-    def create_pool(contract_address: str, pool: str) -> Pool:
+    def create_pool(contract_address: str, 
+                    pool: str, 
+                    querier: Querier) -> Pool:
         """ Factory function to create pool objects based on identifiers.
             @DEV TODO: Add more pools as they are laucnhed.
         """
@@ -92,10 +96,12 @@ class Creator:
                 return HopersPool(contract_address, pool)
             case pool if pool in ["diffusion", "evmoswap", "cronus"]:
                 from src.contract.pool.pools.uniswap_v2 import UniswapV2Pool
-                return UniswapV2Pool(contract_address, pool)
+                return UniswapV2Pool(contract_address=contract_address, protocol=pool, querier=querier)
         
     @staticmethod
-    def create_factory(contract_address: str, protocol: str) -> Factory:
+    def create_factory(contract_address: str, 
+                       protocol: str, 
+                       querier: Querier) -> Factory:
         """ Factory function to create factory contracts.
             @DEV TODO: Add more factory contracts here.
         """
@@ -105,10 +111,13 @@ class Creator:
                 return TerraswapFactory(contract_address, protocol)
             case protocol if protocol in ["diffusion", "evmoswap", "cronus"]:
                 from src.contract.factory.factories.uniswap_v2 import UniswapV2Factory 
-                return UniswapV2Factory(contract_address, protocol)
+                return UniswapV2Factory(contract_address, protocol, querier)
     
     @staticmethod
-    def create_router(contract_address: str, router: str) -> Router:
+    def create_router(contract_address: str, 
+                      router: str, 
+                      querier: Querier, 
+                      contracts: dict) -> Router:
         """ Factory function to create router contracts.
             @DEV TODO: Add more router contracts here.
         """
@@ -125,3 +134,6 @@ class Creator:
             case "white_whale":
                 from src.contract.router.routers.whitewhale import WhiteWhaleRouter
                 return WhiteWhaleRouter(contract_address, router)
+            case router if router in ["diffusion", "evmoswap", "cronus"]:
+                from src.contract.router.routers.uniswap_v2 import UniswapV2Router
+                return UniswapV2Router(contract_address, router, querier, contracts)

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
 from src.contract import Contract
-from src.transaction import Swap
+from src.swap import Swap
 
 
 @dataclass

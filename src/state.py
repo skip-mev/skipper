@@ -27,6 +27,7 @@ class State:
         
     async def set_all_pool_contracts(self,
                                      init_contracts: dict,
+                                     router_contracts: dict,
                                      querier: Querier,
                                      creator: Creator,
                                      factory_contracts: dict,
@@ -38,7 +39,8 @@ class State:
         print("Setting all init contracts...")
         self.set_all_init_contracts(
                         init_contracts=init_contracts,
-                        creator=creator
+                        creator=creator,
+                        querier=querier
                         )
         print("Setting all factory contracts and pairs...")
         await self.set_all_factory_contracts(
@@ -64,15 +66,23 @@ class State:
         print("Setting cyclic routes...")
         self.set_cyclic_routes(arb_denom=arb_denom)
         
+        print("Setting all router contracts...")
+        self.set_all_router_contracts(router_contracts=router_contracts,
+                                      creator=creator,
+                                      querier=querier,
+                                      contracts=self.contracts)
+        
     def set_all_init_contracts(self, 
                                init_contracts: dict,
-                               creator: Creator) -> None:
+                               creator: Creator,
+                               querier: Querier) -> None:
         """ This method is used to set all the contracts
             loaded into the bot via init_contracts.
         """
         self.contracts = {contract:
                             creator.create_pool(contract_address=contract,
-                                                pool=init_contracts[contract]["protocol"])
+                                                pool=init_contracts[contract]["protocol"],
+                                                querier=querier)
                             for contract
                             in init_contracts}
         
@@ -87,15 +97,31 @@ class State:
         for protocol in factory_contracts:
             factory: Factory = creator.create_factory(
                                     contract_address=factory_contracts[protocol],
-                                    protocol=protocol
+                                    protocol=protocol,
+                                    querier=querier
                                     )
             print(f"Getting all pairs for {protocol}...")
             all_pairs = await factory.get_all_pairs(querier=querier)
-            self.contracts.update({pair['contract_addr']:
-                                    creator.create_pool(contract_address=pair['contract_addr'],
-                                                        pool=protocol)
+            self.contracts.update({pair:
+                                    creator.create_pool(contract_address=pair,
+                                                        pool=protocol,
+                                                        querier=querier)
                                     for pair
                                     in all_pairs})
+            
+    def set_all_router_contracts(self,
+                                 router_contracts: dict,
+                                 creator: Creator,
+                                 querier: Querier,
+                                 contracts: dict) -> None:
+        self.contracts.update({router:
+                                    creator.create_router(
+                                        contract_address=router_contracts[router],
+                                        router=router,
+                                        querier=querier,
+                                        contracts=contracts)
+                                for router
+                                in router_contracts})
             
     def set_all_jobs(self, querier: Querier) -> None:
         """ This function is used to set all the jobs"""
