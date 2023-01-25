@@ -2,6 +2,7 @@ import httpx
 import json
 import logging
 import time
+import itertools 
 from eth_abi import abi
 from web3 import Web3, HTTPProvider
 from dataclasses import dataclass, InitVar
@@ -18,6 +19,7 @@ class EVMQuerier(Querier):
     """
     json_rpc_url: str = ""
     web3: Web3 = Web3()
+    counter: itertools.count = itertools.count(1)
     
     def __post_init__(self):
         self.web3 = Web3(HTTPProvider(self.json_rpc_url))
@@ -93,14 +95,17 @@ class EVMQuerier(Querier):
             logging.error("Remote protocol error, retrying...")
             return None
             
-    @staticmethod
-    def create_payload(contract_address: str, 
+    def create_payload(self,
+                       contract_address: str, 
                        query: dict, 
                        height: str = "") -> dict:
-        """Creates the payload for an eth_call query."""
+        """Creates the payload for an eth_call query."""            
+        block_number = height if height else "latest"
+            
         return {"jsonrpc": "2.0",
                 "method": "eth_call",
-                "params": [{"to": contract_address, "data": query}, "latest"]}
+                "params": [{"to": contract_address, "data": query}, block_number],
+                "id": next(self.counter)}
                 
     def update_account_balance(self, 
                                client: LedgerClient,
