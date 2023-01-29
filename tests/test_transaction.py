@@ -5,6 +5,7 @@ from src.bot import Bot
 from src.transaction import Transaction
 from src.decoder import Decoder, CosmWasmDecoder 
 from src.state import State
+from src.contract.pool.pool import Pool
 
 """
 @pytest.fixture(scope="session")
@@ -49,7 +50,7 @@ class TestJunoTransaction:
     @pytest.mark.asyncio
     async def test_transaction_6481511():
         """ Tests that the Transaction class can be instantiated."""
-        bot = Bot()
+        bot = Bot(env_file_path='envs/juno.env')
         await bot.init()
         
         bot.account_balance, _ = bot.querier.update_account_balance(
@@ -64,8 +65,12 @@ class TestJunoTransaction:
         # Mainnet backran user tx, Juno Block: 6440035
         #tx_0 = 'CrkDCrYDCiQvY29zbXdhc20ud2FzbS52MS5Nc2dFeGVjdXRlQ29udHJhY3QSjQMKK2p1bm8xczllbWtlNjdmOHR0cG44am1obHA3ajcycHFsZDZteTh1c3h5dHMSP2p1bm8xc2c2Y2hta3R1aHlqNGxzcnhycmRmbGVtN2dzbms0ZWp2NnprY2M0ZDN2Y3F1bHpwNTV3c2Y0bDRnbBrLAXsicGFzc190aHJvdWdoX3N3YXAiOnsib3V0cHV0X21pbl90b2tlbiI6IjMxMTM1OTYyMTY3NDYzMjkwIiwiaW5wdXRfdG9rZW4iOiJUb2tlbjIiLCJpbnB1dF90b2tlbl9hbW91bnQiOiI1MzAwMDAwIiwib3V0cHV0X2FtbV9hZGRyZXNzIjoianVubzE5ODU5bTV4OGtnZXB3YWZjM2gwbjM2a3o1NDVuZ2MydmxxbnF4eDdneDN0MmtndXY2ZndzOTNjdTI1In19Kk8KRGliYy9DNENGRjQ2RkQ2REUzNUNBNENGNENFMDMxRTY0M0M4RkRDOUJBNEI5OUFFNTk4RTlCMEVEOThGRTNBMjMxOUY5Egc1MzAwMDAwEmcKUQpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQL29Lq2zbUYMdZe1lMHOH8Q2YeGsqB6iznFKJSF2gIgIBIECgIIARiWBxISCgwKBXVqdW5vEgM0MTIQ+o0ZGkAkme4k+3EPGpTJJgtcuyaXZZzoUHC5WXRpHtKhmQDyM3lZVn7XthaxKBLevxr1Qi8Xuyv+S11c39zhumuvdOc0'
         #height: str = "6440034"
-        tx_0 = 'Co0ECpYCCiQvY29zbXdhc20ud2FzbS52MS5Nc2dFeGVjdXRlQ29udHJhY3QS7QEKK2p1bm8xeG03bGF1MHZhczdlbHl4dXl4OWU2cTRwZzB1aDNmd3lkNHF5Z20SP2p1bm8xeTlyZjdxbDZmZndrdjAyaHNnZDR5cnV6MjNwbjR3OTdwNzVlMnNsc25rbTBtbmFtaHp5c3ZxbnhhcRp9eyJpbmNyZWFzZV9hbGxvd2FuY2UiOnsiYW1vdW50IjoiMTM5Njg1NjU4MzQxNCIsInNwZW5kZXIiOiJqdW5vMXhmMzJqczBsYzZ2N3F1eGo1dHd1bmE5N2h3ZmY3ZGhrejZwc3VqYXZ2a25oMnl6dHk1dXE2d3V0OGoifX0K8QEKJC9jb3Ntd2FzbS53YXNtLnYxLk1zZ0V4ZWN1dGVDb250cmFjdBLIAQoranVubzF4bTdsYXUwdmFzN2VseXh1eXg5ZTZxNHBnMHVoM2Z3eWQ0cXlnbRI/anVubzF4ZjMyanMwbGM2djdxdXhqNXR3dW5hOTdod2ZmN2Roa3o2cHN1amF2dmtuaDJ5enR5NXVxNnd1dDhqGlh7InN3YXAiOnsiaW5wdXRfdG9rZW4iOiJUb2tlbjEiLCJpbnB1dF9hbW91bnQiOiIxMzk2ODU2NTgzNDE0IiwibWluX291dHB1dCI6IjM3NTU4MDkyIn19EmcKUQpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQLEaFyo6cN0vZoMxy7d4D88dy0RI8gXMLO2pQfykUAEHxIECgIIARjnExISCgwKBXVqdW5vEgM1MDAQoMIeGkCwGwNvFKzpM+UXuIhi+1T60KEOb4WoAvIwnzS4tNnZsDb0n8KIEZ7NqvPNQ/pAcc5gLdyrF2LYz3Sq6DvuHeu4'
-        height: str = "6314039"
+        
+        #tx_0 = 'Co0ECpYCCiQvY29zbXdhc20ud2FzbS52MS5Nc2dFeGVjdXRlQ29udHJhY3QS7QEKK2p1bm8xeG03bGF1MHZhczdlbHl4dXl4OWU2cTRwZzB1aDNmd3lkNHF5Z20SP2p1bm8xeTlyZjdxbDZmZndrdjAyaHNnZDR5cnV6MjNwbjR3OTdwNzVlMnNsc25rbTBtbmFtaHp5c3ZxbnhhcRp9eyJpbmNyZWFzZV9hbGxvd2FuY2UiOnsiYW1vdW50IjoiMTM5Njg1NjU4MzQxNCIsInNwZW5kZXIiOiJqdW5vMXhmMzJqczBsYzZ2N3F1eGo1dHd1bmE5N2h3ZmY3ZGhrejZwc3VqYXZ2a25oMnl6dHk1dXE2d3V0OGoifX0K8QEKJC9jb3Ntd2FzbS53YXNtLnYxLk1zZ0V4ZWN1dGVDb250cmFjdBLIAQoranVubzF4bTdsYXUwdmFzN2VseXh1eXg5ZTZxNHBnMHVoM2Z3eWQ0cXlnbRI/anVubzF4ZjMyanMwbGM2djdxdXhqNXR3dW5hOTdod2ZmN2Roa3o2cHN1amF2dmtuaDJ5enR5NXVxNnd1dDhqGlh7InN3YXAiOnsiaW5wdXRfdG9rZW4iOiJUb2tlbjEiLCJpbnB1dF9hbW91bnQiOiIxMzk2ODU2NTgzNDE0IiwibWluX291dHB1dCI6IjM3NTU4MDkyIn19EmcKUQpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQLEaFyo6cN0vZoMxy7d4D88dy0RI8gXMLO2pQfykUAEHxIECgIIARjnExISCgwKBXVqdW5vEgM1MDAQoMIeGkCwGwNvFKzpM+UXuIhi+1T60KEOb4WoAvIwnzS4tNnZsDb0n8KIEZ7NqvPNQ/pAcc5gLdyrF2LYz3Sq6DvuHeu4'
+        #height: str = "6314039"
+        
+        tx_0 = 'Cv4DCpICCiQvY29zbXdhc20ud2FzbS52MS5Nc2dFeGVjdXRlQ29udHJhY3QS6QEKK2p1bm8xanZ4YzhoZmQyeDdzNm1yczJqOHFhMGw3ZXJ1ejhuZGR6ZDRtZmUSP2p1bm8xdTQ1c2hscDBxNGdjY2t2c2owNnNzNHh1dnN1MHoyNGEwZDB2cjljZTZyMjRwaHQ0ZTV4cTdxOTk1bhp5eyJpbmNyZWFzZV9hbGxvd2FuY2UiOnsic3BlbmRlciI6Imp1bm8xcHVnZzYyM3pzZzJ4YW52dXVtbmE2eTRjYTQ4dDBsYTdweGd0dDk2ZWQ1NXJjdGVhNDdsc3F4dTM2YSIsImFtb3VudCI6Ijc3MzEyMzk4NSJ9fQrmAQokL2Nvc213YXNtLndhc20udjEuTXNnRXhlY3V0ZUNvbnRyYWN0Er0BCitqdW5vMWp2eGM4aGZkMng3czZtcnMyajhxYTBsN2VydXo4bmRkemQ0bWZlEj9qdW5vMXB1Z2c2MjN6c2cyeGFudnV1bW5hNnk0Y2E0OHQwbGE3cHhndHQ5NmVkNTVyY3RlYTQ3bHNxeHUzNmEaTXsic3dhcCI6eyJpbnB1dF90b2tlbiI6IlRva2VuMSIsImlucHV0X2Ftb3VudCI6Ijc3MzEyMzk4NSIsIm1pbl9vdXRwdXQiOiIwIn19EmgKUQpGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQJPD7W8Xm9XD6rRVvQb2WmOvUnffLq+C9UqqTdgmaBuAhIECgIIARiKBBITCg0KBXVqdW5vEgQzMDE2ELLOSRpAKklgN5LAuYooWoZgIHRlk/Gj56Z2KMhzdYdLvTdu9LsJYSDH9XKfLhjkkm3M+LQBqiCBKa1FPunHxiwgOJBpkw=='
+        height: str = "6761575"
         
         update_all_reserves_jobs = [functools.partial(
                                                 contract.update_reserves, 
@@ -73,21 +78,25 @@ class TestJunoTransaction:
                                                 height
                                                 ) 
                                             for contract 
-                                            in bot.state.contracts.values()]
+                                            in bot.state.contracts.values()
+                                            if isinstance(contract, Pool)]
         
         #print("Updating reserves for single pool")
         #await update_all_reserves_jobs[0]()
         #print("Finished updating reserves for single pool")
         
-        bot.rpc_url = "https://rpc-archive.junonetwork.io/"
+        #bot.rpc_url = "https://rpc-archive.junonetwork.io/"
+        bot.rpc_url = "https://rpc-juno-ia.cosmosia.notional.ventures/"
         
         print("Updating reserves for historical block")
         await bot.state.update_all(update_all_reserves_jobs)
         print("Finished updating reserves for historical block")
         
-        print(bot.state.contracts["juno1wuu8nwr37kmg0njg6p3ag7j4qcm08vs6z9e9j28aendnfnuxmd3sc4yrhm"].__dict__)
-        print(bot.state.contracts["juno1dug89d22vtu7v27ee9gg4xq5seu2tu705d6eh3kmvh0uvy7depaqg45qdj"].__dict__)
-        print(bot.state.contracts["juno19859m5x8kgepwafc3h0n36kz545ngc2vlqnqxx7gx3t2kguv6fws93cu25"].__dict__)
+        #print(bot.state.contracts["juno1wuu8nwr37kmg0njg6p3ag7j4qcm08vs6z9e9j28aendnfnuxmd3sc4yrhm"].__dict__)
+        #print(bot.state.contracts["juno1dug89d22vtu7v27ee9gg4xq5seu2tu705d6eh3kmvh0uvy7depaqg45qdj"].__dict__)
+        #print(bot.state.contracts["juno19859m5x8kgepwafc3h0n36kz545ngc2vlqnqxx7gx3t2kguv6fws93cu25"].__dict__)
+        
+        print(bot.state.contracts["juno1pugg623zsg2xanvuumna6y4ca48t0la7pxgtt96ed55rctea47lsqxu36a"].__dict__)
         
         transaction = Transaction(
                             contracts=bot.state.contracts,
@@ -117,7 +126,13 @@ class TestJunoTransaction:
                             contracts=contracts_copy,
                             )
         
+        
+        route = transaction.routes[0]
         print(transaction.routes[0].__dict__)
+        print(f"Route: {route.pools[0].contract_address, route.pools[1].contract_address, route.pools[2].contract_address}")
+        print(f"""Route Reserves: {route.pools[0].input_reserves, route.pools[0].output_reserves, 
+                                       route.pools[1].input_reserves, route.pools[1].output_reserves, 
+                                       route.pools[2].input_reserves, route.pools[2].output_reserves}""")
         
         assert bundle != []
 

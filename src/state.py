@@ -27,6 +27,7 @@ class State:
         
     async def set_all_pool_contracts(self,
                                      init_contracts: dict,
+                                     router_contracts: dict,
                                      querier: Querier,
                                      creator: Creator,
                                      factory_contracts: dict,
@@ -44,7 +45,8 @@ class State:
         await self.set_all_factory_contracts(
                         factory_contracts=factory_contracts,
                         querier=querier,
-                        creator=creator
+                        creator=creator,
+                        router_contracts=router_contracts
                         )
         
         self.contracts_dict = {contract:
@@ -64,6 +66,11 @@ class State:
         print("Setting cyclic routes...")
         self.set_cyclic_routes(arb_denom=arb_denom)
         
+        print("Setting all router contracts...")
+        self.set_all_router_contracts(router_contracts=router_contracts,
+                                      creator=creator,
+                                      contracts=self.contracts)
+        
     def set_all_init_contracts(self, 
                                init_contracts: dict,
                                creator: Creator) -> None:
@@ -79,11 +86,13 @@ class State:
     async def set_all_factory_contracts(self, 
                                         factory_contracts: dict, 
                                         querier: Querier,
-                                        creator: Creator) -> None:
+                                        creator: Creator,
+                                        router_contracts: dict) -> None:
         """ This method is used to set all the pools
             created by the factory contracts. This is preferred
             method for any pools that implements a factory.
         """
+        router_addresses = list(router_contracts.values())
         for protocol in factory_contracts:
             factory: Factory = creator.create_factory(
                                     contract_address=factory_contracts[protocol],
@@ -91,11 +100,30 @@ class State:
                                     )
             print(f"Getting all pairs for {protocol}...")
             all_pairs = await factory.get_all_pairs(querier=querier)
-            self.contracts.update({pair['contract_addr']:
-                                    creator.create_pool(contract_address=pair['contract_addr'],
+            self.contracts.update({pair:
+                                    creator.create_pool(contract_address=pair,
                                                         pool=protocol)
                                     for pair
-                                    in all_pairs})
+                                    in all_pairs
+                                    if pair not in router_addresses})
+            
+            # @DEV TODO: Consider deleting if never called
+            for address in router_addresses:
+                if address in self.contracts:
+                    print("Actually deleting something!!")
+                    self.contracts.pop(address)
+    
+    def set_all_router_contracts(self,
+                                 router_contracts: dict,
+                                 creator: Creator,
+                                 contracts: dict) -> None:
+        self.contracts.update({address:
+                                    creator.create_router(
+                                        contract_address=address,
+                                        router=router,
+                                        contracts=contracts)
+                                for router, address
+                                in router_contracts.items()})
             
     def set_all_jobs(self, querier: Querier) -> None:
         """ This function is used to set all the jobs"""

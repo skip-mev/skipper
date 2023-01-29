@@ -4,8 +4,8 @@
         "protocol": "loop",
         "token1_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
         "token2_denom": "ujuno",
-        "token1_reserves": 1731118869328,
-        "token2_reserves": 12577533979,
+        "token1_reserves": 2088185530475,
+        "token2_reserves": 10334522545,
         "lp_fee": 0.00145,
         "protocol_fee": 0.00145,
         "fee_from_input": false,
@@ -22,13 +22,28 @@
             ],
             [
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno1dl8zdygs57lcwm3e9tnq4pdmmp8nhhf08jcne72nsjkf7qntfz3s0e99x3",
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3"
+            ],
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
                 "juno1utkr0ep06rkxgsesq6uryug93daklyd6wneesmtvxjkz0xjlte9qdj2s8q",
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642"
             ],
             [
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno1utkr0ep06rkxgsesq6uryug93daklyd6wneesmtvxjkz0xjlte9qdj2s8q",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
+            ],
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
                 "juno1mz8yzrgyp9mmq9aksxgpy83vmu8p4j8h3qyf9waxcd2epchqx5ps0ekj27",
                 "juno1jz50fj5zkcv3h6hmcfr3nr6eer7rj5pmsry5qj5jc8rfvpeavyzsgknm83"
+            ],
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno1mz8yzrgyp9mmq9aksxgpy83vmu8p4j8h3qyf9waxcd2epchqx5ps0ekj27",
+                "juno1p3eed298qx3nyhs3grld07jrf9vjsjsmdd2kmmh3crk87emjcx5stp409y"
             ],
             [
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
@@ -39,6 +54,11 @@
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
                 "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t",
                 "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
+            ],
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
             ]
         ],
         "input_reserves": 0,
@@ -60,8 +80,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
         "token2_denom": "juno15u3dt79t6sxxa3x3kpkhzsy56edaa5a66wvt3kxmukqjz2sx0hes5sn38g",
-        "token1_reserves": 676491809,
-        "token2_reserves": 13700722142,
+        "token1_reserves": 215492790,
+        "token2_reserves": 31564048731,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -85,8 +105,8 @@
         "protocol": "junoswap",
         "token1_denom": "ujuno",
         "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-        "token1_reserves": 1134531610715,
-        "token2_reserves": 117059478778,
+        "token1_reserves": 79184009467,
+        "token2_reserves": 9132021400,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -105,6 +125,11 @@
                 "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
                 "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
                 "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
             ],
             [
                 "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
@@ -128,13 +153,43 @@
             ],
             [
                 "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
                 "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642"
             ],
             [
                 "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
                 "juno17estllyc6qyq6tlxg9hv4xwcy069fuu0rmytvkw6xskchcq9czxsd5fd98",
                 "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
             ]
         ],
         "input_reserves": 0,
@@ -156,8 +211,8 @@
         "protocol": "loop",
         "token1_denom": "juno1wwnhkagvcd3tjz6f8vsdsw5plqnw8qy2aj3rrhqr2axvktzv9q2qz8jxn3",
         "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-        "token1_reserves": 7976361250,
-        "token2_reserves": 796977063,
+        "token1_reserves": 5224984556,
+        "token2_reserves": 562861029,
         "lp_fee": 0.00145,
         "protocol_fee": 0.00145,
         "fee_from_input": false,
@@ -173,6 +228,11 @@
                 "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
             ],
             [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
+            ],
+            [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
                 "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
                 "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n"
@@ -181,6 +241,26 @@
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
                 "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
                 "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
             ]
         ],
         "input_reserves": 0,
@@ -202,8 +282,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno1wwnhkagvcd3tjz6f8vsdsw5plqnw8qy2aj3rrhqr2axvktzv9q2qz8jxn3",
         "token2_denom": "ujuno",
-        "token1_reserves": 5677032394,
-        "token2_reserves": 5511067512,
+        "token1_reserves": 193301025,
+        "token2_reserves": 181847136,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -220,6 +300,11 @@
             ],
             [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
                 "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
                 "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n"
             ]
@@ -243,8 +328,8 @@
         "protocol": "loop",
         "token1_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
         "token2_denom": "ujuno",
-        "token1_reserves": 3018638209,
-        "token2_reserves": 3463759042,
+        "token1_reserves": 2166762433,
+        "token2_reserves": 2464074747,
         "lp_fee": 0.002175,
         "protocol_fee": 0.000725,
         "fee_from_input": false,
@@ -255,9 +340,34 @@
                 "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
             ],
             [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
                 "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
                 "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk",
+                "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
             ]
         ],
         "input_reserves": 0,
@@ -279,8 +389,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
         "token2_denom": "juno15u3dt79t6sxxa3x3kpkhzsy56edaa5a66wvt3kxmukqjz2sx0hes5sn38g",
-        "token1_reserves": 39380,
-        "token2_reserves": 188955221,
+        "token1_reserves": 39242,
+        "token2_reserves": 196335499,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -304,8 +414,8 @@
         "protocol": "junoswap",
         "token1_denom": "ujuno",
         "token2_denom": "ibc/2DA4136457810BCB9DAAB620CA67BC342B17C3C70151CA70490A170DF7C9CB27",
-        "token1_reserves": 2956939289,
-        "token2_reserves": 172318524892,
+        "token1_reserves": 2712551571,
+        "token2_reserves": 187189891589,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -335,8 +445,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno17c7zyezg3m8p2tf9hqgue9jhahvle70d59e8j9nmrvhw9anrpk8qxlrghx",
         "token2_denom": "ibc/2DA4136457810BCB9DAAB620CA67BC342B17C3C70151CA70490A170DF7C9CB27",
-        "token1_reserves": 3678931261128253,
-        "token2_reserves": 68010887386,
+        "token1_reserves": 3571052179286468,
+        "token2_reserves": 70300915885,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -366,8 +476,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno17c7zyezg3m8p2tf9hqgue9jhahvle70d59e8j9nmrvhw9anrpk8qxlrghx",
         "token2_denom": "ujuno",
-        "token1_reserves": 3564086585847826,
-        "token2_reserves": 1138749647,
+        "token1_reserves": 3717673380840907,
+        "token2_reserves": 1064196854,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -379,6 +489,11 @@
             ],
             [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1wjpdhpv7x5cusg028xglazr8ldxr7cnm0tss8sd9pg4r959rlgtqjkf70x",
+                "juno1wuu8nwr37kmg0njg6p3ag7j4qcm08vs6z9e9j28aendnfnuxmd3sc4yrhm"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
                 "juno1wjpdhpv7x5cusg028xglazr8ldxr7cnm0tss8sd9pg4r959rlgtqjkf70x",
                 "juno1wuu8nwr37kmg0njg6p3ag7j4qcm08vs6z9e9j28aendnfnuxmd3sc4yrhm"
             ],
@@ -412,8 +527,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
         "token2_denom": "ujuno",
-        "token1_reserves": 3685804587,
-        "token2_reserves": 4229154950,
+        "token1_reserves": 9414625,
+        "token2_reserves": 10642699,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -424,9 +539,34 @@
                 "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
             ],
             [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
                 "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
                 "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq",
+                "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
             ]
         ],
         "input_reserves": 0,
@@ -448,8 +588,8 @@
         "protocol": "loop",
         "token1_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
         "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-        "token1_reserves": 1637474396318,
-        "token2_reserves": 1228079438,
+        "token1_reserves": 1522411451224,
+        "token2_reserves": 862918213,
         "lp_fee": 0.002175,
         "protocol_fee": 0.000725,
         "fee_from_input": false,
@@ -463,6 +603,11 @@
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
                 "juno1dl8zdygs57lcwm3e9tnq4pdmmp8nhhf08jcne72nsjkf7qntfz3s0e99x3",
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh"
+            ],
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno1dl8zdygs57lcwm3e9tnq4pdmmp8nhhf08jcne72nsjkf7qntfz3s0e99x3",
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3"
             ]
         ],
         "input_reserves": 0,
@@ -484,8 +629,8 @@
         "protocol": "junoswap",
         "token1_denom": "ujuno",
         "token2_denom": "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034",
-        "token1_reserves": 305558063399,
-        "token2_reserves": 401749763118,
+        "token1_reserves": 5256060841,
+        "token2_reserves": 8296195876,
         "lp_fee": 0.002,
         "protocol_fee": 0.002,
         "fee_from_input": true,
@@ -506,9 +651,19 @@
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642"
             ],
             [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642"
+            ],
+            [
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
                 "juno1pugg623zsg2xanvuumna6y4ca48t0la7pxgtt96ed55rctea47lsqxu36a",
                 "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
+                "juno18zk9xqj9xjm0ry39jjam8qsysj7qh49xwt4qdfp9lgtrk08sd58s2n54ve",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
             ]
         ],
         "input_reserves": 0,
@@ -530,8 +685,8 @@
         "protocol": "loop",
         "token1_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
         "token2_denom": "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034",
-        "token1_reserves": 2516190516201,
-        "token2_reserves": 24020014155,
+        "token1_reserves": 2751111063655,
+        "token2_reserves": 21460956741,
         "lp_fee": 0.00145,
         "protocol_fee": 0.00145,
         "fee_from_input": false,
@@ -540,6 +695,11 @@
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
                 "juno1utkr0ep06rkxgsesq6uryug93daklyd6wneesmtvxjkz0xjlte9qdj2s8q",
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642"
+            ],
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno1utkr0ep06rkxgsesq6uryug93daklyd6wneesmtvxjkz0xjlte9qdj2s8q",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
             ]
         ],
         "input_reserves": 0,
@@ -561,8 +721,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno1y9rf7ql6ffwkv02hsgd4yruz23pn4w97p75e2slsnkm0mnamhzysvqnxaq",
         "token2_denom": "ujuno",
-        "token1_reserves": 112767441369334,
-        "token2_reserves": 3101487832,
+        "token1_reserves": 122336929911300,
+        "token2_reserves": 2925027950,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -574,6 +734,11 @@
             ],
             [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1nljy8gst5agtc0zstfjytf2hrnj8vcxgcdzrp4qj7k2dcnrfz4wsu6ty4f",
+                "juno1xf32js0lc6v7quxj5twuna97hwff7dhkz6psujavvknh2yzty5uq6wut8j"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
                 "juno1nljy8gst5agtc0zstfjytf2hrnj8vcxgcdzrp4qj7k2dcnrfz4wsu6ty4f",
                 "juno1xf32js0lc6v7quxj5twuna97hwff7dhkz6psujavvknh2yzty5uq6wut8j"
             ],
@@ -602,8 +767,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno1y9rf7ql6ffwkv02hsgd4yruz23pn4w97p75e2slsnkm0mnamhzysvqnxaq",
         "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-        "token1_reserves": 49673319557731,
-        "token2_reserves": 141064376,
+        "token1_reserves": 50942364556824,
+        "token2_reserves": 139323446,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -615,6 +780,11 @@
             ],
             [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1nljy8gst5agtc0zstfjytf2hrnj8vcxgcdzrp4qj7k2dcnrfz4wsu6ty4f",
+                "juno1xf32js0lc6v7quxj5twuna97hwff7dhkz6psujavvknh2yzty5uq6wut8j"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
                 "juno1nljy8gst5agtc0zstfjytf2hrnj8vcxgcdzrp4qj7k2dcnrfz4wsu6ty4f",
                 "juno1xf32js0lc6v7quxj5twuna97hwff7dhkz6psujavvknh2yzty5uq6wut8j"
             ]
@@ -638,8 +808,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno17c7zyezg3m8p2tf9hqgue9jhahvle70d59e8j9nmrvhw9anrpk8qxlrghx",
         "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-        "token1_reserves": 6769068068817540,
-        "token2_reserves": 222719818,
+        "token1_reserves": 6703467223786559,
+        "token2_reserves": 219081004,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -651,6 +821,11 @@
             ],
             [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1wjpdhpv7x5cusg028xglazr8ldxr7cnm0tss8sd9pg4r959rlgtqjkf70x",
+                "juno1wuu8nwr37kmg0njg6p3ag7j4qcm08vs6z9e9j28aendnfnuxmd3sc4yrhm"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
                 "juno1wjpdhpv7x5cusg028xglazr8ldxr7cnm0tss8sd9pg4r959rlgtqjkf70x",
                 "juno1wuu8nwr37kmg0njg6p3ag7j4qcm08vs6z9e9j28aendnfnuxmd3sc4yrhm"
             ]
@@ -674,8 +849,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno17c7zyezg3m8p2tf9hqgue9jhahvle70d59e8j9nmrvhw9anrpk8qxlrghx",
         "token2_denom": "juno1vaeuky9hqacenay9nmuualugvv54tdhyt2wsvhnjasx9s946hhmqaq3kh7",
-        "token1_reserves": 1094782513887915,
-        "token2_reserves": 291760094883274455,
+        "token1_reserves": 1012382475667310,
+        "token2_reserves": 316308448743814615,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -705,8 +880,8 @@
         "protocol": "junoswap",
         "token1_denom": "ujuno",
         "token2_denom": "juno1vaeuky9hqacenay9nmuualugvv54tdhyt2wsvhnjasx9s946hhmqaq3kh7",
-        "token1_reserves": 126777869,
-        "token2_reserves": 106691020699634148,
+        "token1_reserves": 106809352,
+        "token2_reserves": 115701446620432737,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -736,8 +911,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
         "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-        "token1_reserves": 6438908688,
-        "token2_reserves": 763083795,
+        "token1_reserves": 10254870,
+        "token2_reserves": 1323518,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -753,6 +928,11 @@
                 "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
             ],
             [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
                 "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
                 "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
@@ -761,6 +941,26 @@
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
                 "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
                 "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
             ]
         ],
         "input_reserves": 0,
@@ -782,8 +982,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno1y9rf7ql6ffwkv02hsgd4yruz23pn4w97p75e2slsnkm0mnamhzysvqnxaq",
         "token2_denom": "juno1g2g7ucurum66d42g8k5twk34yegdq8c82858gz0tq2fc75zy7khssgnhjl",
-        "token1_reserves": 46886285596085,
-        "token2_reserves": 657744,
+        "token1_reserves": 42958263551094,
+        "token2_reserves": 757676,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -813,8 +1013,8 @@
         "protocol": "junoswap",
         "token1_denom": "ujuno",
         "token2_denom": "juno1g2g7ucurum66d42g8k5twk34yegdq8c82858gz0tq2fc75zy7khssgnhjl",
-        "token1_reserves": 953567290,
-        "token2_reserves": 487849,
+        "token1_reserves": 717304159,
+        "token2_reserves": 526050,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -844,8 +1044,8 @@
         "protocol": "junoswap",
         "token1_denom": "juno1wwnhkagvcd3tjz6f8vsdsw5plqnw8qy2aj3rrhqr2axvktzv9q2qz8jxn3",
         "token2_denom": "ujuno",
-        "token1_reserves": 2949418,
-        "token2_reserves": 2902898,
+        "token1_reserves": 3043351,
+        "token2_reserves": 2813564,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -862,6 +1062,11 @@
             ],
             [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
                 "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
                 "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
             ]
@@ -885,8 +1090,8 @@
         "protocol": "loop",
         "token1_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
         "token2_denom": "juno14lycavan8gvpjn97aapzvwmsj8kyrvf644p05r0hu79namyj3ens87650k",
-        "token1_reserves": 55319107615,
-        "token2_reserves": 52748946536,
+        "token1_reserves": 68342283966,
+        "token2_reserves": 42069110127,
         "lp_fee": 0.002175,
         "protocol_fee": 0.000725,
         "fee_from_input": false,
@@ -895,6 +1100,11 @@
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
                 "juno1mz8yzrgyp9mmq9aksxgpy83vmu8p4j8h3qyf9waxcd2epchqx5ps0ekj27",
                 "juno1jz50fj5zkcv3h6hmcfr3nr6eer7rj5pmsry5qj5jc8rfvpeavyzsgknm83"
+            ],
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno1mz8yzrgyp9mmq9aksxgpy83vmu8p4j8h3qyf9waxcd2epchqx5ps0ekj27",
+                "juno1p3eed298qx3nyhs3grld07jrf9vjsjsmdd2kmmh3crk87emjcx5stp409y"
             ]
         ],
         "input_reserves": 0,
@@ -916,8 +1126,8 @@
         "protocol": "junoswap",
         "token1_denom": "ujuno",
         "token2_denom": "juno14lycavan8gvpjn97aapzvwmsj8kyrvf644p05r0hu79namyj3ens87650k",
-        "token1_reserves": 1892080764,
-        "token2_reserves": 249273079163,
+        "token1_reserves": 45024087,
+        "token2_reserves": 5552998130,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -926,6 +1136,11 @@
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
                 "juno1mz8yzrgyp9mmq9aksxgpy83vmu8p4j8h3qyf9waxcd2epchqx5ps0ekj27",
                 "juno1jz50fj5zkcv3h6hmcfr3nr6eer7rj5pmsry5qj5jc8rfvpeavyzsgknm83"
+            ],
+            [
+                "juno1jz50fj5zkcv3h6hmcfr3nr6eer7rj5pmsry5qj5jc8rfvpeavyzsgknm83",
+                "juno1n620wt5rct3vaxd8ewxkuyrlyhh2wuwjj8cj2jmus2ea56wphfwsk4zytr",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
             ]
         ],
         "input_reserves": 0,
@@ -942,42 +1157,28 @@
         "token1_type": "native",
         "token2_type": "cw20"
     },
-    "juno17h4sgpaksygdnswpx74szv98hggddc08ny4zv5ca63jv53qptxrshacvku": {
-        "contract_address": "juno17h4sgpaksygdnswpx74szv98hggddc08ny4zv5ca63jv53qptxrshacvku",
-        "protocol": "junoswap",
-        "token1_denom": "juno15u3dt79t6sxxa3x3kpkhzsy56edaa5a66wvt3kxmukqjz2sx0hes5sn38g",
-        "token2_denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-        "token1_reserves": 9354952906075,
-        "token2_reserves": 15298129111,
-        "lp_fee": 0.002,
-        "protocol_fee": 0.002,
-        "fee_from_input": true,
-        "routes": [],
-        "input_reserves": 0,
-        "output_reserves": 0,
-        "input_token": "",
-        "output_token": "",
-        "input_denom": "",
-        "output_denom": "",
-        "amount_in": 0,
-        "amount_out": 0,
-        "DEFAULT_LP_FEE": 0.003,
-        "DEFAULT_PROTOCOL_FEE": 0.0,
-        "DEFAULT_FEE_FROM_INPUT": true,
-        "token1_type": "cw20",
-        "token2_type": "native"
-    },
     "juno1el6rfmz6h9pwpdlf6k2qf4dwt3y5wqd7k3xpyvytklsnkt9uv2aqe8aq4v": {
         "contract_address": "juno1el6rfmz6h9pwpdlf6k2qf4dwt3y5wqd7k3xpyvytklsnkt9uv2aqe8aq4v",
         "protocol": "junoswap",
         "token1_denom": "ujuno",
         "token2_denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
-        "token1_reserves": 134371156155,
-        "token2_reserves": 207683351303,
+        "token1_reserves": 6905160154,
+        "token2_reserves": 10389719530,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
-        "routes": [],
+        "routes": [
+            [
+                "juno1el6rfmz6h9pwpdlf6k2qf4dwt3y5wqd7k3xpyvytklsnkt9uv2aqe8aq4v",
+                "juno1xw9a3zsrulhf2gvq9ed9zjjzl22hp2r5wqq3yp7s5vuleqmg7jrqtyq0ee",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1el6rfmz6h9pwpdlf6k2qf4dwt3y5wqd7k3xpyvytklsnkt9uv2aqe8aq4v",
+                "juno1s00g9axpxgmwcrlc6xqcxzcjmaqpxhftkx62xfh64xends8ls5dqyyjnnl",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
         "input_reserves": 0,
         "output_reserves": 0,
         "input_token": "",
@@ -997,8 +1198,8 @@
         "protocol": "white_whale",
         "token1_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
         "token2_denom": "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034",
-        "token1_reserves": 43427722,
-        "token2_reserves": 555957025,
+        "token1_reserves": 64638189,
+        "token2_reserves": 885244184,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -1009,9 +1210,29 @@
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642"
             ],
             [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
+            ],
+            [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
                 "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
             ]
         ],
         "input_reserves": 0,
@@ -1033,8 +1254,8 @@
         "protocol": "loop",
         "token1_denom": "juno1wwnhkagvcd3tjz6f8vsdsw5plqnw8qy2aj3rrhqr2axvktzv9q2qz8jxn3",
         "token2_denom": "juno1qsrercqegvs4ye0yqg93knv73ye5dc3prqwd6jcdcuj8ggp6w0us66deup",
-        "token1_reserves": 4497787900,
-        "token2_reserves": 599360128401,
+        "token1_reserves": 3507988999,
+        "token2_reserves": 663792570369,
         "lp_fee": 0.00145,
         "protocol_fee": 0.00145,
         "fee_from_input": false,
@@ -1048,6 +1269,11 @@
                 "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
                 "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t",
                 "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
+            ],
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
             ]
         ],
         "input_reserves": 0,
@@ -1069,8 +1295,8 @@
         "protocol": "white_whale",
         "token1_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
         "token2_denom": "ujuno",
-        "token1_reserves": 34292844,
-        "token2_reserves": 331695532,
+        "token1_reserves": 36643913,
+        "token2_reserves": 320904635,
         "lp_fee": 0.002,
         "protocol_fee": 0.001,
         "fee_from_input": false,
@@ -1089,6 +1315,11 @@
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
                 "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
                 "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
             ],
             [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
@@ -1112,13 +1343,43 @@
             ],
             [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
                 "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642"
             ],
             [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
                 "juno17estllyc6qyq6tlxg9hv4xwcy069fuu0rmytvkw6xskchcq9czxsd5fd98",
                 "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
             ]
         ],
         "input_reserves": 0,
@@ -1143,7 +1404,7 @@
         "token1_reserves": 11425,
         "token2_reserves": 17508,
         "lp_fee": 0.0,
-        "protocol_fee": 0.005,
+        "protocol_fee": 0.01,
         "fee_from_input": true,
         "routes": [],
         "input_reserves": 0,
@@ -1155,7 +1416,7 @@
         "amount_in": 0,
         "amount_out": 0,
         "DEFAULT_LP_FEE": 0.0,
-        "DEFAULT_PROTOCOL_FEE": 0.005,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "cw20",
         "token2_type": "cw20"
@@ -1165,10 +1426,10 @@
         "protocol": "hopers",
         "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
         "token2_denom": "ibc/D836B191CDAE8EDACDEBE7B64B504C5E06CC17C6A072DAF278F9A96DF66F6241",
-        "token1_reserves": 3711414051,
-        "token2_reserves": 10751519089918,
+        "token1_reserves": 16017548163,
+        "token2_reserves": 71720333149662,
         "lp_fee": 0.0,
-        "protocol_fee": 0.005,
+        "protocol_fee": 0.01,
         "fee_from_input": true,
         "routes": [],
         "input_reserves": 0,
@@ -1180,7 +1441,7 @@
         "amount_in": 0,
         "amount_out": 0,
         "DEFAULT_LP_FEE": 0.0,
-        "DEFAULT_PROTOCOL_FEE": 0.005,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "cw20",
         "token2_type": "native"
@@ -1190,10 +1451,10 @@
         "protocol": "hopers",
         "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
         "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
-        "token1_reserves": 13589787772,
-        "token2_reserves": 261267593,
+        "token1_reserves": 57966218096,
+        "token2_reserves": 2087717657,
         "lp_fee": 0.0,
-        "protocol_fee": 0.005,
+        "protocol_fee": 0.01,
         "fee_from_input": true,
         "routes": [
             [
@@ -1203,6 +1464,11 @@
             ],
             [
                 "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno17estllyc6qyq6tlxg9hv4xwcy069fuu0rmytvkw6xskchcq9czxsd5fd98",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
                 "juno17estllyc6qyq6tlxg9hv4xwcy069fuu0rmytvkw6xskchcq9czxsd5fd98",
                 "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
             ]
@@ -1216,7 +1482,7 @@
         "amount_in": 0,
         "amount_out": 0,
         "DEFAULT_LP_FEE": 0.0,
-        "DEFAULT_PROTOCOL_FEE": 0.005,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "cw20",
         "token2_type": "native"
@@ -1226,10 +1492,10 @@
         "protocol": "hopers",
         "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
         "token2_denom": "juno1re3x67ppxap48ygndmrc7har2cnc7tcxtm9nplcas4v0gc3wnmvs3s807z",
-        "token1_reserves": 8912577227,
-        "token2_reserves": 576437024,
+        "token1_reserves": 48499164873,
+        "token2_reserves": 2148722105,
         "lp_fee": 0.0,
-        "protocol_fee": 0.005,
+        "protocol_fee": 0.01,
         "fee_from_input": true,
         "routes": [
             [
@@ -1247,7 +1513,7 @@
         "amount_in": 0,
         "amount_out": 0,
         "DEFAULT_LP_FEE": 0.0,
-        "DEFAULT_PROTOCOL_FEE": 0.005,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "cw20",
         "token2_type": "cw20"
@@ -1257,10 +1523,41 @@
         "protocol": "hopers",
         "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
         "token2_denom": "juno168ctmpyppk90d34p3jjy658zf5a5l3w8wk35wht6ccqj4mr0yv8s4j5awr",
-        "token1_reserves": 4485242611,
-        "token2_reserves": 30687639,
+        "token1_reserves": 25615479459,
+        "token2_reserves": 254170225,
         "lp_fee": 0.0,
-        "protocol_fee": 0.005,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno19kfk94nqz7ehdmkk5a9hcl8qxq9kksupqzurz9gsgs4tk5xlgqqqrr067a",
+                "juno1h6x5jlvn6jhpnu63ufe4sgv4utyk8hsfl5rqnrpg2cvp6ccuq4lqwqnzra"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "cw20"
+    },
+    "juno1d7tz6q4ky06stcrquyuge6rujp9gsa6y4v7qzaa02rm0cj8gzznszc5ftj": {
+        "contract_address": "juno1d7tz6q4ky06stcrquyuge6rujp9gsa6y4v7qzaa02rm0cj8gzznszc5ftj",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno1g647t78y2ulqlm3lss8rs3d0spzd0teuwhdvnqn92tr79yltk9dq2h24za",
+        "token1_reserves": 411664646,
+        "token2_reserves": 50576992422,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
         "fee_from_input": true,
         "routes": [],
         "input_reserves": 0,
@@ -1272,7 +1569,38 @@
         "amount_in": 0,
         "amount_out": 0,
         "DEFAULT_LP_FEE": 0.0,
-        "DEFAULT_PROTOCOL_FEE": 0.005,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "cw20"
+    },
+    "juno1f6hyczl2yn6gwrh0yqwr0mjpzqywcy5p80ntn40cn7ha0etqtl3qs6xfv3": {
+        "contract_address": "juno1f6hyczl2yn6gwrh0yqwr0mjpzqywcy5p80ntn40cn7ha0etqtl3qs6xfv3",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno1vn38rzq0wc7zczp4dhy0h5y5kxh2jjzeahwe30c9cc6dw3lkyk5qn5rmfa",
+        "token1_reserves": 1503904024,
+        "token2_reserves": 14843510,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1f6hyczl2yn6gwrh0yqwr0mjpzqywcy5p80ntn40cn7ha0etqtl3qs6xfv3",
+                "juno17ckp36lmgtt7jtuggdv2j39eh4alcnl35szu6quh747nujags07swwq0nh"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "cw20",
         "token2_type": "cw20"
@@ -1282,10 +1610,10 @@
         "protocol": "hopers",
         "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
         "token2_denom": "ujuno",
-        "token1_reserves": 17769174847,
-        "token2_reserves": 3262582388,
+        "token1_reserves": 91840683158,
+        "token2_reserves": 28856611263,
         "lp_fee": 0.0,
-        "protocol_fee": 0.005,
+        "protocol_fee": 0.01,
         "fee_from_input": true,
         "routes": [
             [
@@ -1299,14 +1627,79 @@
                 "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
             ],
             [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno17estllyc6qyq6tlxg9hv4xwcy069fuu0rmytvkw6xskchcq9czxsd5fd98",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
                 "juno1pugg623zsg2xanvuumna6y4ca48t0la7pxgtt96ed55rctea47lsqxu36a",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj",
+                "juno1pugg623zsg2xanvuumna6y4ca48t0la7pxgtt96ed55rctea47lsqxu36a",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1jz50fj5zkcv3h6hmcfr3nr6eer7rj5pmsry5qj5jc8rfvpeavyzsgknm83",
+                "juno1n620wt5rct3vaxd8ewxkuyrlyhh2wuwjj8cj2jmus2ea56wphfwsk4zytr",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1p3eed298qx3nyhs3grld07jrf9vjsjsmdd2kmmh3crk87emjcx5stp409y",
+                "juno1n620wt5rct3vaxd8ewxkuyrlyhh2wuwjj8cj2jmus2ea56wphfwsk4zytr",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1el6rfmz6h9pwpdlf6k2qf4dwt3y5wqd7k3xpyvytklsnkt9uv2aqe8aq4v",
+                "juno1xw9a3zsrulhf2gvq9ed9zjjzl22hp2r5wqq3yp7s5vuleqmg7jrqtyq0ee",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1u2pl8ql778655wakqmnhpln65q9pughd6jnrp93xwf4zakqjdh6qx3y9yt",
+                "juno1xw9a3zsrulhf2gvq9ed9zjjzl22hp2r5wqq3yp7s5vuleqmg7jrqtyq0ee",
                 "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
             ],
             [
                 "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
                 "juno185jw0uh2v9zn8zfhulu2akxxplcd7fjnkvmp84tkjgtadyuxruzsjnexnw",
                 "juno18nflutunkth2smnh257sxtxn9p5tq6632kqgsw6h0c02wzpnq9rq927heu"
+            ],
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno19kfk94nqz7ehdmkk5a9hcl8qxq9kksupqzurz9gsgs4tk5xlgqqqrr067a",
+                "juno1h6x5jlvn6jhpnu63ufe4sgv4utyk8hsfl5rqnrpg2cvp6ccuq4lqwqnzra"
+            ],
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1f6hyczl2yn6gwrh0yqwr0mjpzqywcy5p80ntn40cn7ha0etqtl3qs6xfv3",
+                "juno17ckp36lmgtt7jtuggdv2j39eh4alcnl35szu6quh747nujags07swwq0nh"
+            ],
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1hmt7nw863s2alr5efnnj8tmxprdlvzcepna4htaujq74zgmm25ksyl9u4h",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno10r6qwpxjs4g0zmdxpmj0dqhj3dmj3pzm9wp8q3mm3utzlqzptagq4vf6l2",
+                "juno1x9r54vejw4hnxe7xm4haaf0ymf825frm30xqf9cud6cmnrgkx9lsxpj475"
+            ],
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1qxajeku5f0qxyl2vcush475r62um20v7aqzhvr0sgv2m00ela9qsw5sn85",
+                "juno1ndw52eaajcn8wpx7e503ly3j07666hhufx6cyp0s9v703rvzrpksfujv3h"
+            ],
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1x4eck8gaphsk97cm78glc5jqarqe7492l4wwegqavlmzf5e3n4qqmjvtvq",
+                "juno1mz5uz38h89dxj6c8w69rg7l060p8vq8pfetykk2gvrrxhjcsa5yqru9g7v"
+            ],
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1y5adnxk64ggdhckdhc56gss6696qr2y30pzmjydyhh8r53pqerdsq6aky6",
+                "juno1ptdt6dg7ke6rn5k8xr8kh87zjnxhp832l5q07y3c9htz8z88cptqlthu5f"
             ]
         ],
         "input_reserves": 0,
@@ -1318,7 +1711,7 @@
         "amount_in": 0,
         "amount_out": 0,
         "DEFAULT_LP_FEE": 0.0,
-        "DEFAULT_PROTOCOL_FEE": 0.005,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "cw20",
         "token2_type": "native"
@@ -1328,10 +1721,10 @@
         "protocol": "hopers",
         "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
         "token2_denom": "juno13926947pmrjly5p9hf5juey65c6rget0gqrnx3us3r6pvnpf4hwqm8mchy",
-        "token1_reserves": 8182704629,
-        "token2_reserves": 2053873607846,
+        "token1_reserves": 46613496613,
+        "token2_reserves": 5834969007088,
         "lp_fee": 0.0,
-        "protocol_fee": 0.005,
+        "protocol_fee": 0.01,
         "fee_from_input": true,
         "routes": [],
         "input_reserves": 0,
@@ -1343,7 +1736,38 @@
         "amount_in": 0,
         "amount_out": 0,
         "DEFAULT_LP_FEE": 0.0,
-        "DEFAULT_PROTOCOL_FEE": 0.005,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "cw20"
+    },
+    "juno1hmt7nw863s2alr5efnnj8tmxprdlvzcepna4htaujq74zgmm25ksyl9u4h": {
+        "contract_address": "juno1hmt7nw863s2alr5efnnj8tmxprdlvzcepna4htaujq74zgmm25ksyl9u4h",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9",
+        "token1_reserves": 463013447,
+        "token2_reserves": 859231939,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1hmt7nw863s2alr5efnnj8tmxprdlvzcepna4htaujq74zgmm25ksyl9u4h",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "cw20",
         "token2_type": "cw20"
@@ -1356,7 +1780,7 @@
         "token1_reserves": 8570,
         "token2_reserves": 11670,
         "lp_fee": 0.0,
-        "protocol_fee": 0.005,
+        "protocol_fee": 0.01,
         "fee_from_input": true,
         "routes": [],
         "input_reserves": 0,
@@ -1368,9 +1792,34 @@
         "amount_in": 0,
         "amount_out": 0,
         "DEFAULT_LP_FEE": 0.0,
-        "DEFAULT_PROTOCOL_FEE": 0.005,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "native",
+        "token2_type": "cw20"
+    },
+    "juno1pdal0fr38tfjuslpq3ne68242zsfs30t6rda2dnmfmjv2skk8z6qgmrrer": {
+        "contract_address": "juno1pdal0fr38tfjuslpq3ne68242zsfs30t6rda2dnmfmjv2skk8z6qgmrrer",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno14q8kk464fafql2fwmlsgvgcdl6h2csqpzv4hr025fmcvgjahpess32k0j7",
+        "token1_reserves": 303188277,
+        "token2_reserves": 49479820199,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
         "token2_type": "cw20"
     },
     "juno1pugg623zsg2xanvuumna6y4ca48t0la7pxgtt96ed55rctea47lsqxu36a": {
@@ -1378,14 +1827,19 @@
         "protocol": "hopers",
         "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
         "token2_denom": "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034",
-        "token1_reserves": 9481788628,
-        "token2_reserves": 2305235632,
+        "token1_reserves": 53462415536,
+        "token2_reserves": 25815172143,
         "lp_fee": 0.0,
-        "protocol_fee": 0.005,
+        "protocol_fee": 0.01,
         "fee_from_input": true,
         "routes": [
             [
                 "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
+                "juno1pugg623zsg2xanvuumna6y4ca48t0la7pxgtt96ed55rctea47lsqxu36a",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj",
                 "juno1pugg623zsg2xanvuumna6y4ca48t0la7pxgtt96ed55rctea47lsqxu36a",
                 "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
             ]
@@ -1399,7 +1853,7 @@
         "amount_in": 0,
         "amount_out": 0,
         "DEFAULT_LP_FEE": 0.0,
-        "DEFAULT_PROTOCOL_FEE": 0.005,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "cw20",
         "token2_type": "native"
@@ -1409,10 +1863,10 @@
         "protocol": "hopers",
         "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
         "token2_denom": "juno15u3dt79t6sxxa3x3kpkhzsy56edaa5a66wvt3kxmukqjz2sx0hes5sn38g",
-        "token1_reserves": 25882827,
-        "token2_reserves": 13223889369,
+        "token1_reserves": 10912573,
+        "token2_reserves": 107974174940,
         "lp_fee": 0.0,
-        "protocol_fee": 0.005,
+        "protocol_fee": 0.01,
         "fee_from_input": true,
         "routes": [],
         "input_reserves": 0,
@@ -1424,7 +1878,253 @@
         "amount_in": 0,
         "amount_out": 0,
         "DEFAULT_LP_FEE": 0.0,
-        "DEFAULT_PROTOCOL_FEE": 0.005,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "cw20"
+    },
+    "juno10r6qwpxjs4g0zmdxpmj0dqhj3dmj3pzm9wp8q3mm3utzlqzptagq4vf6l2": {
+        "contract_address": "juno10r6qwpxjs4g0zmdxpmj0dqhj3dmj3pzm9wp8q3mm3utzlqzptagq4vf6l2",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno1hnftys64ectjfynm6qjk9my8jd3f6l9dq9utcd3dy8ehwrsx9q4q7n9uxt",
+        "token1_reserves": 14370624,
+        "token2_reserves": 1120668948,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno10r6qwpxjs4g0zmdxpmj0dqhj3dmj3pzm9wp8q3mm3utzlqzptagq4vf6l2",
+                "juno1x9r54vejw4hnxe7xm4haaf0ymf825frm30xqf9cud6cmnrgkx9lsxpj475"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "cw20"
+    },
+    "juno1anhnfk68epxhj59s3qghv9duudkulkyjthqz8x08d0nm289y8y2svrcchc": {
+        "contract_address": "juno1anhnfk68epxhj59s3qghv9duudkulkyjthqz8x08d0nm289y8y2svrcchc",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno147t4fd3tny6hws6rha9xs5gah9qa6g7hrjv9tuvv6ce6m25sy39sq6yv52",
+        "token1_reserves": 3488826616,
+        "token2_reserves": 169663190011,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "cw20"
+    },
+    "juno1n620wt5rct3vaxd8ewxkuyrlyhh2wuwjj8cj2jmus2ea56wphfwsk4zytr": {
+        "contract_address": "juno1n620wt5rct3vaxd8ewxkuyrlyhh2wuwjj8cj2jmus2ea56wphfwsk4zytr",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno14lycavan8gvpjn97aapzvwmsj8kyrvf644p05r0hu79namyj3ens87650k",
+        "token1_reserves": 740343870,
+        "token2_reserves": 28545928193,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [
+            [
+                "juno1jz50fj5zkcv3h6hmcfr3nr6eer7rj5pmsry5qj5jc8rfvpeavyzsgknm83",
+                "juno1n620wt5rct3vaxd8ewxkuyrlyhh2wuwjj8cj2jmus2ea56wphfwsk4zytr",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1p3eed298qx3nyhs3grld07jrf9vjsjsmdd2kmmh3crk87emjcx5stp409y",
+                "juno1n620wt5rct3vaxd8ewxkuyrlyhh2wuwjj8cj2jmus2ea56wphfwsk4zytr",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "cw20"
+    },
+    "juno1qxajeku5f0qxyl2vcush475r62um20v7aqzhvr0sgv2m00ela9qsw5sn85": {
+        "contract_address": "juno1qxajeku5f0qxyl2vcush475r62um20v7aqzhvr0sgv2m00ela9qsw5sn85",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno1x02k67asfmjawgc96dj8nxq6se3fmx36gedgs5hvkjegdhfy97rs3jgj2h",
+        "token1_reserves": 18679031,
+        "token2_reserves": 53636896,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1qxajeku5f0qxyl2vcush475r62um20v7aqzhvr0sgv2m00ela9qsw5sn85",
+                "juno1ndw52eaajcn8wpx7e503ly3j07666hhufx6cyp0s9v703rvzrpksfujv3h"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "cw20"
+    },
+    "juno1slsy2j7u7hq2l02yasczamy40d6n7qv7n4mtpwddx9cmsrf0lv2sywpweh": {
+        "contract_address": "juno1slsy2j7u7hq2l02yasczamy40d6n7qv7n4mtpwddx9cmsrf0lv2sywpweh",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno1s2dp05rspeuzzpzyzdchk262szehrtfpz847uvf98cnwh53ulx4qg20qwj",
+        "token1_reserves": 1685929821,
+        "token2_reserves": 1007777217,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "cw20"
+    },
+    "juno1x4eck8gaphsk97cm78glc5jqarqe7492l4wwegqavlmzf5e3n4qqmjvtvq": {
+        "contract_address": "juno1x4eck8gaphsk97cm78glc5jqarqe7492l4wwegqavlmzf5e3n4qqmjvtvq",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno1r4pzw8f9z0sypct5l9j906d47z998ulwvhvqe5xdwgy8wf84583sxwh0pa",
+        "token1_reserves": 6654854593,
+        "token2_reserves": 14502972642,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1x4eck8gaphsk97cm78glc5jqarqe7492l4wwegqavlmzf5e3n4qqmjvtvq",
+                "juno1mz5uz38h89dxj6c8w69rg7l060p8vq8pfetykk2gvrrxhjcsa5yqru9g7v"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "cw20"
+    },
+    "juno1xw9a3zsrulhf2gvq9ed9zjjzl22hp2r5wqq3yp7s5vuleqmg7jrqtyq0ee": {
+        "contract_address": "juno1xw9a3zsrulhf2gvq9ed9zjjzl22hp2r5wqq3yp7s5vuleqmg7jrqtyq0ee",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
+        "token1_reserves": 30633555182,
+        "token2_reserves": 14319284141,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [
+            [
+                "juno1el6rfmz6h9pwpdlf6k2qf4dwt3y5wqd7k3xpyvytklsnkt9uv2aqe8aq4v",
+                "juno1xw9a3zsrulhf2gvq9ed9zjjzl22hp2r5wqq3yp7s5vuleqmg7jrqtyq0ee",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1u2pl8ql778655wakqmnhpln65q9pughd6jnrp93xwf4zakqjdh6qx3y9yt",
+                "juno1xw9a3zsrulhf2gvq9ed9zjjzl22hp2r5wqq3yp7s5vuleqmg7jrqtyq0ee",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
+        "DEFAULT_FEE_FROM_INPUT": true,
+        "token1_type": "cw20",
+        "token2_type": "native"
+    },
+    "juno1y5adnxk64ggdhckdhc56gss6696qr2y30pzmjydyhh8r53pqerdsq6aky6": {
+        "contract_address": "juno1y5adnxk64ggdhckdhc56gss6696qr2y30pzmjydyhh8r53pqerdsq6aky6",
+        "protocol": "hopers",
+        "token1_denom": "juno1u45shlp0q4gcckvsj06ss4xuvsu0z24a0d0vr9ce6r24pht4e5xq7q995n",
+        "token2_denom": "juno1j0a9ymgngasfn3l5me8qpd53l5zlm9wurfdk7r65s5mg6tkxal3qpgf5se",
+        "token1_reserves": 10890740,
+        "token2_reserves": 6916177662,
+        "lp_fee": 0.0,
+        "protocol_fee": 0.01,
+        "fee_from_input": true,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1y5adnxk64ggdhckdhc56gss6696qr2y30pzmjydyhh8r53pqerdsq6aky6",
+                "juno1ptdt6dg7ke6rn5k8xr8kh87zjnxhp832l5q07y3c9htz8z88cptqlthu5f"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.0,
+        "DEFAULT_PROTOCOL_FEE": 0.01,
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "cw20",
         "token2_type": "cw20"
@@ -1434,8 +2134,8 @@
         "protocol": "junoswap",
         "token1_denom": "ujuno",
         "token2_denom": "juno1re3x67ppxap48ygndmrc7har2cnc7tcxtm9nplcas4v0gc3wnmvs3s807z",
-        "token1_reserves": 800863181,
-        "token2_reserves": 281818928,
+        "token1_reserves": 394015875,
+        "token2_reserves": 56937601,
         "lp_fee": 0.003,
         "protocol_fee": 0.0,
         "fee_from_input": true,
@@ -1459,5 +2159,1066 @@
         "DEFAULT_FEE_FROM_INPUT": true,
         "token1_type": "native",
         "token2_type": "cw20"
+    },
+    "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z": {
+        "contract_address": "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+        "protocol": "wyndex",
+        "token1_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
+        "token2_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
+        "token1_reserves": 692972217,
+        "token2_reserves": 5339242831,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5": {
+        "contract_address": "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+        "protocol": "wyndex",
+        "token1_denom": "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9",
+        "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
+        "token1_reserves": 2444048892,
+        "token2_reserves": 47007612,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "native"
+    },
+    "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3": {
+        "contract_address": "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9",
+        "token1_reserves": 958503751748,
+        "token2_reserves": 110210886466,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno1dl8zdygs57lcwm3e9tnq4pdmmp8nhhf08jcne72nsjkf7qntfz3s0e99x3",
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno17v2d2993me50e6dgzx50ckuuah0vmfyanl0segxsdcg3s4qzqersyrvu8n"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1maj5xlggctfwm6ct6x2e3456zxm8chadq9prqxl9kjxzzs9edalsk5wzwh"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1nljy8gst5agtc0zstfjytf2hrnj8vcxgcdzrp4qj7k2dcnrfz4wsu6ty4f",
+                "juno1xf32js0lc6v7quxj5twuna97hwff7dhkz6psujavvknh2yzty5uq6wut8j"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1wjpdhpv7x5cusg028xglazr8ldxr7cnm0tss8sd9pg4r959rlgtqjkf70x",
+                "juno1wuu8nwr37kmg0njg6p3ag7j4qcm08vs6z9e9j28aendnfnuxmd3sc4yrhm"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno17estllyc6qyq6tlxg9hv4xwcy069fuu0rmytvkw6xskchcq9czxsd5fd98",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "native"
+    },
+    "juno18zk9xqj9xjm0ry39jjam8qsysj7qh49xwt4qdfp9lgtrk08sd58s2n54ve": {
+        "contract_address": "juno18zk9xqj9xjm0ry39jjam8qsysj7qh49xwt4qdfp9lgtrk08sd58s2n54ve",
+        "protocol": "wyndex",
+        "token1_denom": "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9",
+        "token2_denom": "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034",
+        "token1_reserves": 6695809204,
+        "token2_reserves": 1768073322,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
+                "juno18zk9xqj9xjm0ry39jjam8qsysj7qh49xwt4qdfp9lgtrk08sd58s2n54ve",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj",
+                "juno18zk9xqj9xjm0ry39jjam8qsysj7qh49xwt4qdfp9lgtrk08sd58s2n54ve",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "native"
+    },
+    "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj": {
+        "contract_address": "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034",
+        "token1_reserves": 260404761935,
+        "token2_reserves": 412212633629,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno1utkr0ep06rkxgsesq6uryug93daklyd6wneesmtvxjkz0xjlte9qdj2s8q",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1v6stcdrvwrthfvcwvlmmzht32ft9g9nw85tthcjqer242xg3nvdq8fjasx",
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj"
+            ],
+            [
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj",
+                "juno1pugg623zsg2xanvuumna6y4ca48t0la7pxgtt96ed55rctea47lsqxu36a",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj",
+                "juno18zk9xqj9xjm0ry39jjam8qsysj7qh49xwt4qdfp9lgtrk08sd58s2n54ve",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "native"
+    },
+    "juno1s00g9axpxgmwcrlc6xqcxzcjmaqpxhftkx62xfh64xends8ls5dqyyjnnl": {
+        "contract_address": "juno1s00g9axpxgmwcrlc6xqcxzcjmaqpxhftkx62xfh64xends8ls5dqyyjnnl",
+        "protocol": "wyndex",
+        "token1_denom": "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9",
+        "token2_denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
+        "token1_reserves": 253336103274,
+        "token2_reserves": 64771573067,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1el6rfmz6h9pwpdlf6k2qf4dwt3y5wqd7k3xpyvytklsnkt9uv2aqe8aq4v",
+                "juno1s00g9axpxgmwcrlc6xqcxzcjmaqpxhftkx62xfh64xends8ls5dqyyjnnl",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1u2pl8ql778655wakqmnhpln65q9pughd6jnrp93xwf4zakqjdh6qx3y9yt",
+                "juno1s00g9axpxgmwcrlc6xqcxzcjmaqpxhftkx62xfh64xends8ls5dqyyjnnl",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "native"
+    },
+    "juno1u2pl8ql778655wakqmnhpln65q9pughd6jnrp93xwf4zakqjdh6qx3y9yt": {
+        "contract_address": "juno1u2pl8ql778655wakqmnhpln65q9pughd6jnrp93xwf4zakqjdh6qx3y9yt",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
+        "token1_reserves": 122392763110,
+        "token2_reserves": 184719755213,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1u2pl8ql778655wakqmnhpln65q9pughd6jnrp93xwf4zakqjdh6qx3y9yt",
+                "juno1xw9a3zsrulhf2gvq9ed9zjjzl22hp2r5wqq3yp7s5vuleqmg7jrqtyq0ee",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ],
+            [
+                "juno1u2pl8ql778655wakqmnhpln65q9pughd6jnrp93xwf4zakqjdh6qx3y9yt",
+                "juno1s00g9axpxgmwcrlc6xqcxzcjmaqpxhftkx62xfh64xends8ls5dqyyjnnl",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "native"
+    },
+    "juno1p3eed298qx3nyhs3grld07jrf9vjsjsmdd2kmmh3crk87emjcx5stp409y": {
+        "contract_address": "juno1p3eed298qx3nyhs3grld07jrf9vjsjsmdd2kmmh3crk87emjcx5stp409y",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno14lycavan8gvpjn97aapzvwmsj8kyrvf644p05r0hu79namyj3ens87650k",
+        "token1_reserves": 1883316030,
+        "token2_reserves": 233036736750,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno1mz8yzrgyp9mmq9aksxgpy83vmu8p4j8h3qyf9waxcd2epchqx5ps0ekj27",
+                "juno1p3eed298qx3nyhs3grld07jrf9vjsjsmdd2kmmh3crk87emjcx5stp409y"
+            ],
+            [
+                "juno1p3eed298qx3nyhs3grld07jrf9vjsjsmdd2kmmh3crk87emjcx5stp409y",
+                "juno1n620wt5rct3vaxd8ewxkuyrlyhh2wuwjj8cj2jmus2ea56wphfwsk4zytr",
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno1h6x5jlvn6jhpnu63ufe4sgv4utyk8hsfl5rqnrpg2cvp6ccuq4lqwqnzra": {
+        "contract_address": "juno1h6x5jlvn6jhpnu63ufe4sgv4utyk8hsfl5rqnrpg2cvp6ccuq4lqwqnzra",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno168ctmpyppk90d34p3jjy658zf5a5l3w8wk35wht6ccqj4mr0yv8s4j5awr",
+        "token1_reserves": 68950626615,
+        "token2_reserves": 2202477467,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno19kfk94nqz7ehdmkk5a9hcl8qxq9kksupqzurz9gsgs4tk5xlgqqqrr067a",
+                "juno1h6x5jlvn6jhpnu63ufe4sgv4utyk8hsfl5rqnrpg2cvp6ccuq4lqwqnzra"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno16vvu2fjrgg6rnddrcvtaeukzl3weau63gc3d3c7mvq05ygnzklvs3peqmt": {
+        "contract_address": "juno16vvu2fjrgg6rnddrcvtaeukzl3weau63gc3d3c7mvq05ygnzklvs3peqmt",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno19rqljkh95gh40s7qdx40ksx3zq5tm4qsmsrdz9smw668x9zdr3lqtg33mf",
+        "token1_reserves": 989979877,
+        "token2_reserves": 86954935979,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq": {
+        "contract_address": "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+        "protocol": "wyndex",
+        "token1_denom": "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9",
+        "token2_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
+        "token1_reserves": 7888787491,
+        "token2_reserves": 1183601137,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk",
+                "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq",
+                "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9",
+                "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "token"
+    },
+    "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9": {
+        "contract_address": "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv",
+        "token1_reserves": 4911398353,
+        "token2_reserves": 4333367734,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1fha0ux5k6xxzzknhwk0j2rtwxtczlp8kzk6w9g383lzjhu337k9swvjdlv",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9"
+            ],
+            [
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9",
+                "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno14ke9xn3qfmnjsrh9lh6rfu7zmm90duvj4lpkcrrnzemh0tjpwarqfk97n6": {
+        "contract_address": "juno14ke9xn3qfmnjsrh9lh6rfu7zmm90duvj4lpkcrrnzemh0tjpwarqfk97n6",
+        "protocol": "wyndex",
+        "token1_denom": "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9",
+        "token2_denom": "juno1hnftys64ectjfynm6qjk9my8jd3f6l9dq9utcd3dy8ehwrsx9q4q7n9uxt",
+        "token1_reserves": 8019922994,
+        "token2_reserves": 345006854503,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1x9r54vejw4hnxe7xm4haaf0ymf825frm30xqf9cud6cmnrgkx9lsxpj475",
+                "juno14ke9xn3qfmnjsrh9lh6rfu7zmm90duvj4lpkcrrnzemh0tjpwarqfk97n6",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "token"
+    },
+    "juno1x9r54vejw4hnxe7xm4haaf0ymf825frm30xqf9cud6cmnrgkx9lsxpj475": {
+        "contract_address": "juno1x9r54vejw4hnxe7xm4haaf0ymf825frm30xqf9cud6cmnrgkx9lsxpj475",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno1hnftys64ectjfynm6qjk9my8jd3f6l9dq9utcd3dy8ehwrsx9q4q7n9uxt",
+        "token1_reserves": 803792756,
+        "token2_reserves": 203695084384,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno10r6qwpxjs4g0zmdxpmj0dqhj3dmj3pzm9wp8q3mm3utzlqzptagq4vf6l2",
+                "juno1x9r54vejw4hnxe7xm4haaf0ymf825frm30xqf9cud6cmnrgkx9lsxpj475"
+            ],
+            [
+                "juno1x9r54vejw4hnxe7xm4haaf0ymf825frm30xqf9cud6cmnrgkx9lsxpj475",
+                "juno14ke9xn3qfmnjsrh9lh6rfu7zmm90duvj4lpkcrrnzemh0tjpwarqfk97n6",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno1ptdt6dg7ke6rn5k8xr8kh87zjnxhp832l5q07y3c9htz8z88cptqlthu5f": {
+        "contract_address": "juno1ptdt6dg7ke6rn5k8xr8kh87zjnxhp832l5q07y3c9htz8z88cptqlthu5f",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno1j0a9ymgngasfn3l5me8qpd53l5zlm9wurfdk7r65s5mg6tkxal3qpgf5se",
+        "token1_reserves": 12370308103,
+        "token2_reserves": 24559951786835,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1y5adnxk64ggdhckdhc56gss6696qr2y30pzmjydyhh8r53pqerdsq6aky6",
+                "juno1ptdt6dg7ke6rn5k8xr8kh87zjnxhp832l5q07y3c9htz8z88cptqlthu5f"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno1ls5un4a8zyn4f05k0ekq5aa9uhn88y8362ww38elqfpcwllme0jqelamke": {
+        "contract_address": "juno1ls5un4a8zyn4f05k0ekq5aa9uhn88y8362ww38elqfpcwllme0jqelamke",
+        "protocol": "wyndex",
+        "token1_denom": "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9",
+        "token2_denom": "juno1vn38rzq0wc7zczp4dhy0h5y5kxh2jjzeahwe30c9cc6dw3lkyk5qn5rmfa",
+        "token1_reserves": 4030863026,
+        "token2_reserves": 21884175,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf",
+                "juno1ls5un4a8zyn4f05k0ekq5aa9uhn88y8362ww38elqfpcwllme0jqelamke",
+                "juno17ckp36lmgtt7jtuggdv2j39eh4alcnl35szu6quh747nujags07swwq0nh"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "token"
+    },
+    "juno1q0f3nlghr350e7lhmxej3ev0j25m5caws5y4kyr5huawwr24hfkq74fsnq": {
+        "contract_address": "juno1q0f3nlghr350e7lhmxej3ev0j25m5caws5y4kyr5huawwr24hfkq74fsnq",
+        "protocol": "wyndex",
+        "token1_denom": "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9",
+        "token2_denom": "juno1x02k67asfmjawgc96dj8nxq6se3fmx36gedgs5hvkjegdhfy97rs3jgj2h",
+        "token1_reserves": 11866516467,
+        "token2_reserves": 18747285951,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf",
+                "juno1q0f3nlghr350e7lhmxej3ev0j25m5caws5y4kyr5huawwr24hfkq74fsnq",
+                "juno1ndw52eaajcn8wpx7e503ly3j07666hhufx6cyp0s9v703rvzrpksfujv3h"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "token"
+    },
+    "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf": {
+        "contract_address": "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf",
+        "protocol": "wyndex",
+        "token1_denom": "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9",
+        "token2_denom": "ujuno",
+        "token1_reserves": 960285476995,
+        "token2_reserves": 162923294280,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1aagw3m89ze94v6e56k0eeemldrk8ajmtccmwer9ffrzduw3zuwds0w58xk",
+                "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1d04vn4t3cw494md0xleyqk6hxt8ctn5gmr353h06uvnudlvk5chq93vmjq",
+                "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9",
+                "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1ctsmp54v79x7ea970zejlyws50cj9pkrmw49x46085fn80znjmpqz2n642",
+                "juno18zk9xqj9xjm0ry39jjam8qsysj7qh49xwt4qdfp9lgtrk08sd58s2n54ve",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj",
+                "juno18zk9xqj9xjm0ry39jjam8qsysj7qh49xwt4qdfp9lgtrk08sd58s2n54ve",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1el6rfmz6h9pwpdlf6k2qf4dwt3y5wqd7k3xpyvytklsnkt9uv2aqe8aq4v",
+                "juno1s00g9axpxgmwcrlc6xqcxzcjmaqpxhftkx62xfh64xends8ls5dqyyjnnl",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1u2pl8ql778655wakqmnhpln65q9pughd6jnrp93xwf4zakqjdh6qx3y9yt",
+                "juno1s00g9axpxgmwcrlc6xqcxzcjmaqpxhftkx62xfh64xends8ls5dqyyjnnl",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1hmt7nw863s2alr5efnnj8tmxprdlvzcepna4htaujq74zgmm25ksyl9u4h",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1x9r54vejw4hnxe7xm4haaf0ymf825frm30xqf9cud6cmnrgkx9lsxpj475",
+                "juno14ke9xn3qfmnjsrh9lh6rfu7zmm90duvj4lpkcrrnzemh0tjpwarqfk97n6",
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf"
+            ],
+            [
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf",
+                "juno1ls5un4a8zyn4f05k0ekq5aa9uhn88y8362ww38elqfpcwllme0jqelamke",
+                "juno17ckp36lmgtt7jtuggdv2j39eh4alcnl35szu6quh747nujags07swwq0nh"
+            ],
+            [
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf",
+                "juno1q0f3nlghr350e7lhmxej3ev0j25m5caws5y4kyr5huawwr24hfkq74fsnq",
+                "juno1ndw52eaajcn8wpx7e503ly3j07666hhufx6cyp0s9v703rvzrpksfujv3h"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "token",
+        "token2_type": "native"
+    },
+    "juno1rcssjyqgr6vzalss77d43v30c2qpyzzg607ua8gte2shqgtvu24sg8gs8r": {
+        "contract_address": "juno1rcssjyqgr6vzalss77d43v30c2qpyzzg607ua8gte2shqgtvu24sg8gs8r",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno1p8x807f6h222ur0vssqy3qk6mcpa40gw2pchquz5atl935t7kvyq894ne3",
+        "token1_reserves": 7734035651,
+        "token2_reserves": 461001489284,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno1mz5uz38h89dxj6c8w69rg7l060p8vq8pfetykk2gvrrxhjcsa5yqru9g7v": {
+        "contract_address": "juno1mz5uz38h89dxj6c8w69rg7l060p8vq8pfetykk2gvrrxhjcsa5yqru9g7v",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno1r4pzw8f9z0sypct5l9j906d47z998ulwvhvqe5xdwgy8wf84583sxwh0pa",
+        "token1_reserves": 7456528518,
+        "token2_reserves": 52281430108,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1x4eck8gaphsk97cm78glc5jqarqe7492l4wwegqavlmzf5e3n4qqmjvtvq",
+                "juno1mz5uz38h89dxj6c8w69rg7l060p8vq8pfetykk2gvrrxhjcsa5yqru9g7v"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno17jv00cm4f3twr548jzayu57g9txvd4zdh54mdg9qpjs7samlphjsykylsq": {
+        "contract_address": "juno17jv00cm4f3twr548jzayu57g9txvd4zdh54mdg9qpjs7samlphjsykylsq",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2l",
+        "token1_reserves": 33904390712,
+        "token2_reserves": 1503631843,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno17ckp36lmgtt7jtuggdv2j39eh4alcnl35szu6quh747nujags07swwq0nh": {
+        "contract_address": "juno17ckp36lmgtt7jtuggdv2j39eh4alcnl35szu6quh747nujags07swwq0nh",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno1vn38rzq0wc7zczp4dhy0h5y5kxh2jjzeahwe30c9cc6dw3lkyk5qn5rmfa",
+        "token1_reserves": 2507692030,
+        "token2_reserves": 79892565,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1f6hyczl2yn6gwrh0yqwr0mjpzqywcy5p80ntn40cn7ha0etqtl3qs6xfv3",
+                "juno17ckp36lmgtt7jtuggdv2j39eh4alcnl35szu6quh747nujags07swwq0nh"
+            ],
+            [
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf",
+                "juno1ls5un4a8zyn4f05k0ekq5aa9uhn88y8362ww38elqfpcwllme0jqelamke",
+                "juno17ckp36lmgtt7jtuggdv2j39eh4alcnl35szu6quh747nujags07swwq0nh"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy": {
+        "contract_address": "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno1wwnhkagvcd3tjz6f8vsdsw5plqnw8qy2aj3rrhqr2axvktzv9q2qz8jxn3",
+        "token1_reserves": 6342903205,
+        "token2_reserves": 6730772002,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1qc8mrs3hmxm0genzrd92akja5r0v7mfm6uuwhktvzphhz9ygkp8ssl4q07",
+                "juno16sljr0c7fj00s8dnhe0ql8nn40ca9v3fyuga3svnq860fzal5s2qw02j0t",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
+            ],
+            [
+                "juno1sg6chmktuhyj4lsrxrrdflem7gsnk4ejv6zkcc4d3vcqulzp55wsf4l4gl",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
+            ],
+            [
+                "juno1p9z8xe96fyvg3h5gtvnpjjv2u47q6l7sdhg6asmyfgc6q8l8ttgqfvxnxh",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
+            ],
+            [
+                "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+                "juno1rw5cdwl6cxw882czan4x2ysp30zsm94l6jcqealg82vm2dl989ns63veh8",
+                "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno1ndw52eaajcn8wpx7e503ly3j07666hhufx6cyp0s9v703rvzrpksfujv3h": {
+        "contract_address": "juno1ndw52eaajcn8wpx7e503ly3j07666hhufx6cyp0s9v703rvzrpksfujv3h",
+        "protocol": "wyndex",
+        "token1_denom": "ujuno",
+        "token2_denom": "juno1x02k67asfmjawgc96dj8nxq6se3fmx36gedgs5hvkjegdhfy97rs3jgj2h",
+        "token1_reserves": 1531210042,
+        "token2_reserves": 14140796199,
+        "lp_fee": 0.002,
+        "protocol_fee": 0.001,
+        "fee_from_input": false,
+        "routes": [
+            [
+                "juno1g5j9vd76cqt7fsq22ne7jqfkz4v9ptkvh4jknsvwchpj753atwfs942a25",
+                "juno1qxajeku5f0qxyl2vcush475r62um20v7aqzhvr0sgv2m00ela9qsw5sn85",
+                "juno1ndw52eaajcn8wpx7e503ly3j07666hhufx6cyp0s9v703rvzrpksfujv3h"
+            ],
+            [
+                "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf",
+                "juno1q0f3nlghr350e7lhmxej3ev0j25m5caws5y4kyr5huawwr24hfkq74fsnq",
+                "juno1ndw52eaajcn8wpx7e503ly3j07666hhufx6cyp0s9v703rvzrpksfujv3h"
+            ]
+        ],
+        "input_reserves": 0,
+        "output_reserves": 0,
+        "input_token": "",
+        "output_token": "",
+        "input_denom": "",
+        "output_denom": "",
+        "amount_in": 0,
+        "amount_out": 0,
+        "DEFAULT_LP_FEE": 0.002,
+        "DEFAULT_PROTOCOL_FEE": 0.001,
+        "DEFAULT_FEE_FROM_INPUT": false,
+        "token1_type": "native",
+        "token2_type": "token"
+    },
+    "juno1pctfpv9k03v0ff538pz8kkw5ujlptntzkwjg6c0lrtqv87s9k28qdtl50w": {
+        "contract_address": "juno1pctfpv9k03v0ff538pz8kkw5ujlptntzkwjg6c0lrtqv87s9k28qdtl50w",
+        "protocol": "wyndex",
+        "pair_pool_mapping": {
+            "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gv": "juno13lulw8mm9w8ww99dvr35tfaw5tdmwvc7xn6nsn28pnlre8uw7j6srce67z",
+            "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9": "juno16r20f55kp59l0v5ne6hzell3qu27jhuzrqmu59w2nxzcsnj90y0sh2m6p5",
+            "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9ujuno": "juno17uv02azt545ag23xq7whw6z3r3chw7jwztnr9lypugy62drq3caqeyd2r3",
+            "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9": "juno18zk9xqj9xjm0ry39jjam8qsysj7qh49xwt4qdfp9lgtrk08sd58s2n54ve",
+            "ibc/EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034ujuno": "juno1gqy6rzary8vwnslmdavqre6jdhakcd4n2z4r803ajjmdq08r66hq7zcwrj",
+            "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9": "juno1s00g9axpxgmwcrlc6xqcxzcjmaqpxhftkx62xfh64xends8ls5dqyyjnnl",
+            "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518ujuno": "juno1u2pl8ql778655wakqmnhpln65q9pughd6jnrp93xwf4zakqjdh6qx3y9yt",
+            "juno14lycavan8gvpjn97aapzvwmsj8kyrvf644p05r0hu79namyj3ens87650kujuno": "juno1p3eed298qx3nyhs3grld07jrf9vjsjsmdd2kmmh3crk87emjcx5stp409y",
+            "juno168ctmpyppk90d34p3jjy658zf5a5l3w8wk35wht6ccqj4mr0yv8s4j5awrujuno": "juno1h6x5jlvn6jhpnu63ufe4sgv4utyk8hsfl5rqnrpg2cvp6ccuq4lqwqnzra",
+            "juno19rqljkh95gh40s7qdx40ksx3zq5tm4qsmsrdz9smw668x9zdr3lqtg33mfujuno": "juno16vvu2fjrgg6rnddrcvtaeukzl3weau63gc3d3c7mvq05ygnzklvs3peqmt",
+            "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gvjuno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9": "juno1tndfgq4kfgm6wwvfem3uwqcpf4ac3cqfcf5df4efagucm32ywaasugr9mq",
+            "juno1dd0k0um5rqncfueza62w9sentdfh3ec4nw4aq4lk5hkjl63vljqscth9gvujuno": "juno177xtcl6dax47kg3xptr5n48kd7twmzm49ltugfxuc76x9v05qq6q63hsm9",
+            "juno1hnftys64ectjfynm6qjk9my8jd3f6l9dq9utcd3dy8ehwrsx9q4q7n9uxtjuno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9": "juno14ke9xn3qfmnjsrh9lh6rfu7zmm90duvj4lpkcrrnzemh0tjpwarqfk97n6",
+            "juno1hnftys64ectjfynm6qjk9my8jd3f6l9dq9utcd3dy8ehwrsx9q4q7n9uxtujuno": "juno1x9r54vejw4hnxe7xm4haaf0ymf825frm30xqf9cud6cmnrgkx9lsxpj475",
+            "juno1j0a9ymgngasfn3l5me8qpd53l5zlm9wurfdk7r65s5mg6tkxal3qpgf5seujuno": "juno1ptdt6dg7ke6rn5k8xr8kh87zjnxhp832l5q07y3c9htz8z88cptqlthu5f",
+            "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9juno1vn38rzq0wc7zczp4dhy0h5y5kxh2jjzeahwe30c9cc6dw3lkyk5qn5rmfa": "juno1ls5un4a8zyn4f05k0ekq5aa9uhn88y8362ww38elqfpcwllme0jqelamke",
+            "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9juno1x02k67asfmjawgc96dj8nxq6se3fmx36gedgs5hvkjegdhfy97rs3jgj2h": "juno1q0f3nlghr350e7lhmxej3ev0j25m5caws5y4kyr5huawwr24hfkq74fsnq",
+            "juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9ujuno": "juno1a7lmc8e04hcs4y2275cultvg83u636ult4pmnwktr6l9nhrh2e8qzxfdwf",
+            "juno1p8x807f6h222ur0vssqy3qk6mcpa40gw2pchquz5atl935t7kvyq894ne3ujuno": "juno1rcssjyqgr6vzalss77d43v30c2qpyzzg607ua8gte2shqgtvu24sg8gs8r",
+            "juno1r4pzw8f9z0sypct5l9j906d47z998ulwvhvqe5xdwgy8wf84583sxwh0paujuno": "juno1mz5uz38h89dxj6c8w69rg7l060p8vq8pfetykk2gvrrxhjcsa5yqru9g7v",
+            "juno1rws84uz7969aaa7pej303udhlkt3j9ca0l3egpcae98jwak9quzq8szn2lujuno": "juno17jv00cm4f3twr548jzayu57g9txvd4zdh54mdg9qpjs7samlphjsykylsq",
+            "juno1vn38rzq0wc7zczp4dhy0h5y5kxh2jjzeahwe30c9cc6dw3lkyk5qn5rmfaujuno": "juno17ckp36lmgtt7jtuggdv2j39eh4alcnl35szu6quh747nujags07swwq0nh",
+            "juno1wwnhkagvcd3tjz6f8vsdsw5plqnw8qy2aj3rrhqr2axvktzv9q2qz8jxn3ujuno": "juno1syxlvk6pjpuxplqxwxr6n6fveqaz069dzya0ass9vrfwn9qxpvpqhq7msy",
+            "juno1x02k67asfmjawgc96dj8nxq6se3fmx36gedgs5hvkjegdhfy97rs3jgj2hujuno": "juno1ndw52eaajcn8wpx7e503ly3j07666hhufx6cyp0s9v703rvzrpksfujv3h"
+        }
     }
 }

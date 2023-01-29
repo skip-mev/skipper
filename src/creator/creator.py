@@ -20,12 +20,7 @@ from src.contract.factory.factory import Factory
 import src.contract.factory.factories as factories
 
 from src.contract.router.router import Router
-from src.contract.router.routers import (
-    TerraswapRouter, 
-    AstroportRouter, 
-    PhoenixRouter, 
-    WhiteWhaleRouter 
-    )
+from src.contract.router.routers import TerraswapRouter
 
 class Creator:
     
@@ -86,7 +81,8 @@ class Creator:
             "loop": pools.Loop,
             "phoenix": pools.Phoenix,
             "white_whale": pools.Whitewhale,
-            "hopers": pools.Hopers
+            "hopers": pools.Hopers,
+            "wyndex": pools.Wyndex,
             }
         return protocols[pool](contract_address, pool)
         
@@ -99,19 +95,21 @@ class Creator:
             "terraswap": factories.Terraswap,
             "astroport": factories.Terraswap,
             "phoenix": factories.Terraswap,
-            "white_whale": factories.Terraswap
+            "white_whale": factories.Terraswap,
+            "wyndex": factories.Terraswap
             }
         return protocols[protocol](contract_address, protocol)
     
     @staticmethod
-    def create_router(contract_address: str, router: str) -> Router:
+    def create_router(contract_address: str, router: str, contracts: dict) -> Router:
         """ Factory function to create router contracts.
             @DEV TODO: Add more router contracts here.
         """
         routers = {
             "terraswap": TerraswapRouter, 
-            "astroport": AstroportRouter,
-            "phoenix": PhoenixRouter,
-            "white_whale": WhiteWhaleRouter 
+            "astroport": TerraswapRouter,
+            "phoenix": TerraswapRouter,
+            "white_whale": TerraswapRouter,
+            "wyndex": TerraswapRouter
             }
-        return routers[router](contract_address, router)
+        return routers[router](contract_address, router, contracts)
