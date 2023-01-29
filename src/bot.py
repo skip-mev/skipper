@@ -102,6 +102,7 @@ class Bot:
         print("Updating all pool contracts in state...")
         await self.state.set_all_pool_contracts(
                                 init_contracts=self.init_contracts,
+                                router_contracts=self.router_contracts,
                                 querier=self.querier,
                                 creator=self.creator,
                                 factory_contracts=self.factory_contracts,
@@ -302,7 +303,7 @@ class Bot:
         try:
             # Continue sending bundles if we get a Not a Skip Validator error
             if response.json()["result"]["code"] == NOT_A_SKIP_VAL_CODE:
-                logging.info("Not a skip val, retyring...")
+                logging.info("Not a skip val, retrying...")
                 time.sleep(DELAY_BETWEEN_SENDS)
                 return None
             # If we get a 0 error code, we move on to the next transaction

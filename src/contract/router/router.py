@@ -16,3 +16,8 @@ class Router(Contract, ABC):
                                contracts: dict) -> list[Swap]:
         """ This method returns a list of swaps from a message.
         """
+        
+    @staticmethod
+    def _sort_and_combine_strings(str1: str, str2: str) -> str:
+        """ Sorts and combines 2 strings."""    
+        return str1 + str2 if str1 < str2 else str2 + str1
