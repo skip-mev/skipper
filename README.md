@@ -74,7 +74,7 @@ cd skipper
 
 Create a virtual environment
 ```
-python3.10 -m virtualenv venv
+python3.10 -m venv venv
 ```
 
 Activate virtual Environment, (venv) will show on left-hand side of shell
