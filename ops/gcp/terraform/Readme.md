@@ -35,7 +35,8 @@ terraform apply
 Now, we can copy the bot to the instance. Make sure the mnemonic in your `.env` is popualted correctly.
 
 ```bash
-gcloud compute scp --recurse ../../../*.py ../../../*.json ../../../*.txt ../../../.env ubuntu@$TF_VAR_instance_name:/home/ubuntu --zone $TF_VAR_zone
+gcloud compute scp --recurse * ./* ubuntu@$TF_VAR_instance_name:/home/ubuntu --zone $TF_VAR_zone
+gcloud compute scp --recurse .env ubuntu@$TF_VAR_instance_name:/home/ubuntu --zone $TF_VAR_zone
 
 # SSH onto the machine and follow setup instructions for the bot, namely
 gcloud compute ssh --zone $TF_VAR_zone ubuntu@$TF_VAR_instance_name --tunnel-through-iap --project $PROJECT
@@ -43,7 +44,7 @@ gcloud compute ssh --zone $TF_VAR_zone ubuntu@$TF_VAR_instance_name --tunnel-thr
 # Set up dependencies to run from the root, so that the startup script can function
 sudo apt update
 sudo apt-get install python3-pip -y
-sudo mkdir -p /app && sudo cp ~/.env ~/* /app
+sudo mkdir -p /app && sudo cp -r ~/.env ~/* /app
 cd /app
 sudo pip install -r requirements.txt
 exit

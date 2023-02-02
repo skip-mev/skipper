@@ -11,7 +11,7 @@ resource "google_compute_instance" "default" {
     }
   }
 
-  metadata_startup_script = "cd /app && source .env && python3 main.py &"
+  metadata_startup_script = "cd /app && python3 main.py &"
 
   network_interface {
     network = "default"
