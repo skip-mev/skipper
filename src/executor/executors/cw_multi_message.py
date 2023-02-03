@@ -46,13 +46,6 @@ class MultiMessageExecutor(Executor):
             logging.error(e)
             return None
         
-        _add_profitability_invariant(
-                address=address,
-                fee_denom=fee_denom,
-                tx=tx,
-                account_balance=account_balance
-                )
-                                    
         # Bid to Skip Auction
         _add_auction_bid(
             address=address,
@@ -61,6 +54,14 @@ class MultiMessageExecutor(Executor):
             tx=tx,
             bid=bid
         )
+        
+        # Send back current balance to self, to ensure profitability
+        _add_profitability_invariant(
+                address=address,
+                fee_denom=fee_denom,
+                tx=tx,
+                account_balance=account_balance
+                )
         
         tx.seal(
             signing_cfgs=[
