@@ -7,3 +7,14 @@
 .pytest_cache
 *.pyc
 /junk/
+
+
+# juno-arb
+.env
+ops/gcp/terraform/.terraform*
+
+ops/gcp/terraform/provider.tf
+ops/gcp/terraform/variables.tf
+
+Dockerfile
+.dockerignore

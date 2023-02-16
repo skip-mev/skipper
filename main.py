@@ -5,7 +5,7 @@ from src.bot import Bot
 
 """#############################################"""
 """@USER TODO: CHOOSE ENVIRONMENT VARIABLES PATH"""
-ENV_FILE_PATH = "envs/juno.env"
+ENV_FILE_PATH = ".env"
 #ENV_FILE_PATH = "envs/terra.env"
 """#############################################"""
 
