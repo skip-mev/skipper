@@ -142,6 +142,12 @@ Run the docker image
 docker run -d --name mevbot mevbot:latest
 ```
 
+if someone wants to install juno node in the cloud and use skipper with docker, add "--network=host" to run command to access localhost
+
+```
+docker run -d --name [CONTAINER_NAME] --network=host [DOCKER_IMAGE]
+```
+
 Shell into container & check logs (if running on terra, log will be logs/terra.log)
 ```
 docker exec -it mevbot cat logs/juno.log
