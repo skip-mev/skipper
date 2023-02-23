@@ -182,8 +182,8 @@ class Bot:
                 # If there is a profitable bundle, fire away!
                 end = time.time()
                 logging.info(f"Time from seeing {tx_hash} in mempool and building bundle if exists: {end - start}")
-                if bundle and bundle[-1] is not None:
-                    self.fire(bundle=bundle)
+                #if bundle and bundle[-1] is not None:
+                #    self.fire(bundle=bundle)
                     
     def build_most_profitable_bundle(self,
                                      transaction: Transaction,
@@ -219,6 +219,7 @@ class Bot:
         logging.info(f"Arbitrage opportunity found!")
         logging.info(f"Optimal amount in: {highest_profit_route.optimal_amount_in}")
         logging.info(f"Amount in: {highest_profit_route.amount_in}")
+        logging.info(f"Pools: {highest_profit_route.pools}")
         logging.info(f"Profit: {highest_profit_route.profit}")
         logging.info(f"Bid: {bid}")
         logging.info(f"Tx Hash: {sha256(b64decode(transaction.tx_str)).hexdigest()}")
