@@ -1,6 +1,6 @@
-# Skipper
+# Overview
 
-Example MEV searching bot for the Cosmos ecosystem, using Skip.
+Skipper-py is a Python-based bot for Cosmos that captures cyclic arbitrage opportunities across all major DEXs on Juno and Terra 2 by backrunning transactions that trade against particular pools. You can read more about JUNO, Loop DEX, and JunoSwap in our [state of JUNO MEV report](https://medium.com/@skip_protocol/skips-state-of-mev-juno-667a51a17b70)
 
 ``` python
 """
@@ -21,26 +21,6 @@ Example MEV searching bot for the Cosmos ecosystem, using Skip.
 ||====================================================================||
 """
 ```
-
-# Overview
-
-This repository contains an example MEV bot that searches for and executes on
-profitable MEV opportunities throughout the Interchain, starting with Juno and Terra 2.
-
-* If you're new to MEV or searching, use this repo as an educational tool to 
-help you learn the what and how of searching. 
-
-* If you're already an experienced searcher, use this repo as an example on how 
-to easily sign and send bundles to Skip on our supported chains. 
-
-For more searcher documentation, please see: https://skip-protocol.notion.site/Skip-Searcher-Documentation-0af486e8dccb4081bdb0451fe9538c99
-
-For an overview of Skip, please see: https://woolen-background-b64.notion.site/Skip-What-it-is-How-it-Works-af39cd3eb5334920b41b16cf65665601
-
-# About our bots
-
-Skipper is a Python-based bot for Cosmos that captures cyclic arbitrage opportunities across all major DEXs on Juno and Terra 2 by backrunning transactions that trade against particular pools. You can read more about JUNO, Loop DEX, and JunoSwap in our [state of JUNO MEV report](https://medium.com/@skip_protocol/skips-state-of-mev-juno-667a51a17b70)
-
 
 # Quick Start
 
@@ -67,9 +47,14 @@ Clone the repository:
 git clone https://github.com/skip-mev/skipper.git
 ```
 
-Move into the directory:
+Move into the main skipper directory:
 ```
 cd skipper
+```
+
+Move into the skipper-py sub-directory:
+```
+cd skipper-py
 ```
 
 Create a virtual environment
