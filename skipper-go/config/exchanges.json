@@ -1,0 +1,25 @@
+{
+  "uniswapV2Exchanges": [
+    {
+      "name": "Diffusion",
+      "router": "0xFCd2Ce20ef8ed3D43Ab4f8C2dA13bbF1C6d9512F",
+      "factory": "0x6aBdDa34Fb225be4610a2d153845e09429523Cd2",
+      "fee": 3,
+      "feeBase": 1000
+    },
+    {
+      "name": "evmoswap",
+      "router": "0x64C3b10636baBb3Ef46a7E2E5248b0dE43198fCB",
+      "factory": "0xF24E36e53628C3086493B9EfA785ab9DD85232EB",
+      "fee": 3,
+      "feeBase": 1000
+    },
+    {
+      "name": "cronus",
+      "router": "0x3Bc1F48740a5D6dffAc36FAF4c9905a941509348",
+      "factory": "0x20570b7bFf86B2f92068622D0805160f318554Be",
+      "fee": 3,
+      "feeBase": 1000
+    }
+  ]
+}

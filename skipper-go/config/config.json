@@ -1,0 +1,11 @@
+{
+  "base_token": "0xD4949664cD82660AaE99bEdc034a0deA8A0bd517",
+  "cosmos_rpc": "https://evmos-rpc.polkachu.com",
+  "cosmos_rest": "https://rest.bd.evmos.org:1317",
+  "eth_rpc": "wss://eth.bd.evmos.org:8546",
+  "poll_ms": 500,
+  "min_profit_wei": "10000000000000000",
+  "skip_sentinal_url": "https://evmos-9001-2-api.skip.money",
+  "auction_house_address": "evmos17yqtnk08ly94lgz3fzagfu2twsws33z7cpkxa2",
+  "bid_percent": 0.5
+}
