@@ -11,7 +11,6 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/lrita/cmap"
 	"github.com/thal0x/bn/bigint"
 
 	"github.com/skip-mev/skipper/bindings"
@@ -49,19 +48,12 @@ func startCommand() {
 
 	fmt.Println("backrunner listening for transactions...")
 
-	knownTxs := cmap.Map[common.Hash, bool]{}
-
 	txFeed := feed.NewTransactionFeed(config.CosmosRPC, config.PollMs)
 
 	txChan := txFeed.SubscribeNewTransactions()
 
 	for {
 		tx := <-txChan
-
-		_, known := knownTxs.LoadOrStore(tx.Hash(), true)
-		if known {
-			continue
-		}
 
 		go backrunner.OnTransaction(tx)
 	}

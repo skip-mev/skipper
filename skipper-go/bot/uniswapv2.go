@@ -70,6 +70,8 @@ func (bot *Bot) HandleUniswapV2Transaction(exchange *uniswapv2.Exchange, targetT
 		return
 	}
 
+	fmt.Println(tx)
+
 	fmt.Println("-----")
 	fmt.Println("-----")
 	fmt.Println("Arbitrage opportunity found:")
