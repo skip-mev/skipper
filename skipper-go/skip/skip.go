@@ -217,8 +217,6 @@ func (client *SkipClient) getAccount(accountAddress string) (*Account, error) {
 		} `json:"account"`
 	}
 
-	// https://rest.bd.evmos.org:1317/cosmos/auth/v1beta1/accounts/evmos1z92qlcv6242k6p0c4dqr5ce7rkta5ky9qmakwq"
-
 	resp, err := http.Get(fmt.Sprintf("%s/cosmos/auth/v1beta1/accounts/%s", client.restURL, accountAddress))
 	if err != nil {
 		return nil, err
@@ -238,8 +236,6 @@ func (client *SkipClient) getAccount(accountAddress string) (*Account, error) {
 		Sequence:      result.Account.BaseAccount.Sequence,
 		CosmosAddress: result.Account.BaseAccount.Address,
 	}
-
-	fmt.Println(account)
 
 	return account, nil
 }

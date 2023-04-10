@@ -37,20 +37,6 @@ func startCommand() {
 		panic(err)
 	}
 
-	// client, err := ethclient.Dial(config.EthRPC)
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// block, err := client.BlockNumber(context.Background())
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// fmt.Printf("connected to ethereum node, block number: %d\n", block)
-
-	// return
-
 	backrunner, err := bot.NewBot(config, common.HexToAddress(*contractAddressFlag), key)
 	if err != nil {
 		panic(err)
@@ -65,13 +51,7 @@ func startCommand() {
 
 	knownTxs := cmap.Map[common.Hash, bool]{}
 
-	txFeed := feed.NewMultiFeed([]string{
-		"https://evmos-rpc.stakely.io",
-		"https://tendermint.bd.evmos.org:26657",
-		// "https://rpc-evmos-ia.cosmosia.notional.ventures:443",
-		// "https://api-evmos-ia.cosmosia.notional.ventures:443",
-		"https://rpc.evmos.nodestake.top",
-	}, config.PollMs)
+	txFeed := feed.NewTransactionFeed(config.CosmosRPC, config.PollMs)
 
 	txChan := txFeed.SubscribeNewTransactions()
 
@@ -85,18 +65,6 @@ func startCommand() {
 
 		go backrunner.OnTransaction(tx)
 	}
-
-	// txFeed := feed.NewTransactionFeed(config.CosmosRPC, config.PollMs)
-
-	// txChan := txFeed.SubscribeNewTransactions()
-
-	// for {
-	// 	tx := <-txChan
-
-	// 	go backrunner.OnTransaction(tx)
-	// 	//
-	// 	// backrunner.OnTransaction(tx)
-	// }
 }
 
 func withdrawCommand() {

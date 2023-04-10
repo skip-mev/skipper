@@ -62,7 +62,6 @@ func (feed *TransactionFeed) SubscribeNewTransactions() chan *types.Transaction 
 		for {
 			txHashes, err := feed.getUnconfirmedTransactions()
 			if err != nil {
-				fmt.Println(feed.url)
 				fmt.Println(err)
 				continue
 			}
