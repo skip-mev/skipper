@@ -23,7 +23,6 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	evmosEthsecp256k1 "github.com/evmos/ethermint/crypto/ethsecp256k1"
-	evmostypes "github.com/tharsis/evmos/v5/types"
 )
 
 type SkipClient struct {
@@ -54,13 +53,6 @@ func NewSkipClient(
 		panic(err)
 	}
 
-	ethAddressBytes, err := evmostypes.GetEvmosAddressFromBech32(bech32Address)
-	if err != nil {
-		panic(err)
-	}
-
-	ethAddress := fmt.Sprintf("0x%x", ethAddressBytes)
-
 	client := &SkipClient{
 		SignerAddress: bech32Address,
 
@@ -73,7 +65,7 @@ func NewSkipClient(
 
 	go func() {
 		for {
-			account, err := client.getAccount(ethAddress)
+			account, err := client.getAccount(bech32Address)
 			if err != nil {
 				fmt.Println(err)
 				time.Sleep(5 * time.Second)
@@ -209,19 +201,47 @@ type Account struct {
 }
 
 func (client *SkipClient) getAccount(accountAddress string) (*Account, error) {
-	resp, err := http.Get(fmt.Sprintf("%s/ethermint/evm/v1/cosmos_account/%s", client.restURL, accountAddress))
+	type responseType struct {
+		Account struct {
+			Type        string `json:"@type"`
+			BaseAccount struct {
+				Address string `json:"address"`
+				PubKey  struct {
+					Type string `json:"@type"`
+					Key  string `json:"key"`
+				} `json:"pub_key"`
+				AccountNumber string `json:"account_number"`
+				Sequence      string `json:"sequence"`
+			} `json:"base_account"`
+			CodeHash string `json:"code_hash"`
+		} `json:"account"`
+	}
+
+	// https://rest.bd.evmos.org:1317/cosmos/auth/v1beta1/accounts/evmos1z92qlcv6242k6p0c4dqr5ce7rkta5ky9qmakwq"
+
+	resp, err := http.Get(fmt.Sprintf("%s/cosmos/auth/v1beta1/accounts/%s", client.restURL, accountAddress))
 	if err != nil {
 		return nil, err
 	}
 
-	result := Account{}
+	defer resp.Body.Close()
+
+	result := responseType{}
 
 	err = json.NewDecoder(resp.Body).Decode(&result)
 	if err != nil {
 		return nil, err
 	}
 
-	return &result, nil
+	account := &Account{
+		AccountNumber: result.Account.BaseAccount.AccountNumber,
+		Sequence:      result.Account.BaseAccount.Sequence,
+		CosmosAddress: result.Account.BaseAccount.Address,
+	}
+
+	fmt.Println(account)
+
+	return account, nil
 }
 
 type SendBundleResult struct {
