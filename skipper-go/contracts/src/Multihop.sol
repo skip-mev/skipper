@@ -20,6 +20,10 @@ contract Multihop is Ownable {
         uint256 fee;
     }
 
+    // --------------------- Errors -------------------- //
+    error ArbitrageNotProfitable();
+    error WithdrawNativeBalanceFailed();
+
     // ------------------- Functions ------------------- //
     /**
      * @dev Allows the contract to receive funds
@@ -35,7 +39,7 @@ contract Multihop is Ownable {
     function swapMultihop(
         address fromToken,
         uint256 fromAmount,
-        DexHop[] memory route
+        DexHop[] calldata route
     ) external onlyOwner {
         // Get the initial balance of the token
         uint256 initialBalance = IERC20(fromToken).balanceOf(address(this));
@@ -48,24 +52,27 @@ contract Multihop is Ownable {
         IERC20(fromToken).transfer(route[0].pairAddress, fromAmount);
 
         // Loop through the route and execute the trades
-        for (uint256 i = 0; i < route.length; i++) {
-            DexHop memory hop = route[i];
+        uint256 length = route.length;
+        for (uint256 i = 0; i < length; ) {
+            DexHop calldata hop = route[i];
 
-            address destination = i == route.length - 1
+            address destination = i == length - 1
                 ? address(this)
                 : route[i + 1].pairAddress;
 
             fromAmount = swapOnDex(hop, fromAmount, destination);
+
+            // Capped by route.length so won't overflow
+            unchecked {
+                i += 1;
+            }
         }
 
         // Get the final balance of the token
         uint256 finalBalance = IERC20(fromToken).balanceOf(address(this));
 
         // Require that the arbitrage was profitable
-        require(
-            finalBalance > initialBalance,
-            "The arbitrage was not profitable"
-        );
+        if (finalBalance <= initialBalance) revert ArbitrageNotProfitable();
     }
 
     /**
@@ -75,7 +82,7 @@ contract Multihop is Ownable {
      * @param destination Address to send tokens to
      */
     function swapOnDex(
-        DexHop memory hop,
+        DexHop calldata hop,
         uint256 amount,
         address destination
     ) internal returns (uint256) {
@@ -115,6 +122,8 @@ contract Multihop is Ownable {
      */
     function withdrawNativeBalance() external onlyOwner {
         uint256 balance = address(this).balance;
-        payable(owner()).transfer(balance);
+
+        (bool success, ) = owner().call{value: balance}("");
+        if (!success) revert WithdrawNativeBalanceFailed();
     }
 }
