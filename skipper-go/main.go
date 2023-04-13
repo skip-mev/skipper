@@ -56,8 +56,6 @@ func startCommand() {
 		tx := <-txChan
 
 		go backrunner.OnTransaction(tx)
-		//
-		// backrunner.OnTransaction(tx)
 	}
 }
 
