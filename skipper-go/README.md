@@ -46,7 +46,7 @@ The next step is to obtain the private key of the account you'd like to deploy t
 
 After obtaining your private key, run the foundry deploy script (example below for Evmos, must change the private key value with your own private key):
 ```
-forge script script/Deploy.s.sol --fork-url https://eth.bd.evmos.org:8545 --broadcast --private-key <YOUR PRIVATE KEY HERE>
+forge script script/Deploy.s.sol --fork-url https://eth.bd.evmos.org:8545 --broadcast --legacy --private-key <YOUR PRIVATE KEY HERE>
 ```
 
 When the script is run you can find the deployed contract address in the output (example output provided below):
