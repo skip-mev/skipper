@@ -93,8 +93,8 @@ func (client *SkipClient) CreateAndSendBundle(bid int64, txs types.Transactions)
 		return nil, err
 	}
 
-	txBuilder.SetGasLimit(5000000)
-	txBuilder.SetFeeAmount(sdk.NewCoins(sdk.NewCoin("aevmos", sdk.NewInt(200000000000000000))))
+	txBuilder.SetGasLimit(200000)
+	txBuilder.SetFeeAmount(sdk.NewCoins(sdk.NewCoin("aevmos", sdk.NewInt(10000000000000000))))
 
 	seqNum, _ := strconv.Atoi(client.account.Sequence)
 	accNum, _ := strconv.Atoi(client.account.AccountNumber)
