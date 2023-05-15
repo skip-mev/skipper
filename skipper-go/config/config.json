@@ -6,6 +6,6 @@
   "poll_ms": 500,
   "min_profit_wei": "10000000000000000",
   "skip_sentinal_url": "https://evmos-9001-2-api.skip.money",
-  "auction_house_address": "evmos17yqtnk08ly94lgz3fzagfu2twsws33z7cpkxa2",
+  "auction_house_address": "evmos19r5vjlyyk7las2lldtekzz464sy4yek06jmzfq",
   "bid_percent": 0.5
 }
