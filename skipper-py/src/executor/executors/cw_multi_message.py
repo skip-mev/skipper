@@ -18,13 +18,12 @@ class MultiMessageExecutor(Executor):
                          wallet: LocalWallet,
                          client: LedgerClient,
                          account_balance: int,
-                         auction_house_address: str,
                          fee_denom: str,
                          fee: str,
                          gas_limit: int,
                          route: Route, 
-                         bid: int,
-                         chain_id: str) -> bytes:
+                         chain_id: str,
+                         bid: int) -> bytes:
         """ Build backrun transaction for route"""
         tx = Tx()
         msgs = []
@@ -46,28 +45,19 @@ class MultiMessageExecutor(Executor):
             logging.error(e)
             return None
         
-        # Bid to Skip Auction
-        _add_auction_bid(
-            address=address,
-            fee_denom=fee_denom,
-            auction_house_address=auction_house_address,
-            tx=tx,
-            bid=bid
-        )
-        
         # Send back current balance to self, to ensure profitability
         _add_profitability_invariant(
                 address=address,
                 fee_denom=fee_denom,
                 tx=tx,
-                account_balance=account_balance
+                account_balance=account_balance-bid
                 )
         
         tx.seal(
             signing_cfgs=[
                 SigningCfg.direct(
                     wallet.public_key(), 
-                    account.sequence)], 
+                    account.sequence+1)], # Sign with sequence + 1 since this is our backrun tx
             fee=fee, 
             gas_limit=gas_limit
             )
@@ -94,19 +84,3 @@ def _add_profitability_invariant(address: str,
                          denom=fee_denom)]
             )
         )
-
-
-def _add_auction_bid(address: str,
-                     fee_denom: str,
-                     auction_house_address: str,
-                     tx: Tx,
-                     bid: int):
-    """ Add auction bid to transaction"""
-    tx.add_message(
-        MsgSend(
-            from_address=address,
-            to_address=auction_house_address,
-            amount=[Coin(amount=str(bid),
-                         denom=fee_denom)]
-        )
-    )

@@ -15,9 +15,9 @@ help you learn the what and how of searching.
 * If you're already an experienced searcher, use this repo as an example on how 
 to easily sign and send bundles to Skip on our supported chains. 
 
-For more searcher documentation, please see: https://docs.skip.money/searcher
+For more searcher documentation, please see: https://docs.skip.money/searcher-docs
 
-For an overview of Skip Select, please see: https://docs.skip.money/how-skip-works
+For an overview of the Block SDK, please see: https://docs.skip.money/chains/overview
 
 # About our bots
 
