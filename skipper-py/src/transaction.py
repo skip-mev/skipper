@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-from src.contract import Contract, Pool
+from src.contract import Contract, Pool, Router
 from src.decoder import Decoder
 from src.route import Route
 from src.swap import Swap
@@ -58,6 +58,13 @@ class Transaction:
             return
         # Extend transactions based on type of contract
         if isinstance(contract, Pool):
+            self.swaps.extend(
+                contract.get_swaps_from_message(
+                            message_value=message_value, 
+                            msg=msg, 
+                            contracts=contracts
+                            ))
+        elif isinstance(contract, Router):
             self.swaps.extend(
                 contract.get_swaps_from_message(
                             message_value=message_value, 
