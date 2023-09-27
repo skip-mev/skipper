@@ -11,7 +11,8 @@ from hashlib import sha256
 from base64 import b64decode
 from dataclasses import dataclass   
 from cosmpy.aerial.client import LedgerClient, NetworkConfig
-from cosmpy.aerial.tx import Transaction as Tx, SigningCfg
+from cosmpy.aerial.tx import SigningCfg
+from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 
 
 from src.decoder import Decoder
@@ -23,8 +24,8 @@ from src.transaction import Transaction
 from src.contract import Pool
 from src.route import Route
 
-from src.bid_msg import MsgAuctionBid
-
+from skip_types.pob import MsgAuctionBid
+from skip_utility.tx import TransactionWithTimeout as Tx
 
 DELAY_BETWEEN_SENDS = 1
 DESIRED_HEIGHT = 0
@@ -182,7 +183,7 @@ class Bot:
                 # If there is a profitable bundle, fire away!
                 end = time.time()
                 logging.info(f"Time from seeing {tx_hash} in mempool and building bundle if exists: {end - start}")
-                if Tx is not None:
+                if bidTx is not None:
                     # We only broadcast the bid transaction to the chain
                     # the bid transaction includes the bundle of transactions
                     # that will be executed if the bid is successful
@@ -219,7 +220,7 @@ class Bot:
         bid = math.floor((highest_profit_route.profit - self.gas_fee) 
                          * self.auction_bid_profit_percentage)
         
-        if bid <= self.auction_bid_minimum:
+        if bid < self.auction_bid_minimum:
             logging.info(f"No profitable routes found above minimum bid")
             return None
         
@@ -252,7 +253,8 @@ class Bot:
         # Create the bid message
         msg = MsgAuctionBid(
             bidder=address,
-            bid=bid,
+            bid=Coin(amount=str(bid), 
+                                denom="ujuno"),
             transactions=bundle,
         )
         bidTx.add_message(msg)
@@ -264,10 +266,17 @@ class Bot:
             logging.error(e)
             return None
         
+        try:
+            height = self.querier.query_block_height()
+        except Exception as e:
+            logging.error(e)
+            return None
+        
         bidTx.seal(
             signing_cfgs=[SigningCfg.direct(self.wallet.public_key(), account.sequence)],
             fee=self.fee, 
-            gas_limit=self.gas_limit
+            gas_limit=self.gas_limit,
+            timeout_height=height+2
         )
         
         bidTx.sign(

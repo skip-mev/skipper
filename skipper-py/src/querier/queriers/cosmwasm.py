@@ -134,4 +134,11 @@ class CosmWasmQuerier(Querier):
         except requests.exceptions.ConnectionError:
             client = LedgerClient(network_config)
             return 0, True
-                
+        
+    def query_block_height(self) -> int:
+        """ This method is used to query current block height.
+        """
+        response = httpx.get(self.rpc_url + "block") 
+        block = response.json()
+
+        return int(block["result"]["block"]["header"]["height"])
