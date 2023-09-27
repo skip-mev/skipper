@@ -23,6 +23,7 @@ from src.state import State
 from src.transaction import Transaction
 from src.contract import Pool
 from src.route import Route
+from src.rest_client import FixedTxRestClient
 
 from skip_types.pob import MsgAuctionBid
 from skip_utility.tx import TransactionWithTimeout as Tx
@@ -91,6 +92,7 @@ class Bot:
                                     staking_denomination=self.fee_denom,
                                     )
         self.client = LedgerClient(self.network_config)
+        self.client.txs = FixedTxRestClient(self.client.txs.rest_client)
         self.wallet = self.creator.create_wallet(self.chain_id, 
                                                  self.mnemonic, 
                                                  self.address_prefix) 
@@ -188,10 +190,8 @@ class Bot:
                     # the bid transaction includes the bundle of transactions
                     # that will be executed if the bid is successful
                     tx = self.client.broadcast_tx(tx=bidTx).wait_to_complete()
-                    logging.info(f"Broadcasted bid transaction {tx_hash}")
+                    logging.info(f"Broadcasted bid transaction {tx.tx_hash}")
 
-                    # log the result of the bid transaction
-                    logging.info(f"Result of bid transaction {tx_hash}: {tx.is_successful()}")
                     
     def build_most_profitable_bundle(self,
                                      transaction: Transaction,
