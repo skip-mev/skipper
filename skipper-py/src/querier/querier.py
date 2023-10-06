@@ -47,3 +47,8 @@ class Querier(ABC):
         """ This method is used to update the account balance
             of the bot.
         """
+    
+    @abstractmethod
+    def query_block_height(self) -> int:
+        """ This method is used to query current block height.
+        """

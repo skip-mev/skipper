@@ -1,4 +1,3 @@
-import skip
 import os
 import json
 import logging
@@ -6,13 +5,15 @@ import ast
 import math
 import time
 import logging
-import httpx
 
 from dotenv import load_dotenv
 from hashlib import sha256
 from base64 import b64decode
 from dataclasses import dataclass   
 from cosmpy.aerial.client import LedgerClient, NetworkConfig
+from cosmpy.aerial.tx import SigningCfg
+from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
+
 
 from src.decoder import Decoder
 from src.querier import Querier
@@ -22,7 +23,10 @@ from src.state import State
 from src.transaction import Transaction
 from src.contract import Pool
 from src.route import Route
+from src.rest_client import FixedTxRestClient
 
+from skip_types.pob import MsgAuctionBid
+from skip_utility.tx import TransactionWithTimeout as Tx
 
 DELAY_BETWEEN_SENDS = 1
 DESIRED_HEIGHT = 0
@@ -58,9 +62,7 @@ class Bot:
         self.fee: str = f"{self.gas_fee}{self.fee_denom}"
         self.arb_denom: str = os.environ.get("ARB_DENOM")
         self.address_prefix: str = os.environ.get("ADDRESS_PREFIX")
-        # Set Skip variables
-        self.skip_rpc_url: str = os.environ.get("SKIP_RPC_URL")
-        self.auction_house_address: str = os.environ.get("AUCTION_HOUSE_ADDRESS")
+        # Set auction variables
         self.auction_bid_profit_percentage: float = float(os.environ.get("AUCTION_BID_PROFIT_PERCENTAGE"))
         self.auction_bid_minimum: int = int(os.environ.get("AUCTION_BID_MINIMUM"))
         # Create and set Queryer and Decoder
@@ -90,6 +92,7 @@ class Bot:
                                     staking_denomination=self.fee_denom,
                                     )
         self.client = LedgerClient(self.network_config)
+        self.client.txs = FixedTxRestClient(self.client.txs.rest_client)
         self.wallet = self.creator.create_wallet(self.chain_id, 
                                                  self.mnemonic, 
                                                  self.address_prefix) 
@@ -175,19 +178,24 @@ class Bot:
                 if not transaction.routes:
                     continue
                 # Build the most profitable bundle from 
-                bundle: list = self.build_most_profitable_bundle(
+                bidTx: Tx = self.build_most_profitable_bundle(
                                                 transaction=transaction,
                                                 contracts=contracts_copy
                                                 )
                 # If there is a profitable bundle, fire away!
                 end = time.time()
                 logging.info(f"Time from seeing {tx_hash} in mempool and building bundle if exists: {end - start}")
-                if bundle and bundle[-1] is not None:
-                    self.fire(bundle=bundle)
+                if bidTx is not None:
+                    # We only broadcast the bid transaction to the chain
+                    # the bid transaction includes the bundle of transactions
+                    # that will be executed if the bid is successful
+                    tx = self.client.broadcast_tx(tx=bidTx).wait_to_complete()
+                    logging.info(f"Broadcasted bid transaction {tx.tx_hash}")
+
                     
     def build_most_profitable_bundle(self,
                                      transaction: Transaction,
-                                     contracts: dict[str, Pool]) -> list[bytes | None]:
+                                     contracts: dict[str, Pool]) -> Tx:
         """ Build backrun bundle for transaction"""
         # Calculate the profit for each route
         for route in transaction.routes:
@@ -207,14 +215,14 @@ class Bot:
         if (highest_profit_route.profit <= 0 
             or highest_profit_route.profit <= self.gas_fee):
             logging.info(f"No profitable routes found above gas fee")
-            return []
+            return None
         
         bid = math.floor((highest_profit_route.profit - self.gas_fee) 
                          * self.auction_bid_profit_percentage)
         
-        if bid <= self.auction_bid_minimum:
+        if bid < self.auction_bid_minimum:
             logging.info(f"No profitable routes found above minimum bid")
-            return []
+            return None
         
         logging.info(f"Arbitrage opportunity found!")
         logging.info(f"Optimal amount in: {highest_profit_route.optimal_amount_in}")
@@ -223,96 +231,61 @@ class Bot:
         logging.info(f"Bid: {bid}")
         logging.info(f"Tx Hash: {sha256(b64decode(transaction.tx_str)).hexdigest()}")
         
-        return [transaction.tx_bytes, 
-                self.executor.build_backrun_tx(
-                                    wallet=self.wallet,
-                                    client=self.client,
-                                    account_balance=self.account_balance,
-                                    auction_house_address=self.auction_house_address,
-                                    fee_denom=self.fee_denom,
-                                    fee=self.fee,
-                                    gas_limit=self.gas_limit,
-                                    route=highest_profit_route,
-                                    bid=bid,
-                                    chain_id=self.chain_id)]
-        
-    def fire(self, bundle: list[bytes]) -> bool:
-        """ Signs and sends the bundle to the Skip auction.
-            Retrying and handling errors as necessary.
-        """
-        try:
-            # Use the skip-python helper library to sign and send the bundle
-            # For more information on the skip-python library, check out:
-            # https://github.com/skip-mev/skip-py
-            response = skip.sign_and_send_bundle(
-                                bundle=bundle,
-                                private_key=self.wallet.signer().private_key_bytes,
-                                public_key=self.wallet.signer().public_key,
-                                rpc_url=self.skip_rpc_url,
-                                desired_height=DESIRED_HEIGHT,
-                                sync=SYNC,
-                                timeout=READ_TIMEOUT)
-            logging.info(response.json())
-            #logging.info(f"Route and reserves: {route_obj.__dict__}")
-        except httpx.ReadTimeout:
-            logging.error("Read timeout while waiting for response from Skip")
-            return False
+        bundle = [
+            transaction.tx_bytes, 
+            self.executor.build_backrun_tx(
+                wallet=self.wallet,
+                client=self.client,
+                account_balance=self.account_balance,
+                fee_denom=self.fee_denom,
+                fee=self.fee,
+                gas_limit=self.gas_limit,
+                route=highest_profit_route,
+                chain_id=self.chain_id,
+                bid=bid
+            ),
+        ]
 
-        # Check the error code from the response returned by Skip
-        # For more information on error codes, check out:
-        # https://skip-protocol.notion.site/Skip-Searcher-Documentation-0af486e8dccb4081bdb0451fe9538c99
-        if response.json()["result"]["code"] == SUCCESS_CODE:
-            self.reset = True
-            logging.info("Simulation successful!")
-            return True
-        # Retry if we get a not a skip val or a deliver tx failure
-        if response.json()["result"]["code"] in RETRY_FAILURE_CODES:
-            # Keep sending the bundles until we get a success or deliver tx failure
-            return self._keep_retrying(bundle=bundle)
-        return False
-            
-    def _keep_retrying(self, bundle: list[bytes]) -> bool:
-        """ Keeps sending the bundle until we get a success or deliver tx failure"""
-        base64_encoded_bundle, bundle_signature = skip.sign_bundle(
-                                                        bundle=bundle[1:],
-                                                        private_key=self.wallet.signer().private_key_bytes
-                                                        )
-        retry_response = self._retry(base64_encoded_bundle, bundle_signature)
-        while retry_response is None:
-            retry_response = self._retry(base64_encoded_bundle, bundle_signature)
-        return retry_response
-            
-    def _retry(self, base64_encoded_bundle, bundle_signature) -> bool:
-        """ Signs and sends the bundle to the Skip auction.
-            Retrying and handling errors as necessary.
-        """
+        # Create the bid transacation that will be sent to the on-chain auction
+        bidTx = Tx()
+        address = str(self.wallet.address())
+        
+        # Create the bid message
+        msg = MsgAuctionBid(
+            bidder=address,
+            bid=Coin(amount=str(bid), 
+                                denom="ujuno"),
+            transactions=bundle,
+        )
+        bidTx.add_message(msg)
+
+        # Sign the bid transaction
         try:
-            response = skip.send_bundle(
-                                b64_encoded_signed_bundle=base64_encoded_bundle,
-                                bundle_signature=bundle_signature,
-                                public_key=self.wallet.signer().public_key,
-                                rpc_url=self.skip_rpc_url,
-                                desired_height=DESIRED_HEIGHT,
-                                sync=SYNC
-                                )
-            logging.info(response.json())
-        except httpx.ReadTimeout:
-            logging.error("Read timeout while waiting for response from Skip")
-            return False
+            account = self.client.query_account(address=address)
+        except RuntimeError as e:
+            logging.error(e)
+            return None
         
         try:
-            # Continue sending bundles if we get a Not a Skip Validator error
-            if response.json()["result"]["code"] == NOT_A_SKIP_VAL_CODE:
-                logging.info("Not a skip val, retrying...")
-                time.sleep(DELAY_BETWEEN_SENDS)
-                return None
-            # If we get a 0 error code, we move on to the next transaction
-            if response.json()["result"]["code"] == SUCCESS_CODE:
-                self.reset = True
-                logging.info("Simulation successful!")
-                return True
-            # If we get any other error code, we move on to the next transaction
-            return False
-        except KeyError:
-            logging.info("KeyError in response from Skip")
-            return False
+            height = self.querier.query_block_height()
+        except Exception as e:
+            logging.error(e)
+            return None
+        
+        bidTx.seal(
+            signing_cfgs=[SigningCfg.direct(self.wallet.public_key(), account.sequence)],
+            fee=self.fee, 
+            gas_limit=self.gas_limit,
+            timeout_height=height+2
+        )
+        
+        bidTx.sign(
+            self.wallet.signer(), 
+            self.chain_id, 
+            account.number
+        )
+
+        bidTx.complete()
+
+        return bidTx
+
