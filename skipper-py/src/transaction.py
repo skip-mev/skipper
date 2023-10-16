@@ -108,3 +108,13 @@ class Transaction:
             route.pools[i] = pool
         # Add route to transaction
         self.routes.append(route)
+    
+    def get_unique_pools_from_routes(self) -> list[str]:
+        pool_addrs: set[str] = set()
+        for route in self.routes :
+            for pool in route.pools:
+                pool_addrs.add(pool.contract_address)
+
+        return list(pool_addrs)
+                
+        
