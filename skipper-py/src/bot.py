@@ -144,8 +144,10 @@ class Bot:
             backrun_list = self.querier.query_node_for_new_mempool_txs()
             #print(f"{time.time()}: Found new transactions in mempool")
             start = time.time()
-            updated_pools = set[str]()
-            # Iterate through each tx and assess for profitable opportunities
+            pools_to_update = set[str]()
+            transactions_with_contracts = list[tuple[Transaction, dict[str, Pool]]]()
+
+            # Iterate through each tx
             for tx_str in backrun_list:
                 # Create a transaction object
                 tx_hash = sha256(b64decode(tx_str)).digest().hex()
@@ -157,6 +159,7 @@ class Bot:
                 # If there are no swaps, continue
                 if not transaction.swaps:
                     continue
+
                 # Simulate the transaction on a copy of contract state 
                 # and return the copied state post-transaction simulation
                 contracts_copy = self.state.simulate_transaction(transaction=transaction)
@@ -169,17 +172,19 @@ class Bot:
                 if not transaction.routes:
                     continue
 
-                # Update reserves once per potential backrun list
                 pools_in_routes = transaction.get_unique_pools_from_routes()
-                non_updated_pools = list(set(pools_in_routes).difference(updated_pools))
-                self.state.set_routes_jobs(non_updated_pools, self.querier)
-                print(f"Updating reserves of {len(self.state.update_route_reserves_jobs)} pools...")
-                start_update = time.time()
-                await self.state.update_all(jobs=self.state.update_route_reserves_jobs)
-                end_update = time.time()
-                logging.info(f"Time to update reserves: {end_update - start_update}")
-                updated_pools |= set(pools_in_routes)
+                pools_to_update |= set(pools_in_routes)
+                transactions_with_contracts.append((transaction, contracts_copy))
 
+            self.state.set_routes_jobs(list(pools_to_update), self.querier)
+            print(f"Updating reserves of {len(self.state.update_route_reserves_jobs)} pools...")
+            start_update = time.time()
+            await self.state.update_all(jobs=self.state.update_route_reserves_jobs)
+            end_update = time.time()
+            logging.info(f"Time to update reserves: {end_update - start_update}")
+
+            # Iterate through each profitable opportunities
+            for (transaction, contracts_copy) in transactions_with_contracts:
                 # Build the most profitable bundle from 
                 bidTx: Tx = self.build_most_profitable_bundle(
                                                 transaction=transaction,
