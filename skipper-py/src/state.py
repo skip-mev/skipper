@@ -24,6 +24,7 @@ class State:
     update_all_tokens_jobs: list = field(default_factory=list)
     update_all_reserves_jobs: list = field(default_factory=list)
     update_all_fees_jobs: list = field(default_factory=list)
+    update_route_reserves_jobs: list = field(default_factory=list)
         
     async def set_all_pool_contracts(self,
                                      init_contracts: dict,
@@ -142,6 +143,15 @@ class State:
                                                 querier) 
                                             for contract 
                                             in self.contracts.values()]
+    
+    def set_routes_jobs(self, pools_in_route: list[str], querier: Querier) -> None: 
+        self.update_route_reserves_jobs = [functools.partial(
+                                                contract.update_reserves, 
+                                                querier) 
+                                            for contract 
+                                            in self.contracts.values() 
+                                            if contract.contract_address in pools_in_route]
+
         
     async def update_all(self, jobs: list) -> bool:
         """ This function is used to update all the contracts
