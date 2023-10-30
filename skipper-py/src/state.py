@@ -25,6 +25,7 @@ class State:
     update_all_reserves_jobs: list = field(default_factory=list)
     update_all_fees_jobs: list = field(default_factory=list)
     update_route_reserves_jobs: list = field(default_factory=list)
+    blacklisted_contracts: set = field(default_factory=set)
         
     async def set_all_pool_contracts(self,
                                      init_contracts: dict,
@@ -32,7 +33,8 @@ class State:
                                      querier: Querier,
                                      creator: Creator,
                                      factory_contracts: dict,
-                                     arb_denom: str) -> None:
+                                     arb_denom: str,
+                                     precheck: bool) -> None:
         """ This function is used to set all the pool contracts
             in state taking into account factory contracts and
             contracts loaded into the bot.
@@ -50,6 +52,20 @@ class State:
                         router_contracts=router_contracts
                         )
         
+        # remove blacklisted pools
+        for address in list(self.contracts.keys()):
+            if address in self.blacklisted_contracts:
+                self.contracts.pop(address)
+        
+        if precheck:
+            for addr, pool in list(self.contracts.items()):
+                try:
+                    await pool.update_tokens(querier)
+
+                except Exception as e:
+                    print("pop " + addr)
+                    self.contracts.pop(addr)
+
         self.contracts_dict = {contract:
                                     self.contracts[contract].__dict__
                                 for contract
