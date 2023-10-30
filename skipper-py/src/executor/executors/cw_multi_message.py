@@ -3,7 +3,8 @@ from dataclasses import dataclass
 
 from cosmpy.aerial.wallet import LocalWallet
 from cosmpy.aerial.client import LedgerClient
-from cosmpy.aerial.tx import Transaction as Tx, SigningCfg
+from cosmpy.aerial.tx import SigningCfg
+from skip_utility.tx import TransactionWithTimeout as Tx
 from cosmpy.protos.cosmos.bank.v1beta1.tx_pb2 import MsgSend
 from cosmpy.protos.cosmos.base.v1beta1.coin_pb2 import Coin
 
@@ -23,7 +24,8 @@ class MultiMessageExecutor(Executor):
                          gas_limit: int,
                          route: Route, 
                          chain_id: str,
-                         bid: int) -> bytes:
+                         bid: int,
+                         timeout_height: int) -> bytes:
         """ Build backrun transaction for route"""
         tx = Tx()
         msgs = []
@@ -59,7 +61,8 @@ class MultiMessageExecutor(Executor):
                     wallet.public_key(), 
                     account.sequence+1)], # Sign with sequence + 1 since this is our backrun tx
             fee=fee, 
-            gas_limit=gas_limit
+            gas_limit=gas_limit,
+            timeout_height=timeout_height
             )
         tx.sign(
             wallet.signer(), 
