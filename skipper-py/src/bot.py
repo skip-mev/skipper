@@ -100,16 +100,20 @@ class Bot:
         with open(self.contracts_file) as f:
             self.init_contracts: dict = json.load(f)
         # Initialize the state
-        self.state: State = State()
+        blacklisted_contracts: set = ast.literal_eval(os.environ.get("BLACKLIST_CONTRACTS") or "{}")
+
+        self.state: State = State(blacklisted_contracts = blacklisted_contracts)
         # Update all pool contracts in state
         print("Updating all pool contracts in state...")
+        precheck_pools: bool = ast.literal_eval(os.environ.get("PRECHECK_CONTRACTS") or "False")
         await self.state.set_all_pool_contracts(
                                 init_contracts=self.init_contracts,
                                 router_contracts=self.router_contracts,
                                 querier=self.querier,
                                 creator=self.creator,
                                 factory_contracts=self.factory_contracts,
-                                arb_denom=self.arb_denom
+                                arb_denom=self.arb_denom,
+                                precheck=precheck_pools
                                 )
         # Get list of all contract addresses
         self.contract_list: list = list(self.state.contracts.keys())
