@@ -190,19 +190,24 @@ class Bot:
             # Iterate through each profitable opportunities
             for (transaction, contracts_copy) in transactions_with_contracts:
                 # Build the most profitable bundle from 
-                bidTx: Tx = self.build_most_profitable_bundle(
+                bidTxs: list[Tx] = self.build_most_profitable_bundle(
                                                 transaction=transaction,
                                                 contracts=contracts_copy
                                                 )
                 # If there is a profitable bundle, fire away!
                 end = time.time()
                 logging.info(f"Time from seeing {tx_hash} in mempool and building bundle if exists: {end - start}")
-                if bidTx is not None:
+                if bidTxs is not None:
                     # We only broadcast the bid transaction to the chain
                     # the bid transaction includes the bundle of transactions
                     # that will be executed if the bid is successful
-                    tx = self.client.broadcast_tx(tx=bidTx).wait_to_complete()
-                    logging.info(f"Broadcasted bid transaction {tx.tx_hash}")
+                    for bidTx in bidTxs:
+                        try:
+                            tx = self.client.broadcast_tx(tx=bidTx)
+                            logging.info(f"Broadcasted bid transaction {tx.tx_hash}")
+                        except Exception as e:
+                            logging.error(e)
+                        
 
                     
     def build_most_profitable_bundle(self,
@@ -242,62 +247,65 @@ class Bot:
         logging.info(f"Profit: {highest_profit_route.profit}")
         logging.info(f"Bid: {bid}")
         logging.info(f"Tx Hash: {sha256(b64decode(transaction.tx_str)).hexdigest()}")
-        
-        bundle = [
-            transaction.tx_bytes, 
-            self.executor.build_backrun_tx(
-                wallet=self.wallet,
-                client=self.client,
-                account_balance=self.account_balance,
-                fee_denom=self.fee_denom,
-                fee=self.fee,
-                gas_limit=self.gas_limit,
-                route=highest_profit_route,
-                chain_id=self.chain_id,
-                bid=bid
-            ),
-        ]
 
-        # Create the bid transacation that will be sent to the on-chain auction
-        bidTx = Tx()
         address = str(self.wallet.address())
-        
-        # Create the bid message
-        msg = MsgAuctionBid(
-            bidder=address,
-            bid=Coin(amount=str(bid), 
-                                denom="ujuno"),
-            transactions=bundle,
-        )
-        bidTx.add_message(msg)
-
-        # Sign the bid transaction
         try:
             account = self.client.query_account(address=address)
         except RuntimeError as e:
             logging.error(e)
             return None
         
+        def build_tx(timeout_height: int):
+            bundle = [
+                transaction.tx_bytes, 
+                self.executor.build_backrun_tx(
+                    wallet=self.wallet,
+                    client=self.client,
+                    account_balance=self.account_balance,
+                    fee_denom=self.fee_denom,
+                    fee=self.fee,
+                    gas_limit=self.gas_limit,
+                    route=highest_profit_route,
+                    chain_id=self.chain_id,
+                    bid=bid,
+                    timeout_height=timeout_height
+                ),
+            ]
+
+            # Create the bid transacation that will be sent to the on-chain auction
+            bidTx = Tx()
+            
+            # Create the bid message
+            msg = MsgAuctionBid(
+                bidder=address,
+                bid=Coin(amount=str(bid), 
+                                    denom="ujuno"),
+                transactions=bundle,
+            )
+            bidTx.add_message(msg)
+            
+            bidTx.seal(
+                signing_cfgs=[SigningCfg.direct(self.wallet.public_key(), account.sequence)],
+                fee=self.fee, 
+                gas_limit=self.gas_limit,
+                timeout_height=timeout_height
+            )
+            
+            bidTx.sign(
+                self.wallet.signer(), 
+                self.chain_id, 
+                account.number
+            )
+
+            bidTx.complete()
+
+            return bidTx;
+
         try:
             height = self.querier.query_block_height()
         except Exception as e:
             logging.error(e)
             return None
-        
-        bidTx.seal(
-            signing_cfgs=[SigningCfg.direct(self.wallet.public_key(), account.sequence)],
-            fee=self.fee, 
-            gas_limit=self.gas_limit,
-            timeout_height=height+2
-        )
-        
-        bidTx.sign(
-            self.wallet.signer(), 
-            self.chain_id, 
-            account.number
-        )
 
-        bidTx.complete()
-
-        return bidTx
+        return [build_tx(height + 1), build_tx(height + 2)]
 
