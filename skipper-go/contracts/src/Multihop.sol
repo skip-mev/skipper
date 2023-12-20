@@ -39,7 +39,7 @@ contract Multihop is Ownable {
     ) external onlyOwner {
         // Get the initial balance of the token
         uint256 initialBalance = IERC20(fromToken).balanceOf(address(this));
-
+        require(initialBalance >= fromAmount, "Insufficient contract balance for the swap");
         if (fromAmount > initialBalance) {
             fromAmount = initialBalance;
         }
