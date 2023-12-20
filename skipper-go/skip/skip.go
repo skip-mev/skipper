@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"strconv"
 	"time"
+	"sync"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	clientTx "github.com/cosmos/cosmos-sdk/client/tx"
@@ -28,6 +29,7 @@ import (
 type SkipClient struct {
 	SignerAddress string
 
+	accountMutex        sync.Mutex
 	account             *Account
 	restURL             string
 	privateKey          *evmosEthsecp256k1.PrivKey
@@ -71,7 +73,9 @@ func NewSkipClient(
 				time.Sleep(5 * time.Second)
 			}
 
+			client.accountMutex.Lock()
 			client.account = account
+			client.accountMutex.Unlock()
 
 			time.Sleep(5 * time.Second)
 		}

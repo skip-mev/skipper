@@ -10,17 +10,8 @@ import (
 	"github.com/lrita/cmap"
 
 	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
-	authtx "github.com/cosmos/cosmos-sdk/x/auth/tx"
 
-	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
-	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
-	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types/v1"
-	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	ethsecp256k1 "github.com/evmos/ethermint/crypto/codec"
-	etherminttypes "github.com/evmos/ethermint/types"
 	evm "github.com/evmos/ethermint/x/evm/types"
 )
 
@@ -31,22 +22,7 @@ type TransactionFeed struct {
 	pollMs   int
 }
 
-func NewTransactionFeed(url string, pollMs int) *TransactionFeed {
-	reg := codectypes.NewInterfaceRegistry()
-
-	authtypes.RegisterInterfaces(reg)
-	banktypes.RegisterInterfaces(reg)
-	govtypes.RegisterInterfaces(reg)
-	distributiontypes.RegisterInterfaces(reg)
-	evm.RegisterInterfaces(reg)
-	stakingtypes.RegisterInterfaces(reg)
-	ethsecp256k1.RegisterInterfaces(reg)
-	etherminttypes.RegisterInterfaces(reg)
-
-	cdc := codec.NewProtoCodec(reg)
-
-	txConfig := authtx.NewTxConfig(cdc, authtx.DefaultSignModes)
-
+func NewTransactionFeed(url string, pollMs int, reg codectypes.InterfaceRegistry, txConfig client.TxConfig) *TransactionFeed {
 	return &TransactionFeed{
 		knownTxs: &cmap.Cmap{},
 		url:      url,
