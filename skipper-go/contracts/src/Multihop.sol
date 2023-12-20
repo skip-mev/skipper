@@ -32,7 +32,7 @@ contract Multihop is Ownable {
      * @param fromAmount Amount of tokens to sell
      * @param route Route of the arbitrage
      */
-    function swapMultihop(
+        function swapMultihop(
         address fromToken,
         uint256 fromAmount,
         DexHop[] memory route
@@ -40,6 +40,9 @@ contract Multihop is Ownable {
         // Get the initial balance of the token
         uint256 initialBalance = IERC20(fromToken).balanceOf(address(this));
 
+        require(initialBalance >= fromAmount, "Insufficient contract balance for the swap");
+
+        // Adjust fromAmount if it's more than the initial balance
         if (fromAmount > initialBalance) {
             fromAmount = initialBalance;
         }
@@ -88,15 +91,14 @@ contract Multihop is Ownable {
 
         uint256 fromAmountWithFee = amount * (1000 - hop.fee);
 
-        amount =
-            (fromAmountWithFee * reserveOut) /
-            ((reserveIn * 1000) + fromAmountWithFee);
+        amount = (fromAmountWithFee * reserveOut) / ((reserveIn * 1000) + fromAmountWithFee);
 
-        if (hop.zeroToOne) {
-            IUniswapV2Pair(hop.pairAddress).swap(0, amount, destination, "");
-        } else {
-            IUniswapV2Pair(hop.pairAddress).swap(amount, 0, destination, "");
-        }
+        IUniswapV2Pair(hop.pairAddress).swap(
+            hop.zeroToOne ? 0 : amount,
+            hop.zeroToOne ? amount : 0,
+            destination,
+            ""
+        );
 
         return amount;
     }
